@@ -22,6 +22,7 @@ const navigationItems = [
   { name: "Use Cases", href: "#use-cases" },
   { name: "Features", href: "#features" },
   { name: "How It Works", href: "#how-it-works" },
+  { name: "Pricing", href: "#pricing" },
   { name: "Contact", href: "#contact" },
 ]
 
@@ -34,7 +35,7 @@ export function Header() {
       setIsScrolled(window.scrollY > 0)
       
       // Update active section based on scroll position
-      const sections = ["home", "vision", "technology", "use-cases", "features", "how-it-works", "contact"]
+      const sections = ["home", "vision", "technology", "use-cases", "features", "how-it-works", "pricing", "contact"]
       const scrollPosition = window.scrollY + 100 // Offset for header height
       
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -52,7 +53,7 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full border-b bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-black/60 transition-all duration-200 ${
+      className={`sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-200 ${
         isScrolled ? "shadow-sm" : ""
       }`}
     >
@@ -61,14 +62,16 @@ export function Header() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <Image
-                src="/Modron_logo.png"
-                alt="MODRON Logo"
-                width={120}
-                height={32}
-                className="h-8 w-auto"
-                priority
-              />
+              <div className="relative">
+                <Image
+                  src="/Modron_logo.png"
+                  alt="MODRON Logo"
+                  width={96}
+                  height={32}
+                  className="h-8 w-auto sm:h-10 object-contain"
+                  priority
+                />
+              </div>
             </Link>
           </div>
 
@@ -83,7 +86,7 @@ export function Header() {
                   className={`text-sm font-medium transition-all duration-300 relative ${
                     isActive 
                       ? "text-green-400" 
-                      : "text-gray-400 hover:text-white"
+                      : "text-muted-foreground hover:text-white"
                   }`}
                   onClick={(e) => {
                     e.preventDefault()
@@ -105,20 +108,19 @@ export function Header() {
             })}
           </nav>
 
-          {/* Right side - Mobile menu only */}
-          <div className="flex items-center space-x-4">
-            {/* Mobile menu */}
+          {/* Mobile menu */}
+          <div className="flex items-center">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className="md:hidden border-gray-600 text-white hover:bg-gray-800">
+                <Button variant="outline" size="icon" className="md:hidden">
                   <Menu className="h-4 w-4" />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="bg-black border-gray-800">
+              <SheetContent side="right">
                 <SheetHeader>
-                  <SheetTitle className="text-white">Navigation</SheetTitle>
-                  <SheetDescription className="text-gray-400">
+                  <SheetTitle>Navigation</SheetTitle>
+                  <SheetDescription>
                     Navigate through the different sections of our site.
                   </SheetDescription>
                 </SheetHeader>
@@ -132,7 +134,7 @@ export function Header() {
                         className={`text-lg font-medium transition-all duration-300 ${
                           isActive 
                             ? "text-green-400" 
-                            : "text-gray-400 hover:text-white"
+                            : "hover:text-white"
                         }`}
                         onClick={(e) => {
                           e.preventDefault()

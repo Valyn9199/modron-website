@@ -5,7 +5,6 @@ import { CheckCircle, Server, Play, Sparkles, ArrowRight as ArrowRightIcon } fro
 import { Button } from '@/components/ui/button'
 import { useScrollAnimation } from '@/hooks/use-scroll-animation'
 
-
 interface Step {
   id: number
   icon: React.ReactNode
@@ -162,7 +161,40 @@ export function AnimatedHowItWorks() {
             </div>
           </div>
 
-
+          {/* Additional Info */}
+          <div 
+            className={`text-center transition-all duration-1000 ease-out ${
+              visibleSteps.includes(4) 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}
+            style={{
+              transitionDelay: '1200ms'
+            }}
+          >
+            <div className="bg-[#1A1A1A]/30 border border-[#262626] rounded-xl p-6 sm:p-8 max-w-4xl mx-auto hover-lift">
+              <h3 className="text-white font-bold text-lg sm:text-xl mb-3 sm:mb-4">Ready to Get Started?</h3>
+              <p className="text-[#CCCCCC] mb-4 sm:mb-6 text-sm sm:text-base">
+                Our streamlined process gets you up and running in minutes, not hours. 
+                No complex setup required - just select, connect, and start working.
+              </p>
+              <div className="flex justify-center">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="border-2 border-[#4D4D4D] text-[#CCCCCC] hover:bg-[#262626] hover:border-[#666666] hover:text-white transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+                  onClick={() => {
+                    const technologySection = document.getElementById('technology');
+                    if (technologySection) {
+                      technologySection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                >
+                  View Documentation
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

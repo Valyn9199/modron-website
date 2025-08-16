@@ -1,7 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Only import Resend if API key is available
+let resend: any = null
+if (process.env.RESEND_API_KEY) {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { Resend } = require('resend')
+    resend = new Resend(process.env.RESEND_API_KEY)
+  } catch (error) {
+    console.warn('Resend not available:', error)
+  }
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -30,6 +39,22 @@ export async function POST(request: NextRequest) {
         },
         { status: 400 }
       )
+    }
+    
+    // If Resend is not available, just log the contact and return success
+    if (!resend) {
+      console.log('Contact form submission received (email service not configured):', {
+        name,
+        email,
+        company,
+        message,
+        timestamp: new Date().toISOString()
+      })
+      
+      return NextResponse.json({
+        success: true,
+        message: 'Message sent successfully (email service not configured)'
+      })
     }
     
     // Send email using Resend

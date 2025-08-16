@@ -21,6 +21,18 @@ export const metadata: Metadata = {
   authors: [{ name: "MODRON" }],
   creator: "MODRON",
   publisher: "MODRON",
+  category: 'Technology',
+  classification: 'AI Infrastructure',
+  other: {
+    'geo.region': 'AU-NSW',
+    'geo.placename': 'Sydney',
+    'geo.position': '-33.8688;151.2093',
+    'ICBM': '-33.8688, 151.2093',
+  },
+  verification: {
+    google: 'your-google-verification-code',
+    // Add other verification codes
+  },
 
   formatDetection: {
     email: false,
@@ -80,7 +92,7 @@ export default function RootLayout({
         <link rel="preload" as="image" href="/hero-poster.jpg" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"

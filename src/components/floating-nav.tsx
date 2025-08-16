@@ -11,6 +11,7 @@ const navigationItems = [
   { name: "Uses", href: "#use-cases", icon: "🔧" },
   { name: "Features", href: "#features", icon: "✨" },
   { name: "How", href: "#how-it-works", icon: "📋" },
+  { name: "Pricing", href: "#pricing", icon: "💰" },
   { name: "Contact", href: "#contact", icon: "📞" },
 ]
 
@@ -20,7 +21,7 @@ export function FloatingNav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "vision", "technology", "use-cases", "features", "how-it-works", "contact"]
+      const sections = ["home", "vision", "technology", "use-cases", "features", "how-it-works", "pricing", "contact"]
       const scrollPosition = window.scrollY + 100
       
       for (let i = sections.length - 1; i >= 0; i--) {
