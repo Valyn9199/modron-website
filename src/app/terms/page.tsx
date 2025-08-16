@@ -1,106 +1,58 @@
-import { NextRequest, NextResponse } from 'next/server'
-
-// Only import Resend if API key is available
-let resend: any = null
-if (process.env.RESEND_API_KEY) {
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { Resend } = require('resend')
-    resend = new Resend(process.env.RESEND_API_KEY)
-  } catch (error) {
-    console.warn('Resend not available:', error)
-  }
-}
-
-export async function POST(request: NextRequest) {
-  try {
-    const body = await request.json()
-    
-    // Validate required fields
-    const { email } = body
-    
-    if (!email) {
-      return NextResponse.json(
-        { 
-          success: false, 
-          error: 'Email is required' 
-        },
-        { status: 400 }
-      )
-    }
-    
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { 
-          success: false, 
-          error: 'Invalid email format' 
-        },
-        { status: 400 }
-      )
-    }
-    
-    // If Resend is not available, just log the waitlist signup and return success
-    if (!resend) {
-      console.log('Waitlist signup received (email service not configured):', {
-        email,
-        timestamp: new Date().toISOString()
-      })
+export default function TermsPage() {
+  return (
+    <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
       
-      return NextResponse.json({
-        success: true,
-        message: 'Successfully joined waitlist (email service not configured)'
-      })
-    }
-    
-    // Send email using Resend
-    try {
-      const { data, error } = await resend.emails.send({
-        from: process.env.FROM_EMAIL || 'MODRON Waitlist <noreply@modron.com>',
-        to: [process.env.WAITLIST_EMAIL || 'contact@modron.com'],
-        subject: `New Waitlist Signup: ${email}`,
-        html: `
-          <h2>New Waitlist Signup</h2>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Date:</strong> ${new Date().toLocaleString()}</p>
-          <hr>
-          <p><em>This person has joined the MODRON waitlist and should be notified when the platform launches.</em></p>
-        `,
-        replyTo: email
-      })
+      <div className="prose prose-lg max-w-none">
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">1. Acceptance of Terms</h2>
+          <p className="mb-4">
+            By accessing and using MODRON's services, you accept and agree to be bound by the terms and provision of this agreement.
+          </p>
+        </section>
 
-      if (error) {
-        console.error('Resend error:', error)
-        return NextResponse.json(
-          { 
-            success: false, 
-            error: 'Failed to send waitlist notification' 
-          },
-          { status: 500 }
-        )
-      }
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">2. Description of Service</h2>
+          <p className="mb-4">
+            MODRON provides GPU rental and cloud computing services. We reserve the right to modify or discontinue the service at any time.
+          </p>
+        </section>
 
-      console.log('Waitlist email sent successfully:', data)
-      
-    } catch (emailError) {
-      console.error('Email sending error:', emailError)
-      // Don't fail the request if email fails, just log it
-    }
-    
-    return NextResponse.json({
-      success: true,
-      message: 'Successfully joined waitlist'
-    })
-    
-  } catch (error) {
-    console.error('Waitlist form error:', error)
-    return NextResponse.json(
-      { 
-        success: false, 
-        error: 'Internal server error' 
-      },
-      { status: 500 }
-    )
-  }
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">3. User Responsibilities</h2>
+          <p className="mb-4">
+            Users are responsible for maintaining the confidentiality of their account information and for all activities that occur under their account.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">4. Payment Terms</h2>
+          <p className="mb-4">
+            All fees are payable in advance. We reserve the right to change our pricing with 30 days notice.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">5. Privacy Policy</h2>
+          <p className="mb-4">
+            Your privacy is important to us. Please review our Privacy Policy, which also governs your use of the service.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">6. Limitation of Liability</h2>
+          <p className="mb-4">
+            MODRON shall not be liable for any indirect, incidental, special, consequential, or punitive damages.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">7. Contact Information</h2>
+          <p className="mb-4">
+            If you have any questions about these Terms of Service, please contact us at contact@modron.com
+          </p>
+        </section>
+      </div>
+    </div>
+  )
 }

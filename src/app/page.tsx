@@ -12,12 +12,12 @@ import { MobileViewport } from "@/components/mobile-viewport";
 import { RefreshWrapper } from "@/components/refresh-wrapper";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Sun, Server, Cpu, Droplets, Zap, Mail, Phone, Leaf, Shield, Gauge, Globe, Database, Network, Power, Cloud, Brain, Monitor, Code, BarChart3, Clock, Award, Settings, Calendar, Eye, Headphones, CheckCircle, Star } from "lucide-react";
+import { Sun, Server, Cpu, Droplets, Zap, Leaf, Shield, Gauge, Globe, Database, Network, Power, Cloud, Brain, Monitor, Code, BarChart3, Clock, Award, Settings, Calendar, Eye, Headphones, CheckCircle, Star } from "lucide-react";
 import { HeroBgVideo } from "@/components/hero-bg-video";
 import Image from "next/image";
  
 
-import dynamic from "next/dynamic";
+
 import { ImmersionTankVideo } from "@/components/immersion-tank-video";
 // Lazy-load heavier, below-the-fold components to reduce initial JS
 

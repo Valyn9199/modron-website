@@ -17,13 +17,13 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     
     // Validate required fields
-    const { name, email, message, company } = body
+    const { email } = body
     
-    if (!name || !email || !message) {
+    if (!email) {
       return NextResponse.json(
         { 
           success: false, 
-          error: 'Name, email, and message are required' 
+          error: 'Email is required' 
         },
         { status: 400 }
       )
@@ -41,35 +41,31 @@ export async function POST(request: NextRequest) {
       )
     }
     
-    // If Resend is not available, just log the contact and return success
+    // If Resend is not available, just log the waitlist signup and return success
     if (!resend) {
-      console.log('Contact form submission received (email service not configured):', {
-        name,
+      console.log('Waitlist signup received (email service not configured):', {
         email,
-        company,
-        message,
         timestamp: new Date().toISOString()
       })
       
       return NextResponse.json({
         success: true,
-        message: 'Message sent successfully (email service not configured)'
+        message: 'Successfully joined waitlist (email service not configured)'
       })
     }
     
     // Send email using Resend
     try {
       const { data, error } = await resend.emails.send({
-        from: process.env.FROM_EMAIL || 'Modron Contact Form <noreply@yourdomain.com>',
-        to: [process.env.CONTACT_EMAIL || 'contact@modron.com'],
-        subject: `New Contact Form Submission from ${name}`,
+        from: process.env.FROM_EMAIL || 'MODRON Waitlist <noreply@modron.com>',
+        to: [process.env.WAITLIST_EMAIL || 'contact@modron.com'],
+        subject: `New Waitlist Signup: ${email}`,
         html: `
-          <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
+          <h2>New Waitlist Signup</h2>
           <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Company:</strong> ${company || 'Not provided'}</p>
-          <p><strong>Message:</strong></p>
-          <p>${message.replace(/\n/g, '<br>')}</p>
+          <p><strong>Date:</strong> ${new Date().toLocaleString()}</p>
+          <hr>
+          <p><em>This person has joined the MODRON waitlist and should be notified when the platform launches.</em></p>
         `,
         replyTo: email
       })
@@ -79,13 +75,13 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(
           { 
             success: false, 
-            error: 'Failed to send email' 
+            error: 'Failed to send waitlist notification' 
           },
           { status: 500 }
         )
       }
 
-      console.log('Email sent successfully:', data)
+      console.log('Waitlist email sent successfully:', data)
       
     } catch (emailError) {
       console.error('Email sending error:', emailError)
@@ -94,11 +90,11 @@ export async function POST(request: NextRequest) {
     
     return NextResponse.json({
       success: true,
-      message: 'Message sent successfully'
+      message: 'Successfully joined waitlist'
     })
     
   } catch (error) {
-    console.error('Contact form error:', error)
+    console.error('Waitlist form error:', error)
     return NextResponse.json(
       { 
         success: false, 

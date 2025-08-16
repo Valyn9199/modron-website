@@ -33,10 +33,23 @@ export function WaitlistModal() {
     }
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to join waitlist')
+      }
+
       setIsSubmitted(true)
-    } catch {
-      setError("Something went wrong. Please try again.")
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "Something went wrong. Please try again.")
     } finally {
       setIsSubmitting(false)
     }
