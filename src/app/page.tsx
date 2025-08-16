@@ -636,7 +636,7 @@ export default function Home() {
                   <tbody>
                     <tr className="border-t border-[#333333] bg-green-900/20">
                       <td className="p-4 sm:p-6 text-white font-bold text-sm sm:text-base">MODRON</td>
-                      <td className="text-center p-4 sm:p-6 text-green-400 font-bold text-sm sm:text-base">$0.54–$0.70</td>
+                      <td className="text-center p-4 sm:p-6 text-green-400 font-bold text-sm sm:text-base">$0.54–$0.80</td>
                       <td className="text-center p-4 sm:p-6 text-green-400 font-bold text-sm sm:text-base">80–95%</td>
                       <td className="text-center p-4 sm:p-6 text-green-400 font-bold text-sm sm:text-base">Yes</td>
                       <td className="text-center p-4 sm:p-6 text-green-400 font-bold text-sm sm:text-base">High</td>
