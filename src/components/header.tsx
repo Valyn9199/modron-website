@@ -14,6 +14,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import { ViewPricingButton } from "@/components/view-pricing-button"
+import { BookingModal } from "@/components/booking-modal"
 
 const navigationItems = [
   { name: "Home", href: "#home" },
