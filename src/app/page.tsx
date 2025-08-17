@@ -1,4 +1,4 @@
-import { EnhancedHeader } from "@/components/enhanced-header";
+import { SimpleHeader } from "@/components/simple-header";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { OptimizedScrollIndicator } from "@/components/optimized-scroll-indicator";
 
@@ -47,7 +47,7 @@ export default function Home() {
         <div className="min-h-screen bg-background relative">
           <SkipToContent />
           <ProgressIndicator type="scroll" />
-          <EnhancedHeader />
+          <SimpleHeader />
           {/* Spotlight removed for performance */}
           
           <main id="main-content" tabIndex={-1} className="relative">
