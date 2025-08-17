@@ -52,7 +52,7 @@ export function EnhancedHeader() {
     const handleScroll = throttle(() => {
       // Show enhanced styling after scrolling past hero section (approximately 100vh)
       const heroHeight = window.innerHeight
-      const shouldShowEnhanced = window.scrollY > heroHeight * 0.8
+      const shouldShowEnhanced = window.scrollY > heroHeight * 0.5 // Reduced threshold to 50%
       setIsScrolled(shouldShowEnhanced)
       
       // Update active section based on scroll position
@@ -90,7 +90,7 @@ export function EnhancedHeader() {
         className={`${isScrolled ? 'sticky' : 'fixed'} top-0 z-[100] w-full border-b transition-all duration-300 ease-out ${
           isScrolled 
             ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg border-border" 
-            : "bg-transparent border-transparent"
+            : "bg-black/30 backdrop-blur-sm border-transparent"
         }`}
         style={{
           willChange: 'transform',
