@@ -122,7 +122,6 @@ export function BookingModal() {
         maxHeight: '100vh',
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
         overflow: 'auto',
-        WebkitOverflowScrolling: 'touch',
         zIndex: 9998,
         display: 'flex',
         alignItems: 'center',
