@@ -10,7 +10,7 @@ interface PageTransitionProps {
 
 export function PageTransition({ children, className = "" }: PageTransitionProps) {
   const [isLoaded, setIsLoaded] = useState(false)
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 })
+  const { ref } = useScrollAnimation({ threshold: 0.1 })
 
   useEffect(() => {
     // Simulate page load

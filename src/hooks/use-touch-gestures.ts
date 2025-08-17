@@ -57,7 +57,7 @@ export function useTouchGestures(config: SwipeConfig = {}) {
     }
   }
 
-  const handleTouchEnd = (e: TouchEvent) => {
+  const handleTouchEnd = () => {
     setIsTouching(false)
     
     if (!touchStartRef.current || !touchEndRef.current) {
@@ -130,7 +130,7 @@ export function useTouchGestures(config: SwipeConfig = {}) {
         clearTimeout(doubleTapTimeoutRef.current)
       }
     }
-  }, [onSwipeLeft, onSwipeRight, onSwipeUp, onSwipeDown, onTap, onDoubleTap])
+  }, [onSwipeLeft, onSwipeRight, onSwipeUp, onSwipeDown, onTap, onDoubleTap, handleTouchStart, handleTouchMove, handleTouchEnd])
 
   return { isTouching }
 }

@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { ResendClient } from '@/lib/utils'
 
 // Only import Resend if API key is available
-let resend: { emails: { send: (options: any) => Promise<any> } } | null = null
+let resend: ResendClient | null = null
 if (process.env.RESEND_API_KEY) {
   try {
     // eslint-disable-next-line @typescript-eslint/no-require-imports

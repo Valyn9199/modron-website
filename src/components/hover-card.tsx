@@ -6,7 +6,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 interface HoverCardProps {
   children: React.ReactNode
   className?: string
-  hoverClassName?: string
   icon?: React.ReactNode
   title?: string
   description?: string
@@ -16,7 +15,6 @@ interface HoverCardProps {
 export function HoverCard({ 
   children, 
   className = "", 
-  hoverClassName = "",
   icon,
   title,
   description,

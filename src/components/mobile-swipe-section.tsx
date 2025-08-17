@@ -49,7 +49,7 @@ export function MobileSwipeSection({
 
     const interval = setInterval(goToNext, autoPlayInterval)
     return () => clearInterval(interval)
-  }, [isAutoPlaying, autoPlay, autoPlayInterval])
+  }, [isAutoPlaying, autoPlay, autoPlayInterval, goToNext])
 
   // Pause auto-play on hover (desktop)
   const handleMouseEnter = () => setIsAutoPlaying(false)

@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useMemo } from 'react'
 import { CheckCircle, Server, Play, Sparkles, ArrowRight as ArrowRightIcon } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { useScrollAnimation } from '@/hooks/use-scroll-animation'
 
 

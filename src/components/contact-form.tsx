@@ -27,45 +27,8 @@ export function ContactForm() {
   })
   
   const [errors, setErrors] = useState<FormErrors>({})
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const [submitError, setSubmitError] = useState<string>('')
-
-  const validateForm = (): boolean => {
-    const newErrors: FormErrors = {}
-
-    // Name validation
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required'
-    } else if (formData.name.trim().length < 2) {
-      newErrors.name = 'Name must be at least 2 characters'
-    }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required'
-    } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address'
-    }
-
-    // Company validation (optional but if provided, validate)
-    if (formData.company.trim() && formData.company.trim().length < 2) {
-      newErrors.company = 'Company name must be at least 2 characters'
-    }
-
-    // Message validation
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required'
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters'
-    } else if (formData.message.trim().length > 1000) {
-      newErrors.message = 'Message must be less than 1000 characters'
-    }
-
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -85,7 +48,6 @@ export function ContactForm() {
 
   const handleSubmit = async (e?: React.FormEvent) => {
     if (e) e.preventDefault()
-    setIsSubmitting(true)
     setSubmitError("")
     setSubmitSuccess(false)
 
@@ -128,7 +90,7 @@ export function ContactForm() {
       console.error('Form submission error:', error)
       setSubmitError("Network error. Please check your connection and try again, or email us directly at contact@modron.com")
     } finally {
-      setIsSubmitting(false)
+      // Form submission completed
     }
   }
 

@@ -9,17 +9,17 @@ interface UseScrollAnimationOptions {
   delay?: number
 }
 
-// Throttle function to limit function calls
-function throttle<T extends (...args: any[]) => any>(func: T, limit: number): T {
-  let inThrottle: boolean
-  return ((...args: any[]) => {
-    if (!inThrottle) {
-      func(...args)
-      inThrottle = true
-      setTimeout(() => inThrottle = false, limit)
-    }
-  }) as T
-}
+// Throttle function to limit function calls (currently unused)
+// function throttle<T extends (...args: unknown[]) => unknown>(func: T, limit: number): T {
+//   let inThrottle: boolean
+//   return ((...args: unknown[]) => {
+//     if (!inThrottle) {
+//       func(...args)
+//       inThrottle = true
+//       setTimeout(() => inThrottle = false, limit)
+//     }
+//   }) as T
+// }
 
 export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
   const {
@@ -33,19 +33,17 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
   const [hasTriggered, setHasTriggered] = useState(false)
   const ref = useRef<HTMLElement>(null)
 
-  const handleIntersection = useCallback(
-    throttle(([entry]: IntersectionObserverEntry[]) => {
-      if (entry.isIntersecting && (!triggerOnce || !hasTriggered)) {
-        setTimeout(() => {
-          setIsVisible(true)
-          setHasTriggered(true)
-        }, delay)
-      } else if (!triggerOnce && !entry.isIntersecting) {
-        setIsVisible(false)
-      }
-    }, 16), // ~60fps throttle
-    [triggerOnce, hasTriggered, delay]
-  )
+  const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
+    const [entry] = entries
+    if (entry.isIntersecting && (!triggerOnce || !hasTriggered)) {
+      setTimeout(() => {
+        setIsVisible(true)
+        setHasTriggered(true)
+      }, delay)
+    } else if (!triggerOnce && !entry.isIntersecting) {
+      setIsVisible(false)
+    }
+  }, [triggerOnce, hasTriggered, delay])
 
   useEffect(() => {
     const element = ref.current
@@ -74,19 +72,17 @@ export function useStaggeredAnimation(
   const containerRef = useRef<HTMLElement>(null)
   const { threshold = 0.1, rootMargin = '0px 0px -50px 0px', triggerOnce = true } = options
 
-  const handleStaggeredIntersection = useCallback(
-    throttle(([entry]: IntersectionObserverEntry[]) => {
-      if (entry.isIntersecting && visibleItems.length === 0) {
-        // Stagger the animations with reduced delay
-        for (let i = 0; i < itemCount; i++) {
-          setTimeout(() => {
-            setVisibleItems(prev => [...prev, i])
-          }, i * 100) // Reduced from 150ms to 100ms
-        }
+  const handleStaggeredIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
+    const [entry] = entries
+    if (entry.isIntersecting && visibleItems.length === 0) {
+      // Stagger the animations with reduced delay
+      for (let i = 0; i < itemCount; i++) {
+        setTimeout(() => {
+          setVisibleItems(prev => [...prev, i])
+        }, i * 100) // Reduced from 150ms to 100ms
       }
-    }, 16),
-    [itemCount, visibleItems.length]
-  )
+    }
+  }, [itemCount, visibleItems.length])
 
   useEffect(() => {
     const element = containerRef.current

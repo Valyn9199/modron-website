@@ -71,7 +71,7 @@ export function PullToRefresh({
       container.removeEventListener('touchmove', handleTouchMove)
       container.removeEventListener('touchend', handleTouchEnd)
     }
-  }, [isPulling, pullDistance, threshold, onRefresh])
+  }, [isPulling, pullDistance, threshold, onRefresh, handleTouchStart, handleTouchMove, handleTouchEnd])
 
   const rotation = Math.min(pullDistance / threshold * 360, 360)
   const opacity = Math.min(pullDistance / threshold, 1)
