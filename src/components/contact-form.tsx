@@ -27,7 +27,6 @@ export function ContactForm() {
   })
   
   const [errors, setErrors] = useState<FormErrors>({})
-  const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const [submitError, setSubmitError] = useState<string>('')
@@ -139,7 +138,7 @@ export function ContactForm() {
     }
   }
 
-  if (isSubmitted) {
+  if (submitSuccess) {
     return (
       <div className="bg-[#1A1A1A]/50 border border-green-500/50 rounded-2xl p-8 text-center">
         <div className="mx-auto mb-4 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center">
@@ -150,7 +149,7 @@ export function ContactForm() {
           Thank you for your message. We&apos;ll get back to you within 24 hours.
         </p>
         <button
-          onClick={() => setIsSubmitted(false)}
+          onClick={() => setSubmitSuccess(false)}
           className="text-green-400 hover:text-green-300 transition-colors"
         >
           Send another message
