@@ -50,8 +50,9 @@ export function EnhancedHeader() {
 
   React.useEffect(() => {
     const handleScroll = throttle(() => {
-      // Show enhanced styling after scrolling past 100px
-      const shouldShowEnhanced = window.scrollY > 100
+      // Show enhanced styling after scrolling past hero section (approximately 100vh)
+      const heroHeight = window.innerHeight
+      const shouldShowEnhanced = window.scrollY > heroHeight * 0.8
       setIsScrolled(shouldShowEnhanced)
       
       // Update active section based on scroll position
@@ -84,11 +85,11 @@ export function EnhancedHeader() {
 
   return (
     <>
-      {/* Enhanced Fixed Header - Always Visible */}
+      {/* Enhanced Sticky Header */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 w-full border-b transition-all duration-300 ease-out ${
+        className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ease-out ${
           isScrolled 
-            ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg" 
+            ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg border-border" 
             : "bg-transparent border-transparent"
         }`}
         style={{
@@ -139,8 +140,10 @@ export function EnhancedHeader() {
               })}
             </nav>
 
-            {/* Desktop CTA Buttons */}
-            <div className="hidden lg:flex items-center space-x-3">
+            {/* Desktop CTA Buttons - Only show when scrolled */}
+            <div className={`hidden lg:flex items-center space-x-3 transition-all duration-300 ${
+              isScrolled ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}>
               <ViewPricingButton />
               <BookingModal />
             </div>
@@ -187,7 +190,7 @@ export function EnhancedHeader() {
                     })}
                   </nav>
 
-                  {/* Mobile CTA Buttons */}
+                  {/* Mobile CTA Buttons - Always show in mobile menu */}
                   <div className="flex flex-col space-y-3 mt-8 pt-6 border-t">
                     <ViewPricingButton />
                     <BookingModal />
@@ -198,9 +201,6 @@ export function EnhancedHeader() {
           </div>
         </div>
       </header>
-
-      {/* Spacer to prevent content jump */}
-      <div className="h-16" />
     </>
   )
 }
