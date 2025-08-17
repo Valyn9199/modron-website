@@ -82,7 +82,7 @@ export function AnimatedStats({ className = "" }: AnimatedStatsProps) {
 
   return (
     <div ref={ref as React.RefObject<HTMLDivElement>} className={`mt-16 sm:mt-20 md:mt-24 ${className}`}>
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
         {stats.map((stat, index) => (
           <div key={stat.label} className="relative group">
             <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 group-hover:scale-105">

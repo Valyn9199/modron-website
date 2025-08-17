@@ -59,7 +59,7 @@ export default function Home() {
                 {/* MODRON Logo removed to keep hero content above the fold */}
               
               {/* Main Headline with subtle parallax */}
-              <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight mb-6 sm:mb-8 md:mb-12 leading-tight reveal will-change-transform">
+              <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-light tracking-tight mb-6 sm:mb-8 md:mb-12 leading-tight reveal will-change-transform">
                 <span className="bg-gradient-to-r from-white via-green-200 to-white bg-clip-text text-transparent">
                   Clean Compute.
                 </span>
@@ -106,7 +106,7 @@ export default function Home() {
             
             {/* Why MODRON Grid */}
             <StaggeredReveal staggerDelay={150}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8" role="list" aria-label="Why choose MODRON">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8" role="list" aria-label="Why choose MODRON">
               {/* Renewable-powered */}
                 <div className="text-center group hover-lift" role="listitem">
                   <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg hover-glow" aria-hidden="true">
@@ -460,7 +460,7 @@ export default function Home() {
             <div className="mb-12 sm:mb-16 md:mb-20">
               <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-4 sm:p-6 md:p-8">
                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 sm:mb-8 text-center">Enterprise System Architecture</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                   {/* Infrastructure Layer */}
                   <div className="text-center">
                     <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
@@ -499,7 +499,7 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             {/* Always-on Availability */}
             <div className="group cursor-pointer">
               <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 group-hover:scale-105">
@@ -621,53 +621,55 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="overflow-x-auto">
-                <table className="w-full bg-[#1A1A1A]/50 border border-[#262626] rounded-xl overflow-hidden">
-                  <thead>
-                    <tr className="bg-[#262626]/50">
-                      <th className="text-left p-4 sm:p-6 text-white font-bold text-sm sm:text-base">Provider</th>
-                      <th className="text-center p-4 sm:p-6 text-white font-bold text-sm sm:text-base">Price/hr (AUD)</th>
-                      <th className="text-center p-4 sm:p-6 text-white font-bold text-sm sm:text-base">Green Energy</th>
-                      <th className="text-center p-4 sm:p-6 text-white font-bold text-sm sm:text-base">Dedicated Resources</th>
-                      <th className="text-center p-4 sm:p-6 text-white font-bold text-sm sm:text-base">SLA</th>
-                      <th className="text-center p-4 sm:p-6 text-white font-bold text-sm sm:text-base">Carbon Offset</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-t border-[#333333] bg-green-900/20">
-                      <td className="p-4 sm:p-6 text-white font-bold text-sm sm:text-base">MODRON</td>
-                      <td className="text-center p-4 sm:p-6 text-green-400 font-bold text-sm sm:text-base">$0.54–$0.80</td>
-                      <td className="text-center p-4 sm:p-6 text-green-400 font-bold text-sm sm:text-base">80–95%</td>
-                      <td className="text-center p-4 sm:p-6 text-green-400 font-bold text-sm sm:text-base">Yes</td>
-                      <td className="text-center p-4 sm:p-6 text-green-400 font-bold text-sm sm:text-base">High</td>
-                      <td className="text-center p-4 sm:p-6 text-green-400 font-bold text-sm sm:text-base">Included</td>
-                    </tr>
-                    <tr className="border-t border-[#333333]">
-                      <td className="p-4 sm:p-6 text-white text-sm sm:text-base">AWS</td>
-                      <td className="text-center p-4 sm:p-6 text-[#CCCCCC] text-sm sm:text-base">~$1.20+</td>
-                      <td className="text-center p-4 sm:p-6 text-[#CCCCCC] text-sm sm:text-base">Low</td>
-                      <td className="text-center p-4 sm:p-6 text-[#CCCCCC] text-sm sm:text-base">Often Shared</td>
-                      <td className="text-center p-4 sm:p-6 text-[#CCCCCC] text-sm sm:text-base">Varies</td>
-                      <td className="text-center p-4 sm:p-6 text-[#CCCCCC] text-sm sm:text-base">Paid Extra</td>
-                    </tr>
-                    <tr className="border-t border-[#333333]">
-                      <td className="p-4 sm:p-6 text-white text-sm sm:text-base">GCP</td>
-                      <td className="text-center p-4 sm:p-6 text-[#CCCCCC] text-sm sm:text-base">~$1.10+</td>
-                      <td className="text-center p-4 sm:p-6 text-[#CCCCCC] text-sm sm:text-base">Low</td>
-                      <td className="text-center p-4 sm:p-6 text-[#CCCCCC] text-sm sm:text-base">Often Shared</td>
-                      <td className="text-center p-4 sm:p-6 text-[#CCCCCC] text-sm sm:text-base">Varies</td>
-                      <td className="text-center p-4 sm:p-6 text-[#CCCCCC] text-sm sm:text-base">Paid Extra</td>
-                    </tr>
-                    <tr className="border-t border-[#333333]">
-                      <td className="p-4 sm:p-6 text-white text-sm sm:text-base">Lambda Labs</td>
-                      <td className="text-center p-4 sm:p-6 text-[#CCCCCC] text-sm sm:text-base">~$0.90</td>
-                      <td className="text-center p-4 sm:p-6 text-[#CCCCCC] text-sm sm:text-base">Medium</td>
-                      <td className="text-center p-4 sm:p-6 text-[#CCCCCC] text-sm sm:text-base">Yes</td>
-                      <td className="text-center p-4 sm:p-6 text-[#CCCCCC] text-sm sm:text-base">High</td>
-                      <td className="text-center p-4 sm:p-6 text-[#CCCCCC] text-sm sm:text-base">Paid Extra</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div className="overflow-x-auto -mx-4 sm:mx-0">
+                <div className="min-w-[800px] sm:min-w-0">
+                  <table className="w-full bg-[#1A1A1A]/50 border border-[#262626] rounded-xl overflow-hidden">
+                    <thead>
+                      <tr className="bg-[#262626]/50">
+                        <th className="text-left p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">Provider</th>
+                        <th className="text-center p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">Price/hr (AUD)</th>
+                        <th className="text-center p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">Green Energy</th>
+                        <th className="text-center p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">Dedicated Resources</th>
+                        <th className="text-center p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">SLA</th>
+                        <th className="text-center p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">Carbon Offset</th>
+                      </tr>
+                    </thead>
+                                      <tbody>
+                      <tr className="border-t border-[#333333] bg-green-900/20">
+                        <td className="p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">MODRON</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-green-400 font-bold text-xs sm:text-sm md:text-base">$0.54–$0.80</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-green-400 font-bold text-xs sm:text-sm md:text-base">80–95%</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-green-400 font-bold text-xs sm:text-sm md:text-base">Yes</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-green-400 font-bold text-xs sm:text-sm md:text-base">High</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-green-400 font-bold text-xs sm:text-sm md:text-base">Included</td>
+                      </tr>
+                      <tr className="border-t border-[#333333]">
+                        <td className="p-3 sm:p-4 md:p-6 text-white text-xs sm:text-sm md:text-base">AWS</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">~$1.20+</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Low</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Often Shared</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Varies</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Paid Extra</td>
+                      </tr>
+                      <tr className="border-t border-[#333333]">
+                        <td className="p-3 sm:p-4 md:p-6 text-white text-xs sm:text-sm md:text-base">GCP</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">~$1.10+</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Low</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Often Shared</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Varies</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Paid Extra</td>
+                      </tr>
+                      <tr className="border-t border-[#333333]">
+                        <td className="p-3 sm:p-4 md:p-6 text-white text-xs sm:text-sm md:text-base">Lambda Labs</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">~$0.90</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Medium</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Yes</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">High</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Paid Extra</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
               <div className="mt-8 text-center">
@@ -770,7 +772,7 @@ export default function Home() {
 
             {/* Legal Text */}
             <div className="border-t border-gray-800 pt-6 sm:pt-8">
-              <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6 lg:space-x-8 text-xs sm:text-sm text-[#666666] px-4">
+              <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4 lg:space-x-6 xl:space-x-8 text-xs sm:text-sm text-[#666666] px-4">
                 <span>NSW, Australia</span>
                 <span>&copy; 2025. All rights reserved.</span>
                 <a href="/privacy" className="hover:text-[#999999] transition-colors">Privacy Policy</a>

@@ -159,7 +159,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8 bg-[#1A1A1A]/30 p-8 rounded-2xl border border-[#333333]/50" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8 bg-[#1A1A1A]/30 p-4 sm:p-6 md:p-8 rounded-2xl border border-[#333333]/50" noValidate>
       {submitError && (
         <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-4 flex items-center space-x-3">
           <AlertCircle className="h-5 w-5 text-red-400 flex-shrink-0" />
@@ -167,7 +167,7 @@ export function ContactForm() {
         </div>
       )}
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         <div>
           <label htmlFor="name" className="block text-sm font-semibold text-[#CCCCCC] mb-3 text-center md:text-left">
             Name <span className="text-red-400">*</span>
@@ -178,7 +178,7 @@ export function ContactForm() {
             name="name"
             value={formData.name}
             onChange={handleInputChange}
-            className={`w-full h-14 px-4 bg-[#262626] border-2 rounded-lg text-white placeholder-[#999999] focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 text-base ${
+            className={`w-full h-12 sm:h-14 px-3 sm:px-4 bg-[#262626] border-2 rounded-lg text-white placeholder-[#999999] focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 text-base ${
               errors.name ? 'border-red-500' : 'border-[#333333]'
             }`}
             placeholder="Your name"
@@ -203,7 +203,7 @@ export function ContactForm() {
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            className={`w-full h-14 px-4 bg-[#262626] border-2 rounded-lg text-white placeholder-[#999999] focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 text-base ${
+            className={`w-full h-12 sm:h-14 px-3 sm:px-4 bg-[#262626] border-2 rounded-lg text-white placeholder-[#999999] focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 text-base ${
               errors.email ? 'border-red-500' : 'border-[#333333]'
             }`}
             placeholder="your.email@company.com"
@@ -229,7 +229,7 @@ export function ContactForm() {
           name="company"
           value={formData.company}
           onChange={handleInputChange}
-          className={`w-full h-14 px-4 bg-[#262626] border-2 rounded-lg text-white placeholder-[#999999] focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 text-base ${
+          className={`w-full h-12 sm:h-14 px-3 sm:px-4 bg-[#262626] border-2 rounded-lg text-white placeholder-[#999999] focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 text-base ${
             errors.company ? 'border-red-500' : 'border-[#333333]'
           }`}
           placeholder="Your company (optional)"
@@ -254,7 +254,7 @@ export function ContactForm() {
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           rows={5}
-          className={`w-full px-4 py-4 bg-[#262626] border-2 rounded-lg text-white placeholder-[#999999] focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 resize-none text-base ${
+          className={`w-full px-3 sm:px-4 py-3 sm:py-4 bg-[#262626] border-2 rounded-lg text-white placeholder-[#999999] focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 resize-none text-base ${
             errors.message ? 'border-red-500' : 'border-[#333333]'
           }`}
           placeholder="Tell us about your project or requirements..."
@@ -282,7 +282,7 @@ export function ContactForm() {
         <LoadingButton 
           type="submit"
           size="lg" 
-          className="flex-1 h-14 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-semibold text-lg"
+          className="flex-1 h-12 sm:h-14 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-semibold text-base sm:text-lg"
           loadingText="Sending..."
           onClick={handleSubmit}
         >
@@ -292,7 +292,7 @@ export function ContactForm() {
         
         <a 
           href="mailto:contact@modron.com?subject=Inquiry about MODRON services"
-          className="flex-1 inline-flex items-center justify-center h-14 px-6 border-2 border-[#4D4D4D] text-[#CCCCCC] hover:bg-[#262626] hover:border-[#666666] hover:text-white transition-all duration-300 transform hover:scale-105 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 font-semibold text-lg"
+          className="flex-1 inline-flex items-center justify-center h-12 sm:h-14 px-4 sm:px-6 border-2 border-[#4D4D4D] text-[#CCCCCC] hover:bg-[#262626] hover:border-[#666666] hover:text-white transition-all duration-300 transform hover:scale-105 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 font-semibold text-base sm:text-lg"
           aria-label="Send email directly to contact@modron.com"
         >
           <Mail className="mr-2 h-5 w-5" />
