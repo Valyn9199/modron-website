@@ -43,21 +43,46 @@ export function MobileViewport({
   useEffect(() => {
     if (!isMounted || !enableTouchActions) return
 
-    // Simplified mobile scrolling fixes - less aggressive
+    // Enhanced mobile scrolling fixes
     const enableScrolling = () => {
-      // Only set essential styles
+      // Set essential styles for smooth scrolling
       document.body.style.setProperty("-webkit-overflow-scrolling", "touch")
       document.documentElement.style.setProperty("-webkit-overflow-scrolling", "touch")
+      
+      // Ensure proper touch actions
+      document.body.style.setProperty("touch-action", "pan-y")
+      document.documentElement.style.setProperty("touch-action", "pan-y")
+      
+      // Fix for iOS Safari
+      document.body.style.setProperty("overscroll-behavior", "none")
+      document.documentElement.style.setProperty("overscroll-behavior", "none")
+      
+      // Ensure proper height on mobile
+      const vh = window.innerHeight * 0.01
+      document.documentElement.style.setProperty('--vh', `${vh}px`)
     }
     
     // Apply fixes after DOM is ready
     const timer = setTimeout(enableScrolling, 100)
     
+    // Handle resize events for mobile orientation changes
+    const handleResize = () => {
+      const vh = window.innerHeight * 0.01
+      document.documentElement.style.setProperty('--vh', `${vh}px`)
+    }
+    
+    window.addEventListener('resize', handleResize)
+    
     return () => {
       clearTimeout(timer)
+      window.removeEventListener('resize', handleResize)
       // Cleanup
       document.body.style.removeProperty("-webkit-overflow-scrolling")
       document.documentElement.style.removeProperty("-webkit-overflow-scrolling")
+      document.body.style.removeProperty("touch-action")
+      document.documentElement.style.removeProperty("touch-action")
+      document.body.style.removeProperty("overscroll-behavior")
+      document.documentElement.style.removeProperty("overscroll-behavior")
     }
   }, [enableTouchActions, isMounted])
 

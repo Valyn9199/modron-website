@@ -516,3 +516,87 @@ body {
   outline: 2px solid rgba(34, 197, 94, 0.5);
   outline-offset: 2px;
 }
+
+/* Mobile scrolling fixes */
+@layer utilities {
+  /* Ensure proper viewport height on mobile */
+  .min-h-screen {
+    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
+  }
+}
+
+/* Fix mobile scrolling issues */
+html {
+  height: 100%;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+body {
+  height: 100%;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  overscroll-behavior: none;
+  position: relative;
+}
+
+/* Ensure content is scrollable */
+main {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
+/* Fix for sections */
+section {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
+/* Remove any problematic fixed positioning that might block scroll */
+.bg-background {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure proper stacking context */
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fix for Android Chrome */
+@media screen and (max-width: 768px) {
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Force scrolling on problematic elements */
+  #main-content {
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+    touch-action: pan-y;
+  }
+  
+  /* Ensure video backgrounds don't block interaction */
+  video {
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  /* Fix for iOS Safari */
+  @supports (-webkit-touch-callout: none) {
+    html, body {
+      height: -webkit-fill-available;
+    }
+    
+    .min-h-screen {
+      min-height: -webkit-fill-available;
+    }
+  }
+}

@@ -44,18 +44,15 @@ function throttle<T extends (...args: unknown[]) => void>(
 }
 
 export function EnhancedHeader() {
-  const [isVisible, setIsVisible] = React.useState(false)
+  const [isScrolled, setIsScrolled] = React.useState(false)
   const [activeSection, setActiveSection] = React.useState("home")
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
 
   React.useEffect(() => {
     const handleScroll = throttle(() => {
-      // Show header after scrolling past 80% of viewport height
-      const viewportHeight = window.innerHeight
-      const scrollThreshold = viewportHeight * 0.8
-      const shouldShow = window.scrollY > scrollThreshold
-      
-      setIsVisible(shouldShow)
+      // Show enhanced styling after scrolling past 100px
+      const shouldShowEnhanced = window.scrollY > 100
+      setIsScrolled(shouldShowEnhanced)
       
       // Update active section based on scroll position
       const sections = ["home", "vision", "technology", "use-cases", "features", "how-it-works", "pricing", "contact"]
@@ -87,12 +84,12 @@ export function EnhancedHeader() {
 
   return (
     <>
-      {/* Enhanced Fixed Header */}
+      {/* Enhanced Fixed Header - Always Visible */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300 ease-out transform ${
-          isVisible 
-            ? "translate-y-0 shadow-lg" 
-            : "-translate-y-full"
+        className={`fixed top-0 left-0 right-0 z-50 w-full border-b transition-all duration-300 ease-out ${
+          isScrolled 
+            ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg" 
+            : "bg-transparent border-transparent"
         }`}
         style={{
           willChange: 'transform',
@@ -127,7 +124,9 @@ export function EnhancedHeader() {
                     className={`text-xs lg:text-sm font-medium transition-all duration-300 relative px-2 py-1 rounded-md ${
                       isActive 
                         ? "text-green-400 bg-green-400/10" 
-                        : "text-muted-foreground hover:text-white hover:bg-white/5"
+                        : isScrolled 
+                          ? "text-muted-foreground hover:text-white hover:bg-white/5"
+                          : "text-white hover:text-green-400 hover:bg-white/10"
                     }`}
                     aria-label={`Navigate to ${item.name} section`}
                   >
@@ -150,7 +149,11 @@ export function EnhancedHeader() {
             <div className="flex items-center lg:hidden">
               <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                 <SheetTrigger asChild>
-                  <Button variant="outline" size="icon">
+                  <Button 
+                    variant="outline" 
+                    size="icon"
+                    className={isScrolled ? "" : "border-white/20 text-white hover:bg-white/10"}
+                  >
                     <Menu className="h-4 w-4" />
                     <span className="sr-only">Toggle menu</span>
                   </Button>
@@ -196,13 +199,8 @@ export function EnhancedHeader() {
         </div>
       </header>
 
-      {/* Spacer to prevent content jump when header appears */}
-      <div 
-        className={`transition-all duration-300 ease-out ${
-          isVisible ? "h-16" : "h-0"
-        }`}
-        style={{ willChange: 'height' }}
-      />
+      {/* Spacer to prevent content jump */}
+      <div className="h-16" />
     </>
   )
 }

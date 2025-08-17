@@ -22,28 +22,38 @@ export function PullToRefresh({
   const containerRef = useRef<HTMLDivElement>(null)
   const startYRef = useRef<number>(0)
   const currentYRef = useRef<number>(0)
+  const isAtTopRef = useRef<boolean>(false)
 
   useEffect(() => {
     const container = containerRef.current
     if (!container) return
 
     const handleTouchStart = (e: TouchEvent) => {
-      if (window.scrollY === 0) {
+      // Only enable pull-to-refresh when at the very top (within 5px)
+      isAtTopRef.current = window.scrollY <= 5
+      if (isAtTopRef.current) {
         startYRef.current = e.touches[0].clientY
         setIsPulling(true)
       }
     }
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (!isPulling || window.scrollY > 0) return
+      // Only handle if we're pulling and at the top
+      if (!isPulling || !isAtTopRef.current || window.scrollY > 5) {
+        setIsPulling(false)
+        return
+      }
 
       currentYRef.current = e.touches[0].clientY
       const distance = Math.max(0, currentYRef.current - startYRef.current)
-      const resistance = 0.6 // Add resistance to the pull
-      const adjustedDistance = distance * resistance
-
-      setPullDistance(adjustedDistance)
-      e.preventDefault()
+      
+      // Only prevent default if we're actually pulling down significantly
+      if (distance > 30) {
+        const resistance = 0.3 // Much more resistance
+        const adjustedDistance = distance * resistance
+        setPullDistance(adjustedDistance)
+        e.preventDefault()
+      }
     }
 
     const handleTouchEnd = async () => {
@@ -60,9 +70,11 @@ export function PullToRefresh({
 
       setIsPulling(false)
       setPullDistance(0)
+      isAtTopRef.current = false
     }
 
-    container.addEventListener('touchstart', handleTouchStart, { passive: false })
+    // Use passive listeners where possible to improve performance
+    container.addEventListener('touchstart', handleTouchStart, { passive: true })
     container.addEventListener('touchmove', handleTouchMove, { passive: false })
     container.addEventListener('touchend', handleTouchEnd, { passive: true })
 
