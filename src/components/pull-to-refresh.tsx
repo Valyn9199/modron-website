@@ -23,44 +23,44 @@ export function PullToRefresh({
   const startYRef = useRef<number>(0)
   const currentYRef = useRef<number>(0)
 
-  const handleTouchStart = (e: TouchEvent) => {
-    if (window.scrollY === 0) {
-      startYRef.current = e.touches[0].clientY
-      setIsPulling(true)
-    }
-  }
-
-  const handleTouchMove = (e: TouchEvent) => {
-    if (!isPulling || window.scrollY > 0) return
-
-    currentYRef.current = e.touches[0].clientY
-    const distance = Math.max(0, currentYRef.current - startYRef.current)
-    const resistance = 0.6 // Add resistance to the pull
-    const adjustedDistance = distance * resistance
-
-    setPullDistance(adjustedDistance)
-    e.preventDefault()
-  }
-
-  const handleTouchEnd = async () => {
-    if (!isPulling) return
-
-    if (pullDistance >= threshold) {
-      setIsRefreshing(true)
-      try {
-        await onRefresh()
-      } finally {
-        setIsRefreshing(false)
-      }
-    }
-
-    setIsPulling(false)
-    setPullDistance(0)
-  }
-
   useEffect(() => {
     const container = containerRef.current
     if (!container) return
+
+    const handleTouchStart = (e: TouchEvent) => {
+      if (window.scrollY === 0) {
+        startYRef.current = e.touches[0].clientY
+        setIsPulling(true)
+      }
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isPulling || window.scrollY > 0) return
+
+      currentYRef.current = e.touches[0].clientY
+      const distance = Math.max(0, currentYRef.current - startYRef.current)
+      const resistance = 0.6 // Add resistance to the pull
+      const adjustedDistance = distance * resistance
+
+      setPullDistance(adjustedDistance)
+      e.preventDefault()
+    }
+
+    const handleTouchEnd = async () => {
+      if (!isPulling) return
+
+      if (pullDistance >= threshold) {
+        setIsRefreshing(true)
+        try {
+          await onRefresh()
+        } finally {
+          setIsRefreshing(false)
+        }
+      }
+
+      setIsPulling(false)
+      setPullDistance(0)
+    }
 
     container.addEventListener('touchstart', handleTouchStart, { passive: false })
     container.addEventListener('touchmove', handleTouchMove, { passive: false })
@@ -71,7 +71,7 @@ export function PullToRefresh({
       container.removeEventListener('touchmove', handleTouchMove)
       container.removeEventListener('touchend', handleTouchEnd)
     }
-  }, [isPulling, pullDistance, threshold, onRefresh, handleTouchStart, handleTouchMove, handleTouchEnd])
+  }, [isPulling, pullDistance, threshold, onRefresh])
 
   const rotation = Math.min(pullDistance / threshold * 360, 360)
   const opacity = Math.min(pullDistance / threshold, 1)

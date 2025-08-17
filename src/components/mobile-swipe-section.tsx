@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useTouchGestures } from '@/hooks/use-touch-gestures'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
@@ -24,23 +24,27 @@ export function MobileSwipeSection({
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(autoPlay)
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % children.length)
-  }
+  }, [children.length])
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + children.length) % children.length)
-  }
+  }, [children.length])
 
-  const goToSlide = (index: number) => {
+  const goToSlide = useCallback((index: number) => {
     setCurrentIndex(index)
-  }
+  }, [])
+
+  const toggleAutoPlay = useCallback(() => {
+    setIsAutoPlaying(!isAutoPlaying)
+  }, [isAutoPlaying])
 
   // Touch gestures
   useTouchGestures({
     onSwipeLeft: goToNext,
     onSwipeRight: goToPrevious,
-    onTap: () => setIsAutoPlaying(!isAutoPlaying)
+    onTap: toggleAutoPlay
   })
 
   // Auto-play functionality
@@ -52,8 +56,8 @@ export function MobileSwipeSection({
   }, [isAutoPlaying, autoPlay, autoPlayInterval, goToNext])
 
   // Pause auto-play on hover (desktop)
-  const handleMouseEnter = () => setIsAutoPlaying(false)
-  const handleMouseLeave = () => setIsAutoPlaying(autoPlay)
+  const handleMouseEnter = useCallback(() => setIsAutoPlaying(false), [])
+  const handleMouseLeave = useCallback(() => setIsAutoPlaying(autoPlay), [autoPlay])
 
   return (
     <div 
