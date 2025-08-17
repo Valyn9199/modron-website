@@ -185,7 +185,23 @@
     /* Smooth scrolling for mobile */
     html {
       scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Fix mobile viewport and scrolling */
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    body {
+      -webkit-overflow-scrolling: auto;
+    }
+    
+    /* Ensure hero section doesn't block scrolling */
+    #home {
+      position: relative;
+      z-index: 1;
     }
     
     /* Prevent zoom on input focus */
