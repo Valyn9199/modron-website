@@ -76,14 +76,14 @@ export function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
             {navigationItems.map((item) => {
               const isActive = activeSection === item.href.replace("#", "")
               return (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`text-sm font-medium transition-all duration-300 relative ${
+                  className={`text-xs lg:text-sm font-medium transition-all duration-300 relative ${
                     isActive 
                       ? "text-green-400" 
                       : "text-muted-foreground hover:text-white"
@@ -112,7 +112,7 @@ export function Header() {
           <div className="flex items-center">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className="md:hidden">
+                <Button variant="outline" size="icon" className="lg:hidden">
                   <Menu className="h-4 w-4" />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
