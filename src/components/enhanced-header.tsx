@@ -85,9 +85,9 @@ export function EnhancedHeader() {
 
   return (
     <>
-      {/* Enhanced Sticky Header */}
+      {/* Enhanced Header - Fixed initially, becomes sticky after hero */}
       <header
-        className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ease-out ${
+        className={`${isScrolled ? 'sticky' : 'fixed'} top-0 z-[100] w-full border-b transition-all duration-300 ease-out ${
           isScrolled 
             ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg border-border" 
             : "bg-transparent border-transparent"
@@ -201,6 +201,9 @@ export function EnhancedHeader() {
           </div>
         </div>
       </header>
+
+      {/* Spacer to prevent content jump when header is fixed */}
+      {!isScrolled && <div className="h-16" />}
     </>
   )
 }
