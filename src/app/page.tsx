@@ -70,7 +70,7 @@ export default function Home() {
               </h1>
               
               {/* Subheading */}
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#CCCCCC] mb-6 sm:mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed font-light reveal reveal-delay will-change-transform px-4">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#DDDDDD] mb-6 sm:mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed font-light reveal reveal-delay will-change-transform px-4">
                 Australia&apos;s green GPU infrastructure — solar powered, immersion cooled, and enterprise-ready.
               </p>
               
@@ -98,7 +98,7 @@ export default function Home() {
               <h2 id="vision-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
                 Our Mission
               </h2>
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-[#CCCCCC] leading-relaxed font-light max-w-5xl mx-auto mb-8 sm:mb-12 px-4">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-[#DDDDDD] leading-relaxed font-light max-w-5xl mx-auto mb-8 sm:mb-12 px-4">
                 MODRON is building high-performance GPU infrastructure in rural Australia — optimized for AI workloads, powered by the sun, and scaled with purpose.
               </p>
               <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-emerald-600 mx-auto"></div>
@@ -751,7 +751,7 @@ export default function Home() {
                 <div className="relative">
                   <Image
                     src="/Modron_logo.png"
-                    alt="MODRON Logo"
+                    alt="MODRON - Sustainable AI Infrastructure"
                     width={200}
                     height={53}
                     className="h-12 sm:h-16 w-auto"

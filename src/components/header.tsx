@@ -65,7 +65,7 @@ export function Header() {
               <div className="relative">
                 <Image
                   src="/Modron_logo.png"
-                  alt="MODRON Logo"
+                  alt="MODRON - Sustainable AI Infrastructure"
                   width={96}
                   height={32}
                   className="h-8 w-auto sm:h-10 object-contain"
@@ -98,6 +98,21 @@ export function Header() {
                       })
                     }
                   }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      const element = document.querySelector(item.href)
+                      if (element) {
+                        element.scrollIntoView({ 
+                          behavior: 'smooth',
+                          block: 'start'
+                        })
+                      }
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Navigate to ${item.name} section`}
                 >
                   {item.name}
                   {isActive && (
@@ -146,6 +161,21 @@ export function Header() {
                             })
                           }
                         }}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault()
+                            const element = document.querySelector(item.href)
+                            if (element) {
+                              element.scrollIntoView({ 
+                                behavior: 'smooth',
+                                block: 'start'
+                              })
+                            }
+                          }
+                        }}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`Navigate to ${item.name} section`}
                       >
                         {item.name}
                       </Link>

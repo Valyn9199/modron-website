@@ -73,10 +73,15 @@ export function HeroBgVideo({
         preload="metadata"
         poster={poster}
         crossOrigin="anonymous"
+        aria-label="Background video showing MODRON's sustainable GPU infrastructure"
+        aria-describedby="hero-video-description"
       >
         {sources.map((s) => (
           <source key={s.src} src={s.src} type={s.type} />
         ))}
+        <div id="hero-video-description" className="sr-only">
+          Background video showcasing MODRON's green GPU infrastructure with solar panels and immersion cooling technology
+        </div>
       </video>
       <div
         className="absolute inset-0"

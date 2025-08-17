@@ -63,8 +63,13 @@ export function ImmersionTankVideo({
           willChange: 'transform',
           transform: 'translateZ(0)' // Hardware acceleration
         }}
+        aria-label="Immersion cooling tank video showing RTX 4090 GPUs"
+        aria-describedby="tank-video-description"
       >
         <source src={videoSrc} type="video/mp4" />
+        <div id="tank-video-description" className="sr-only">
+          Video showing MODRON's immersion cooling tank with multiple RTX 4090 GPUs submerged in cooling liquid
+        </div>
         Your browser does not support the video tag.
       </video>
       

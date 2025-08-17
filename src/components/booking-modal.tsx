@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { Button } from '@/components/ui/button'
 import { LoadingButton } from '@/components/loading-button'
@@ -26,6 +26,8 @@ export function BookingModal() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const [submitError, setSubmitError] = useState<string>('')
+  const modalRef = useRef<HTMLDivElement>(null)
+  const previousFocusRef = useRef<HTMLElement | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -81,12 +83,32 @@ export function BookingModal() {
   }
 
   const openModal = () => {
+    previousFocusRef.current = document.activeElement as HTMLElement
     setIsOpen(true)
   }
   
   const closeModal = () => {
     setIsOpen(false)
+    if (previousFocusRef.current) {
+      previousFocusRef.current.focus()
+    }
   }
+
+  // Focus management
+  useEffect(() => {
+    if (isOpen) {
+      const modal = modalRef.current
+      if (modal) {
+        const focusableElements = modal.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        ) as NodeListOf<HTMLElement>
+        
+        if (focusableElements.length > 0) {
+          focusableElements[0].focus()
+        }
+      }
+    }
+  }, [isOpen])
 
   // Portal modal to document.body
   const modalContent = isOpen ? (
@@ -113,6 +135,7 @@ export function BookingModal() {
     >
       {/* Modal Content */}
       <div 
+        ref={modalRef}
         style={{
           backgroundColor: '#1a1a1a',
           borderRadius: '12px',
@@ -128,6 +151,10 @@ export function BookingModal() {
           boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8)'
         }}
         onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="booking-modal-title"
+        aria-describedby="booking-modal-description"
       >
         {/* Close Button */}
         <button
@@ -156,37 +183,45 @@ export function BookingModal() {
 
         {/* Header */}
         <div style={{ marginBottom: '24px', textAlign: 'center' }}>
-          <h2 style={{ 
-            fontSize: '28px', 
-            fontWeight: 'bold', 
-            color: '#fff', 
-            marginBottom: '8px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px'
-          }}>
+          <h2 
+            id="booking-modal-title"
+            style={{ 
+              fontSize: '28px', 
+              fontWeight: 'bold', 
+              color: '#fff', 
+              marginBottom: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px'
+            }}
+          >
             <Calendar size={24} />
             Book a Consultation
           </h2>
-          <p style={{ color: '#999', fontSize: '16px' }}>
+          <p id="booking-modal-description" style={{ color: '#999', fontSize: '16px' }}>
             Schedule a call to discuss your AI infrastructure needs
           </p>
         </div>
 
         {/* Success Message */}
         {submitSuccess && (
-          <div style={{
-            backgroundColor: '#1a3a1a',
-            border: '1px solid #4ade80',
-            borderRadius: '8px',
-            padding: '16px',
-            marginBottom: '24px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            animation: 'slideIn 0.3s ease-out'
-          }}>
+          <div 
+            role="alert" 
+            aria-live="polite" 
+            aria-atomic="true"
+            style={{
+              backgroundColor: '#1a3a1a',
+              border: '1px solid #4ade80',
+              borderRadius: '8px',
+              padding: '16px',
+              marginBottom: '24px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              animation: 'slideIn 0.3s ease-out'
+            }}
+          >
             <CheckCircle size={20} color="#4ade80" />
             <div>
               <div style={{ color: '#4ade80', fontWeight: 'bold', marginBottom: '4px' }}>
@@ -201,17 +236,22 @@ export function BookingModal() {
 
         {/* Error Message */}
         {submitError && (
-          <div style={{
-            backgroundColor: '#3a1a1a',
-            border: '1px solid #f87171',
-            borderRadius: '8px',
-            padding: '16px',
-            marginBottom: '24px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            animation: 'slideIn 0.3s ease-out'
-          }}>
+          <div 
+            role="alert" 
+            aria-live="assertive" 
+            aria-atomic="true"
+            style={{
+              backgroundColor: '#3a1a1a',
+              border: '1px solid #f87171',
+              borderRadius: '8px',
+              padding: '16px',
+              marginBottom: '24px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              animation: 'slideIn 0.3s ease-out'
+            }}
+          >
             <AlertCircle size={20} color="#f87171" />
             <div style={{ color: '#f87171', fontSize: '14px' }}>
               {submitError}
@@ -223,7 +263,7 @@ export function BookingModal() {
         {!submitSuccess && (
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <div>
-              <label style={{ 
+              <label htmlFor="booking-name" style={{ 
                 display: 'block', 
                 color: '#fff', 
                 marginBottom: '8px', 
@@ -233,6 +273,7 @@ export function BookingModal() {
                 Name *
               </label>
               <input
+                id="booking-name"
                 type="text"
                 name="name"
                 value={formData.name}
@@ -251,13 +292,20 @@ export function BookingModal() {
                   transition: 'all 0.2s ease'
                 }}
                 placeholder="Your full name"
+                aria-describedby="booking-name-error"
+                aria-invalid={!!submitError && !formData.name}
                 onFocus={(e) => e.target.style.borderColor = '#22c55e'}
                 onBlur={(e) => e.target.style.borderColor = '#404040'}
               />
+              {submitError && !formData.name && (
+                <div id="booking-name-error" role="alert" aria-live="polite" style={{ color: '#f87171', fontSize: '12px', marginTop: '4px' }}>
+                  Name is required
+                </div>
+              )}
             </div>
 
             <div>
-              <label style={{ 
+              <label htmlFor="booking-email" style={{ 
                 display: 'block', 
                 color: '#fff', 
                 marginBottom: '8px', 
@@ -267,6 +315,7 @@ export function BookingModal() {
                 Email *
               </label>
               <input
+                id="booking-email"
                 type="email"
                 name="email"
                 value={formData.email}
@@ -284,13 +333,20 @@ export function BookingModal() {
                   transition: 'all 0.2s ease'
                 }}
                 placeholder="your.email@company.com"
+                aria-describedby="booking-email-error"
+                aria-invalid={!!submitError && !formData.email}
                 onFocus={(e) => e.target.style.borderColor = '#22c55e'}
                 onBlur={(e) => e.target.style.borderColor = '#404040'}
               />
+              {submitError && !formData.email && (
+                <div id="booking-email-error" role="alert" aria-live="polite" style={{ color: '#f87171', fontSize: '12px', marginTop: '4px' }}>
+                  Valid email is required
+                </div>
+              )}
             </div>
 
             <div>
-              <label style={{ 
+              <label htmlFor="booking-company" style={{ 
                 display: 'block', 
                 color: '#fff', 
                 marginBottom: '8px', 
@@ -300,6 +356,7 @@ export function BookingModal() {
                 Company
               </label>
               <input
+                id="booking-company"
                 type="text"
                 name="company"
                 value={formData.company}
@@ -322,7 +379,7 @@ export function BookingModal() {
             </div>
 
             <div>
-              <label style={{ 
+              <label htmlFor="booking-phone" style={{ 
                 display: 'block', 
                 color: '#fff', 
                 marginBottom: '8px', 
@@ -332,6 +389,7 @@ export function BookingModal() {
                 Phone
               </label>
               <input
+                id="booking-phone"
                 type="tel"
                 name="phone"
                 value={formData.phone}
@@ -355,7 +413,7 @@ export function BookingModal() {
             </div>
 
             <div>
-              <label style={{ 
+              <label htmlFor="booking-message" style={{ 
                 display: 'block', 
                 color: '#fff', 
                 marginBottom: '8px', 
@@ -365,6 +423,7 @@ export function BookingModal() {
                 Message *
               </label>
               <textarea
+                id="booking-message"
                 name="message"
                 value={formData.message}
                 onChange={handleInputChange}
@@ -385,9 +444,16 @@ export function BookingModal() {
                   transition: 'all 0.2s ease'
                 }}
                 placeholder="Tell us about your project and requirements..."
+                aria-describedby="booking-message-error"
+                aria-invalid={!!submitError && !formData.message}
                 onFocus={(e) => e.target.style.borderColor = '#22c55e'}
                 onBlur={(e) => e.target.style.borderColor = '#404040'}
               />
+              {submitError && !formData.message && (
+                <div id="booking-message-error" role="alert" aria-live="polite" style={{ color: '#f87171', fontSize: '12px', marginTop: '4px' }}>
+                  Message is required (minimum 10 characters)
+                </div>
+              )}
             </div>
 
             <Button

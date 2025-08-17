@@ -82,9 +82,9 @@ export function AnimatedStats({ className = "" }: AnimatedStatsProps) {
 
   return (
     <div ref={ref as React.RefObject<HTMLDivElement>} className={`mt-16 sm:mt-20 md:mt-24 ${className}`}>
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8" role="list" aria-label="Performance statistics">
         {stats.map((stat, index) => (
-          <div key={stat.label} className="relative group">
+          <div key={stat.label} className="relative group" role="listitem">
             <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 group-hover:scale-105">
               {/* Animated Chart */}
               <div className="mb-3 sm:mb-4 h-12 sm:h-16 relative">
@@ -120,7 +120,10 @@ export function AnimatedStats({ className = "" }: AnimatedStatsProps) {
 
               {/* Stat Value */}
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-light text-white mb-1 sm:mb-2">
+                <div 
+                  className="text-2xl sm:text-3xl font-light text-white mb-1 sm:mb-2"
+                  aria-label={`${stat.label}: ${animatedValues[index].toFixed(stat.value % 1 === 0 ? 0 : 1)}${stat.suffix || ''}`}
+                >
                   {stat.prefix || ''}
                   {animatedValues[index].toFixed(stat.value % 1 === 0 ? 0 : 1)}
                   {stat.suffix || ''}
