@@ -202,6 +202,19 @@
     #home {
       position: relative;
       z-index: 1;
+      overflow: visible;
+    }
+    
+    /* Fix video background on mobile */
+    video {
+      pointer-events: none;
+      object-fit: cover;
+    }
+    
+    /* Ensure proper scrolling on mobile */
+    .min-h-screen {
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
     }
     
     /* Prevent zoom on input focus */
@@ -404,6 +417,14 @@
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }
 
 /* Enhanced focus states */

@@ -31,7 +31,7 @@ export function MobileViewport({
   useEffect(() => {
     // Enable touch actions for better mobile performance
     if (enableTouchActions) {
-      document.body.style.touchAction = 'manipulation'
+      document.body.style.touchAction = 'pan-y'
       return () => {
         document.body.style.touchAction = ''
       }
