@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { StructuredData } from "@/components/structured-data";
+import { EnhancedStructuredData } from "@/components/enhanced-structured-data";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "MODRON - Sustainable AI Infrastructure | Green GPU Computing",
   description: "Australia's green GPU infrastructure — solar powered, immersion cooled, and enterprise-ready. Sustainable AI computing with 60% carbon reduction.",
-  keywords: ["AI infrastructure", "green computing", "GPU cloud", "sustainable technology", "immersion cooling", "solar powered", "Australia", "MODRON"],
+  keywords: ["AI infrastructure", "green computing", "GPU cloud", "sustainable technology", "immersion cooling", "solar powered", "Australia", "MODRON", "AI training", "machine learning", "data center"],
   authors: [{ name: "MODRON" }],
   creator: "MODRON",
   publisher: "MODRON",
@@ -33,9 +33,7 @@ export const metadata: Metadata = {
   },
   verification: {
     google: 'your-google-verification-code',
-    // Add other verification codes
   },
-
   formatDetection: {
     email: false,
     address: false,
@@ -79,6 +77,12 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  // Performance optimizations
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
 };
 
 export default function RootLayout({
@@ -89,7 +93,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <StructuredData />
+        <EnhancedStructuredData />
         {/* Preload hero poster with proper crossorigin attribute */}
         <link rel="preload" as="image" href="/hero-poster.jpg" crossOrigin="anonymous" />
       </head>

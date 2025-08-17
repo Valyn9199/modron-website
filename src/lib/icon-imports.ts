@@ -1,0 +1,30 @@
+import dynamic from 'next/dynamic'
+
+// Dynamic imports for Lucide React icons to reduce bundle size
+export const Icons = {
+  Sun: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Sun }))),
+  Server: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Server }))),
+  Cpu: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Cpu }))),
+  Droplets: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Droplets }))),
+  Zap: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Zap }))),
+  Leaf: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Leaf }))),
+  Shield: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Shield }))),
+  Gauge: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Gauge }))),
+  Globe: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Globe }))),
+  Database: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Database }))),
+  Network: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Network }))),
+  Power: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Power }))),
+  Cloud: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Cloud }))),
+  Brain: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Brain }))),
+  Monitor: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Monitor }))),
+  Code: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Code }))),
+  BarChart3: dynamic(() => import('lucide-react').then(mod => ({ default: mod.BarChart3 }))),
+  Clock: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Clock }))),
+  Award: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Award }))),
+  Settings: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Settings }))),
+  Calendar: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Calendar }))),
+  Eye: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Eye }))),
+  Headphones: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Headphones }))),
+  CheckCircle: dynamic(() => import('lucide-react').then(mod => ({ default: mod.CheckCircle }))),
+  Star: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Star }))),
+}
