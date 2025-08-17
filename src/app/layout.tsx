@@ -90,8 +90,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <StructuredData />
-        {/* Preload hero poster to speed up first paint */}
-        <link rel="preload" as="image" href="/hero-poster.jpg" />
+        {/* Preload hero poster with proper crossorigin attribute */}
+        <link rel="preload" as="image" href="/hero-poster.jpg" crossOrigin="anonymous" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

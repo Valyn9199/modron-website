@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 interface MobileViewportProps {
   children: React.ReactNode
@@ -13,10 +13,19 @@ export function MobileViewport({
   preventZoom = true,
   enableTouchActions = true
 }: MobileViewportProps) {
-  // Detect Android device
-  const isAndroid = typeof window !== "undefined" && /Android/i.test(navigator.userAgent)
+  const [isMounted, setIsMounted] = useState(false)
+  
+  // Proper hydration handling
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  // Detect Android device only after mounting (for future use if needed)
+  // const isAndroid = isMounted && /Android/i.test(navigator.userAgent)
   
   useEffect(() => {
+    if (!isMounted) return
+
     // Prevent zoom on input focus (iOS)
     if (preventZoom) {
       const preventZoomOnInput = (e: Event) => {
@@ -29,112 +38,28 @@ export function MobileViewport({
       document.addEventListener("focusin", preventZoomOnInput)
       return () => document.removeEventListener("focusin", preventZoomOnInput)
     }
-  }, [preventZoom])
+  }, [preventZoom, isMounted])
 
   useEffect(() => {
-    // Aggressive mobile scrolling fixes
-    if (enableTouchActions) {
-      // Force enable scrolling on all elements
-      const enableScrolling = () => {
-        // Set body styles
-        document.body.style.position = "relative"
-        document.body.style.height = "auto"
-        document.body.style.overflow = "auto"
-        document.body.style.overflowX = "hidden"
-        document.body.style.touchAction = "pan-y"
-        document.body.style.setProperty("-webkit-overflow-scrolling", "touch")
-        document.body.style.overscrollBehavior = "none"
-        document.body.style.margin = "0"
-        document.body.style.padding = "0"
-        
-        // Set html styles
-        document.documentElement.style.position = "relative"
-        document.documentElement.style.height = "100%"
-        document.documentElement.style.overflowX = "hidden"
-        document.documentElement.style.setProperty("-webkit-overflow-scrolling", "touch")
-        document.documentElement.style.overscrollBehavior = "none"
-        document.documentElement.style.touchAction = "pan-y"
-        
-        // Force all elements to have touch scrolling
-        const allElements = document.querySelectorAll('*')
-        allElements.forEach((element) => {
-          if (element instanceof HTMLElement) {
-            element.style.setProperty("-webkit-overflow-scrolling", "touch")
-          }
-        })
-        
-        // Ensure main content is scrollable
-        const mainElement = document.querySelector('main')
-        if (mainElement) {
-          mainElement.style.position = "relative"
-          mainElement.style.zIndex = "1"
-          mainElement.style.overflow = "visible"
-          mainElement.style.height = "auto"
-        }
-        
-        // Ensure hero section is not blocking
-        const homeElement = document.getElementById('home')
-        if (homeElement) {
-          homeElement.style.position = "relative"
-          homeElement.style.zIndex = "1"
-          homeElement.style.overflow = "visible"
-          homeElement.style.height = "auto"
-          homeElement.style.minHeight = "100vh"
-        }
-        
-        // Ensure all sections are scrollable
-        const sections = document.querySelectorAll('section')
-        sections.forEach((section) => {
-          if (section instanceof HTMLElement) {
-            section.style.position = "relative"
-            section.style.zIndex = "1"
-            section.style.overflow = "visible"
-          }
-        })
-      }
-      
-      // Apply fixes immediately
-      enableScrolling()
-      
-      // Apply fixes after a short delay to ensure DOM is ready
-      setTimeout(enableScrolling, 100)
-      
-      // Apply fixes after a longer delay to catch any dynamic content
-      setTimeout(enableScrolling, 500)
-      
-      // Apply fixes on window resize
-      const handleResize = () => {
-        enableScrolling()
-      }
-      
-      window.addEventListener('resize', handleResize)
-      
-      // REMOVED: The problematic preventScrollBlocking function that was blocking scrolling
-      // Instead, we'll let all touch events propagate naturally
-      
-      return () => {
-        // Cleanup
-        document.body.style.position = ""
-        document.body.style.height = ""
-        document.body.style.overflow = ""
-        document.body.style.overflowX = ""
-        document.body.style.touchAction = ""
-        document.body.style.removeProperty("-webkit-overflow-scrolling")
-        document.body.style.overscrollBehavior = ""
-        document.body.style.margin = ""
-        document.body.style.padding = ""
-        
-        document.documentElement.style.position = ""
-        document.documentElement.style.height = ""
-        document.documentElement.style.overflowX = ""
-        document.documentElement.style.removeProperty("-webkit-overflow-scrolling")
-        document.documentElement.style.overscrollBehavior = ""
-        document.documentElement.style.touchAction = ""
-        
-        window.removeEventListener('resize', handleResize)
-      }
+    if (!isMounted || !enableTouchActions) return
+
+    // Simplified mobile scrolling fixes - less aggressive
+    const enableScrolling = () => {
+      // Only set essential styles
+      document.body.style.setProperty("-webkit-overflow-scrolling", "touch")
+      document.documentElement.style.setProperty("-webkit-overflow-scrolling", "touch")
     }
-  }, [enableTouchActions, isAndroid])
+    
+    // Apply fixes after DOM is ready
+    const timer = setTimeout(enableScrolling, 100)
+    
+    return () => {
+      clearTimeout(timer)
+      // Cleanup
+      document.body.style.removeProperty("-webkit-overflow-scrolling")
+      document.documentElement.style.removeProperty("-webkit-overflow-scrolling")
+    }
+  }, [enableTouchActions, isMounted])
 
   return <>{children}</>
 }
