@@ -40,21 +40,21 @@ export default function Home() {
   return (
     <MobileViewport>
       <RefreshWrapper>
-        <div className="min-h-screen bg-background">
+        <div className="min-h-screen bg-background relative">
           <SkipToContent />
           <ProgressIndicator type="scroll" />
           <Header />
           {/* Spotlight removed for performance */}
           
-          <main id="main-content" tabIndex={-1}>
+          <main id="main-content" tabIndex={-1} className="relative">
         
         {/* Hero Section */}
-        <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden w-full" role="banner" aria-labelledby="hero-heading">
+        <section id="home" className="relative min-h-screen flex items-center justify-center w-full" role="banner" aria-labelledby="hero-heading">
           {/* Background Video */}
           <HeroBgVideo overlayOpacity={0.6} />
 
           {/* Main Content */}
-          <div className="relative container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center max-w-[100vw] overflow-x-hidden">
+          <div className="relative container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center max-w-[100vw]">
             <div className="max-w-4xl mx-auto">
                 {/* MODRON Logo removed to keep hero content above the fold */}
               

@@ -60,7 +60,7 @@ export function HeroBgVideo({
   }, [prefersReduced])
 
   return (
-    <div className={`absolute inset-0 overflow-hidden w-full max-w-[100vw] ${className}`} aria-hidden>
+    <div className={`absolute inset-0 w-full max-w-[100vw] ${className}`} aria-hidden>
       <video
         ref={videoRef}
         className={`absolute inset-0 w-full h-full object-cover scale-105 transition-opacity duration-300 ${
