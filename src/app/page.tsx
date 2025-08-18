@@ -51,7 +51,7 @@ export default function Home() {
           <main id="main-content" tabIndex={-1} className="relative">
         
         {/* Hero Section */}
-        <section id="home" className="relative min-h-screen flex items-center justify-center w-full" role="banner" aria-labelledby="hero-heading">
+        <section id="home" className="relative min-h-screen flex items-center justify-center w-full pt-20 sm:pt-0" role="banner" aria-labelledby="hero-heading">
           {/* Background Video */}
           <HeroBgVideo overlayOpacity={0.6} />
 
