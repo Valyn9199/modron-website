@@ -13,7 +13,10 @@ export function OptimizedScrollIndicator() {
   }, [])
 
   useEffect(() => {
-    const throttledUpdate = throttle(updateScrollProgress, 16) // ~60fps
+    // Reduce update frequency on mobile for better performance
+    const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches
+    const throttleDelay = isMobile ? 32 : 16 // ~30fps on mobile, ~60fps on desktop
+    const throttledUpdate = throttle(updateScrollProgress, throttleDelay)
     window.addEventListener('scroll', throttledUpdate, { passive: true })
     return () => window.removeEventListener('scroll', throttledUpdate)
   }, [updateScrollProgress])

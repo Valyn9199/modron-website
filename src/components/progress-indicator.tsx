@@ -47,7 +47,7 @@ export function ProgressIndicator({
   }, [type])
 
   return (
-    <div className={`fixed top-0 left-0 w-full z-50 ${className}`}>
+    <div className={`fixed top-0 left-0 w-full z-40 ${className}`}>
       <div 
         className={`h-${height} bg-gradient-to-r ${color} transition-all duration-300 ease-out`}
         style={{ width: `${progress}%` }}

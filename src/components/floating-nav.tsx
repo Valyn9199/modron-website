@@ -54,7 +54,7 @@ export function FloatingNav() {
         {/* Toggle Button */}
         <Button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-12 h-12 rounded-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 border-0 shadow-lg transition-all duration-300"
+          className="w-12 h-12 rounded-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 border-0 shadow-lg transition-all duration-300 active:scale-95 sm:active:scale-100 min-h-[44px] min-w-[44px]"
           size="icon"
         >
           {isOpen ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
@@ -69,7 +69,7 @@ export function FloatingNav() {
                 <Button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className={`w-10 h-10 rounded-lg mb-1 transition-all duration-300 ${
+                  className={`w-12 h-12 rounded-lg mb-2 transition-all duration-300 active:scale-95 sm:active:scale-100 min-h-[44px] min-w-[44px] ${
                     isActive 
                       ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white' 
                       : 'bg-transparent hover:bg-[#262626] text-[#999999] hover:text-white'

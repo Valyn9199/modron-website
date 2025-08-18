@@ -28,6 +28,10 @@ export function HeroBgVideo({
     if (typeof window === "undefined") return false
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches
   }, [])
+  const isMobile = useMemo(() => {
+    if (typeof window === "undefined") return false
+    return window.matchMedia('(max-width: 768px)').matches
+  }, [])
 
   useEffect(() => {
     const v = videoRef.current
@@ -35,12 +39,14 @@ export function HeroBgVideo({
     // Ensure attributes for instant, inline autoplay
     v.setAttribute("playsinline", "true")
     v.muted = true
-    // Respect reduced motion: do not autoplay; show poster immediately
-    if (prefersReduced) {
+    
+    // On mobile or with reduced motion, show poster immediately and don't autoplay
+    if (prefersReduced || isMobile) {
       setReady(true)
       return
     }
-    // Kick playback as soon as possible
+    
+    // Kick playback as soon as possible (desktop only)
     const tryPlay = () => v.play().catch(() => void 0)
     const markReady = () => setReady(true)
     // The earliest useful events for first frame
@@ -57,7 +63,7 @@ export function HeroBgVideo({
       v.removeEventListener("canplay", markReady)
       v.removeEventListener("error", markReady)
     }
-  }, [prefersReduced])
+  }, [prefersReduced, isMobile])
 
   return (
     <div className={`absolute inset-0 w-full max-w-[100vw] ${className}`} aria-hidden>
@@ -66,11 +72,11 @@ export function HeroBgVideo({
         className={`absolute inset-0 w-full h-full object-cover scale-105 transition-opacity duration-300 ${
           ready ? "opacity-100" : "opacity-0"
         }`}
-        autoPlay
+        autoPlay={false}
         playsInline
         muted
-        loop
-        preload="metadata"
+        loop={false}
+preload="metadata"
         poster={poster}
         crossOrigin="anonymous"
         aria-label="Background video showing MODRON's sustainable GPU infrastructure"

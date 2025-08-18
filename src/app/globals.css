@@ -200,13 +200,13 @@
       scroll-behavior: smooth;
     }
     
-    /* Fix mobile viewport and scrolling */
-    html, body {
-      height: 100%;
-      overflow-x: hidden;
-      position: relative;
-      -webkit-overflow-scrolling: touch;
-    }
+/* Fix mobile viewport and scrolling */
+html, body {
+  min-height: 100%;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
     
     body {
       -webkit-overflow-scrolling: touch;
@@ -251,12 +251,12 @@
     /* Android Chrome/Samsung Internet */
     @media screen and (max-width: 768px) {
       html {
-        height: 100%;
+        min-height: 100%;
         overflow-x: hidden;
       }
       
       body {
-        height: 100%;
+        min-height: 100%;
         overflow-x: hidden;
         position: relative;
         -webkit-overflow-scrolling: touch;
@@ -501,7 +501,7 @@
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
-  height: 100%;
+  min-height: 100%;
   overflow-x: hidden;
 }
 
@@ -528,14 +528,14 @@ body {
 
 /* Fix mobile scrolling issues */
 html {
-  height: 100%;
+  min-height: 100%;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
 }
 
 body {
-  height: 100%;
+  min-height: 100%;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;

@@ -402,6 +402,7 @@ export function BookingModal() {
                   borderRadius: '8px',
                   color: '#fff',
                   fontSize: '16px',
+                  minHeight: '44px',
                   transition: 'all 0.2s ease'
                 }}
                 placeholder="Your phone number"
@@ -437,6 +438,7 @@ export function BookingModal() {
                   borderRadius: '8px',
                   color: '#fff',
                   fontSize: '16px',
+                  minHeight: '44px',
                   resize: 'vertical',
                   fontFamily: 'inherit',
                   transition: 'all 0.2s ease'
@@ -457,7 +459,7 @@ export function BookingModal() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 transform hover:scale-105 active:scale-95 sm:active:scale-100 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none min-h-[44px]"
             >
               {isSubmitting ? (
                 <>
@@ -482,7 +484,7 @@ export function BookingModal() {
       <Button 
         variant="outline" 
         size="lg" 
-        className="text-base sm:text-lg px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 border-2 border-[#4D4D4D] text-[#CCCCCC] hover:bg-[#262626] hover:border-[#666666] hover:text-white transition-all duration-300 transform hover:scale-105"
+        className="text-base sm:text-lg px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 border-2 border-[#4D4D4D] text-[#CCCCCC] hover:bg-[#262626] hover:border-[#666666] hover:text-white transition-all duration-300 transform hover:scale-105 active:scale-95 sm:active:scale-100 min-h-[44px] min-w-[44px]"
         onClick={openModal}
       >
         Book a Call

@@ -23,7 +23,6 @@ const navigationItems = [
   { name: "Technology", href: "#technology" },
   { name: "Use Cases", href: "#use-cases" },
   { name: "Features", href: "#features" },
-  { name: "How It Works", href: "#how-it-works" },
   { name: "Pricing", href: "#pricing" },
   { name: "Contact", href: "#contact" },
 ]
@@ -31,14 +30,16 @@ const navigationItems = [
 export function Header() {
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [activeSection, setActiveSection] = React.useState("home")
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
 
   React.useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0)
       
       // Update active section based on scroll position
-      const sections = ["home", "vision", "technology", "use-cases", "features", "how-it-works", "pricing", "contact"]
-      const scrollPosition = window.scrollY + 100 // Offset for header height
+      const sections = ["home", "vision", "technology", "use-cases", "features", "pricing", "contact"]
+      const headerHeight = 64 // h-16 = 64px
+      const scrollPosition = window.scrollY + headerHeight + 50 // Add extra buffer
       
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i])
@@ -48,14 +49,18 @@ export function Header() {
         }
       }
     }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    
+    // Add the scroll handler
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
   }, [])
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-200 ${
+      className={`fixed top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-200 ${
         isScrolled ? "shadow-sm" : ""
       }`}
     >
@@ -127,64 +132,86 @@ export function Header() {
 
           {/* Mobile menu */}
           <div className="flex items-center">
-            <Sheet>
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon" className="lg:hidden">
                   <Menu className="h-4 w-4" />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right">
-                <SheetHeader>
-                  <SheetTitle>Navigation</SheetTitle>
-                  <SheetDescription>
-                    Navigate through the different sections of our site.
-                  </SheetDescription>
-                </SheetHeader>
-                <nav className="flex flex-col space-y-4 mt-6">
-                  {navigationItems.map((item) => {
-                    const isActive = activeSection === item.href.replace("#", "")
-                    return (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className={`text-lg font-medium transition-all duration-300 ${
-                          isActive 
-                            ? "text-green-400" 
-                            : "hover:text-white"
-                        }`}
-                        onClick={(e) => {
-                          e.preventDefault()
-                          const element = document.querySelector(item.href)
-                          if (element) {
-                            element.scrollIntoView({ 
-                              behavior: 'smooth',
-                              block: 'start'
-                            })
-                          }
-                        }}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault()
-                            const element = document.querySelector(item.href)
-                            if (element) {
-                              element.scrollIntoView({ 
-                                behavior: 'smooth',
-                                block: 'start'
-                              })
-                            }
-                          }
-                        }}
-                        role="button"
-                        tabIndex={0}
-                        aria-label={`Navigate to ${item.name} section`}
-                      >
-                        {item.name}
-                      </Link>
-                    )
-                  })}
-                </nav>
-              </SheetContent>
+              <SheetContent side="right" className="!z-[60] bg-black/95 backdrop-blur-sm border-l border-gray-800">
+  <SheetHeader className="pb-6 border-b border-gray-800">
+    <SheetTitle className="text-2xl font-bold text-white">Navigation</SheetTitle>
+    <SheetDescription className="text-gray-400 text-base">
+      Explore our sustainable AI infrastructure
+    </SheetDescription>
+  </SheetHeader>
+  
+  <nav className="flex flex-col space-y-2 mt-8">
+    {navigationItems.map((item, index) => {
+      const isActive = activeSection === item.href.replace("#", "")
+      return (
+        <Link
+          key={item.name}
+          href={item.href}
+          className={`group relative px-4 py-4 rounded-xl transition-all duration-300 ${
+            isActive 
+              ? "bg-green-500/10 border border-green-500/20 text-green-400" 
+              : "text-gray-300 hover:bg-white/5 hover:text-white border border-transparent"
+          }`}
+          onClick={(e) => {
+            e.preventDefault()
+            const element = document.querySelector(item.href)
+            if (element) {
+              element.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+              })
+            }
+            setIsMobileMenuOpen(false) // Close the menu
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault()
+              const element = document.querySelector(item.href)
+              if (element) {
+                element.scrollIntoView({ 
+                  behavior: 'smooth',
+                  block: 'start'
+                })
+              }
+              setIsMobileMenuOpen(false) // Close the menu
+            }
+          }}
+          role="button"
+          tabIndex={0}
+          aria-label={`Navigate to ${item.name} section`}
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-lg font-medium">{item.name}</span>
+            {isActive && (
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            )}
+          </div>
+          {isActive && (
+            <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-transparent rounded-xl"></div>
+          )}
+        </Link>
+      )
+    })}
+  </nav>
+  
+  {/* Footer section */}
+  <div className="mt-auto pt-8 border-t border-gray-800">
+    <div className="text-center">
+      <p className="text-gray-500 text-sm mb-4">Ready to get started?</p>
+      <div className="space-y-3">
+        <ViewPricingButton />
+        <BookingModal />
+      </div>
+    </div>
+  </div>
+</SheetContent>
             </Sheet>
           </div>
         </div>

@@ -52,6 +52,7 @@ export function AnimatedStats({ className = "" }: AnimatedStatsProps) {
   ], [])
 
   const prefersReduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches
 
   useEffect(() => {
     if (isVisible) {
@@ -59,7 +60,8 @@ export function AnimatedStats({ className = "" }: AnimatedStatsProps) {
         setAnimatedValues(stats.map(stat => stat.value))
         return
       }
-      const duration = 1200
+      // Reduce animation duration on mobile for better performance
+      const duration = isMobile ? 600 : 1200
       const startTime = performance.now()
       
       const animate = (currentTime: number) => {
@@ -78,14 +80,14 @@ export function AnimatedStats({ className = "" }: AnimatedStatsProps) {
       
       requestAnimationFrame(animate)
     }
-  }, [isVisible, stats, prefersReduced])
+  }, [isVisible, stats, prefersReduced, isMobile])
 
   return (
     <div ref={ref as React.RefObject<HTMLDivElement>} className={`mt-16 sm:mt-20 md:mt-24 ${className}`}>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8" role="list" aria-label="Performance statistics">
         {stats.map((stat, index) => (
           <div key={stat.label} className="relative group" role="listitem">
-            <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 group-hover:scale-105">
+            <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
               {/* Animated Chart */}
               <div className="mb-3 sm:mb-4 h-12 sm:h-16 relative">
                 <svg className="w-full h-full" viewBox="0 0 100 40" preserveAspectRatio="none">
