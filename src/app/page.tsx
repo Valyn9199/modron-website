@@ -1,9 +1,7 @@
 import { Header } from "@/components/header";
-import { ScrollToTop } from "@/components/scroll-to-top";
 import { OptimizedScrollIndicator } from "@/components/optimized-scroll-indicator";
 
 import { HoverCard } from "@/components/hover-card";
-import { FloatingNav } from "@/components/floating-nav";
 import { ContactForm } from "@/components/contact-form";
 import { SkipToContent } from "@/components/skip-to-content";
 
@@ -899,12 +897,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
-      
-      {/* Scroll to Top Button */}
-      <ScrollToTop />
-      
-      {/* Floating Navigation */}
-      <FloatingNav />
+
         </div>
 
     </MobileViewport>
