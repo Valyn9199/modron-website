@@ -858,7 +858,7 @@ export default function Home() {
       </main>
       
       {/* Footer */}
-      <footer className="bg-black border-t border-gray-800" role="contentinfo">
+      <footer className="bg-black border-t border-[#262626]" role="contentinfo">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-12 sm:py-16">
           <div className="text-center">
             {/* Company Info */}
@@ -887,7 +887,7 @@ export default function Home() {
 
 
             {/* Legal Text */}
-            <div className="border-t border-gray-800 pt-6 sm:pt-8">
+            <div className="border-t border-[#262626] pt-6 sm:pt-8">
               <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4 lg:space-x-6 xl:space-x-8 text-xs sm:text-sm text-[#666666] px-4">
                 <span>NSW, Australia</span>
                 <span>&copy; 2025. All rights reserved.</span>
