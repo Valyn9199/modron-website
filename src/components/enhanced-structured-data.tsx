@@ -1,17 +1,15 @@
 export function EnhancedStructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "LocalBusiness",
     "name": "MODRON",
     "url": "https://www.modron.com",
     "logo": "https://www.modron.com/Modron_logo.png",
-    "description": "Australia's green GPU infrastructure — solar powered, immersion cooled, and enterprise-ready. Sustainable AI computing with 60% carbon reduction.",
+    "description": "High-availability enterprise AI compute infrastructure with SLA-backed hosting and sustainable GPU rentals",
     "foundingDate": "2024",
     "address": {
       "@type": "PostalAddress",
-      "addressCountry": "AU",
-      "addressRegion": "NSW",
-      "addressLocality": "Sydney"
+      "addressCountry": "AU"
     },
     "contactPoint": {
       "@type": "ContactPoint",
@@ -23,14 +21,14 @@ export function EnhancedStructuredData() {
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "AI Infrastructure Services",
+      "name": "Enterprise AI Infrastructure Services",
       "itemListElement": [
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "AI Training Infrastructure",
-            "description": "High-performance GPU clusters for AI model training"
+            "name": "Enterprise AI Training Infrastructure",
+            "description": "High-performance GPU clusters for enterprise AI model training in Asia Pacific"
           }
         },
         {
@@ -38,7 +36,7 @@ export function EnhancedStructuredData() {
           "itemOffered": {
             "@type": "Service",
             "name": "Immersion Cooling Technology",
-            "description": "Proprietary liquid cooling system reducing failure rates by 60%"
+            "description": "Proprietary liquid cooling system reducing failure rates by 60% for enterprise workloads"
           }
         },
         {
@@ -46,17 +44,15 @@ export function EnhancedStructuredData() {
           "itemOffered": {
             "@type": "Service",
             "name": "Solar-Powered Computing",
-            "description": "Sustainable energy infrastructure with solar and grid hybrid power"
+            "description": "Sustainable energy infrastructure with solar and grid hybrid power for Asia Pacific region"
           }
         }
       ]
     },
-    "areaServed": {
-      "@type": "Country",
-      "name": "Australia"
-    },
-    "serviceType": "AI Infrastructure",
-    "keywords": "AI infrastructure, green computing, GPU cloud, sustainable technology, immersion cooling, solar powered, Australia, MODRON"
+    "areaServed": ["Global", "Australia", "Asia Pacific", "APAC", "US", "Europe"],
+    "serviceType": "Enterprise AI Compute Infrastructure",
+    "slogan": "Sustainable enterprise AI compute for global enterprises",
+    "keywords": "Australian enterprise AI compute, GPU rental Asia Pacific, Green AI compute infrastructure Australia, Sustainable AI compute hosting, High-performance GPU hosting Australia"
   };
 
   const websiteStructuredData = {
@@ -64,7 +60,7 @@ export function EnhancedStructuredData() {
     "@type": "WebSite",
     "name": "MODRON",
     "url": "https://www.modron.com",
-    "description": "Australia's green GPU infrastructure — solar powered, immersion cooled, and enterprise-ready.",
+    "description": "High-availability enterprise AI compute infrastructure with SLA-backed hosting. Sustainable GPU rentals with immersion cooling, solar power, and global availability.",
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://www.modron.com/search?q={search_term_string}",

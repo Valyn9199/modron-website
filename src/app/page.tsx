@@ -49,7 +49,7 @@ export default function Home() {
           <main id="main-content" tabIndex={-1} className="relative">
         
         {/* Hero Section */}
-        <section id="home" className="relative min-h-screen flex items-center justify-center w-full pt-20 sm:pt-0" role="banner" aria-labelledby="hero-heading">
+        <section id="home" className="relative min-h-screen flex items-center justify-center w-full pt-20 sm:pt-24 md:pt-32 lg:pt-40 pb-20" role="banner" aria-labelledby="hero-heading">
           {/* Background Video */}
           <HeroBgVideo overlayOpacity={0.6} />
 
@@ -61,21 +61,21 @@ export default function Home() {
               {/* Main Headline with subtle parallax */}
               <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-light tracking-tight mb-6 sm:mb-8 md:mb-12 leading-tight reveal will-change-transform">
                 <span className="bg-gradient-to-r from-white via-green-200 to-white bg-clip-text text-transparent">
-                  Clean Compute.
+                  Enterprise AI Compute,
                 </span>
                 <br />
                 <span className="bg-gradient-to-r from-green-200 via-white to-green-200 bg-clip-text text-transparent">
-                  Built for Intelligence.
+                Green Energy Powered
                 </span>
               </h1>
               
               {/* Subheading */}
               <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#DDDDDD] mb-6 sm:mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed font-light reveal reveal-delay will-change-transform px-4">
-                Australia&apos;s green GPU infrastructure — solar powered, immersion cooled, and enterprise-ready.
+                High-availability enterprise GPU infrastructure with SLA-backed hosting — immersion cooled, solar powered, and sustainable AI compute for global enterprises.
               </p>
               
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-8 sm:mb-10 md:mb-12">
                 <div className="min-h-[44px]">
                   <ViewPricingButton />
                 </div>
@@ -85,7 +85,9 @@ export default function Home() {
               </div>
               
                 {/* Enhanced Animated Stats (restored) */}
-                <AnimatedStats />
+                <div className="mt-8 sm:mt-10 md:mt-12">
+                  <AnimatedStats />
+                </div>
               </div>
           </div>
           
@@ -103,7 +105,7 @@ export default function Home() {
                 Our Mission
               </h2>
               <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-[#DDDDDD] leading-relaxed font-light max-w-5xl mx-auto mb-8 sm:mb-12 px-4">
-                MODRON is building high-performance GPU infrastructure in rural Australia — optimized for AI workloads, powered by the sun, and scaled with purpose.
+                MODRON is building sustainable enterprise AI compute infrastructure — optimized for AI workloads, powered by the sun, and scaled globally with purpose.
               </p>
               <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-emerald-600 mx-auto"></div>
             </div>
