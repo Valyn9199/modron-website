@@ -27,4 +27,5 @@ export const Icons = {
   Headphones: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Headphones }))),
   CheckCircle: dynamic(() => import('lucide-react').then(mod => ({ default: mod.CheckCircle }))),
   Star: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Star }))),
+  ChevronDown: dynamic(() => import('lucide-react').then(mod => ({ default: mod.ChevronDown }))),
 }

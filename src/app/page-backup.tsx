@@ -176,111 +176,49 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center mb-12 sm:mb-16 md:mb-20">
-            {/* Infrastructure Diagram - Desktop: Always visible */}
-            <div className="hidden lg:block">
-              <ProgressiveReveal delay={200}>
-              <div className="relative">
-                  <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
-                  {/* Solar + Grid Power */}
-                  <div className="flex items-center justify-center mb-6 sm:mb-8">
-                      <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
-                      <Icons.Sun className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
-                    </div>
-                      <div className="bg-gradient-to-br from-emerald-600 to-green-700 rounded-xl p-3 sm:p-4">
-                      <Icons.Power className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
-                    </div>
-                    <div className="ml-2 sm:ml-4 text-white font-semibold text-sm sm:text-base">Solar + Grid Hybrid Power</div>
+            {/* Infrastructure Diagram */}
+            <ProgressiveReveal delay={200}>
+            <div className="relative">
+                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
+                {/* Solar + Grid Power */}
+                <div className="flex items-center justify-center mb-6 sm:mb-8">
+                    <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
+                    <Icons.Sun className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                   </div>
-                  
-                  {/* Connection Line */}
-                  <div className="flex justify-center mb-6 sm:mb-8">
-                      <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-green-500 to-emerald-600" style={{ willChange: 'transform' }}></div>
+                    <div className="bg-gradient-to-br from-emerald-600 to-green-700 rounded-xl p-3 sm:p-4">
+                    <Icons.Power className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                   </div>
-                  
-                  {/* GPU Tank */}
-                  <div className="mb-6 sm:mb-8">
-                    <ImmersionTankVideo className="h-48 sm:h-64" />
+                  <div className="ml-2 sm:ml-4 text-white font-semibold text-sm sm:text-base">Solar + Grid Hybrid Power</div>
+                </div>
+                
+                {/* Connection Line */}
+                <div className="flex justify-center mb-6 sm:mb-8">
+                    <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-green-500 to-emerald-600" style={{ willChange: 'transform' }}></div>
+                </div>
+                
+                {/* GPU Tank */}
+                <div className="mb-6 sm:mb-8">
+                  <ImmersionTankVideo className="h-48 sm:h-64" />
+                </div>
+                
+                {/* Connection Line */}
+                <div className="flex justify-center mb-6 sm:mb-8">
+                    <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-emerald-600 to-green-700" style={{ willChange: 'transform' }}></div>
+                </div>
+                
+                {/* Network Layer */}
+                <div className="flex items-center justify-center">
+                    <div className="bg-gradient-to-br from-green-700 to-emerald-800 rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
+                    <Icons.Cloud className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                   </div>
-                  
-                  {/* Connection Line */}
-                  <div className="flex justify-center mb-6 sm:mb-8">
-                      <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-emerald-600 to-green-700" style={{ willChange: 'transform' }}></div>
+                    <div className="bg-gradient-to-br from-emerald-800 to-green-900 rounded-xl p-3 sm:p-4">
+                    <Icons.Network className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                   </div>
-                  
-                  {/* Network Layer */}
-                  <div className="flex items-center justify-center">
-                      <div className="bg-gradient-to-br from-green-700 to-emerald-800 rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
-                      <Icons.Cloud className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
-                    </div>
-                      <div className="bg-gradient-to-br from-emerald-800 to-green-900 rounded-xl p-3 sm:p-4">
-                      <Icons.Network className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
-                    </div>
-                    <div className="ml-2 sm:ml-4 text-white font-semibold text-sm sm:text-base">Vast.ai + Direct Connect</div>
-                  </div>
+                  <div className="ml-2 sm:ml-4 text-white font-semibold text-sm sm:text-base">Vast.ai + Direct Connect</div>
                 </div>
               </div>
-              </ProgressiveReveal>
             </div>
-
-            {/* Infrastructure Diagram - Mobile: Progressive Disclosure */}
-            <div className="lg:hidden">
-              <details className="group mb-6">
-                <summary className="cursor-pointer list-none">
-                  <div className="flex items-center justify-between p-4 bg-[#1A1A1A]/50 border border-[#262626] rounded-xl hover:border-green-500/30 transition-all duration-200">
-                    <h3 className="text-white font-semibold text-lg">Infrastructure Overview</h3>
-                    <div className="flex items-center space-x-2">
-                      <span className="text-green-400 text-sm font-medium">View Details</span>
-                      <Icons.ChevronDown className="h-5 w-5 text-green-400 transition-transform duration-200 group-open:rotate-180" />
-                    </div>
-                  </div>
-                </summary>
-                
-                <div className="mt-4 p-4 bg-[#1A1A1A]/30 border border-[#262626] rounded-xl">
-                  <ProgressiveReveal delay={200}>
-                    <div className="relative">
-                      <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
-                        {/* Solar + Grid Power */}
-                        <div className="flex items-center justify-center mb-6 sm:mb-8">
-                            <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
-                            <Icons.Sun className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
-                          </div>
-                            <div className="bg-gradient-to-br from-emerald-600 to-green-700 rounded-xl p-3 sm:p-4">
-                            <Icons.Power className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
-                          </div>
-                          <div className="ml-2 sm:ml-4 text-white font-semibold text-sm sm:text-base">Solar + Grid Hybrid Power</div>
-                        </div>
-                        
-                        {/* Connection Line */}
-                        <div className="flex justify-center mb-6 sm:mb-8">
-                            <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-green-500 to-emerald-600" style={{ willChange: 'transform' }}></div>
-                        </div>
-                        
-                        {/* GPU Tank */}
-                        <div className="mb-6 sm:mb-8">
-                          <ImmersionTankVideo className="h-48 sm:h-64" />
-                        </div>
-                        
-                        {/* Connection Line */}
-                        <div className="flex justify-center mb-6 sm:mb-8">
-                            <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-emerald-600 to-green-700" style={{ willChange: 'transform' }}></div>
-                        </div>
-                        
-                        {/* Network Layer */}
-                        <div className="flex items-center justify-center">
-                            <div className="bg-gradient-to-br from-green-700 to-emerald-800 rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
-                            <Icons.Cloud className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
-                          </div>
-                            <div className="bg-gradient-to-br from-emerald-800 to-green-900 rounded-xl p-3 sm:p-4">
-                            <Icons.Network className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
-                          </div>
-                          <div className="ml-2 sm:ml-4 text-white font-semibold text-sm sm:text-base">Vast.ai + Direct Connect</div>
-                        </div>
-                      </div>
-                    </div>
-                  </ProgressiveReveal>
-                </div>
-              </details>
-            </div>
+            </ProgressiveReveal>
             
             {/* Infrastructure Details */}
             <StaggeredReveal staggerDelay={100}>
@@ -566,8 +504,7 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Desktop: Show all features */}
-            <div className="hidden md:grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             {/* Always-on Availability */}
             <div className="group cursor-pointer">
               <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
@@ -657,115 +594,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            </div>
-
-            {/* Mobile: Progressive disclosure */}
-            <div className="md:hidden space-y-4">
-              {/* Show first 2 features by default */}
-              <div className="grid grid-cols-1 gap-6">
-                {/* Always-on Availability */}
-                <div className="group cursor-pointer">
-                  <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
-                    <div className="flex items-center mb-4 sm:mb-6">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                        <Icons.Clock className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-                      </div>
-                      <h3 className="text-white font-bold text-base sm:text-lg">Always-on Availability</h3>
-                    </div>
-                    <p className="text-[#999999] text-xs sm:text-sm leading-relaxed">
-                      99.9% uptime guarantee with redundant systems and automatic failover for continuous operations.
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Clean Energy Credits */}
-                <div className="group cursor-pointer">
-                  <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
-                    <div className="flex items-center mb-4 sm:mb-6">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                        <Icons.Award className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-                      </div>
-                      <h3 className="text-white font-bold text-base sm:text-lg">Clean Energy Credits</h3>
-                    </div>
-                    <p className="text-[#999999] text-xs sm:text-sm leading-relaxed">
-                      Earn carbon credits and sustainability certifications through our renewable-powered infrastructure.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Progressive disclosure for remaining features */}
-              <details className="group">
-                <summary className="cursor-pointer list-none">
-                  <div className="flex items-center justify-center p-4 bg-[#1A1A1A]/50 border border-[#262626] rounded-xl hover:border-green-500/30 transition-all duration-200">
-                    <span className="text-green-400 font-medium mr-2">View More Features</span>
-                    <Icons.ChevronDown className="h-5 w-5 text-green-400 transition-transform duration-200 group-open:rotate-180" />
-                  </div>
-                </summary>
-                
-                <div className="mt-4 grid grid-cols-1 gap-6">
-                  {/* Custom Containers & APIs */}
-                  <div className="group cursor-pointer">
-                    <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-green-600/50 hover:shadow-lg hover:shadow-green-600/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
-                      <div className="flex items-center mb-4 sm:mb-6">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-600 to-emerald-700 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                          <Icons.Settings className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-                        </div>
-                        <h3 className="text-white font-bold text-base sm:text-lg">Custom Containers & APIs</h3>
-                      </div>
-                      <p className="text-[#999999] text-xs sm:text-sm leading-relaxed">
-                        Tailored container environments and RESTful APIs for seamless integration with your workflows.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Spot & Reserved Instances */}
-                  <div className="group cursor-pointer">
-                    <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-emerald-600/50 hover:shadow-lg hover:shadow-emerald-600/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
-                      <div className="flex items-center mb-4 sm:mb-6">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-600 to-green-700 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                          <Icons.Calendar className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-                        </div>
-                        <h3 className="text-white font-bold text-base sm:text-lg">Spot & Reserved Instances</h3>
-                      </div>
-                      <p className="text-[#999999] text-xs sm:text-sm leading-relaxed">
-                        Flexible pricing options with spot instances for cost optimization and reserved instances for guaranteed capacity.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Remote Monitoring */}
-                  <div className="group cursor-pointer">
-                    <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-green-700/50 hover:shadow-lg hover:shadow-green-700/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
-                      <div className="flex items-center mb-4 sm:mb-6">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-700 to-emerald-800 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                          <Icons.Eye className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-                        </div>
-                        <h3 className="text-white font-bold text-base sm:text-lg">Remote Monitoring</h3>
-                      </div>
-                      <p className="text-[#999999] text-xs sm:text-sm leading-relaxed">
-                        Real-time monitoring dashboard with performance metrics, alerts, and automated health checks.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Dedicated Support */}
-                  <div className="group cursor-pointer">
-                    <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-emerald-700/50 hover:shadow-lg hover:shadow-emerald-700/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
-                      <div className="flex items-center mb-4 sm:mb-6">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-700 to-green-800 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                          <Icons.Headphones className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-                        </div>
-                        <h3 className="text-white font-bold text-base sm:text-lg">Dedicated Support</h3>
-                      </div>
-                      <p className="text-[#999999] text-xs sm:text-sm leading-relaxed">
-                        24/7 technical support with dedicated account managers and priority response times for enterprise clients.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </details>
-            </div>
+          </div>
           </div>
         </div>
       </section>
