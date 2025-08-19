@@ -48,53 +48,69 @@ export default function Home() {
           
           <main id="main-content" tabIndex={-1} className="relative">
         
-        {/* Hero Section */}
-        <section id="home" className="relative min-h-screen flex items-center justify-center w-full pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-20" role="banner" aria-labelledby="hero-heading">
-          {/* Background Video */}
-          <HeroBgVideo overlayOpacity={0.6} />
+{/* Hero Section */}
+<section id="home" className="relative min-h-screen flex items-center justify-center w-full pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-20" role="banner" aria-labelledby="hero-heading">
+  {/* Background Video */}
+  <HeroBgVideo overlayOpacity={0.6} />
 
-          {/* Main Content */}
-          <div className="relative container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center max-w-[100vw]">
-            <div className="max-w-4xl mx-auto">
-                {/* MODRON Logo removed to keep hero content above the fold */}
-              
-              {/* Main Headline with subtle parallax */}
-              <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-light tracking-tight mb-6 sm:mb-8 md:mb-12 leading-tight reveal will-change-transform">
-                <span className="bg-gradient-to-r from-white via-green-200 to-white bg-clip-text text-transparent">
-                  Green AI Compute
-                </span>
-                <br />
-                <span className="bg-gradient-to-r from-green-200 via-white to-green-200 bg-clip-text text-transparent">
-                  for Enterprises
-                </span>
-              </h1>
-              
-              {/* Subheading */}
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#DDDDDD] mb-6 sm:mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed font-light reveal reveal-delay will-change-transform px-4">
-                Immersion-cooled, solar-powered GPU infrastructure with SLA-backed uptime — delivering performance and sustainability at scale.
-              </p>
-              
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-8 sm:mb-10 md:mb-12">
-                <div className="min-h-[44px]">
-                  <BookingModal />
-                </div>
-                <div className="min-h-[44px]">
-                  <ViewPricingButton />
-                </div>
-              </div>
-              
-                {/* Enhanced Animated Stats (restored) */}
-                <div className="mt-8 sm:mt-10 md:mt-12">
-                  <AnimatedStats />
-                </div>
-              </div>
-          </div>
-          
-          {/* Scroll Indicator */}
-          <OptimizedScrollIndicator />
-        </section>
+  {/* Main Content */}
+  <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
+    {/* MODRON Logo removed to keep hero content above the fold */}
+    
+    {/* Main Headline - Larger on mobile */}
+    <h1 id="hero-heading" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight mb-6 sm:mb-8 md:mb-12 leading-tight reveal will-change-transform">
+      <span className="bg-gradient-to-r from-white via-green-200 to-white bg-clip-text text-transparent">
+        Green AI Compute
+      </span>
+      <br />
+      <span className="bg-gradient-to-r from-green-200 via-white to-green-200 bg-clip-text text-transparent">
+        for Enterprises
+      </span>
+    </h1>
+    
+    {/* Subheading - Larger on mobile */}
+    <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#DDDDDD] mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto leading-relaxed font-light reveal reveal-delay will-change-transform px-4">
+      Immersion-cooled, solar-powered GPU infrastructure with SLA-backed uptime — delivering performance and sustainability at scale.
+    </p>
+    
+    {/* CTA Buttons - Larger on mobile */}
+    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-8 sm:mb-10 md:mb-12">
+      <div className="min-h-[48px] sm:min-h-[52px]">
+        <BookingModal />
+      </div>
+      <div className="min-h-[48px] sm:min-h-[52px]">
+        <ViewPricingButton />
+      </div>
+    </div>
+    
+    {/* Metrics cards - Hidden on mobile, visible on desktop */}
+    <div className="hidden md:block mt-8 sm:mt-10 md:mt-12">
+      <AnimatedStats />
+    </div>
+  </div>
+  
+  {/* Scroll Indicator */}
+  <OptimizedScrollIndicator />
+</section>
 
+
+{/* Stats Section - Mobile Only */}
+<section className="md:hidden relative py-16 sm:py-20 bg-gradient-to-br from-black via-green-900/10 to-black">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-12">
+      <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
+        Why Choose MODRON
+      </h2>
+      <p className="text-lg sm:text-xl text-[#CCCCCC] max-w-2xl mx-auto">
+        Enterprise-grade performance with sustainable infrastructure
+      </p>
+    </div>
+    
+    <AnimatedStats />
+  </div>
+</section>
+
+{/* Mission & Vision Section */}
       {/* Mission & Vision Section */}
       <section id="vision" className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#1A1A1A]/20 to-black" role="region" aria-labelledby="vision-heading">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
