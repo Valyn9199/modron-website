@@ -68,9 +68,8 @@ export default function Home() {
       </span>
     </h1>
     
-    {/* Subheading - Larger on mobile */}
-    <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#DDDDDD] mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto leading-relaxed font-light reveal reveal-delay will-change-transform px-4">
-      Immersion-cooled, solar-powered GPU infrastructure with SLA-backed uptime — delivering performance and sustainability at scale.
+       {/* Subheading - Reduced size to target 3 lines */}
+    <p className="text-xl sm:text-2xl md:text-2xl lg:text-3xl text-[#DDDDDD] mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto leading-relaxed font-light reveal reveal-delay will-change-transform px-4">      Immersion-cooled, solar-powered GPU infrastructure with SLA-backed uptime — delivering performance and sustainability at scale.
     </p>
     
     {/* CTA Buttons - Larger on mobile */}
@@ -93,22 +92,6 @@ export default function Home() {
   <OptimizedScrollIndicator />
 </section>
 
-
-{/* Stats Section - Mobile Only */}
-<section className="md:hidden relative py-16 sm:py-20 bg-gradient-to-br from-black via-green-900/10 to-black">
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-12">
-      <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
-        Why Choose MODRON
-      </h2>
-      <p className="text-lg sm:text-xl text-[#CCCCCC] max-w-2xl mx-auto">
-        Enterprise-grade performance with sustainable infrastructure
-      </p>
-    </div>
-    
-    <AnimatedStats />
-  </div>
-</section>
 
 {/* Mission & Vision Section */}
       {/* Mission & Vision Section */}
