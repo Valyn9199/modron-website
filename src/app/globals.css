@@ -208,11 +208,11 @@ html, body {
   -webkit-overflow-scrolling: touch;
 }
     
-    body {
-      -webkit-overflow-scrolling: touch;
-      overscroll-behavior: none;
-      touch-action: pan-y;
-    }
+body {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain; /* ← Change from 'none' to 'contain' */
+  touch-action: pan-y;
+}
     
     /* Ensure hero section doesn't block scrolling */
     #home {
@@ -260,7 +260,7 @@ html, body {
         overflow-x: hidden;
         position: relative;
         -webkit-overflow-scrolling: touch;
-        overscroll-behavior: none;
+        overscroll-behavior: contain; /* ← Change from 'none' to 'contain' */
       }
       
       /* Prevent Android Chrome from blocking scroll */
@@ -539,7 +539,7 @@ body {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
-  overscroll-behavior: none;
+  overscroll-behavior: contain; /* ← Change from 'none' to 'contain' */
   position: relative;
 }
 
