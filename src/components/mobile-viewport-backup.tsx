@@ -2,19 +2,17 @@
 
 import { useEffect, useState } from "react"
 
-interface MobileViewportProps {
+interface MobileViewportBackupProps {
   children: React.ReactNode
   preventZoom?: boolean
   enableTouchActions?: boolean
-  enablePullToRefresh?: boolean // New prop for pull-to-refresh control
 }
 
-export function MobileViewport({ 
+export function MobileViewportBackup({ 
   children, 
   preventZoom = true,
-  enableTouchActions = true,
-  enablePullToRefresh = true // Default to true for native pull-to-refresh
-}: MobileViewportProps) {
+  enableTouchActions = true
+}: MobileViewportBackupProps) {
   const [isMounted, setIsMounted] = useState(false)
   
   // Proper hydration handling
@@ -55,16 +53,9 @@ export function MobileViewport({
       document.body.style.setProperty("touch-action", "pan-y")
       document.documentElement.style.setProperty("touch-action", "pan-y")
       
-      // Configure overscroll behavior based on pull-to-refresh setting
-      if (enablePullToRefresh) {
-        // Allow native pull-to-refresh
-        document.body.style.setProperty("overscroll-behavior", "auto")
-        document.documentElement.style.setProperty("overscroll-behavior", "auto")
-      } else {
-        // Disable pull-to-refresh (backup option)
-        document.body.style.setProperty("overscroll-behavior", "none")
-        document.documentElement.style.setProperty("overscroll-behavior", "none")
-      }
+      // BACKUP: Disable pull-to-refresh (original behavior)
+      document.body.style.setProperty("overscroll-behavior", "none")
+      document.documentElement.style.setProperty("overscroll-behavior", "none")
       
       // Ensure proper height on mobile
       const vh = window.innerHeight * 0.01
@@ -93,7 +84,7 @@ export function MobileViewport({
       document.body.style.removeProperty("overscroll-behavior")
       document.documentElement.style.removeProperty("overscroll-behavior")
     }
-  }, [enableTouchActions, enablePullToRefresh, isMounted])
+  }, [enableTouchActions, isMounted])
 
   return <>{children}</>
 }

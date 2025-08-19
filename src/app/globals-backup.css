@@ -1,0 +1,22 @@
+/* BACKUP CSS - Use this if pull-to-refresh causes issues */
+
+/* Copy of the original overscroll-behavior settings */
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  overscroll-behavior: contain; /* BACKUP: Disable pull-to-refresh */
+  position: relative;
+}
+
+/* Mobile-specific backup settings */
+@media screen and (max-width: 768px) {
+  body {
+    min-height: 100%;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain; /* BACKUP: Disable pull-to-refresh */
+  }
+}
