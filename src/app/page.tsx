@@ -61,26 +61,26 @@ export default function Home() {
               {/* Main Headline with subtle parallax */}
               <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-light tracking-tight mb-6 sm:mb-8 md:mb-12 leading-tight reveal will-change-transform">
                 <span className="bg-gradient-to-r from-white via-green-200 to-white bg-clip-text text-transparent">
-                  Enterprise AI Compute,
+                  Green AI Compute
                 </span>
                 <br />
                 <span className="bg-gradient-to-r from-green-200 via-white to-green-200 bg-clip-text text-transparent">
-                Green Energy Powered
+                  for Enterprises
                 </span>
               </h1>
               
               {/* Subheading */}
               <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#DDDDDD] mb-6 sm:mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed font-light reveal reveal-delay will-change-transform px-4">
-                High-availability enterprise GPU infrastructure with SLA-backed hosting — immersion cooled, solar powered, and sustainable AI compute for global enterprises.
+                Immersion-cooled, solar-powered GPU infrastructure with SLA-backed uptime — delivering performance and sustainability at scale.
               </p>
               
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-8 sm:mb-10 md:mb-12">
                 <div className="min-h-[44px]">
-                  <ViewPricingButton />
+                  <BookingModal />
                 </div>
                 <div className="min-h-[44px]">
-                  <BookingModal />
+                  <ViewPricingButton />
                 </div>
               </div>
               
@@ -793,7 +793,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Pre-Launch Offer */}
+            {/* Pre-Launch Offer - BACKUP (COMMENTED OUT) */}
+            {/* 
             <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/30 border border-green-500/30 rounded-2xl p-8 sm:p-12 text-center">
               <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
                 <Icons.Star className="h-8 w-8 text-white" />
@@ -818,6 +819,73 @@ export default function Home() {
                   6 Months Duration
                 </div>
               </div>
+              <WaitlistModal />
+            </div>
+            */}
+
+            {/* Pre-Launch Offer - ENHANCED VERSION */}
+            <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/30 border border-green-500/30 rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden">
+              {/* Animated background elements */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-10 left-10 w-2 h-2 bg-green-400/30 rounded-full animate-pulse"></div>
+                <div className="absolute top-20 right-20 w-1 h-1 bg-emerald-400/40 rounded-full animate-ping"></div>
+                <div className="absolute bottom-10 left-1/4 w-1.5 h-1.5 bg-green-300/20 rounded-full animate-bounce"></div>
+                <div className="absolute top-1/2 right-10 w-1 h-1 bg-green-400/25 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                <div className="absolute bottom-20 right-1/3 w-1.5 h-1.5 bg-emerald-300/15 rounded-full animate-bounce" style={{animationDelay: '0.5s'}}></div>
+              </div>
+
+              {/* Enhanced Star Icon */}
+              <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center relative group">
+                <Icons.Star className="h-8 w-8 text-white group-hover:scale-110 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300"></div>
+              </div>
+
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
+                Pre-Launch Offer
+              </h3>
+              
+              <p className="text-base sm:text-lg md:text-xl text-[#CCCCCC] mb-6 sm:mb-8 max-w-2xl mx-auto">
+                Early waitlist members receive priority access to new clusters and pre-launch pricing for the first 6 months.
+              </p>
+
+
+
+              {/* Interactive Feature Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                <div className="group cursor-pointer transform transition-all duration-300 hover:scale-105">
+                  <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-4 hover:bg-green-500/20 hover:border-green-400/40 transition-all duration-300">
+                    <div className="flex items-center justify-center mb-3">
+                      <Icons.Clock className="h-6 w-6 text-green-400 group-hover:scale-110 transition-transform duration-300" />
+                    </div>
+                    <p className="text-green-400 font-bold text-sm">Priority Access</p>
+                    <p className="text-[#999999] text-xs mt-1">Skip the queue</p>
+                  </div>
+                </div>
+                
+                <div className="group cursor-pointer transform transition-all duration-300 hover:scale-105">
+                  <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 hover:bg-emerald-500/20 hover:border-emerald-400/40 transition-all duration-300">
+                    <div className="flex items-center justify-center mb-3">
+                      <Icons.CheckCircle className="h-6 w-6 text-emerald-400 group-hover:scale-110 transition-transform duration-300" />
+                    </div>
+                    <p className="text-emerald-400 font-bold text-sm">Pre-Launch Pricing</p>
+                    <p className="text-[#999999] text-xs mt-1">Exclusive rates</p>
+                  </div>
+                </div>
+                
+                <div className="group cursor-pointer transform transition-all duration-300 hover:scale-105">
+                  <div className="bg-green-600/10 border border-green-600/20 rounded-xl p-4 hover:bg-green-600/20 hover:border-green-500/40 transition-all duration-300">
+                    <div className="flex items-center justify-center mb-3">
+                      <Icons.Zap className="h-6 w-6 text-green-500 group-hover:scale-110 transition-transform duration-300" />
+                    </div>
+                    <p className="text-green-500 font-bold text-sm">6 Months Duration</p>
+                    <p className="text-[#999999] text-xs mt-1">Limited time</p>
+                  </div>
+                </div>
+              </div>
+
+
+
+              {/* Enhanced CTA */}
               <WaitlistModal />
             </div>
           </div>

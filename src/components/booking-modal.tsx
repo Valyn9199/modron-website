@@ -62,7 +62,7 @@ export function BookingModal() {
           setIsOpen(false)
         }, 3000)
       } else {
-        setSubmitError(result.error || "Failed to book consultation. Please try again.")
+        setSubmitError(result.error || "Failed to book demo. Please try again.")
       }
       
     } catch (error) {
@@ -195,10 +195,10 @@ export function BookingModal() {
             }}
           >
             <Calendar size={24} />
-            Book a Consultation
+            Book a Demo
           </h2>
           <p id="booking-modal-description" style={{ color: '#999', fontSize: '16px' }}>
-            Schedule a call to discuss your AI infrastructure needs
+            Schedule a demo to see our green AI infrastructure in action
           </p>
         </div>
 
@@ -223,10 +223,10 @@ export function BookingModal() {
             <CheckCircle size={20} color="#4ade80" />
             <div>
               <div style={{ color: '#4ade80', fontWeight: 'bold', marginBottom: '4px' }}>
-                Booking Submitted!
+                Demo Request Submitted!
               </div>
               <div style={{ color: '#9ca3af', fontSize: '14px' }}>
-                We'll get back to you within 24 hours to confirm your consultation.
+                We'll get back to you within 24 hours to confirm your demo session.
               </div>
             </div>
           </div>
@@ -443,7 +443,7 @@ export function BookingModal() {
                   fontFamily: 'inherit',
                   transition: 'all 0.2s ease'
                 }}
-                placeholder="Tell us about your project and requirements..."
+                placeholder="Tell us about your AI infrastructure needs and what you'd like to see in the demo..."
                 aria-describedby="booking-message-error"
                 aria-invalid={!!submitError && !formData.message}
                 onFocus={(e) => e.target.style.borderColor = '#22c55e'}
@@ -468,7 +468,7 @@ export function BookingModal() {
                 </>
               ) : (
                 <>
-                  Book Consultation
+                  Book Demo
                   <ArrowRight size={18} />
                 </>
               )}
@@ -487,7 +487,7 @@ export function BookingModal() {
         className="text-base sm:text-lg px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 border-2 border-[#4D4D4D] text-[#CCCCCC] hover:bg-[#262626] hover:border-[#666666] hover:text-white transition-all duration-300 transform hover:scale-105 active:scale-95 sm:active:scale-100 min-h-[44px] min-w-[44px]"
         onClick={openModal}
       >
-        Book a Call
+        Book a Demo
       </Button>
 
       {/* Render modal via portal */}

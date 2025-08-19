@@ -161,8 +161,7 @@ export function WaitlistModal() {
       <Button 
         variant="outline" 
         size="lg" 
-        className="border-2 border-[#4D4D4D] text-[#CCCCCC] hover:bg-[#262626] hover:border-[#666666] hover:text-white transition-all duration-300 transform hover:scale-105 active:scale-95 sm:active:scale-100 text-sm sm:text-base min-h-[44px] min-w-[44px]"
-        onClick={openModal}
+        className="text-base sm:text-lg px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 border-2 border-[#4D4D4D] text-[#CCCCCC] hover:bg-[#262626] hover:border-[#666666] hover:text-white transition-all duration-300 transform hover:scale-105 active:scale-95 sm:active:scale-100 min-h-[44px] min-w-[44px]"        onClick={openModal}
       >
         Join Waitlist
       </Button>

@@ -22,7 +22,7 @@ export function AnimatedStats({ className = "" }: AnimatedStatsProps) {
 
   const stats: StatItem[] = useMemo(() => [
     {
-      label: "Uptime Guarantee",
+      label: "Uptime",
       value: 99.9,
       suffix: "%",
       color: "#22c55e",
@@ -36,18 +36,11 @@ export function AnimatedStats({ className = "" }: AnimatedStatsProps) {
       chartData: [20, 35, 45, 55, 58, 60]
     },
     {
-      label: "Performance Gain",
+      label: "Faster AI Performance",
       value: 40,
       suffix: "%",
       color: "#059669",
       chartData: [10, 20, 30, 35, 38, 40]
-    },
-    {
-      label: "Energy Efficiency",
-      value: 85,
-      suffix: "%",
-      color: "#047857",
-      chartData: [50, 65, 75, 80, 83, 85]
     }
   ], [])
 
@@ -84,7 +77,7 @@ export function AnimatedStats({ className = "" }: AnimatedStatsProps) {
 
   return (
     <div ref={ref as React.RefObject<HTMLDivElement>} className={`mt-16 sm:mt-20 md:mt-24 ${className}`}>
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8" role="list" aria-label="Performance statistics">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8" role="list" aria-label="Performance statistics">
         {stats.map((stat, index) => (
           <div key={stat.label} className="relative group" role="listitem">
             <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
