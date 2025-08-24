@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Platform Features in Focus | Nathan Polito Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
+    
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://player.vimeo.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="https://player.vimeo.com">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/css/core.css" as="style">
+    <link rel="preload" href="/css/styles.css" as="style">
+    <link rel="preload" href="/js/assets/jquery.js" as="script">
+    <link rel="preload" href="/images/Logo.jpg" as="image">
+    
+    <!-- Prefetch next likely pages -->
+    <link rel="prefetch" href="/portfolio">
+    <link rel="prefetch" href="/about">
+    <link rel="prefetch" href="/contact">
+    
+    <meta name="description" content="Explore the platform's advanced technical features through a specialized video showcase. Learn how our innovative design and powerful capabilities address industry challenges.">
+    <meta name="keywords" content="platform features, technical showcase, industry solutions, innovation, efficiency, Nathan Polito portfolio">
+    <meta name="author" content="Nathan Polito">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Platform Features in Focus | Nathan Polito Portfolio">
+    <meta property="og:description" content="Explore the platform's advanced technical features through a specialized video showcase. Learn how our innovative design and powerful capabilities address industry challenges.">
+    <meta property="og:image" content="images/portfolio/Screen37.jpg">
+    <meta property="og:url" content="https://nathanpolito.com/work-six">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://nathanpolito.com/work-six">
+    <link rel="stylesheet" type="text/css" href="css/core.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <!-- inject:css-->
+    <!-- endinject -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <script src="js/assets/jquery.js" defer></script>
+    <!-- Structured data for rich snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Platform Features in Focus",
+      "author": {
+        "@type": "Person",
+        "name": "Nathan Polito"
+      },
+      "description": "A video showcase highlighting the platform's advanced technical features and innovative design for industry professionals.",
+      "image": "images/portfolio/Screen37.jpg",
+      "datePublished": "2024"
+    }
+    </script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('ServiceWorker registration successful');
+              
+              // Check for updates every hour
+              setInterval(() => {
+                registration.update();
+              }, 3600000);
+            })
+            .catch(err => {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
+    
+    <!-- Image optimization script -->
+    <script>
+      // Check WebP support
+      function checkWebPSupport() {
+        const webpImage = new Image();
+        webpImage.onload = function() {
+          document.documentElement.classList.add('webp');
+        };
+        webpImage.onerror = function() {
+          document.documentElement.classList.add('no-webp');
+        };
+        webpImage.src = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=';
+      }
+      
+      // Load appropriate image format
+      function loadOptimizedImage(img) {
+        if (img.dataset.srcset) {
+          const srcset = img.dataset.srcset.split(',')
+            .map(src => {
+              const [url, size] = src.trim().split(' ');
+              const webpUrl = url.replace(/\.(jpg|jpeg|png)$/, '.webp');
+              return document.documentElement.classList.contains('webp') ? 
+                `${webpUrl} ${size}` : 
+                `${url} ${size}`;
+            })
+            .join(', ');
+          img.srcset = srcset;
+        }
+        
+        if (img.dataset.src) {
+          const webpSrc = img.dataset.src.replace(/\.(jpg|jpeg|png)$/, '.webp');
+          img.src = document.documentElement.classList.contains('webp') ? 
+            webpSrc : 
+            img.dataset.src;
+        }
+      }
+      
+      // Initialize image optimization
+      document.addEventListener('DOMContentLoaded', () => {
+        checkWebPSupport();
+        
+        // Update image sources for WebP support
+        document.querySelectorAll('img[data-src], img[data-srcset]').forEach(loadOptimizedImage);
+        
+        // Observe new images
+        const imageObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              loadOptimizedImage(entry.target);
+              imageObserver.unobserve(entry.target);
+            }
+          });
+        });
+        
+        document.querySelectorAll('img[data-src], img[data-srcset]').forEach(img => {
+          imageObserver.observe(img);
+        });
+      });
+    </script>
+    
+    <!-- Code splitting for non-critical JavaScript -->
+    <script type="module">
+      // Dynamically import non-critical modules
+      const loadNonCriticalJS = async () => {
+        if (document.querySelector('.lightbox')) {
+          const lightboxModule = await import('/js/modules/lightbox.js');
+          lightboxModule.init();
+        }
+        
+        if (document.querySelector('.navigation')) {
+          const navigationModule = await import('/js/modules/navigation.js');
+          navigationModule.init();
+        }
+      };
+      
+      // Load non-critical JS after page load
+      if (document.readyState === 'complete') {
+        loadNonCriticalJS();
+      } else {
+        window.addEventListener('load', loadNonCriticalJS);
+      }
+    </script>
+  </head>
+  <body class="smooth-transition">
+    <div class="container-fluid">
+      <header>
+        <div class="container">
+          <div class="col-md-3"><a href="about" class="brand"><img width="75%" alt="Nathan Polito portfolio" src="images/Logo.jpg"></a></div>
+          <div class="col-md-6 text-center">
+            <div class="nav-trigger">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+            </div>
+            <ul class="navigation">
+              <li> <a href="about">About Me</a></li>
+              <li><a href="portfolio" class="active">Portfolio</a>
+                <ul class="dropdown">
+                  <li><a href="work-one">Project One</a></li>
+                  <li><a href="work-two">Project Two</a></li>
+                  <li><a href="work-three">Project Three</a></li>
+                  <li><a href="work-four">Project Four</a></li>
+                  <li><a href="work-five">Project Five</a></li>
+                  <li><a href="work-six" class="active">Project Six</a></li>
+                </ul>
+              </li>
+              <li> <a href="contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+          </div>
+        </div>
+      </header>
+      <section class="hero text-center hero--with-background hero--work-six" role="banner" aria-labelledby="project-title">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <h1 id="project-title">Platform Features in Focus</h1>
+              <p>This video showcases the platform's advanced technical features through visuals tailored for a specialized industry audience. Designed to resonate with professionals who understand the nuances of the field, it highlights the platform's powerful capabilities and innovative design. By focusing on the details that matter most to its target audience, the video effectively communicates the platform's value and technical excellence.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="content" role="main">
+        <div class="container">
+          <div class="row mb-xl">
+            <div class="video-container" role="region" aria-label="Project video showcase">
+              <div style="padding:56.25% 0 0 0;position:relative;">
+                <iframe 
+                  src="https://player.vimeo.com/video/908059667?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                  frameborder="0" 
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+                  style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+                  title="Platform Features Video Showcase"
+                  aria-label="Platform features demonstration video"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-xl" role="region" aria-label="Project screenshots">
+            <div class="col-md-3">
+              <figure>
+                <img 
+                  src="images/portfolio/Screen37.jpg" 
+                  srcset="
+                    images/portfolio/Screen37-small.jpg 400w,
+                    images/portfolio/Screen37.jpg 800w
+                  "
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                  class="fadein" 
+                  loading="lazy" 
+                  alt="Platform feature screenshot 1"
+                  onerror="this.onerror=null; this.src='images/portfolio/placeholder.jpg';"
+                >
+                <figcaption class="sr-only">Platform feature screenshot 1</figcaption>
+              </figure>
+            </div>
+            <div class="col-md-3">
+              <figure>
+                <img 
+                  src="images/portfolio/Screen38.jpg" 
+                  srcset="
+                    images/portfolio/Screen38-small.jpg 400w,
+                    images/portfolio/Screen38.jpg 800w
+                  "
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                  class="fadein" 
+                  loading="lazy" 
+                  alt="Platform feature screenshot 2"
+                  onerror="this.onerror=null; this.src='images/portfolio/placeholder.jpg';"
+                >
+                <figcaption class="sr-only">Platform feature screenshot 2</figcaption>
+              </figure>
+            </div>
+            <div class="col-md-3">
+              <figure>
+                <img 
+                  src="images/portfolio/Screen39.jpg" 
+                  srcset="
+                    images/portfolio/Screen39-small.jpg 400w,
+                    images/portfolio/Screen39.jpg 800w
+                  "
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                  class="fadein" 
+                  loading="lazy" 
+                  alt="Platform feature screenshot 3"
+                  onerror="this.onerror=null; this.src='images/portfolio/placeholder.jpg';"
+                >
+                <figcaption class="sr-only">Platform feature screenshot 3</figcaption>
+              </figure>
+            </div>
+            <div class="col-md-3">
+              <figure>
+                <img 
+                  src="images/portfolio/Screen40.jpg" 
+                  srcset="
+                    images/portfolio/Screen40-small.jpg 400w,
+                    images/portfolio/Screen40.jpg 800w
+                  "
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                  class="fadein" 
+                  loading="lazy" 
+                  alt="Platform feature screenshot 4"
+                  onerror="this.onerror=null; this.src='images/portfolio/placeholder.jpg';"
+                >
+                <figcaption class="sr-only">Platform feature screenshot 4</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <figure>
+                <img 
+                  src="images/portfolio/Screen41.jpg" 
+                  srcset="
+                    images/portfolio/Screen41-small.jpg 600w,
+                    images/portfolio/Screen41.jpg 1200w
+                  "
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  class="fadein" 
+                  loading="lazy" 
+                  alt="Platform feature in real-world context"
+                  onerror="this.onerror=null; this.src='images/portfolio/placeholder.jpg';"
+                >
+                <figcaption class="sr-only">Platform feature in real-world context</figcaption>
+              </figure>
+              <div class="box pb-0">
+                <h2 class="h3">Connecting Through Real-World Context</h2>
+                <p>The video uses industry-specific visuals and scenarios to connect directly with its specialized audience. By presenting the platform in action, it highlights how its technical features seamlessly address common challenges in the field. This approach ensures the content feels both relevant and impactful to viewers with a deep understanding of the industry.</p>
+              </div>
+              <figure>
+                <img 
+                  src="images/portfolio/Screen42.jpg" 
+                  srcset="
+                    images/portfolio/Screen42-small.jpg 600w,
+                    images/portfolio/Screen42.jpg 1200w
+                  "
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  class="fadein" 
+                  loading="lazy" 
+                  alt="Platform innovation and efficiency features"
+                  onerror="this.onerror=null; this.src='images/portfolio/placeholder.jpg';"
+                >
+                <figcaption class="sr-only">Platform innovation and efficiency features</figcaption>
+              </figure>
+            </div>
+            <div class="col-md-6">
+              <div class="box">
+                <h2 class="h3">Highlighting Innovation and Efficiency</h2>
+                <p>Focusing on innovation and functionality, the video emphasizes the platform's ability to enhance workflows and drive efficiency. It showcases key features in a way that highlights their practical applications, underscoring the platform's role as a cutting-edge solution for industry professionals.</p>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-xl">
+            <div class="col-md-6 col-md-offset-3">
+              <nav class="pagination" role="navigation" aria-label="Project navigation">
+                <a href="work-five" class="previous ion-ios-arrow-thin-left pull-left" aria-label="Previous project"></a>
+                <a href="portfolio" class="btn btn-default">Back to Portfolio</a>
+                <a href="#" class="disabled next ion-ios-arrow-thin-right pull-right" aria-label="Next project" aria-disabled="true"></a>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="bottom" role="contentinfo">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              &copy; Nathan Polito All rights reserved
+            </div>
+          </div>
+        </div>
+      </footer>
+      <a href="#" class="back-to-top ion-ios-arrow-up"></a>
+    </div>
+    <script src="js/assets/bootstrap.js"></script>
+    <script src="js/assets/imagesloaded.pkgd.min.js"></script>
+    <script src="js/assets/validation.js"></script>
+    <script src="js/assets/packery.pkgd.min.js"></script>
+    <script src="js/assets/velocity.min.js"></script>
+    <script src="js/assets/typed.min.js"></script>
+    <script src="modules/titan-slider/titan-slider.js"></script>
+    <script src="modules/tera-lightbox/tera-lightbox.js"></script>
+    <script src="js/assets/animsition.js"></script>
+    <script src="js/functions.js"></script>
+    <script>
+      // Back to top button functionality
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > 300) {
+          $('.back-to-top').addClass('visible');
+        } else {
+          $('.back-to-top').removeClass('visible');
+        }
+      });
+
+      $('.back-to-top').click(function(e) {
+        e.preventDefault();
+        $('html, body').animate({scrollTop: 0}, 800);
+      });
+
+      // Enhanced mobile navigation
+      $('.nav-trigger').click(function() {
+        $(this).toggleClass('active');
+        $('.navigation').toggleClass('active');
+      });
+
+      // Close mobile menu when clicking outside
+      $(document).click(function(e) {
+        if (!$(e.target).closest('.navigation, .nav-trigger').length) {
+          $('.nav-trigger').removeClass('active');
+          $('.navigation').removeClass('active');
+        }
+      });
+
+      // Image loading optimization
+      document.addEventListener('DOMContentLoaded', function() {
+        // Add loading animation class
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        images.forEach(img => {
+          img.classList.add('loading');
+          img.addEventListener('load', function() {
+            this.classList.remove('loading');
+            this.classList.add('loaded');
+          });
+        });
+
+        // Intersection Observer for lazy loading
+        if ('IntersectionObserver' in window) {
+          const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                imageObserver.unobserve(img);
+              }
+            });
+          });
+
+          images.forEach(img => {
+            imageObserver.observe(img);
+          });
+        }
+      });
+    </script>
+    <style>
+      /* Image loading animation */
+      img.loading {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+      img.loaded {
+        opacity: 1;
+      }
+      .fadein {
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+      }
+      .fadein:hover {
+        transform: scale(1.02);
+      }
+      
+      /* Accessibility improvements */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      
+      /* Focus styles for better keyboard navigation */
+      a:focus,
+      button:focus {
+        outline: 2px solid #007bff;
+        outline-offset: 2px;
+      }
+      
+      /* Skip to main content link */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: #007bff;
+        color: white;
+        padding: 8px;
+        z-index: 100;
+        transition: top 0.3s;
+      }
+      
+      .skip-link:focus {
+        top: 0;
+      }
+      
+      /* Loading Progress Indicator */
+      .page-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: #f0f0f0;
+        z-index: 9999;
+      }
+      
+      .page-loader .progress {
+        height: 100%;
+        background: #007bff;
+        width: 0;
+        transition: width 0.3s ease-out;
+      }
+      
+      /* Enhanced Mobile Menu */
+      @media (max-width: 768px) {
+        .navigation {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 80%;
+          max-width: 300px;
+          height: 100vh;
+          background: rgba(255, 255, 255, 0.98);
+          padding: 60px 20px 20px;
+          transition: right 0.3s ease-in-out;
+          box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+          overflow-y: auto;
+          z-index: 1000;
+        }
+        
+        .navigation.active {
+          right: 0;
+        }
+        
+        .navigation > li {
+          margin: 10px 0;
+        }
+        
+        .navigation .dropdown {
+          position: static;
+          background: rgba(0, 0, 0, 0.02);
+          padding: 10px 0;
+          margin: 5px 0;
+          display: none;
+        }
+        
+        .navigation li:hover .dropdown,
+        .navigation li:focus-within .dropdown {
+          display: block;
+        }
+        
+        .nav-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+          z-index: 999;
+        }
+        
+        .nav-overlay.active {
+          opacity: 1;
+          visibility: visible;
+        }
+        
+        .nav-trigger {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          z-index: 1001;
+          background: rgba(255, 255, 255, 0.9);
+          padding: 10px;
+          border-radius: 4px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+      }
+      
+      /* Image optimization styles */
+      figure {
+        position: relative;
+        margin: 0;
+        overflow: hidden;
+        background: #f8f8f8;
+      }
+      
+      figure img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+      }
+      
+      figure::before {
+        content: '';
+        display: block;
+        padding-top: 56.25%; /* 16:9 aspect ratio */
+      }
+      
+      figure img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      /* Image loading placeholder */
+      figure::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+        z-index: 1;
+      }
+      
+      figure img.loaded + figcaption + figure::after {
+        display: none;
+      }
+      
+      @keyframes loading {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+      
+      /* Responsive image container */
+      .image-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        background: #f8f8f8;
+        overflow: hidden;
+      }
+      
+      .image-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      /* Lightbox styles */
+      .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: none;
+        z-index: 9999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        touch-action: none; /* Prevents default touch actions for custom gestures */
+      }
+      
+      .lightbox.active {
+        display: flex;
+        opacity: 1;
+      }
+      
+      .lightbox-content {
+        position: relative;
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .lightbox-image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      
+      .lightbox-image {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+        transform-origin: center;
+        will-change: transform;
+        cursor: zoom-in;
+      }
+      
+      .lightbox.active .lightbox-image {
+        transform: scale(1);
+      }
+      
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(90deg);
+      }
+      
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        padding: 0 20px;
+      }
+      
+      .lightbox-nav button {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .lightbox-nav button:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      
+      .lightbox-caption {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        color: white;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.5);
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+      
+      .lightbox.active .lightbox-caption {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      
+      /* Enhanced image hover effects */
+      figure {
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+      
+      figure:hover {
+        transform: translateY(-5px);
+      }
+      
+      figure:hover img {
+        transform: scale(1.05);
+      }
+      
+      /* Smooth scroll behavior */
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      /* Parallax effect for hero section */
+      .hero {
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%);
+        transform: translateZ(-1px) scale(2);
+        z-index: -1;
+      }
+      
+      /* Enhanced transitions */
+      .fadein {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+        will-change: transform, opacity;
+      }
+      
+      .fadein.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      /* Enhanced Lightbox styles */
+      .lightbox {
+        /* Existing lightbox styles... */
+        touch-action: none; /* Prevents default touch actions for custom gestures */
+      }
+      
+      .lightbox-image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      
+      .lightbox-image {
+        /* Existing lightbox-image styles... */
+        transform-origin: center;
+        will-change: transform;
+        cursor: zoom-in;
+      }
+      
+      .lightbox-image.zoomed {
+        cursor: grab;
+      }
+      
+      .lightbox-image.zoomed:active {
+        cursor: grabbing;
+      }
+      
+      /* Preloader animation */
+      .lightbox-preloader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s linear infinite;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      
+      .lightbox-preloader.active {
+        opacity: 1;
+      }
+      
+      @keyframes spin {
+        to { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+      
+      /* Mobile gesture indicators */
+      .gesture-indicator {
+        position: absolute;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+      
+      .gesture-indicator.active {
+        opacity: 1;
+      }
+      
+      .gesture-indicator .icon {
+        display: block;
+        font-size: 24px;
+        margin-bottom: 5px;
+      }
+      
+      /* Enhanced mobile menu */
+      @media (max-width: 768px) {
+        .navigation {
+          /* Existing mobile navigation styles... */
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .nav-trigger {
+          /* Existing nav-trigger styles... */
+          backdrop-filter: blur(5px);
+          -webkit-backdrop-filter: blur(5px);
+        }
+        
+        .nav-item {
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .nav-item::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: currentColor;
+          transform: translateX(-100%);
+          transition: transform 0.3s ease;
+        }
+        
+        .nav-item:hover::after,
+        .nav-item:focus::after {
+          transform: translateX(0);
+        }
+        
+        /* Mobile gesture menu */
+        .nav-swipe-indicator {
+          position: fixed;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(0, 0, 0, 0.8);
+          color: white;
+          padding: 8px 16px;
+          border-radius: 20px;
+          font-size: 12px;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+          z-index: 1000;
+        }
+        
+        .nav-swipe-indicator.active {
+          opacity: 1;
+        }
+      }
+      
+      /* Touch feedback */
+      .touch-feedback {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%) scale(0);
+        pointer-events: none;
+        animation: touch-ripple 0.6s ease-out;
+      }
+      
+      @keyframes touch-ripple {
+        to {
+          transform: translate(-50%, -50%) scale(2);
+          opacity: 0;
+        }
+      }
+      
+      /* Loading skeleton animation */
+      .skeleton-loading {
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.1) 25%,
+          rgba(255, 255, 255, 0.2) 50%,
+          rgba(255, 255, 255, 0.1) 75%
+        );
+        background-size: 200% 100%;
+        animation: skeleton-loading 1.5s infinite;
+      }
+      
+      @keyframes skeleton-loading {
+        to { background-position: -200% 0; }
+      }
+    </style>
+    <div class="page-loader">
+      <div class="progress"></div>
+    </div>
+    <div class="nav-overlay"></div>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <script>
+      // Existing scripts...
+      
+      // Page loading progress
+      document.addEventListener('DOMContentLoaded', function() {
+        const loader = document.querySelector('.page-loader .progress');
+        let width = 0;
+        
+        // Simulate loading progress
+        const interval = setInterval(() => {
+          if (width >= 100) {
+            clearInterval(interval);
+            setTimeout(() => {
+              document.querySelector('.page-loader').style.opacity = '0';
+              setTimeout(() => {
+                document.querySelector('.page-loader').style.display = 'none';
+              }, 300);
+            }, 200);
+          } else {
+            width += Math.random() * 30;
+            if (width > 100) width = 100;
+            loader.style.width = width + '%';
+          }
+        }, 200);
+        
+        // Update progress on actual page load
+        window.addEventListener('load', () => {
+          width = 100;
+          loader.style.width = '100%';
+        });
+      });
+      
+      // Enhanced mobile navigation
+      const navTrigger = document.querySelector('.nav-trigger');
+      const navigation = document.querySelector('.navigation');
+      const navOverlay = document.querySelector('.nav-overlay');
+      
+      function toggleMenu() {
+        navTrigger.classList.toggle('active');
+        navigation.classList.toggle('active');
+        navOverlay.classList.toggle('active');
+        document.body.style.overflow = navigation.classList.contains('active') ? 'hidden' : '';
+      }
+      
+      navTrigger.addEventListener('click', toggleMenu);
+      navOverlay.addEventListener('click', toggleMenu);
+      
+      // Close menu on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navigation.classList.contains('active')) {
+          toggleMenu();
+        }
+      });
+      
+      // Handle dropdown menus on mobile
+      const dropdownParents = document.querySelectorAll('.navigation > li > a');
+      dropdownParents.forEach(parent => {
+        parent.addEventListener('click', (e) => {
+          if (window.innerWidth <= 768) {
+            const dropdown = parent.nextElementSibling;
+            if (dropdown && dropdown.classList.contains('dropdown')) {
+              e.preventDefault();
+              dropdown.style.display = 
+                dropdown.style.display === 'block' ? 'none' : 'block';
+            }
+          }
+        });
+      });
+      
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+      
+      // Image optimization and loading
+      document.addEventListener('DOMContentLoaded', function() {
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        
+        // Create image loading observer
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              
+              // Load the appropriate image based on viewport size
+              const viewportWidth = window.innerWidth;
+              const srcset = img.getAttribute('srcset');
+              if (srcset) {
+                const sources = srcset.split(',')
+                  .map(src => src.trim().split(' '))
+                  .sort((a, b) => parseInt(b[1]) - parseInt(a[1]));
+                
+                const appropriateSrc = sources.find(src => 
+                  parseInt(src[1]) <= viewportWidth
+                ) || sources[sources.length - 1];
+                
+                img.src = appropriateSrc[0];
+              }
+              
+              // Handle image load
+              img.onload = function() {
+                this.classList.add('loaded');
+                this.classList.remove('loading');
+              };
+              
+              // Handle image error
+              img.onerror = function() {
+                this.src = 'images/portfolio/placeholder.jpg';
+                this.classList.add('error');
+              };
+              
+              observer.unobserve(img);
+            }
+          });
+        }, {
+          rootMargin: '50px 0px',
+          threshold: 0.01
+        });
+        
+        // Observe all lazy-loaded images
+        images.forEach(img => {
+          imageObserver.observe(img);
+        });
+        
+        // Handle window resize for responsive images
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(() => {
+            images.forEach(img => {
+              if (img.dataset.srcset) {
+                const viewportWidth = window.innerWidth;
+                const sources = img.dataset.srcset.split(',')
+                  .map(src => src.trim().split(' '))
+                  .sort((a, b) => parseInt(b[1]) - parseInt(a[1]));
+                
+                const appropriateSrc = sources.find(src => 
+                  parseInt(src[1]) <= viewportWidth
+                ) || sources[sources.length - 1];
+                
+                if (img.src !== appropriateSrc[0]) {
+                  img.src = appropriateSrc[0];
+                }
+              }
+            });
+          }, 250);
+        });
+      });
+      
+      // Lightbox functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const lightbox = document.querySelector('.lightbox');
+        const lightboxImage = lightbox.querySelector('.lightbox-image');
+        const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+        const closeBtn = lightbox.querySelector('.lightbox-close');
+        const prevBtn = lightbox.querySelector('.lightbox-prev');
+        const nextBtn = lightbox.querySelector('.lightbox-next');
+        
+        let currentImageIndex = 0;
+        const images = Array.from(document.querySelectorAll('figure img'));
+        
+        function openLightbox(index) {
+          currentImageIndex = index;
+          const img = images[index];
+          lightboxImage.src = img.src;
+          lightboxCaption.textContent = img.alt;
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden';
+          
+          // Update button states
+          prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
+          nextBtn.style.visibility = index === images.length - 1 ? 'hidden' : 'visible';
+        }
+        
+        function closeLightbox() {
+          lightbox.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+        
+        function showNextImage() {
+          if (currentImageIndex < images.length - 1) {
+            openLightbox(currentImageIndex + 1);
+          }
+        }
+        
+        function showPrevImage() {
+          if (currentImageIndex > 0) {
+            openLightbox(currentImageIndex - 1);
+          }
+        }
+        
+        // Event listeners
+        images.forEach((img, index) => {
+          img.parentElement.addEventListener('click', () => openLightbox(index));
+        });
+        
+        closeBtn.addEventListener('click', closeLightbox);
+        prevBtn.addEventListener('click', showPrevImage);
+        nextBtn.addEventListener('click', showNextImage);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+          if (!lightbox.classList.contains('active')) return;
+          
+          switch(e.key) {
+            case 'Escape':
+              closeLightbox();
+              break;
+            case 'ArrowLeft':
+              showPrevImage();
+              break;
+            case 'ArrowRight':
+              showNextImage();
+              break;
+          }
+        });
+        
+        // Close on overlay click
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) {
+            closeLightbox();
+          }
+        });
+      });
+      
+      // Scroll animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            if (entry.target.classList.contains('fadein')) {
+              observer.unobserve(entry.target);
+            }
+          }
+        });
+      }, observerOptions);
+      
+      // Observe all elements with fadein class
+      document.querySelectorAll('.fadein').forEach(el => {
+        observer.observe(el);
+      });
+      
+      // Parallax effect
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.hero');
+        
+        parallaxElements.forEach(element => {
+          const speed = 0.5;
+          element.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+      });
+      
+      // Smooth scroll for all internal links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      
+      // Enhanced Lightbox functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const lightbox = document.querySelector('.lightbox');
+        const lightboxImage = lightbox.querySelector('.lightbox-image');
+        const lightboxContainer = lightbox.querySelector('.lightbox-image-container');
+        const preloader = lightbox.querySelector('.lightbox-preloader');
+        const gestureIndicator = lightbox.querySelector('.gesture-indicator');
+        const navSwipeIndicator = document.querySelector('.nav-swipe-indicator');
+        
+        let currentScale = 1;
+        let startDistance = 0;
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+        let translateX = 0;
+        let translateY = 0;
+        
+        // Show gesture indicator on mobile
+        if ('ontouchstart' in window) {
+          setTimeout(() => {
+            gestureIndicator.classList.add('active');
+            setTimeout(() => {
+              gestureIndicator.classList.remove('active');
+            }, 3000);
+          }, 1000);
+          
+          // Show nav swipe indicator
+          setTimeout(() => {
+            navSwipeIndicator.classList.add('active');
+            setTimeout(() => {
+              navSwipeIndicator.classList.remove('active');
+            }, 3000);
+          }, 2000);
+        }
+        
+        // Image preloading
+        function preloadImage(src) {
+          return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => resolve(img);
+            img.onerror = reject;
+            img.src = src;
+          });
+        }
+        
+        async function openLightbox(index) {
+          currentImageIndex = index;
+          const img = images[index];
+          
+          // Show preloader
+          preloader.classList.add('active');
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden';
+          
+          try {
+            // Preload image
+            await preloadImage(img.src);
+            lightboxImage.src = img.src;
+            lightboxCaption.textContent = img.alt;
+            
+            // Reset zoom and position
+            currentScale = 1;
+            translateX = 0;
+            translateY = 0;
+            updateImageTransform();
+            
+            // Update button states
+            prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
+            nextBtn.style.visibility = index === images.length - 1 ? 'hidden' : 'visible';
+          } catch (error) {
+            console.error('Error loading image:', error);
+            lightboxImage.src = 'images/portfolio/placeholder.jpg';
+          } finally {
+            preloader.classList.remove('active');
+          }
+        }
+        
+        // Touch feedback
+        function createTouchFeedback(x, y) {
+          const feedback = document.createElement('div');
+          feedback.className = 'touch-feedback';
+          feedback.style.left = x + 'px';
+          feedback.style.top = y + 'px';
+          lightboxContainer.appendChild(feedback);
+          
+          feedback.addEventListener('animationend', () => {
+            feedback.remove();
+          });
+        }
+        
+        // Image zoom and pan
+        function updateImageTransform() {
+          lightboxImage.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
+        }
+        
+        // Pinch to zoom
+        lightboxContainer.addEventListener('touchstart', (e) => {
+          if (e.touches.length === 2) {
+            startDistance = Math.hypot(
+              e.touches[0].pageX - e.touches[1].pageX,
+              e.touches[0].pageY - e.touches[1].pageY
+            );
+          } else if (e.touches.length === 1) {
+            isDragging = true;
+            startX = e.touches[0].pageX - translateX;
+            startY = e.touches[0].pageY - translateY;
+            createTouchFeedback(e.touches[0].pageX, e.touches[0].pageY);
+          }
+        });
+        
+        lightboxContainer.addEventListener('touchmove', (e) => {
+          if (e.touches.length === 2) {
+            e.preventDefault();
+            const currentDistance = Math.hypot(
+              e.touches[0].pageX - e.touches[1].pageX,
+              e.touches[0].pageY - e.touches[1].pageY
+            );
+            const scale = (currentDistance / startDistance) * currentScale;
+            currentScale = Math.min(Math.max(scale, 1), 4);
+            updateImageTransform();
+          } else if (e.touches.length === 1 && isDragging) {
+            e.preventDefault();
+            translateX = e.touches[0].pageX - startX;
+            translateY = e.touches[0].pageY - startY;
+            updateImageTransform();
+          }
+        });
+        
+        lightboxContainer.addEventListener('touchend', () => {
+          isDragging = false;
+          if (currentScale < 1.1) {
+            currentScale = 1;
+            translateX = 0;
+            translateY = 0;
+            updateImageTransform();
+          }
+        });
+        
+        // Mouse wheel zoom
+        lightboxContainer.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          const delta = e.deltaY * -0.01;
+          currentScale = Math.min(Math.max(currentScale + delta, 1), 4);
+          updateImageTransform();
+        });
+        
+        // Double click to zoom
+        lightboxImage.addEventListener('dblclick', () => {
+          currentScale = currentScale === 1 ? 2 : 1;
+          translateX = 0;
+          translateY = 0;
+          updateImageTransform();
+        });
+        
+        // Enhanced mobile navigation
+        let touchStartX = 0;
+        let touchStartY = 0;
+        
+        document.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+        });
+        
+        document.addEventListener('touchmove', (e) => {
+          if (touchStartX === 0) return;
+          
+          const touchEndX = e.touches[0].clientX;
+          const touchEndY = e.touches[0].clientY;
+          const deltaX = touchEndX - touchStartX;
+          const deltaY = touchEndY - touchStartY;
+          
+          // Check if the swipe is horizontal and from the edge
+          if (Math.abs(deltaX) > Math.abs(deltaY) && 
+              Math.abs(deltaX) > 50 && 
+              touchStartX < 50) {
+            toggleMenu();
+            touchStartX = 0;
+          }
+        });
+        
+        // Enhanced scroll animations
+        const scrollObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              if (entry.target.classList.contains('fadein')) {
+                scrollObserver.unobserve(entry.target);
+              }
+            }
+          });
+        }, {
+          root: null,
+          rootMargin: '0px',
+          threshold: [0.1, 0.5]
+        });
+        
+        // Observe all elements with fadein class
+        document.querySelectorAll('.fadein').forEach(el => {
+          scrollObserver.observe(el);
+        });
+        
+        // Add skeleton loading to images
+        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+          const wrapper = img.parentElement;
+          wrapper.classList.add('skeleton-loading');
+          img.addEventListener('load', () => {
+            wrapper.classList.remove('skeleton-loading');
+          });
+        });
+      });
+    </script>
+    <!-- Enhanced Lightbox container -->
+    <div class="lightbox" role="dialog" aria-label="Image gallery">
+      <div class="lightbox-content">
+        <div class="lightbox-image-container">
+          <div class="lightbox-preloader"></div>
+          <img class="lightbox-image" src="" alt="">
+        </div>
+        <button class="lightbox-close" aria-label="Close gallery">&times;</button>
+        <div class="lightbox-nav">
+          <button class="lightbox-prev" aria-label="Previous image">&lt;</button>
+          <button class="lightbox-next" aria-label="Next image">&gt;</button>
+        </div>
+        <div class="lightbox-caption"></div>
+        <div class="gesture-indicator">
+          <span class="icon">👆</span>
+          <span class="text">Pinch to zoom</span>
+        </div>
+      </div>
+    </div>
+    <div class="nav-swipe-indicator">Swipe from right edge to open menu</div>
+  </body>
+</html>

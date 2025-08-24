@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Nathan Polito | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/core.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <script src="js/assets/jquery.js"></script>
+    <style>
+      /* Single Page & Nav Styles */
+      .section { padding: 100px 0; }
+      .section-nav { position: fixed; top: 50%; right: 30px; transform: translateY(-50%); z-index: 1000; }
+      .section-nav a { display: block; width: 10px; height: 10px; border-radius: 50%; background: rgba(0,0,0,0.2); margin: 15px 0; transition: all 0.3s ease; }
+      .section-nav a.active, .section-nav a:hover { background: #000; transform: scale(1.5); }
+      body.modal-open { overflow: hidden; }
+
+      /* Hero Section */
+      .hero-section {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: url('images/portfolio/office.jpg') no-repeat center center;
+        background-size: cover;
+        position: relative;
+        color: white;
+        border-radius: 32px;
+        overflow: hidden;
+      }
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Gradient: dark at bottom for text, transparent at top for image color */
+        background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.05) 80%);
+        z-index: 1;
+      }
+      .hero-section .container {
+        position: relative;
+        z-index: 2;
+      }
+      .hero-title { font-size: clamp(2.2rem, 6vw, 3.2rem); font-weight: 800; }
+      .hero-subtitle { font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: #eee; margin-bottom: 25px; }
+      .hero-location {
+        font-size: clamp(1rem, 2vw, 1.1rem);
+        margin-top: 10px;
+      }
+      @media (max-width: 767px) {
+        .hero-title, .hero-subtitle, .hero-location {
+          text-align: center;
+        }
+        .hero-location {
+          flex-direction: column;
+          gap: 2px;
+        }
+      }
+
+      /* Masonry Grid Styles */
+      .video-portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(320px, 1fr));
+        gap: 1.5rem;
+        max-width: 1000px;
+        margin: 0 auto;
+        width: 100%;
+        padding: 1.5rem 1rem 1rem 1rem;
+        transition: all 0.4s ease;
+      }
+      @media (max-width: 700px) {
+        .video-portfolio-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .video-item {
+        aspect-ratio: 16/9;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        min-height: 220px;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 2px 16px rgba(44,85,213,0.07), 0 1.5px 4px rgba(0,0,0,0.03);
+        transition: box-shadow 0.2s, transform 0.2s;
+        overflow: hidden;
+        position: relative;
+      }
+      .video-item:focus-visible {
+        outline: 3px solid #2C55D5;
+        outline-offset: 2px;
+      }
+      .video-item:hover, .video-item:focus-visible {
+        box-shadow: 0 6px 24px rgba(44,85,213,0.13), 0 3px 12px rgba(0,0,0,0.06);
+        transform: translateY(-2px) scale(1.03);
+      }
+      .video-thumbnail {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        background-color: #000;
+        transition: box-shadow 0.3s;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio fallback */
+      }
+      .video-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .video-player-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s;
+      }
+      .video-item.active .video-player-container {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .video-item.active .video-thumbnail img {
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .video-loading {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #23242a;
+        z-index: 2;
+        flex-direction: column;
+        font-size: 1.1rem;
+        color: #f5f5f5;
+        font-weight: 500;
+        margin: 0;
+        padding: 0;
+      }
+      .video-loading-spinner {
+        border: 4px solid #eee;
+        border-top: 4px solid #2C55D5;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        animation: spin 1s linear infinite;
+        margin-bottom: 12px;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .video-caption {
+        padding: 16px 18px 10px 18px;
+        background: none;
+        text-align: left;
+        font-size: 1rem;
+        opacity: 0.92;
+        transition: opacity 0.2s;
+      }
+      .video-caption h4 {
+        margin: 0 0 10px 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: #2C55D5;
+      }
+      .video-caption .tag {
+        display: none !important;
+      }
+      .video-item:hover .video-caption .tag,
+      .video-item:focus .video-caption .tag,
+      .video-item.active .video-caption .tag {
+        display: inline-block;
+        opacity: 1;
+      }
+      .video-caption p { margin: 0; font-size: 14px; line-height: 1.5; color: #666; }
+      .vimeo-iframe-fix { pointer-events: none; }
+
+      /* About Section */
+      .about-section {
+        background: #f8f9fa;
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+      }
+      .about-avatar-image {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 8px solid #fff;
+        box-shadow: 0 8px 32px rgba(44,85,213,0.10), 0 2px 8px rgba(0,0,0,0.08);
+        display: block;
+        margin: 0 auto 1.5rem auto;
+      }
+      .about-stats-wrapper { margin-top: 30px; }
+      .about-greeting .typed-cursor { font-size: inherit; }
+
+      /* Modern About Stats */
+      .about-stats-modern {
+        display: flex;
+        gap: 32px;
+        margin: 32px 0 0 0;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+      .stat-card {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 2px 16px rgba(44,85,213,0.07), 0 1.5px 4px rgba(0,0,0,0.03);
+        padding: 18px 28px 14px 28px;
+        min-width: 120px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: box-shadow 0.2s, transform 0.2s;
+        margin-bottom: 18px;
+      }
+      .stat-card:hover {
+        box-shadow: 0 6px 24px rgba(44,85,213,0.13), 0 3px 12px rgba(0,0,0,0.06);
+        transform: translateY(-2px) scale(1.04);
+      }
+      .stat-icon {
+        font-size: 2rem;
+        margin-bottom: 6px;
+        opacity: 0.7;
+      }
+      .stat-number {
+        font-size: 2.1rem;
+        font-weight: 700;
+        color: #222;
+        margin-bottom: 2px;
+      }
+      .stat-label {
+        font-size: 1rem;
+        color: #888;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+      }
+      @media (max-width: 991px) {
+        .about-stats-modern { gap: 18px; }
+        .stat-card { min-width: 100px; padding: 14px 12px; }
+      }
+      @media (max-width: 767px) {
+        .about-section .row {
+          flex-direction: column !important;
+          align-items: center !important;
+        }
+        .about-avatar-image {
+          width: 140px;
+          height: 140px;
+          margin-bottom: 1.2rem;
+        }
+        .about-greeting, .about-section blockquote {
+          text-align: center;
+        }
+        .about-greeting {
+          font-size: 1.4rem;
+          margin-top: 0.5rem;
+        }
+        .about-section blockquote {
+          font-size: 1.1rem;
+          margin: 0.7rem 0 1.2rem 0;
+        }
+        .about-stats-modern {
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+          width: 100%;
+          margin-top: 1.2rem;
+        }
+        .stat-card {
+          width: 100%;
+          min-width: 0;
+          margin-bottom: 10px;
+        }
+        .about-section p {
+          text-align: center;
+          font-size: 1.05rem;
+          line-height: 1.6;
+          margin-top: 1.2rem;
+        }
+        .about-section .container {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+      }
+
+      /* Responsive */
+      /* .video-item width is now handled by grid, so these are removed */
+
+      header .container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 0 1rem 0;
+      }
+      .brand img {
+        max-width: 200px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+      .navigation {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 1.1rem;
+      }
+      .navigation li a {
+        color: #2C55D5;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5em 0.8em;
+        border-radius: 8px;
+        transition: background 0.2s, color 0.2s;
+      }
+      .navigation li a:hover, .navigation li a.active {
+        background: #f0f4ff;
+        color: #1a2a4f;
+      }
+      @media (max-width: 991px) {
+        header .container {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 1rem 0 0.5rem 0;
+        }
+        .brand img {
+          max-width: 160px;
+        }
+        .navigation {
+          gap: 1.2rem;
+          font-size: 1rem;
+        }
+      }
+      @media (max-width: 767px) {
+        header .container {
+          flex-direction: column;
+          align-items: center;
+          padding: 0.5rem 0 0.5rem 0;
+        }
+        .brand img {
+          max-width: 210px;
+          margin-bottom: 2.2rem;
+        }
+        .navigation {
+          display: none;
+        }
+      }
+      /* Remove white box/shadow under logo on mobile */
+      @media (max-width: 767px) {
+        .brand img {
+          box-shadow: none !important;
+          background: none !important;
+        }
+      }
+      /* Hero section mobile improvements */
+      .hero-section {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: url('images/portfolio/office.jpg') no-repeat center center;
+        background-size: cover;
+        position: relative;
+        color: white;
+        border-radius: 32px;
+        overflow: hidden;
+      }
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.05) 80%);
+        z-index: 1;
+      }
+      .hero-section .container {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 2.5rem 1rem 2.5rem 1rem;
+      }
+      @media (max-width: 767px) {
+        .hero-section {
+          min-height: 65vh;
+          border-radius: 0 0 32px 32px;
+        }
+        .hero-section .container {
+          padding: 2.5rem 0.5rem 2.5rem 0.5rem;
+        }
+        .hero-title {
+          font-size: 2rem;
+        }
+        .hero-subtitle {
+          font-size: 1.1rem;
+        }
+        .hero-location {
+          font-size: 1rem;
+          margin-top: 10px;
+        }
+      }
+    </style>
+    <style>
+      /* Modal overlay for fullscreen video */
+      .video-modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(0,0,0,0.96);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.3s;
+      }
+      .video-modal-overlay.active {
+        display: flex;
+      }
+      .video-modal-content {
+        background: rgba(24,28,42,0.85);
+        border-radius: 18px;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+        max-width: 90vw;
+        max-height: 90vh;
+        width: 900px;
+        padding: 0 0 24px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+      }
+      .video-modal-close {
+        position: absolute;
+        top: 18px;
+        right: 24px;
+        font-size: 2rem;
+        color: #fff;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 10;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+      }
+      .video-modal-close:hover { opacity: 1; }
+      .video-modal-player {
+        width: 80vw;
+        max-width: 800px;
+        aspect-ratio: 16/9;
+        background: #000;
+        border-radius: 12px;
+        overflow: hidden;
+        margin: 0 auto;
+        position: relative;
+      }
+      .video-modal-caption {
+        color: #fff;
+        margin-top: 18px;
+        font-size: 1.1rem;
+        background: rgba(30,34,54,0.85);
+        border-radius: 12px;
+        padding: 18px 24px;
+        max-width: 700px;
+        text-align: left;
+      }
+      @media (max-width: 900px) {
+        .video-modal-content { width: 98vw; }
+        .video-modal-player { width: 98vw; max-width: 98vw; }
+        .video-modal-caption { max-width: 98vw; }
+      }
+      @media (max-width: 600px) {
+        .video-modal-overlay { display: none !important; }
+      }
+    </style>
+</head>
+<body >
+    <div class="container-fluid"> 
+      <header>
+        <div class="container">
+            <div class="col-md-3"><a href="#home" class="brand"><img width="75%" alt="Nathan Polito portfolio" src="images/Logo.jpg"></a></div>
+            <div class="col-md-6 text-center">
+                <ul class="navigation">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+      </header>
+      
+      <nav class="section-nav">
+          <a href="#home" data-section="home"></a>
+          <a href="#portfolio" data-section="portfolio"></a>
+          <a href="#about" data-section="about"></a>
+          <a href="#contact" data-section="contact"></a>
+      </nav>
+
+      <main>
+          <section id="home" class="hero-section section text-center">
+            <div class="container">
+                <h1 class="hero-title"><span class="typed"></span></h1>
+                <p class="hero-subtitle">Creative Designer & Video Producer</p>
+                <div class="hero-location" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; font-size: 1.1rem; color: #f5f5f5;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;"><circle cx="12" cy="10" r="3" fill="#2C55D5"/><path d="M12 2C7.03 2 3 6.03 3 11c0 5.25 7.11 10.36 8.13 11.09.53.38 1.21.38 1.74 0C13.89 21.36 21 16.25 21 11c0-4.97-4.03-9-9-9zm0 18.54C10.14 18.07 5 14.13 5 11c0-3.87 3.13-7 7-7s7 3.13 7 7c0 3.13-5.14 7.07-7 9.54z" fill="#2C55D5"/></svg>
+                  <span style="font-weight: 500; color: #f5f5f5; letter-spacing: 0.01em;">Northern NSW, Australia</span>
+                </div>
+            </div>
+          </section>
+
+          <section id="portfolio" class="portfolio-section section">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center mb-lg">
+                  <h2>Video Portfolio</h2>
+                  <p>Explore my collection of video projects. Hover to play, move mouse away to stop.</p>
+                </div>
+              </div>
+            </div>
+            <div class="video-portfolio-grid" id="video-grid">
+              <div class="video-item" data-video-id="1095460940" data-video-hash="25c078847a" data-aspect-ratio="16/9"><div class="video-thumbnail"><img src="images/portfolio/NP_thumb_01.jpg" alt="Video 1"><div class="video-player-container"></div></div><div class="video-caption"><h4>Miura SV</h4><div class="tag">This project showcases my ability to blend classic automotive beauty with modern AI-driven video techniques. By leveraging AI tools for color grading and motion enhancement, I brought a vintage icon to life with a fresh, cinematic perspective. The result is a seamless fusion of nostalgia and innovation, demonstrating my commitment to pushing creative boundaries in visual storytelling.</div></div></div>
+              <div class="video-item" data-video-id="1095484548" data-video-hash="45311d1038" data-aspect-ratio="16/9"><div class="video-thumbnail"><img src="images/portfolio/NP_thumb_02.jpg" alt="Video 2"><div class="video-player-container"></div></div><div class="video-caption"><h4>Luxury Humanoid</h4><div class="tag">In this experimental piece, I explored the intersection of luxury design and artificial intelligence. Using AI-assisted animation and compositing, I crafted a futuristic humanoid character that embodies both elegance and technological advancement. This project highlights my skills in character design, 3D integration, and the creative use of AI to elevate visual narratives.</div></div></div>
+              <div class="video-item" data-video-id="1095488085" data-video-hash="" data-aspect-ratio="16/9"><div class="video-thumbnail"><img src="images/portfolio/NP_thumb_03.jpg" alt="Video 3"><div class="video-player-container"></div></div><div class="video-caption"><h4>Curious Tiger</h4><div class="tag">Curious Tiger is a testament to the power of AI in wildlife storytelling. By utilizing AI-based video enhancement and frame interpolation, I was able to capture and emphasize the subtle emotions and movements of the subject. This work demonstrates my ability to use cutting-edge technology to create engaging, emotionally resonant content that stands out in today's digital landscape.</div></div></div>
+              <div class="video-item" data-video-id="1095492230" data-video-hash="" data-aspect-ratio="16/9"><div class="video-thumbnail"><img src="images/portfolio/NP_thumb_04.jpg" alt="Video 4"><div class="video-player-container"></div></div><div class="video-caption"><h4>Gravity Tracksuit</h4><div class="tag">This video experiment leverages AI-driven motion tracking and effects to visualize the concept of gravity-defying apparel. The project involved advanced compositing and the creative application of AI tools to simulate dynamic, physics-based interactions. It reflects my passion for merging technology with fashion and my ability to deliver visually compelling concepts for innovative brands.</div></div></div>
+              <div class="video-item" data-video-id="1095501784" data-video-hash="" data-aspect-ratio="16/9"><div class="video-thumbnail"><img src="images/portfolio/NP_thumb_05.jpg" alt="Video 5"><div class="video-player-container"></div></div><div class="video-caption"><h4>Pigeon finds gum</h4><div class="tag">In this event video, I used AI-powered editing tools to streamline the post-production process, enhancing both pacing and visual clarity. The playful narrative is brought to life with subtle AI-driven effects that maintain a natural, authentic feel. This piece demonstrates my efficiency in workflow and my knack for infusing everyday moments with creative flair.</div></div></div>
+              <div class="video-item" data-video-id="1096095805" data-video-hash="" data-aspect-ratio="16/9"><div class="video-thumbnail"><img src="images/portfolio/NP_thumb_06.jpg" alt="Video 6"><div class="video-player-container"></div></div><div class="video-caption"><h4>War of Worlds</h4><div class="tag">For this animation, I combined traditional VFX techniques with AI-enabled video upscaling and scene reconstruction. The result is a high-impact, cinematic sequence that pushes the limits of what's possible in independent production. This project underscores my expertise in integrating AI into the creative pipeline to achieve results that rival big-budget studios.</div></div></div>
+            </div>
+          </section>
+
+          <section id="about" class="about-section section">
+            <div class="container">
+              <div class="row" style="display: flex; align-items: center;">
+                <div class="col-md-5 col-sm-12 text-center">
+                  <img src="images/portfolio/me.jpg" alt="Nathan Polito" class="about-avatar-image">
+                </div>
+                <div class="col-md-7 col-sm-12">
+                  <h3 class="about-greeting">Hello, I'm Nathan Polito.</h3>
+                  <blockquote>"Great design mirrors the natural world—striking a balance between form and purpose."</blockquote>
+
+                  <!-- Modern Stats Row -->
+                  <div class="about-stats-modern">
+                    <div class="stat-card">
+                      <div class="stat-number">20+</div>
+                      <div class="stat-label">Years Exp</div>
+                    </div>
+                    <div class="stat-card">
+                      <div class="stat-number">100+</div>
+                      <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat-card">
+                      <div class="stat-number">50+</div>
+                      <div class="stat-label">Clients</div>
+                    </div>
+                  </div>
+
+                  <p style="margin-top:32px;">With over two decades of experience, I've led projects that simplify complexity and bring visions to life. Take a look through my portfolio to see how I blend creative storytelling, technical expertise, and a deep appreciation for my environment to produce impactful work.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="contact" class="contact-section section text-center">
+            <div class="container">
+              <h2>Get In Touch</h2>
+              <p>Have a project in mind? I'd love to hear from you.</p>
+              <a href="mailto:nathan@modron.com" class="btn btn-default">Email Me</a>
+            </div>
+          </section>
+      </main>
+
+      <footer class="bottom">
+        <div class="container"><div class="row"><div class="col-md-12 text-center">&copy; 2025 Nathan Polito. All rights reserved.</div></div></div>
+      </footer>
+    </div>
+
+    <!-- Video Modal Overlay (desktop only) -->
+    <div class="video-modal-overlay" id="video-modal-overlay">
+      <div class="video-modal-content">
+        <button class="video-modal-close" id="video-modal-close" aria-label="Close video">&times;</button>
+        <div class="video-modal-player" id="video-modal-player"></div>
+        <div class="video-modal-caption" id="video-modal-caption"></div>
+      </div>
+    </div>
+
+    <script src="js/assets/bootstrap.js"></script>
+    <script src="js/assets/imagesloaded.pkgd.min.js"></script>
+    <script src="js/assets/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+    
+      $(document).ready(function() {
+        // Masonry initialization removed to allow CSS grid layout
+
+        // Set aspect ratio for each video-item (only for video-player-container)
+        $('.video-item').each(function() {
+          var aspect = $(this).data('aspect-ratio');
+          if (aspect) {
+            var ratio = aspect.split('/');
+            var padding = (parseInt(ratio[1]) / parseInt(ratio[0])) * 100;
+            // Only set on video-player-container, not thumbnail
+            $(this).find('.video-player-container').css('padding-bottom', padding + '%');
+            // Always set thumbnail to 16:9
+            $(this).find('.video-thumbnail').css('padding-bottom', '56.25%');
+          }
+        });
+
+        // Only create iframe once, then hide/show it
+        $('.video-item').on('mouseenter', function() {
+          var $this = $(this);
+          $('.video-item').not($this).addClass('inactive').removeClass('active');
+          $this.addClass('active').removeClass('inactive');
+          var $container = $this.find('.video-player-container');
+          var vimeoId = $this.data('video-id');
+          var vimeoHash = $this.data('video-hash');
+          if ($container.children('iframe').length === 0) {
+            if (vimeoId) {
+              var videoSrc = 'https://player.vimeo.com/video/' + vimeoId;
+              var params = 'autoplay=1&loop=1&muted=1&background=1&title=0&byline=0&portrait=0';
+              if (vimeoHash && vimeoHash !== "YOUR_HASH_HERE") {
+                videoSrc += '?h=' + vimeoHash + '&' + params;
+              } else {
+                videoSrc += '?' + params;
+              }
+              // Add loading overlay
+              $container.html('<div class="video-loading"><div class="video-loading-spinner"></div>Loading video...</div>');
+              var iframe = $('<iframe class="vimeo-iframe-fix" src="' + videoSrc + '" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>');
+              iframe.on('load', function() {
+                $container.find('.video-loading').fadeOut(200, function() { $(this).remove(); });
+              });
+              $container.append(iframe);
+            }
+          } else {
+            $container.children('iframe').show();
+          }
+        });
+        $('.video-item').on('mouseleave', function() {
+          var $this = $(this);
+          $this.removeClass('active');
+          $('.video-item').removeClass('inactive');
+          $this.find('.video-player-container .video-loading').remove();
+          $this.find('.video-player-container iframe').hide();
+        });
+        
+        // Typed.js
+        new Typed('.typed', {
+          strings: [
+            "Hi, I'm Nathan Polito.",
+            "Remote creative with 20+ years experience.",
+            "AI-driven video and design.",
+            "Available for global collaboration."
+          ],
+          typeSpeed: 50,
+          backSpeed: 30,
+          backDelay: 1500,
+          loop: true
+        });
+
+        // Smooth Scroll & Nav
+        $('a[href^="#"]').on('click', function(e) { e.preventDefault(); $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 500); });
+        $(window).on('scroll', function() {
+            var scrollPos = $(document).scrollTop();
+            if ($('.section-nav').length) {
+              $('.section-nav a').each(function () {
+                  var currLink = $(this);
+                  var refElement = $(currLink.attr("href"));
+                  if (refElement.length && refElement.position().top <= scrollPos + 100 && refElement.position().top + refElement.height() > scrollPos) {
+                      $('.section-nav a').removeClass("active");
+                      currLink.addClass("active");
+                  }
+              });
+            }
+        }).scroll();
+      });
+      
+      // --- Video Modal Logic (desktop only) ---
+      function isMobile() {
+        return window.matchMedia('(max-width: 700px)').matches;
+      }
+      var modalOverlay = document.getElementById('video-modal-overlay');
+      var modalPlayer = document.getElementById('video-modal-player');
+      var modalCaption = document.getElementById('video-modal-caption');
+      var modalClose = document.getElementById('video-modal-close');
+      var lastActiveVideo = null;
+
+      function closeModal() {
+        modalOverlay.classList.remove('active');
+        modalPlayer.innerHTML = '';
+        modalCaption.innerHTML = '';
+        document.body.classList.remove('modal-open');
+      }
+
+      modalClose.addEventListener('click', closeModal);
+      modalOverlay.addEventListener('click', function(e) {
+        if (e.target === modalOverlay) closeModal();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+      });
+
+      // Attach click event to video items (desktop only)
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.video-item').forEach(function(item) {
+          item.addEventListener('click', function(e) {
+            if (isMobile()) return; // Play in place on mobile
+            var vimeoId = item.getAttribute('data-video-id');
+            var vimeoHash = item.getAttribute('data-video-hash');
+            var caption = item.querySelector('.video-caption .tag')?.textContent || '';
+            if (vimeoId) {
+              var videoSrc = 'https://player.vimeo.com/video/' + vimeoId;
+              var params = 'autoplay=1&loop=0&muted=0&title=0&byline=0&portrait=0';
+              if (vimeoHash && vimeoHash !== "YOUR_HASH_HERE") {
+                videoSrc += '?h=' + vimeoHash + '&' + params;
+              } else {
+                videoSrc += '?' + params;
+              }
+              modalPlayer.innerHTML = '<iframe src="' + videoSrc + '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="width:100%;height:100%;"></iframe>';
+              modalCaption.textContent = caption;
+              modalOverlay.classList.add('active');
+              document.body.classList.add('modal-open');
+            }
+            e.stopPropagation();
+          });
+        });
+      });
+    </script>
+</body>
+</html>

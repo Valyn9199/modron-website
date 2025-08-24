@@ -1,0 +1,847 @@
+/*----------------------
+
+  Master stylesheet (styles.css)
+
+  Project: Eight Template
+  Version: 1.0
+  Author: By Themanoid
+  Last change: 31 July 2016
+
+  ---
+
+  Table of contents
+
+  01. Header
+  02. Navigation
+  03. Hero
+  04. The Grid (Portfolio & Blog)
+  05. Grid Filters
+  06. Boxes
+  07. Blog
+  08. Buttons
+  09. Footer
+  10. Forms
+  11. Images
+  12. Labels
+  13. Lists
+  14. Pagination
+
+-----------------------*/
+/*
+  01. Header
+*/
+header {
+  padding: 45px 0;
+  position: relative;
+  z-index: 4;
+}
+
+header .ion-ios-search-strong {
+  font-size: 21px;
+  float: right;
+}
+
+@media screen and (max-width: 992px) {
+  header {
+    padding: 30px 0 0;
+    text-align: center;
+  }
+  header .search {
+    position: fixed;
+    top: -85px;
+    left: 0;
+    right: 0;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+  }
+  header .search .btn {
+    position: relative;
+    top: 77px;
+    right: 5px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+  }
+  header .search:hover, header .search:focus {
+    top: -20px;
+  }
+  header .search:hover .btn, header .search:focus .btn {
+    top: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    padding: 30px 30px 0;
+  }
+}
+
+.search .form-control, .search .btn {
+  border: 0;
+  box-shadow: none !important;
+  outline: none !important;
+  height: auto;
+  background: none !important;
+}
+
+.search .form-control {
+  padding: 17px 0;
+  opacity: 0;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.search .form-control:focus {
+  opacity: 1;
+}
+
+.search .btn {
+  padding: 8px 0 13px !important;
+  font-size: 24px;
+  color: #000 !important;
+}
+
+.search:hover .form-control {
+  opacity: 1;
+}
+
+@media screen and (max-width: 992px) {
+  .search {
+    margin-top: 20px;
+    background: #f5f5f5;
+    padding: 3px 20px 0;
+  }
+}
+
+/*
+  02. Navigation
+*/
+.navigation {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(44,85,213,0.04);
+  transition: background 0.3s;
+}
+
+.navigation li a.active, .navigation li a:focus {
+  color: #2C55D5;
+  font-weight: 700;
+  border-bottom: 2.5px solid #2C55D5;
+  background: rgba(44,85,213,0.07);
+  border-radius: 4px 4px 0 0;
+}
+
+@media (max-width: 768px) {
+  .navigation {
+    transition: right 0.4s cubic-bezier(.77,0,.18,1);
+  }
+  /* Mobile close button */
+  .navigation .mobile-close {
+    display: block;
+    text-align: right;
+    padding: 16px 24px;
+  }
+  .navigation .mobile-close .nav-close-btn {
+    font-size: 2rem;
+    color: #000;
+    text-decoration: none;
+  }
+}
+
+ul.navigation {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 17px;
+  font-weight: 300;
+  position: relative;
+  z-index: 100;
+}
+
+ul.navigation li {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  position: relative;
+}
+
+ul.navigation li a {
+  display: block;
+  padding: 15px 0;
+  margin: 0 13px;
+  color: #000;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 14px;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+ul.navigation li a:hover, ul.navigation li a.active {
+  color: #2C55D5;
+  text-decoration: none;
+}
+
+ul.navigation li ul.dropdown {
+  max-height: 0;
+  overflow: hidden;
+  position: absolute;
+  text-align: left;
+  padding: 0;
+  z-index: 100;
+  width: 200px;
+  list-style: none;
+  opacity: 0;
+  -webkit-transform: translateY(-30px);
+          transform: translateY(-30px);
+  -webkit-transition: opacity .3s .3s, -webkit-transform .3s .3s;
+  transition: opacity .3s .3s, -webkit-transform .3s .3s;
+  transition: opacity .3s .3s, transform .3s .3s;
+  transition: opacity .3s .3s, transform .3s .3s, -webkit-transform .3s .3s;
+}
+
+ul.navigation li ul.dropdown li {
+  display: block;
+}
+
+ul.navigation li ul.dropdown li a {
+  padding: 0 15px;
+  display: block;
+  margin: 5px 0;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+ul.navigation li:hover ul.dropdown {
+  opacity: 1;
+  padding: 10px 0 20px;
+  max-height: 9999px;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition: opacity .7s, -webkit-transform .3s;
+  transition: opacity .7s, -webkit-transform .3s;
+  transition: opacity .7s, transform .3s;
+  transition: opacity .7s, transform .3s, -webkit-transform .3s;
+}
+
+@media screen and (max-width: 992px) {
+  ul.navigation {
+    margin-top: 0;
+    padding: 0;
+    position: relative;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+  }
+  ul.navigation li {
+    max-height: 0;
+    overflow: hidden;
+    display: block;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+  }
+  ul.navigation li a {
+    opacity: 0;
+  }
+  ul.navigation li a:hover, ul.navigation li a.active {
+    color: #fff !important;
+    opacity: .5;
+  }
+  ul.navigation li ul.dropdown {
+    display: block;
+    margin: 0;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-transition: all .7s;
+    transition: all .7s;
+  }
+  ul.navigation li ul.dropdown li {
+    -webkit-transition: all .3s;
+    transition: all .3s;
+  }
+  ul.navigation:before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: 0;
+    border-color: transparent transparent #000 transparent;
+    height: 0;
+    border-width: 0;
+    border-style: solid;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    opacity: 0;
+  }
+  ul.navigation.tapped {
+    background: #000;
+    padding: 30px;
+    margin-top: 50px;
+  }
+  ul.navigation.tapped:before {
+    border-width: 10px;
+    margin-left: -10px;
+    opacity: 1;
+  }
+  ul.navigation.tapped li {
+    max-height: 400px;
+  }
+  ul.navigation.tapped li a {
+    color: #fff;
+    opacity: 1;
+  }
+  ul.navigation.tapped li a:hover, ul.navigation.tapped li a.active {
+    opacity: .5;
+  }
+  ul.navigation.tapped li ul.dropdown {
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+  ul.navigation.tapped li ul.dropdown li {
+    margin: 20px 0;
+  }
+  ul.navigation.tapped li.tapped ul.dropdown {
+    -webkit-transition: all .7s;
+    transition: all .7s;
+    opacity: 1;
+    max-height: 400px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .nav-trigger {
+    display: block;
+    width: 45px;
+    margin: 30px auto 0;
+    cursor: pointer;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+  }
+  .nav-trigger .bar {
+    height: 1px;
+    background: #000;
+    width: 45px;
+    margin: 8px 0;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+  }
+  .nav-trigger.tapped {
+    margin-top: 45px;
+  }
+  .nav-trigger.tapped .bar {
+    margin: 0;
+  }
+  .nav-trigger.tapped .bar:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  .nav-trigger.tapped .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-trigger.tapped .bar:nth-child(3) {
+    margin-top: -1px;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+}
+
+/*
+  03. Hero
+*/
+.hero {
+  background: linear-gradient(120deg, #e0e7ff 0%, #f8fafc 100%);
+  padding: 80px 0 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('../images/hero-bg.svg') center/cover no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.hero .cta-btn {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 16px 36px;
+  background: #2C55D5;
+  color: #fff;
+  border-radius: 32px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(44,85,213,0.12);
+  transition: background 0.3s, transform 0.2s;
+  text-decoration: none;
+}
+
+.hero .cta-btn:hover {
+  background: #1a2e6c;
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    font-size: 12px;
+    padding: 30px 30px 0;
+  }
+  .hero h1 {
+    font-size: 3.5em;
+  }
+}
+
+/*
+  04. The grid
+*/
+.grid {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  position: relative;
+}
+
+.grid.masonry .item {
+  width: 50%;
+  display: block;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.grid.masonry .item .thumb {
+  background: #2C55D5;
+}
+
+@media screen and (max-width: 992px) {
+  .grid.masonry .item .thumb {
+    background: none;
+  }
+}
+
+.grid.masonry .item .thumb img {
+  width: 100%;
+}
+
+.grid.masonry .item .thumb:before {
+  content: '\f3d6';
+  display: block;
+  color: #fff;
+  position: absolute;
+  top: 25px;
+  left: -30px;
+  font-size: 36px;
+  line-height: 1;
+  font-family: 'Ionicons';
+  opacity: 0;
+  -webkit-transition: all .3s .1s;
+  transition: all .3s .1s;
+}
+
+.grid.masonry .item .caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  -webkit-transition: opacity .3s .1s;
+  transition: opacity .3s .1s;
+  padding: 30px;
+}
+
+.grid.masonry .item .caption .tag {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+.grid.masonry .item .caption * {
+  color: #fff;
+}
+
+@media screen and (max-width: 992px) {
+  .grid.masonry .item .caption {
+    position: relative;
+    opacity: 1;
+    padding: 0 0 30px;
+  }
+  .grid.masonry .item .caption * {
+    color: #000;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .grid.masonry .item:hover .thumb img {
+    opacity: .1;
+  }
+  .grid.masonry .item:hover .thumb:before {
+    opacity: 1;
+    left: 30px;
+    -webkit-transition: all .3s .2s;
+    transition: all .3s .2s;
+  }
+  .grid.masonry .item:hover .caption {
+    opacity: 1;
+    -webkit-transition: opacity .3s .2s;
+    transition: opacity .3s .2s;
+  }
+}
+
+.grid.classic {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px 2%;
+  justify-content: flex-start;
+}
+
+.grid.classic .item {
+  width: 49%;
+  margin: 0 0.5% 32px 0.5%;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 992px) {
+  .grid.classic .item {
+    width: 100% !important;
+    margin: 0 0 32px 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .grid.classic .item {
+    width: 100% !important;
+    margin: 0 0 32px 0;
+  }
+}
+
+.grid.classic .item .thumb {
+  background: #2C55D5;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 992px) {
+  .grid.classic .item .thumb {
+    background: none;
+  }
+}
+
+.grid.classic .item .thumb img {
+  width: 100%;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+}
+
+.grid.classic .item .thumb .btn {
+  position: absolute;
+  left: 0;
+  bottom: -40px;
+  opacity: 0;
+  background: #2C55D5;
+  z-index: 3;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.grid.classic .item .caption {
+  text-align: center;
+  padding: 20px;
+}
+
+@media screen and (max-width: 992px) {
+  .grid.classic .item .caption {
+    padding-top: 10px;
+  }
+}
+
+.grid.classic .item .caption h3, .grid.classic .item .caption h4 {
+  margin-bottom: 14px;
+  color: #000;
+  -webkit-transition: color .3s;
+  transition: color .3s;
+}
+
+.grid.classic .item .caption .tag {
+  color: #555;
+  font-weight: 300;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+.grid.classic .item:hover h3, .grid.classic .item:hover h4 {
+  color: #2C55D5;
+}
+
+.grid.classic .item:hover .thumb img {
+  opacity: .5;
+}
+
+.grid.classic .item:hover .thumb .btn {
+  opacity: 1;
+  bottom: 0;
+}
+
+.grid.col-4 .item {
+  width: 25%;
+}
+
+.grid.col-4 .item .caption {
+  text-align: left;
+  padding-left: 0;
+}
+
+.fadein {
+  opacity: .3;
+  -webkit-transition: opacity 1s .4s;
+  transition: opacity 1s .4s;
+}
+
+.fadein.in-view {
+  opacity: 1;
+}
+
+@media screen and (max-width: 992px) {
+  .item {
+    width: 50% !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .item {
+    width: 100% !important;
+  }
+}
+
+/*
+  05. Grid Filters
+*/
+.filter-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95); /* Semi-transparent white background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+body.filters-active .filter-container {
+  opacity: 1;
+  visibility: visible;
+}
+
+.filter-container .inner {
+  display: block;
+  position: relative;
+  height: auto;
+  width: auto;
+  max-width: 300px; /* Optional: limit filter list width */
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .filter-container .inner {
+    width: 90%;
+  }
+}
+
+.filter-container ul.filters {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filter-container ul.filters li {
+  display: block;
+  margin: 15px 0;
+}
+
+.filter-container ul.filters li a.filter {
+  font-size: 1.8rem; /* Larger font size for filter options */
+  font-weight: 600;
+  color: #2C55D5;
+  opacity: 0.7;
+  transition: color 0.2s, opacity 0.2s;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.filter-container ul.filters li a.filter.active, .filter-container ul.filters li a.filter:hover {
+  color: #fff;
+  background: #2C55D5;
+  opacity: 1;
+}
+
+/* Remove conflicting styles from body.filters-active if they still exist */
+body.filters-active .grid,
+body.filters-active header,
+body.filters-active section,
+body.filters-active footer,
+body.filters-active .filter-trigger {
+  /* Ensure these elements are not transformed or hidden by the filter overlay */
+  transform: none !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* Existing grid and filter styles below this */
+
+/* ... existing grid and item styles ... */
+
+/* ... existing container-fluid and body.filters-active overflow style ... */
+
+/* ... existing box styles ... */
+
+/* ... existing blog styles ... */
+
+/* ... existing button styles ... */
+
+/*
+  09. Footer
+*/
+footer {
+  margin-top: 50px;
+  padding: 50px 0;
+}
+
+@media screen and (max-width: 992px) {
+  footer {
+    margin-top: 0;
+    padding-top: 20px;
+  }
+}
+
+footer.bottom {
+  background: #f5f5f5;
+  padding: 32px 0 24px 0;
+  margin-top: 0;
+  font-weight: 300;
+  color: #999;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 992px) {
+  footer.bottom {
+    padding: 20px 0 16px 0;
+  }
+}
+
+/* Add some top margin to the main content to prevent it from being hidden by sticky nav on load */
+.container-fluid > section:first-of-type {
+    margin-top: 80px; /* Adjust based on your header/nav height */
+}
+
+html, body {
+  height: 100%;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.container-fluid {
+  flex: 1 0 auto;
+}
+
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.nav-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --- 6. Project Thumbnails --- */
+.grid .item {
+  /* aspect-ratio: 4/3; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+}
+.item .thumb {
+  position: relative;
+  overflow: hidden;
+  flex: 1 1 auto;
+}
+.item .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.item:hover .thumb img {
+  /* Remove hover effect on image inside thumb */
+  transform: none;
+  opacity: 1;
+}
+.item .overlay {
+  display: none; /* Hide the overlay */
+}
+.item:hover .overlay {
+  display: none; /* Ensure overlay is hidden even on hover */
+}
+.item .overlay .view-btn {
+  display: none; /* Hide the view button */
+}
+.item .overlay .view-btn:hover {
+  /* No hover styles needed as the button is hidden */
+}
+
+.item .caption {
+  text-align: center;
+  padding: 20px;
+}
+
+.item .caption h4 {
+    margin-bottom: 8px; /* Adjusted margin */
+}
+
+.item .caption .tag {
+    display: block; /* Ensure tag is on its own line */
+    margin-bottom: 12px; /* Space below tag */
+}
+
+.item .caption .view-project-link {
+    display: inline-block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2C55D5;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-bottom-color 0.2s;
+}
+
+.item .caption .view-project-link:hover,
+.item .caption .view-project-link:focus {
+    color: #1a2e6c;
+    border-bottom-color: #1a2e6c;
+}

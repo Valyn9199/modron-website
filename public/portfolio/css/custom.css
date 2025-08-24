@@ -1,0 +1,1173 @@
+/*-------------------------------
+
+    Custom stylesheet (custom.css)
+
+    Project: Eight Template
+    Version: 1.0
+    Author: By Themanoid
+    Last change: 31 July 2016
+
+    --
+
+    This stylesheet is meant for
+    your own custom styles, on
+    top of The Eight Template
+
+    Happy styling!
+    - Themanoid
+
+----------------------------*/
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-3px);
+}
+
+/* Enhanced Navigation */
+.navigation {
+  transition: all 0.3s ease;
+}
+
+.navigation > li > a {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.navigation > li > a:after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.navigation > li > a:hover:after,
+.navigation > li > a.active:after {
+  width: 100%;
+}
+
+.navigation .dropdown {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.navigation li:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.navigation li a {
+  position: relative;
+  color: #2C55D5;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5em 0.8em;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+  overflow: hidden;
+}
+.navigation li a:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0.2em;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #2C55D5 0%, #00C9A7 100%);
+  border-radius: 2px;
+  transition: width 0.35s cubic-bezier(.4,2,.3,1), left 0.35s cubic-bezier(.4,2,.3,1);
+  z-index: 1;
+}
+.navigation li a:hover:after, .navigation li a.active:after {
+  width: 80%;
+  left: 10%;
+}
+.navigation li a:hover, .navigation li a.active {
+  color: #00C9A7;
+  background: #f0f4ff;
+}
+
+.btn, .btn-default {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.2s, background 0.2s;
+}
+.btn:after, .btn-default:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(44,85,213,0.15);
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s cubic-bezier(.4,2,.3,1), height 0.5s cubic-bezier(.4,2,.3,1), opacity 0.4s;
+  opacity: 0;
+  z-index: 0;
+}
+.btn:active:after, .btn-default:active:after {
+  width: 220px;
+  height: 220px;
+  opacity: 1;
+  transition: 0s;
+}
+.btn:hover, .btn-default:hover {
+  color: #fff;
+  background: linear-gradient(90deg, #2C55D5 0%, #00C9A7 100%);
+}
+
+/* Mobile Navigation Enhancement */
+@media (max-width: 768px) {
+  .nav-trigger {
+    transition: all 0.3s ease;
+  }
+  
+  .nav-trigger.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .nav-trigger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .nav-trigger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  
+  .navigation {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navigation .dropdown {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    background: rgba(0, 0, 0, 0.02);
+    display: none;
+  }
+  
+  .navigation li:hover .dropdown {
+    display: block;
+  }
+}
+
+/* Portfolio Card Improvements */
+.grid.classic .item {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(44,85,213,0.07), 0 1.5px 4px rgba(0,0,0,0.03);
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 40px;
+}
+
+.grid.classic .item:hover {
+  box-shadow: 0 6px 24px rgba(44,85,213,0.13), 0 3px 12px rgba(0,0,0,0.06);
+  transform: translateY(-4px) scale(1.01);
+}
+
+.grid.classic .item .thumb {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 0;
+}
+
+.grid.classic .item .caption {
+  padding: 32px 24px 24px 24px;
+  text-align: center;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid.classic .item .caption h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #222;
+  letter-spacing: 0.01em;
+}
+
+.grid.classic .item .caption .tag {
+  font-size: 0.95rem;
+  color: #888;
+  font-weight: 400;
+  margin-bottom: 18px;
+  letter-spacing: 0.04em;
+}
+
+.grid.classic .item .caption .view-project-link {
+  margin-top: auto;
+  display: inline-block;
+  padding: 8px 22px;
+  background: #2C55D5;
+  color: #fff;
+  border-radius: 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(44,85,213,0.08);
+  cursor: pointer;
+}
+
+.grid.classic .item .caption .view-project-link:hover,
+.grid.classic .item .caption .view-project-link:focus {
+  background: #1a2e6c;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(44,85,213,0.16);
+}
+
+/* Work Page Content & Box Styling */
+.content {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.content .row {
+  margin-bottom: 48px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+/* Remove extra padding if a row starts or ends with an image (optional, advanced) */
+.content .row > [class^="col-"]:first-child img:first-child {
+  margin-top: 0;
+}
+.content .row > [class^="col-"]:last-child img:last-child {
+  margin-bottom: 0;
+}
+
+/* If a .box is the first or last child in a row, add extra margin */
+.content .row > [class^="col-"]:first-child .box {
+  margin-top: 16px;
+}
+.content .row > [class^="col-"]:last-child .box {
+  margin-bottom: 16px;
+}
+
+/* Ultimate Card Layout Fix for .box */
+.box {
+  padding: 64px 96px;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 32px rgba(44,85,213,0.10), 0 4px 16px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.box-content {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.box h3 {
+  font-size: 2.4rem;
+  margin-bottom: 36px;
+  line-height: 1.2;
+}
+
+.box p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 1200px) {
+  .box {
+    padding: 32px 24px;
+    border-radius: 16px;
+  }
+  .box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  .box p {
+    font-size: 1.05rem;
+  }
+  .box-content {
+    max-width: 100%;
+    padding: 0 4px;
+  }
+}
+
+@media (max-width: 768px) {
+  .box {
+    padding: 16px 6px;
+    border-radius: 10px;
+  }
+  .box h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+  .box p {
+    font-size: 0.98rem;
+  }
+}
+
+/* Add gutter between columns in .content rows */
+.content .row {
+  margin-left: -12px;
+  margin-right: -12px;
+}
+.content [class^="col-"] {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.box-top-align {
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+  justify-content: flex-start;
+}
+
+@media (max-width: 1200px) {
+  .box-top-align {
+    padding-top: 18px !important;
+    padding-bottom: 18px !important;
+  }
+}
+
+.image-box-pair {
+  padding-top: 48px;
+  padding-bottom: 80px;
+}
+.image-box-pair .col-md-6 {
+  padding-left: 32px;
+  padding-right: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.image-box-pair img.fadein {
+  margin-top: 0;
+  margin-bottom: 40px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(44,85,213,0.07), 0 1.5px 4px rgba(0,0,0,0.03);
+}
+.image-box-pair .box {
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+/* Adjust margin for the box that follows an image in the first column */
+.image-box-pair .col-md-6:first-child .box {
+  margin-top: 40px;
+}
+
+/* Adjust margin for the image that follows a box in the second column */
+.image-box-pair .col-md-6:last-child img.fadein {
+  margin-top: 40px;
+}
+
+@media (max-width: 992px) {
+  .image-box-pair {
+    padding-top: 24px;
+    padding-bottom: 28px;
+  }
+  .image-box-pair .col-md-6 {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .image-box-pair img.fadein {
+    margin-bottom: 24px;
+  }
+  .image-box-pair .box {
+    margin-bottom: 24px;
+  }
+  .image-box-pair .col-md-6:first-child .box {
+    margin-top: 24px;
+  }
+  .image-box-pair .col-md-6:last-child img.fadein {
+    margin-top: 24px;
+  }
+}
+
+/* Consistent Styling for Images and Video Embeds in .content */
+.content [class^="col-"] img {
+  display: block;
+  margin-bottom: 24px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(44,85,213,0.07), 0 1.5px 4px rgba(0,0,0,0.03);
+}
+
+/* Ensure images in .image-box-pair maintain their specific margin */
+.image-box-pair img.fadein {
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.video-embed-container {
+  margin-bottom: 40px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(44,85,213,0.07), 0 1.5px 4px rgba(0,0,0,0.03);
+  overflow: hidden; /* Ensures border-radius applies to iframe */
+}
+
+.video-embed-container iframe {
+  display: block;
+}
+
+@media (max-width: 992px) {
+  .content [class^="col-"] img {
+    margin-bottom: 18px;
+  }
+   .image-box-pair img.fadein {
+    margin-bottom: 18px;
+  }
+   .video-embed-container {
+    margin-bottom: 24px;
+  }
+}
+
+/* About Page Specific Improvements */
+
+/* Hero Section Padding */
+.hero {
+  padding-top: 120px;
+  padding-bottom: 40px; /* Less padding at the bottom of hero */
+}
+
+@media (max-width: 992px) {
+  .hero {
+    padding-top: 80px;
+    padding-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 60px;
+    padding-bottom: 20px;
+  }
+}
+
+/* My Office Section Image and Box Styling */
+/* .content [class^="col-"] img style already handles the image */
+
+/* Gray Background Section Styling */
+.gray-bg {
+  padding: 48px 24px;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(44,85,213,0.04), 0 2px 8px rgba(0,0,0,0.02);
+  margin-bottom: 48px !important; /* Override existing mb-lg */
+}
+
+.gray-bg img.fadein {
+  margin-bottom: 0; /* Remove default image margin */
+  margin-right: 32px; /* Space between image and text */
+}
+
+.gray-bg .text-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Align text content vertically */
+}
+
+.gray-bg .text-center h3 {
+  margin-bottom: 12px; /* Space below typed text */
+}
+
+@media (max-width: 768px) {
+  .gray-bg {
+    padding: 32px 16px;
+    flex-direction: column; /* Stack image and text on mobile */
+  }
+  .gray-bg img.fadein {
+    margin-right: 0;
+    margin-bottom: 24px; /* Space below image on mobile */
+  }
+   .gray-bg .text-center h3 {
+    margin-bottom: 8px;
+  }
+}
+
+/* Skills Lists Spacing */
+.content h4.underline {
+  margin-bottom: 24px; /* Increased space below heading */
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #222;
+  position: relative;
+  display: inline-block;
+}
+
+.content h4.underline:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 4px; /* Adjusted position: smaller value to bring closer */
+  transform: translateX(-50%);
+  width: 50px; /* Slightly wider underline */
+  height: 4px; /* Thicker underline */
+  background-color: #2C55D5;
+  border-radius: 4px;
+}
+
+.label-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+}
+
+.label-list li {
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+  color: #555;
+}
+
+/* Happy Clients Logo Grid Spacing */
+.content .row.mt-lg.text-center img {
+  margin-bottom: 24px;
+}
+
+/* Contact Form Spacing */
+.content .row.mt-xl.mb-xl > .col-md-6.col-md-offset-3 > h3 {
+  margin-bottom: 32px;
+}
+
+.form .tag {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-control {
+  margin-bottom: 24px; /* Space below form inputs and textarea */
+}
+
+.form button.btn {
+  margin-top: 16px;
+  margin-right: 12px;
+}
+
+.form span.p-md {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Skills Section Card Styling and Spacing */
+.skill-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(44,85,213,0.05), 0 1.5px 4px rgba(0,0,0,0.02);
+  padding: 32px 24px;
+  margin-bottom: 32px; /* Space between cards when stacked on mobile */
+  height: 100%; /* Ensure equal height in a row */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.content h4.underline {
+  margin-bottom: 24px; /* Increased space below heading */
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.content h4.underline:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 4px; /* Adjusted position: smaller value to bring closer */
+  transform: translateX(-50%);
+  width: 50px; /* Slightly wider underline */
+  height: 4px; /* Thicker underline */
+  background-color: #2C55D5;
+  border-radius: 4px;
+}
+
+.label-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+}
+
+.label-list li {
+  margin-bottom: 10px; /* Increased space between list items */
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.label-list li:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 992px) {
+  .skill-card {
+    padding: 24px 16px;
+    margin-bottom: 24px;
+  }
+  .content h4.underline {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+  .content h4.underline:after {
+    bottom: 3px; /* Adjusted position */
+    width: 40px;
+    height: 3px;
+  }
+  .label-list li {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skill-card {
+    padding: 18px 10px;
+    margin-bottom: 18px;
+  }
+   .content h4.underline {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+  }
+   .content h4.underline:after {
+    bottom: 2px; /* Adjusted position */
+    width: 30px;
+    height: 2px;
+  }
+  .label-list li {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+}
+
+/* Contact Page Specific Improvements */
+
+/* Introductory text spacing after heading in hero */
+.hero .row.mt-md.mb-xl {
+    margin-top: 32px;
+    margin-bottom: 48px;
+}
+
+/* Form spacing below introductory text */
+.hero + .content .container .row.mt-lg {
+    margin-top: 0 !important; /* Remove default mt-lg */
+}
+
+/* Contact Form Styling and Spacing Improvements */
+.form .row > [class^="col-"] {
+  margin-bottom: 24px; /* Space between columns in the form */
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 48px; /* Increased height */
+  padding: 12px 16px; /* Increased padding */
+  font-size: 1rem; /* Slightly larger font */
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ddd; /* Softer border */
+  border-radius: 8px; /* More rounded corners */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); /* Subtle inset shadow */
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.form-control:focus {
+  border-color: #2C55D5; /* Accent color on focus */
+  outline: 0;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05), 0 0 8px rgba(44, 85, 213, 0.3); /* Accent color shadow on focus */
+}
+
+.form textarea.form-control {
+  height: 180px; /* Fixed height for textarea */
+  resize: vertical; /* Allow vertical resizing only */
+}
+
+.form button.btn {
+  margin-top: 24px;
+  margin-right: 16px;
+  padding: 12px 32px; /* Larger button padding */
+  font-size: 1.1rem;
+  border-radius: 28px; /* Pill shape */
+  background-color: #2C55D5;
+  color: #fff;
+  border-color: #2C55D5;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(44,85,213,0.1);
+}
+
+.form button.btn:hover, .form button.btn:focus {
+    background-color: #1a2e6c;
+    border-color: #1a2e6c;
+    box-shadow: 0 4px 12px rgba(44,85,213,0.2);
+}
+
+.form span.p-md {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 32px; /* Align text with button */
+  font-size: 0.95rem;
+  color: #777;
+}
+
+@media (max-width: 768px) {
+  .form .row > [class^="col-"] {
+    margin-bottom: 16px;
+  }
+  .form-control {
+    height: 40px;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    border-radius: 6px;
+  }
+   .form textarea.form-control {
+    height: 150px;
+  }
+  .form button.btn {
+    margin-top: 18px;
+    margin-right: 10px;
+    padding: 10px 24px;
+    font-size: 1rem;
+    border-radius: 24px;
+  }
+  .form span.p-md {
+    margin-top: 24px;
+    font-size: 0.9rem;
+  }
+}
+
+.responsive-video {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.responsive-video iframe,
+.responsive-video object,
+.responsive-video embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Hero Section Enhancements */
+.hero--with-background {
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  position: relative;
+  padding: 120px 0 60px 0; /* Match about page padding */
+}
+
+.hero--with-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2); /* Lighter overlay to match about page */
+  z-index: 1;
+}
+
+.hero--with-background .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero--with-background h1 {
+  font-size: 5em; /* Match about page h1 size */
+  margin-bottom: 0.75em;
+  color: #fff;
+}
+
+.hero--with-background p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.hero--with-background .cta-btn {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 16px 36px;
+  background: #fff;
+  color: #2C55D5;
+  border-radius: 32px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.hero--with-background .cta-btn:hover {
+  background: #f8fafc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Specific Hero Background Images */
+.hero--with-background.hero--portfolio {
+  background: linear-gradient(135deg, #2C55D5 0%, #1a2e6c 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Work page hero styles */
+.hero--with-background.hero--work-one {
+  background: linear-gradient(135deg, #2C55D5 0%, #1a2e6c 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero--with-background.hero--work-two {
+  background: linear-gradient(135deg, #2C55D5 0%, #1a2e6c 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero--with-background.hero--work-three {
+  background: linear-gradient(135deg, #2C55D5 0%, #1a2e6c 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero--with-background.hero--work-four {
+  background: linear-gradient(135deg, #2C55D5 0%, #1a2e6c 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero--with-background.hero--work-five {
+  background: linear-gradient(135deg, #2C55D5 0%, #1a2e6c 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero--with-background.hero--work-six {
+  background: linear-gradient(135deg, #2C55D5 0%, #1a2e6c 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Common pattern overlay for work pages */
+.hero--with-background.hero--work-one::after,
+.hero--with-background.hero--work-two::after,
+.hero--with-background.hero--work-three::after,
+.hero--with-background.hero--work-four::after,
+.hero--with-background.hero--work-five::after,
+.hero--with-background.hero--work-six::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.4;
+  z-index: 1;
+}
+
+/* Common gradient overlay for work pages */
+.hero--with-background.hero--work-one::before,
+.hero--with-background.hero--work-two::before,
+.hero--with-background.hero--work-three::before,
+.hero--with-background.hero--work-four::before,
+.hero--with-background.hero--work-five::before,
+.hero--with-background.hero--work-six::before {
+  background: linear-gradient(135deg, rgba(44, 85, 213, 0.92) 0%, rgba(26, 46, 108, 0.92) 100%);
+}
+
+/* Remove old background image styles */
+.hero--with-background.hero--work-one,
+.hero--with-background.hero--work-two,
+.hero--with-background.hero--work-three,
+.hero--with-background.hero--work-four,
+.hero--with-background.hero--work-five,
+.hero--with-background.hero--work-six {
+  background-image: none !important;
+}
+
+/* Filter Button Loading State */
+.filter.loading {
+  cursor: progress;
+  opacity: 0.7;
+  /* Add spinner or text change via JavaScript */
+}
+
+/* Image Loading State (Skeleton) */
+.skeleton-loading {
+  position: relative;
+  overflow: hidden;
+  background: #f0f0f0; /* Placeholder background color */
+}
+
+.skeleton-loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading-animation 1.5s infinite;
+}
+
+@keyframes loading-animation {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Hide loading animation when image is loaded */
+/* Assuming the image is a direct child of the element with .skeleton-loading */
+.skeleton-loading img.loaded + ::before { /* This selector needs correction */
+  display: none;
+}
+
+/* Corrected selector to hide the ::before on loaded image */
+.skeleton-loading.loaded::before {
+    display: none;
+}
+
+/* Style for loaded images */
+img.loaded {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out; /* Fade in effect */
+}
+
+@media (max-width: 992px) {
+  .hero--with-background {
+    padding: 80px 0 40px 0;
+  }
+  .hero--with-background h1 {
+    font-size: 3.5em;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero--with-background {
+    padding: 60px 30px 30px;
+    font-size: 12px;
+  }
+  .hero--with-background h1 {
+    font-size: 2.5em;
+  }
+  .hero--with-background .cta-btn {
+    padding: 12px 28px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Ensure 2x2 grid on larger screens */
+/* Removed redundant and potentially conflicting rule */
+
+/* Ensure grid propertieS for project cards on work pages */
+.grid-container .row.grid.classic {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.video-item {
+  transition: box-shadow 0.3s cubic-bezier(.4,2,.3,1), transform 0.3s cubic-bezier(.4,2,.3,1), border 0.3s;
+  position: relative;
+}
+.video-item:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 18px 18px 0 0;
+  pointer-events: none;
+  transition: box-shadow 0.3s, opacity 0.3s;
+  box-shadow: 0 0 0 0 #2C55D5;
+  opacity: 0;
+}
+.video-item:hover:before, .video-item:focus-visible:before {
+  box-shadow: 0 0 0 4px #2C55D5;
+  opacity: 0.18;
+}
+.video-item:hover, .video-item:focus-visible {
+  transform: translateY(-6px) scale(1.045);
+  box-shadow: 0 10px 32px rgba(44,85,213,0.18), 0 4px 16px rgba(0,0,0,0.10);
+  z-index: 2;
+}
+.video-item .video-thumbnail:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg,rgba(44,85,213,0.08) 0%,rgba(0,201,167,0.07) 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 8px 8px 0 0;
+  pointer-events: none;
+}
+.video-item:hover .video-thumbnail:after, .video-item:focus-visible .video-thumbnail:after {
+  opacity: 1;
+}
+
+/* Portfolio Intro Section Enhancements */
+.portfolio-intro {
+  margin-bottom: 3.5rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+/* Match https://www.modron.com/portfolio style */
+.portfolio-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.13;
+  letter-spacing: -0.01em;
+  color: #181818;
+  margin-bottom: 1.2rem;
+}
+.portfolio-divider { display: none !important; }
+.portfolio-description {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.7rem !important;
+  color: #555;
+  line-height: 1.9 !important;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 1.5rem;
+}
+.portfolio-description br {
+  line-height: 2.2;
+}
+@media (max-width: 991px) {
+  .portfolio-title {
+    font-size: 2.3rem;
+  }
+  .portfolio-description {
+    font-size: 1.35rem !important;
+    margin-top: 1.1rem;
+  }
+}
+@media (max-width: 700px) {
+  .portfolio-title {
+    font-size: 1.7rem;
+    margin-bottom: 0.7rem;
+  }
+  .portfolio-description {
+    font-size: 1.08rem !important;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    margin-top: 0.7rem;
+  }
+}
+/* Remove old subtitle/body styles if not used */
+.portfolio-subtitle, .portfolio-body { display: none !important; }
+
+.br-lg { display: none; }
+@media (min-width: 992px) {
+  .br-lg { display: inline; }
+}
+
+/* HERO SECTION FORCEFUL FONT SIZES */
+.hero-title {
+  font-size: 4.5rem !important;
+  font-weight: 800;
+  line-height: 1.1 !important;
+  margin-bottom: 1.2rem;
+}
+.hero-subtitle {
+  font-size: 2.2rem !important;
+  color: #eee;
+  margin-bottom: 2.2rem;
+  font-weight: 500;
+  line-height: 1.2 !important;
+}
+.hero-inspiration {
+  font-size: 1.45rem !important;
+  padding: 1.2rem 2.2rem 1.2rem 2.2rem !important;
+  margin: 1.5rem auto 1.5rem auto !important;
+  max-width: 700px !important;
+}
+.hero-location {
+  font-size: 1.4rem !important;
+  margin-top: 1.5rem !important;
+  color: #f5f5f5 !important;
+  font-weight: 500 !important;
+}
+@media (max-width: 991px) {
+  .hero-title {
+    font-size: 2.8rem !important;
+  }
+  .hero-subtitle {
+    font-size: 1.4rem !important;
+  }
+  .hero-inspiration {
+    font-size: 1.1rem !important;
+    padding: 1rem 1.2rem 1rem 1.2rem !important;
+  }
+  .hero-location {
+    font-size: 1.1rem !important;
+  }
+}
+@media (max-width: 700px) {
+  .hero-title {
+    font-size: 1.7rem !important;
+  }
+  .hero-subtitle {
+    font-size: 1.08rem !important;
+  }
+  .hero-inspiration {
+    font-size: 0.98rem !important;
+    padding: 0.7rem 0.5rem 0.7rem 0.5rem !important;
+  }
+  .hero-location {
+    font-size: 0.98rem !important;
+  }
+}
