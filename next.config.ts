@@ -28,6 +28,16 @@ const nextConfig: NextConfig = {
       },
     },
   },
+
+  // Rewrites for portfolio
+  async rewrites() {
+    return [
+      {
+        source: '/portfolio',
+        destination: '/portfolio/portfolio.html',
+      },
+    ];
+  },
   
   // Headers for better caching and performance
   async headers() {
