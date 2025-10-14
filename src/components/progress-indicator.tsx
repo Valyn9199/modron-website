@@ -12,7 +12,7 @@ interface ProgressIndicatorProps {
 export function ProgressIndicator({ 
   type = 'scroll', 
   className = "", 
-  color = "from-green-500 to-emerald-500",
+  color = "from-[#d5aaf9] to-[#40d0f2]",
   height = 2
 }: ProgressIndicatorProps) {
   const [progress, setProgress] = useState(0)

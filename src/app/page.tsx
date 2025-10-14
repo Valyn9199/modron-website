@@ -51,25 +51,27 @@ export default function Home() {
 {/* Hero Section */}
 <section id="home" className="relative min-h-screen flex items-center justify-center w-full pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-20" role="banner" aria-labelledby="hero-heading">
   {/* Background Video */}
-  <HeroBgVideo overlayOpacity={0.6} />
+  <HeroBgVideo overlayOpacity={0} />
 
   {/* Main Content */}
   <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
     {/* MODRON Logo removed to keep hero content above the fold */}
     
     {/* Main Headline - Larger on mobile */}
-    <h1 id="hero-heading" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight mb-6 sm:mb-8 md:mb-12 leading-tight reveal will-change-transform">
-      <span className="bg-gradient-to-r from-white via-green-200 to-white bg-clip-text text-transparent">
-        Green AI Compute
-      </span>
-      <br />
-      <span className="bg-gradient-to-r from-green-200 via-white to-green-200 bg-clip-text text-transparent">
-        for Enterprises
-      </span>
-    </h1>
+      <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-6 sm:mb-8 md:mb-12 leading-tight reveal will-change-transform font-heading">
+        <span className="text-gray-800 whitespace-nowrap">
+          AI INFRASTRUCTURE
+        </span>
+      </h1>
     
        {/* Subheading - Reduced size to target 3 lines */}
-    <p className="text-xl sm:text-2xl md:text-2xl lg:text-3xl text-[#DDDDDD] mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto leading-relaxed font-light reveal reveal-delay will-change-transform px-4">      Immersion-cooled, solar-powered GPU infrastructure with SLA-backed uptime — delivering performance and sustainability at scale.
+    <p className="text-lg sm:text-xl md:text-xl lg:text-2xl text-gray-800 mb-4 sm:mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed font-semibold reveal reveal-delay will-change-transform px-4" style={{ letterSpacing: '0.2em' }}>      IMMERSION-COOLED. MODULAR. SCALABLE.
+    </p>
+    
+    {/* Additional sub text */}
+    <p className="text-base sm:text-lg md:text-lg lg:text-xl text-gray-800 mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed font-medium reveal reveal-delay-2 will-change-transform px-4">
+      Building Australia's modular, renewable AI infrastructure.<br />
+      Locally built GPU systems for sovereign, sustainable compute.
     </p>
     
     {/* CTA Buttons - Larger on mobile */}
@@ -106,7 +108,7 @@ export default function Home() {
               <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-[#DDDDDD] leading-relaxed font-light max-w-5xl mx-auto mb-8 sm:mb-12 px-4">
                 MODRON is building sustainable enterprise AI compute infrastructure — optimized for AI workloads, powered by the sun, and scaled globally with purpose.
               </p>
-              <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-emerald-600 mx-auto"></div>
+              <div className="w-24 h-1 bg-gradient-to-r from-[#d5aaf9] to-[#40d0f2] mx-auto"></div>
             </div>
             
             {/* Why MODRON Grid */}
@@ -114,7 +116,7 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8" role="list" aria-label="Why choose MODRON">
               {/* Renewable-powered */}
                 <div className="text-center group hover-lift" role="listitem">
-                  <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg hover-glow active:scale-95 sm:active:scale-100" aria-hidden="true">
+                  <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg hover-glow active:scale-95 sm:active:scale-100" aria-hidden="true">
                   <Icons.Leaf className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-white font-light text-lg mb-3">Renewable-powered</h3>
@@ -125,7 +127,7 @@ export default function Home() {
 
               {/* Immersion cooling = lower failure rates */}
                 <div className="text-center group hover-lift">
-                  <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg hover-glow active:scale-95 sm:active:scale-100">
+                  <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-[#40d0f2] to-[#32ca73] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg hover-glow active:scale-95 sm:active:scale-100">
                   <Icons.Shield className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-white font-light text-lg mb-3">Immersion cooling = lower failure rates</h3>
@@ -136,7 +138,7 @@ export default function Home() {
 
               {/* Operates at the edge of efficiency */}
                 <div className="text-center group hover-lift">
-                  <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg hover-glow active:scale-95 sm:active:scale-100">
+                  <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg hover-glow active:scale-95 sm:active:scale-100">
                   <Icons.Gauge className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-white font-light text-lg mb-3">Operates at the edge of efficiency</h3>
@@ -147,7 +149,7 @@ export default function Home() {
 
               {/* Carbon-aware + Off-grid capable */}
                 <div className="text-center group hover-lift">
-                  <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-green-600 to-emerald-700 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg hover-glow active:scale-95 sm:active:scale-100">
+                  <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg hover-glow active:scale-95 sm:active:scale-100">
                   <Icons.Globe className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-white font-light text-lg mb-3">Carbon-aware + Off-grid capable</h3>
@@ -183,10 +185,10 @@ export default function Home() {
                   <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
                   {/* Solar + Grid Power */}
                   <div className="flex items-center justify-center mb-6 sm:mb-8">
-                      <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
+                      <div className="bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
                       <Icons.Sun className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                     </div>
-                      <div className="bg-gradient-to-br from-emerald-600 to-green-700 rounded-xl p-3 sm:p-4">
+                      <div className="bg-gradient-to-br from-[#40d0f2] to-[#32ca73] rounded-xl p-3 sm:p-4">
                       <Icons.Power className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                     </div>
                     <div className="ml-2 sm:ml-4 text-white font-semibold text-sm sm:text-base">Solar + Grid Hybrid Power</div>
@@ -194,7 +196,7 @@ export default function Home() {
                   
                   {/* Connection Line */}
                   <div className="flex justify-center mb-6 sm:mb-8">
-                      <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-green-500 to-emerald-600" style={{ willChange: 'transform' }}></div>
+                      <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-[#d5aaf9] to-[#40d0f2]" style={{ willChange: 'transform' }}></div>
                   </div>
                   
                   {/* GPU Tank */}
@@ -204,15 +206,15 @@ export default function Home() {
                   
                   {/* Connection Line */}
                   <div className="flex justify-center mb-6 sm:mb-8">
-                      <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-emerald-600 to-green-700" style={{ willChange: 'transform' }}></div>
+                      <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-[#40d0f2] to-[#32ca73]" style={{ willChange: 'transform' }}></div>
                   </div>
                   
                   {/* Network Layer */}
                   <div className="flex items-center justify-center">
-                      <div className="bg-gradient-to-br from-green-700 to-emerald-800 rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
+                      <div className="bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
                       <Icons.Cloud className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                     </div>
-                      <div className="bg-gradient-to-br from-emerald-800 to-green-900 rounded-xl p-3 sm:p-4">
+                      <div className="bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl p-3 sm:p-4">
                       <Icons.Network className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                     </div>
                     <div className="ml-2 sm:ml-4 text-white font-semibold text-sm sm:text-base">Vast.ai + Direct Connect</div>
@@ -226,11 +228,11 @@ export default function Home() {
             <div className="lg:hidden">
               <details className="group mb-6">
                 <summary className="cursor-pointer list-none">
-                  <div className="flex items-center justify-between p-4 bg-[#1A1A1A]/50 border border-[#262626] rounded-xl hover:border-green-500/30 transition-all duration-200">
+                  <div className="flex items-center justify-between p-4 bg-[#1A1A1A]/50 border border-[#262626] rounded-xl hover:border-[#d5aaf9]/30 transition-all duration-200">
                     <h3 className="text-white font-semibold text-lg">Infrastructure Overview</h3>
                     <div className="flex items-center space-x-2">
-                      <span className="text-green-400 text-sm font-medium">View Details</span>
-                      <Icons.ChevronDown className="h-5 w-5 text-green-400 transition-transform duration-200 group-open:rotate-180" />
+                      <span className="text-[#40d0f2] text-sm font-medium">View Details</span>
+                      <Icons.ChevronDown className="h-5 w-5 text-[#40d0f2] transition-transform duration-200 group-open:rotate-180" />
                     </div>
                   </div>
                 </summary>
@@ -241,10 +243,10 @@ export default function Home() {
                       <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
                         {/* Solar + Grid Power */}
                         <div className="flex items-center justify-center mb-6 sm:mb-8">
-                            <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
+                            <div className="bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
                             <Icons.Sun className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                           </div>
-                            <div className="bg-gradient-to-br from-emerald-600 to-green-700 rounded-xl p-3 sm:p-4">
+                            <div className="bg-gradient-to-br from-[#40d0f2] to-[#32ca73] rounded-xl p-3 sm:p-4">
                             <Icons.Power className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                           </div>
                           <div className="ml-2 sm:ml-4 text-white font-semibold text-sm sm:text-base">Solar + Grid Hybrid Power</div>
@@ -252,7 +254,7 @@ export default function Home() {
                         
                         {/* Connection Line */}
                         <div className="flex justify-center mb-6 sm:mb-8">
-                            <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-green-500 to-emerald-600" style={{ willChange: 'transform' }}></div>
+                            <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-[#d5aaf9] to-[#40d0f2]" style={{ willChange: 'transform' }}></div>
                         </div>
                         
                         {/* GPU Tank */}
@@ -262,15 +264,15 @@ export default function Home() {
                         
                         {/* Connection Line */}
                         <div className="flex justify-center mb-6 sm:mb-8">
-                            <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-emerald-600 to-green-700" style={{ willChange: 'transform' }}></div>
+                            <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-[#40d0f2] to-[#32ca73]" style={{ willChange: 'transform' }}></div>
                         </div>
                         
                         {/* Network Layer */}
                         <div className="flex items-center justify-center">
-                            <div className="bg-gradient-to-br from-green-700 to-emerald-800 rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
+                            <div className="bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
                             <Icons.Cloud className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                           </div>
-                            <div className="bg-gradient-to-br from-emerald-800 to-green-900 rounded-xl p-3 sm:p-4">
+                            <div className="bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl p-3 sm:p-4">
                             <Icons.Network className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                           </div>
                           <div className="ml-2 sm:ml-4 text-white font-semibold text-sm sm:text-base">Vast.ai + Direct Connect</div>
@@ -286,9 +288,9 @@ export default function Home() {
             <StaggeredReveal staggerDelay={100}>
             <div className="space-y-6 sm:space-y-8">
               {/* GPU Nodes */}
-                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-green-500/30 transition-all duration-200" style={{ willChange: 'transform' }}>
+                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-[#d5aaf9]/30 transition-all duration-200" style={{ willChange: 'transform' }}>
                 <div className="flex items-start">
-                    <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-2 sm:p-3 mr-3 sm:mr-4">
+                    <div className="bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl p-2 sm:p-3 mr-3 sm:mr-4">
                     <Icons.Cpu className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                   </div>
                   <div>
@@ -302,9 +304,9 @@ export default function Home() {
               </div>
               
               {/* Immersion Cooling */}
-                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-emerald-500/30 transition-all duration-200" style={{ willChange: 'transform' }}>
+                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-[#40d0f2]/30 transition-all duration-200" style={{ willChange: 'transform' }}>
                 <div className="flex items-start">
-                    <div className="bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl p-2 sm:p-3 mr-3 sm:mr-4">
+                    <div className="bg-gradient-to-br from-[#40d0f2] to-[#32ca73] rounded-xl p-2 sm:p-3 mr-3 sm:mr-4">
                     <Icons.Droplets className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                   </div>
                   <div>
@@ -318,9 +320,9 @@ export default function Home() {
               </div>
               
               {/* Solar + Grid Hybrid */}
-                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-green-600/30 transition-all duration-200" style={{ willChange: 'transform' }}>
+                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-[#32ca73]/30 transition-all duration-200" style={{ willChange: 'transform' }}>
                 <div className="flex items-start">
-                    <div className="bg-gradient-to-br from-green-600 to-emerald-700 rounded-xl p-2 sm:p-3 mr-3 sm:mr-4">
+                    <div className="bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl p-2 sm:p-3 mr-3 sm:mr-4">
                     <Icons.Zap className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                   </div>
                   <div>
@@ -334,9 +336,9 @@ export default function Home() {
               </div>
               
               {/* Vast.ai + Direct Connect */}
-                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-emerald-600/30 transition-all duration-200" style={{ willChange: 'transform' }}>
+                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-[#d5aaf9]/30 transition-all duration-200" style={{ willChange: 'transform' }}>
                 <div className="flex items-start">
-                    <div className="bg-gradient-to-br from-emerald-600 to-green-700 rounded-xl p-2 sm:p-3 mr-3 sm:mr-4">
+                    <div className="bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl p-2 sm:p-3 mr-3 sm:mr-4">
                     <Icons.Server className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                   </div>
                   <div>
@@ -357,7 +359,7 @@ export default function Home() {
 
 
       {/* Use Cases Section */}
-      <section id="use-cases" className="relative z-10 overflow-visible py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-green-900/20 to-black">
+      <section id="use-cases" className="relative z-10 overflow-visible py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#d5aaf9]/10 to-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 sm:mb-16 md:mb-20">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
@@ -376,7 +378,7 @@ export default function Home() {
                 <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                   {/* Data Preparation */}
                   <div className="text-center">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
                       <Icons.Database className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                     </div>
                     <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Data Preparation</h4>
@@ -385,7 +387,7 @@ export default function Home() {
                   
                   {/* Model Training */}
                   <div className="text-center">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#40d0f2] to-[#32ca73] rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
                       <Icons.Brain className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                     </div>
                     <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Model Training</h4>
@@ -394,7 +396,7 @@ export default function Home() {
                   
                   {/* Model Evaluation */}
                   <div className="text-center">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-600 to-emerald-700 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
                       <Icons.BarChart3 className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                     </div>
                     <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Model Evaluation</h4>
@@ -403,7 +405,7 @@ export default function Home() {
                   
                   {/* Deployment */}
                   <div className="text-center">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-emerald-600 to-green-700 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
                       <Icons.Server className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                     </div>
                     <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Deployment</h4>
@@ -414,9 +416,9 @@ export default function Home() {
                 {/* Connection Lines */}
                 <div className="hidden lg:block mt-8">
                   <div className="flex justify-center items-center space-x-4">
-                    <div className="w-8 h-1 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full"></div>
-                    <div className="w-8 h-1 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full"></div>
-                    <div className="w-8 h-1 bg-gradient-to-r from-green-600 to-emerald-700 rounded-full"></div>
+                    <div className="w-8 h-1 bg-gradient-to-r from-[#d5aaf9] to-[#40d0f2] rounded-full"></div>
+                    <div className="w-8 h-1 bg-gradient-to-r from-[#32ca73] to-[#d5aaf9] rounded-full"></div>
+                    <div className="w-8 h-1 bg-gradient-to-r from-[#d5aaf9] to-[#40d0f2] rounded-full"></div>
                   </div>
                 </div>
               </div>
@@ -429,7 +431,7 @@ export default function Home() {
             <HoverCard 
               className="bg-[#1A1A1A]/50 border-[#262626]"
               icon={
-                <div className="mx-auto w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
+                <div className="mx-auto w-16 h-16 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center">
                   <Icons.Brain className="h-8 w-8 text-white" />
                 </div>
               }
@@ -448,7 +450,7 @@ export default function Home() {
             <HoverCard 
               className="bg-[#1A1A1A]/50 border-[#262626]"
               icon={
-                <div className="mx-auto w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center">
+                <div className="mx-auto w-16 h-16 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center">
                   <Icons.Monitor className="h-8 w-8 text-white" />
                 </div>
               }
@@ -464,9 +466,9 @@ export default function Home() {
             </HoverCard>
 
             {/* LLM Fine-tuning */}
-            <Card className="bg-[#1A1A1A]/50 border-[#262626] pt-2 hover:border-green-600/50 hover:shadow-lg hover:shadow-green-600/20 transition-all duration-300 group overflow-visible">
+            <Card className="bg-[#1A1A1A]/50 border-[#262626] pt-2 hover:border-[#d5aaf9]/50 hover:shadow-lg hover:shadow-[#d5aaf9]/20 transition-all duration-300 group overflow-visible">
               <CardHeader className="text-center pt-6 pb-4">
-                <div className="mx-auto mb-4 w-16 h-16 bg-gradient-to-br from-green-600 to-emerald-700 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="mx-auto mb-4 w-16 h-16 bg-gradient-to-br from-[#40d0f2] to-[#d5aaf9] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Icons.Code className="h-8 w-8 text-white" />
                 </div>
                 <CardTitle className="text-white text-xl">LLM Fine-tuning</CardTitle>
@@ -485,9 +487,9 @@ export default function Home() {
             </Card>
 
             {/* Data Science & Inference */}
-            <Card className="bg-[#1A1A1A]/50 border-[#262626] pt-2 hover:border-emerald-600/50 hover:shadow-lg hover:shadow-emerald-600/20 transition-all duration-300 group overflow-visible">
+            <Card className="bg-[#1A1A1A]/50 border-[#262626] pt-2 hover:border-[#32ca73]/50 hover:shadow-lg hover:shadow-[#32ca73]/20 transition-all duration-300 group overflow-visible">
               <CardHeader className="text-center pt-6 pb-4">
-                <div className="mx-auto mb-4 w-16 h-16 bg-gradient-to-br from-emerald-600 to-green-700 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="mx-auto mb-4 w-16 h-16 bg-gradient-to-br from-[#40d0f2] to-[#32ca73] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Icons.BarChart3 className="h-8 w-8 text-white" />
                 </div>
                 <CardTitle className="text-white text-xl">Data Science & Inference</CardTitle>
@@ -530,7 +532,7 @@ export default function Home() {
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                   {/* Infrastructure Layer */}
                   <div className="text-center">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
                       <Icons.Server className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
                     </div>
                     <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Infrastructure Layer</h4>
@@ -539,7 +541,7 @@ export default function Home() {
                   
                   {/* Platform Layer */}
                   <div className="text-center">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
                       <Icons.Cloud className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
                     </div>
                     <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Platform Layer</h4>
@@ -548,7 +550,7 @@ export default function Home() {
                   
                   {/* Application Layer */}
                   <div className="text-center">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-green-600 to-emerald-700 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
                       <Icons.Code className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
                     </div>
                     <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Application Layer</h4>
@@ -559,8 +561,8 @@ export default function Home() {
                 {/* Connection Lines */}
                 <div className="hidden lg:block mt-8">
                   <div className="flex justify-center items-center space-x-8">
-                    <div className="w-12 h-1 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full"></div>
-                    <div className="w-12 h-1 bg-gradient-to-r from-emerald-500 to-green-600 rounded-full"></div>
+                    <div className="w-12 h-1 bg-gradient-to-r from-[#d5aaf9] to-[#40d0f2] rounded-full"></div>
+                    <div className="w-12 h-1 bg-gradient-to-r from-[#32ca73] to-[#d5aaf9] rounded-full"></div>
                   </div>
                 </div>
               </div>
@@ -572,7 +574,7 @@ export default function Home() {
             <div className="group cursor-pointer">
               <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                 <div className="flex items-center mb-4 sm:mb-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
                     <Icons.Clock className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <h3 className="text-white font-bold text-base sm:text-lg">Always-on Availability</h3>
@@ -585,9 +587,9 @@ export default function Home() {
 
             {/* Clean Energy Credits */}
             <div className="group cursor-pointer">
-              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
+              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-[#32ca73]/50 hover:shadow-lg hover:shadow-[#32ca73]/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                 <div className="flex items-center mb-4 sm:mb-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
                     <Icons.Award className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <h3 className="text-white font-bold text-base sm:text-lg">Clean Energy Credits</h3>
@@ -600,9 +602,9 @@ export default function Home() {
 
             {/* Custom Containers & APIs */}
             <div className="group cursor-pointer">
-              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-green-600/50 hover:shadow-lg hover:shadow-green-600/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
+              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-[#32ca73]/50 hover:shadow-lg hover:shadow-[#32ca73]/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                 <div className="flex items-center mb-4 sm:mb-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-600 to-emerald-700 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
                     <Icons.Settings className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <h3 className="text-white font-bold text-base sm:text-lg">Custom Containers & APIs</h3>
@@ -615,9 +617,9 @@ export default function Home() {
 
             {/* Spot & Reserved Instances */}
             <div className="group cursor-pointer">
-              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-emerald-600/50 hover:shadow-lg hover:shadow-emerald-600/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
+              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-[#32ca73]/50 hover:shadow-lg hover:shadow-[#32ca73]/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                 <div className="flex items-center mb-4 sm:mb-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-600 to-green-700 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#40d0f2] to-[#32ca73] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
                     <Icons.Calendar className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <h3 className="text-white font-bold text-base sm:text-lg">Spot & Reserved Instances</h3>
@@ -632,7 +634,7 @@ export default function Home() {
             <div className="group cursor-pointer">
               <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-green-700/50 hover:shadow-lg hover:shadow-green-700/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                 <div className="flex items-center mb-4 sm:mb-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-700 to-emerald-800 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
                     <Icons.Eye className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <h3 className="text-white font-bold text-base sm:text-lg">Remote Monitoring</h3>
@@ -645,9 +647,9 @@ export default function Home() {
 
             {/* Dedicated Support */}
             <div className="group cursor-pointer">
-              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-emerald-700/50 hover:shadow-lg hover:shadow-emerald-700/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
+              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-[#d5aaf9]/50 hover:shadow-lg hover:shadow-[#d5aaf9]/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                 <div className="flex items-center mb-4 sm:mb-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-700 to-green-800 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
                     <Icons.Headphones className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <h3 className="text-white font-bold text-base sm:text-lg">Dedicated Support</h3>
@@ -667,7 +669,7 @@ export default function Home() {
                 <div className="group cursor-pointer">
                   <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                     <div className="flex items-center mb-4 sm:mb-6">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
                         <Icons.Clock className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                       </div>
                       <h3 className="text-white font-bold text-base sm:text-lg">Always-on Availability</h3>
@@ -680,9 +682,9 @@ export default function Home() {
                 
                 {/* Clean Energy Credits */}
                 <div className="group cursor-pointer">
-                  <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
+                  <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-[#32ca73]/50 hover:shadow-lg hover:shadow-[#32ca73]/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                     <div className="flex items-center mb-4 sm:mb-6">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
                         <Icons.Award className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                       </div>
                       <h3 className="text-white font-bold text-base sm:text-lg">Clean Energy Credits</h3>
@@ -697,18 +699,18 @@ export default function Home() {
               {/* Progressive disclosure for remaining features */}
               <details className="group">
                 <summary className="cursor-pointer list-none">
-                  <div className="flex items-center justify-center p-4 bg-[#1A1A1A]/50 border border-[#262626] rounded-xl hover:border-green-500/30 transition-all duration-200">
-                    <span className="text-green-400 font-medium mr-2">View More Features</span>
-                    <Icons.ChevronDown className="h-5 w-5 text-green-400 transition-transform duration-200 group-open:rotate-180" />
+                  <div className="flex items-center justify-center p-4 bg-[#1A1A1A]/50 border border-[#262626] rounded-xl hover:border-[#d5aaf9]/30 transition-all duration-200">
+                    <span className="text-[#40d0f2] font-medium mr-2">View More Features</span>
+                    <Icons.ChevronDown className="h-5 w-5 text-[#40d0f2] transition-transform duration-200 group-open:rotate-180" />
                   </div>
                 </summary>
                 
                 <div className="mt-4 grid grid-cols-1 gap-6">
                   {/* Custom Containers & APIs */}
                   <div className="group cursor-pointer">
-                    <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-green-600/50 hover:shadow-lg hover:shadow-green-600/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
+                    <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-[#32ca73]/50 hover:shadow-lg hover:shadow-[#32ca73]/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                       <div className="flex items-center mb-4 sm:mb-6">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-600 to-emerald-700 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
                           <Icons.Settings className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                         </div>
                         <h3 className="text-white font-bold text-base sm:text-lg">Custom Containers & APIs</h3>
@@ -721,9 +723,9 @@ export default function Home() {
 
                   {/* Spot & Reserved Instances */}
                   <div className="group cursor-pointer">
-                    <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-emerald-600/50 hover:shadow-lg hover:shadow-emerald-600/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
+                    <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-[#32ca73]/50 hover:shadow-lg hover:shadow-[#32ca73]/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                       <div className="flex items-center mb-4 sm:mb-6">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-600 to-green-700 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#40d0f2] to-[#32ca73] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
                           <Icons.Calendar className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                         </div>
                         <h3 className="text-white font-bold text-base sm:text-lg">Spot & Reserved Instances</h3>
@@ -738,7 +740,7 @@ export default function Home() {
                   <div className="group cursor-pointer">
                     <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-green-700/50 hover:shadow-lg hover:shadow-green-700/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                       <div className="flex items-center mb-4 sm:mb-6">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-700 to-emerald-800 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
                           <Icons.Eye className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                         </div>
                         <h3 className="text-white font-bold text-base sm:text-lg">Remote Monitoring</h3>
@@ -751,9 +753,9 @@ export default function Home() {
 
                   {/* Dedicated Support */}
                   <div className="group cursor-pointer">
-                    <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-emerald-700/50 hover:shadow-lg hover:shadow-emerald-700/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
+                    <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-[#d5aaf9]/50 hover:shadow-lg hover:shadow-[#d5aaf9]/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                       <div className="flex items-center mb-4 sm:mb-6">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-700 to-green-800 rounded-xl flex items-center justify-center mr-3 sm:mr-4">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
                           <Icons.Headphones className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                         </div>
                         <h3 className="text-white font-bold text-base sm:text-lg">Dedicated Support</h3>
@@ -774,7 +776,7 @@ export default function Home() {
       <AnimatedHowItWorks />
 
       {/* Pricing Section */}
-      <section id="pricing" className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-green-900/20 to-black">
+      <section id="pricing" className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#40d0f2]/10 to-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 sm:mb-16 md:mb-20">
@@ -812,13 +814,13 @@ export default function Home() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className="border-t border-[#333333] bg-green-900/20">
+                      <tr className="border-t border-[#333333] bg-[#d5aaf9]/10">
                         <td className="p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">MODRON</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-green-400 font-bold text-xs sm:text-sm md:text-base">$0.54–$0.80</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-green-400 font-bold text-xs sm:text-sm md:text-base">80–95%</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-green-400 font-bold text-xs sm:text-sm md:text-base">Yes</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-green-400 font-bold text-xs sm:text-sm md:text-base">High</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-green-400 font-bold text-xs sm:text-sm md:text-base">Included</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">$0.54–$0.80</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">80–95%</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">Yes</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">High</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">Included</td>
                       </tr>
                       <tr className="border-t border-[#333333]">
                         <td className="p-3 sm:p-4 md:p-6 text-white text-xs sm:text-sm md:text-base">AWS</td>
@@ -852,27 +854,27 @@ export default function Home() {
               {/* Mobile Cards */}
               <div className="md:hidden space-y-4">
                 {/* MODRON Card */}
-                <div className="bg-green-900/20 border border-green-500/30 rounded-xl p-4">
+                <div className="bg-[#d5aaf9]/10 border border-[#d5aaf9]/30 rounded-xl p-4">
                   <div className="flex items-center justify-between mb-3">
                     <h4 className="text-white font-bold text-lg">MODRON</h4>
-                    <span className="text-green-400 font-bold text-lg">$0.54–$0.80</span>
+                    <span className="text-[#40d0f2] font-bold text-lg">$0.54–$0.80</span>
                   </div>
                   <div className="grid grid-cols-2 gap-3 text-sm">
                     <div>
                       <span className="text-[#999999]">Green Energy:</span>
-                      <span className="text-green-400 font-semibold ml-2">80–95%</span>
+                      <span className="text-[#40d0f2] font-semibold ml-2">80–95%</span>
                     </div>
                     <div>
                       <span className="text-[#999999]">Dedicated:</span>
-                      <span className="text-green-400 font-semibold ml-2">Yes</span>
+                      <span className="text-[#40d0f2] font-semibold ml-2">Yes</span>
                     </div>
                     <div>
                       <span className="text-[#999999]">SLA:</span>
-                      <span className="text-green-400 font-semibold ml-2">High</span>
+                      <span className="text-[#40d0f2] font-semibold ml-2">High</span>
                     </div>
                     <div>
                       <span className="text-[#999999]">Carbon Offset:</span>
-                      <span className="text-green-400 font-semibold ml-2">Included</span>
+                      <span className="text-[#40d0f2] font-semibold ml-2">Included</span>
                     </div>
                   </div>
                 </div>
@@ -965,8 +967,8 @@ export default function Home() {
 
             {/* Pre-Launch Offer - BACKUP (COMMENTED OUT) */}
             {/* 
-            <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/30 border border-green-500/30 rounded-2xl p-8 sm:p-12 text-center">
-              <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
+            <div className="bg-gradient-to-br from-[#d5aaf9]/20 to-[#40d0f2]/20 border border-[#d5aaf9]/30 rounded-2xl p-8 sm:p-12 text-center">
+              <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center">
                 <Icons.Star className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
@@ -976,15 +978,15 @@ export default function Home() {
                 Early waitlist members receive priority access to new clusters and pre-launch pricing for the first 6 months.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-                <div className="flex items-center text-green-400 font-bold text-base sm:text-lg">
+                <div className="flex items-center text-[#40d0f2] font-bold text-base sm:text-lg">
                   <Icons.Clock className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                   Priority Access
                 </div>
-                <div className="flex items-center text-green-400 font-bold text-base sm:text-lg">
+                <div className="flex items-center text-[#40d0f2] font-bold text-base sm:text-lg">
                   <Icons.CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                   Pre-Launch Pricing
                 </div>
-                <div className="flex items-center text-green-400 font-bold text-base sm:text-lg">
+                <div className="flex items-center text-[#40d0f2] font-bold text-base sm:text-lg">
                   <Icons.Zap className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                   6 Months Duration
                 </div>
@@ -994,20 +996,20 @@ export default function Home() {
             */}
 
             {/* Pre-Launch Offer - ENHANCED VERSION */}
-            <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/30 border border-green-500/30 rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden">
+            <div className="bg-gradient-to-br from-[#32ca73]/20 to-[#40d0f2]/20 border border-[#32ca73]/30 rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden">
               {/* Animated background elements */}
               <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-10 left-10 w-2 h-2 bg-green-400/30 rounded-full animate-pulse"></div>
-                <div className="absolute top-20 right-20 w-1 h-1 bg-emerald-400/40 rounded-full animate-ping"></div>
-                <div className="absolute bottom-10 left-1/4 w-1.5 h-1.5 bg-green-300/20 rounded-full animate-bounce"></div>
-                <div className="absolute top-1/2 right-10 w-1 h-1 bg-green-400/25 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
-                <div className="absolute bottom-20 right-1/3 w-1.5 h-1.5 bg-emerald-300/15 rounded-full animate-bounce" style={{animationDelay: '0.5s'}}></div>
+                <div className="absolute top-10 left-10 w-2 h-2 bg-[#40d0f2]/30 rounded-full animate-pulse"></div>
+                <div className="absolute top-20 right-20 w-1 h-1 bg-[#32ca73]/40 rounded-full animate-ping"></div>
+                <div className="absolute bottom-10 left-1/4 w-1.5 h-1.5 bg-[#d5aaf9]/20 rounded-full animate-bounce"></div>
+                <div className="absolute top-1/2 right-10 w-1 h-1 bg-[#40d0f2]/25 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                <div className="absolute bottom-20 right-1/3 w-1.5 h-1.5 bg-[#32ca73]/15 rounded-full animate-bounce" style={{animationDelay: '0.5s'}}></div>
               </div>
 
               {/* Enhanced Star Icon */}
-              <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center relative group">
+              <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center relative group">
                 <Icons.Star className="h-8 w-8 text-white group-hover:scale-110 transition-transform duration-300" />
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300"></div>
               </div>
 
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
@@ -1023,31 +1025,31 @@ export default function Home() {
               {/* Interactive Feature Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                 <div className="group cursor-pointer transform transition-all duration-300 hover:scale-105">
-                  <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-4 hover:bg-green-500/20 hover:border-green-400/40 transition-all duration-300">
+                  <div className="bg-[#40d0f2]/10 border border-[#40d0f2]/20 rounded-xl p-4 hover:bg-[#40d0f2]/20 hover:border-[#40d0f2]/40 transition-all duration-300">
                     <div className="flex items-center justify-center mb-3">
-                      <Icons.Clock className="h-6 w-6 text-green-400 group-hover:scale-110 transition-transform duration-300" />
+                      <Icons.Clock className="h-6 w-6 text-[#40d0f2] group-hover:scale-110 transition-transform duration-300" />
                     </div>
-                    <p className="text-green-400 font-bold text-sm">Priority Access</p>
+                    <p className="text-[#40d0f2] font-bold text-sm">Priority Access</p>
                     <p className="text-[#999999] text-xs mt-1">Skip the queue</p>
                   </div>
                 </div>
                 
                 <div className="group cursor-pointer transform transition-all duration-300 hover:scale-105">
-                  <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 hover:bg-emerald-500/20 hover:border-emerald-400/40 transition-all duration-300">
+                  <div className="bg-[#32ca73]/10 border border-[#32ca73]/20 rounded-xl p-4 hover:bg-[#32ca73]/20 hover:border-[#32ca73]/40 transition-all duration-300">
                     <div className="flex items-center justify-center mb-3">
-                      <Icons.CheckCircle className="h-6 w-6 text-emerald-400 group-hover:scale-110 transition-transform duration-300" />
+                      <Icons.CheckCircle className="h-6 w-6 text-[#32ca73] group-hover:scale-110 transition-transform duration-300" />
                     </div>
-                    <p className="text-emerald-400 font-bold text-sm">Pre-Launch Pricing</p>
+                    <p className="text-[#32ca73] font-bold text-sm">Pre-Launch Pricing</p>
                     <p className="text-[#999999] text-xs mt-1">Exclusive rates</p>
                   </div>
                 </div>
                 
                 <div className="group cursor-pointer transform transition-all duration-300 hover:scale-105">
-                  <div className="bg-green-600/10 border border-green-600/20 rounded-xl p-4 hover:bg-green-600/20 hover:border-green-500/40 transition-all duration-300">
+                  <div className="bg-[#32ca73]/10 border border-[#32ca73]/20 rounded-xl p-4 hover:bg-[#32ca73]/20 hover:border-[#32ca73]/40 transition-all duration-300">
                     <div className="flex items-center justify-center mb-3">
-                      <Icons.Zap className="h-6 w-6 text-green-500 group-hover:scale-110 transition-transform duration-300" />
+                      <Icons.Zap className="h-6 w-6 text-[#32ca73] group-hover:scale-110 transition-transform duration-300" />
                     </div>
-                    <p className="text-green-500 font-bold text-sm">6 Months Duration</p>
+                    <p className="text-[#32ca73] font-bold text-sm">6 Months Duration</p>
                     <p className="text-[#999999] text-xs mt-1">Limited time</p>
                   </div>
                 </div>
@@ -1063,7 +1065,7 @@ export default function Home() {
       </section>
 
       {/* CTA / Contact Section */}
-      <section id="contact" className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-green-900/30 to-black">
+      <section id="contact" className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#32ca73]/10 to-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
@@ -1093,10 +1095,11 @@ export default function Home() {
         </div>
       </section>
 
+
       </main>
       
       {/* Footer */}
-      <footer className="bg-black border-t border-[#262626]" role="contentinfo">
+      <footer className="bg-black border-t border-[#d5aaf9]/20" role="contentinfo">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-12 sm:py-16">
           <div className="text-center">
             {/* Company Info */}

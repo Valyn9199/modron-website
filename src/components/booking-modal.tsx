@@ -482,9 +482,9 @@ export function BookingModal() {
   return (
     <>
       <Button 
-        variant="outline" 
+        variant="default" 
         size="lg" 
-        className="text-base sm:text-lg px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 border-2 border-[#4D4D4D] text-[#CCCCCC] hover:bg-[#262626] hover:border-[#666666] hover:text-white transition-all duration-300 transform hover:scale-105 active:scale-95 sm:active:scale-100 min-h-[44px] min-w-[44px]"
+        className="text-base sm:text-lg px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 bg-black text-white border-2 border-black hover:bg-[#d5aaf9] hover:border-[#d5aaf9] hover:text-black transition-all duration-300 transform hover:scale-110 active:scale-95 sm:active:scale-100 min-h-[44px] min-w-[44px]"
         onClick={openModal}
       >
         Book a Demo

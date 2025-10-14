@@ -26,7 +26,7 @@ export function HeroCTAButtons() {
     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center" role="group" aria-label="Call to action buttons">
       <LoadingButton 
         size="lg" 
-        className="text-base sm:text-lg px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+        className="text-base sm:text-lg px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 bg-gradient-to-r from-[#d5aaf9] to-[#40d0f2] hover:from-[#c49ae8] hover:to-[#2bb8d9] border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
         loadingText="Exploring..."
         onClick={handleExploreCapabilities}
         aria-label="Explore MODRON capabilities and scroll to technology section"
@@ -38,7 +38,7 @@ export function HeroCTAButtons() {
       <LoadingButton 
         variant="outline" 
         size="lg" 
-        className="text-base sm:text-lg px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 border-2 border-[#4D4D4D] text-[#CCCCCC] hover:bg-[#262626] hover:border-green-500 hover:text-white transition-all duration-300 transform hover:scale-105"
+        className="text-base sm:text-lg px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 border-2 border-[#4D4D4D] text-[#CCCCCC] hover:bg-[#262626] hover:border-[#40d0f2] hover:text-white transition-all duration-300 transform hover:scale-105"
         loadingText="Connecting..."
         onClick={handleGetCompute}
         aria-label="Get compute access and scroll to contact section"

@@ -74,7 +74,7 @@ export function ImmersionTankVideo({
       </video>
       
       {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-green-600/40 to-emerald-700/40" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#40d0f2]/40 to-[#d5aaf9]/40" />
       
       {/* Static GPU grid overlay */}
       <div className="relative z-10 p-3 sm:p-4 md:p-6 text-center h-full flex flex-col justify-center">

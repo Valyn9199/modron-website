@@ -108,7 +108,7 @@ export function WaitlistModal() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email address"
-                    className="w-full pl-10 pr-4 py-3 bg-[#262626] border border-[#333333] rounded-lg text-white placeholder-[#666666] focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors min-h-[44px] text-base"
+                    className="w-full pl-10 pr-4 py-3 bg-[#262626] border border-[#333333] rounded-lg text-white placeholder-[#666666] focus:outline-none focus:border-[#40d0f2] focus:ring-1 focus:ring-[#40d0f2] transition-colors min-h-[44px] text-base"
                     required
                   />
                 </div>
@@ -123,7 +123,7 @@ export function WaitlistModal() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 border-0 text-white py-4 text-base font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 sm:active:scale-100 disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px]"
+                className="w-full bg-gradient-to-r from-[#d5aaf9] to-[#40d0f2] hover:from-[#c49ae8] hover:to-[#2bb8d9] border-0 text-white py-4 text-base font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 sm:active:scale-100 disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px]"
               >
                 {isSubmitting ? "Joining..." : "Join Waitlist"}
               </Button>
@@ -137,7 +137,7 @@ export function WaitlistModal() {
           </>
         ) : (
           <div className="text-center">
-            <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
+            <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-[#32ca73] to-[#40d0f2] rounded-full flex items-center justify-center">
               <CheckCircle className="h-8 w-8 text-white" />
             </div>
             <h2 className="text-2xl font-bold text-white mb-4">Youre on the list!</h2>
@@ -146,7 +146,7 @@ export function WaitlistModal() {
             </p>
             <Button
               onClick={closeModal}
-              className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 border-0 text-white py-3 px-6 font-medium transition-all duration-300 active:scale-95 sm:active:scale-100 min-h-[44px] min-w-[44px]"
+              className="bg-gradient-to-r from-[#d5aaf9] to-[#40d0f2] hover:from-[#c49ae8] hover:to-[#2bb8d9] border-0 text-white py-3 px-6 font-medium transition-all duration-300 active:scale-95 sm:active:scale-100 min-h-[44px] min-w-[44px]"
             >
               Close
             </Button>

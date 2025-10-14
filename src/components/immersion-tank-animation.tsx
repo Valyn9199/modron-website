@@ -128,12 +128,12 @@ export function ImmersionTankAnimation({
       />
       
       {/* Static GPU grid overlay */}
-      <div className="relative z-10 bg-gradient-to-br from-green-600/20 to-emerald-700/20 rounded-xl p-6 h-full flex flex-col justify-center">
+      <div className="relative z-10 bg-gradient-to-br from-[#40d0f2]/20 to-[#d5aaf9]/20 rounded-xl p-6 h-full flex flex-col justify-center">
         <div className="text-white font-bold text-lg mb-4 text-center">Immersion Cooling Tank</div>
         <div className="grid grid-cols-3 gap-3 mb-4 flex-1 flex items-center justify-center">
           {[...Array(6)].map((_, i) => (
-            <div key={i} className="bg-white/90 rounded-lg p-3 border-2 border-green-500/50 shadow-lg">
-              <div className="w-6 h-6 bg-green-600 rounded mx-auto"></div>
+            <div key={i} className="bg-white/90 rounded-lg p-3 border-2 border-[#40d0f2]/50 shadow-lg">
+              <div className="w-6 h-6 bg-[#40d0f2] rounded mx-auto"></div>
             </div>
           ))}
         </div>

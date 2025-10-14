@@ -25,21 +25,21 @@ export function AnimatedStats({ className = "" }: AnimatedStatsProps) {
       label: "Uptime",
       value: 99.9,
       suffix: "%",
-      color: "#22c55e",
+      color: "#32ca73",
       chartData: [95, 97, 98, 99, 99.5, 99.9]
     },
     {
       label: "Carbon Reduction",
       value: 60,
       suffix: "%",
-      color: "#10b981",
+      color: "#d5aaf9",
       chartData: [20, 35, 45, 55, 58, 60]
     },
     {
       label: "Faster AI Performance",
       value: 40,
       suffix: "%",
-      color: "#059669",
+      color: "#40d0f2",
       chartData: [10, 20, 30, 35, 38, 40]
     }
   ], [])
@@ -80,7 +80,7 @@ export function AnimatedStats({ className = "" }: AnimatedStatsProps) {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8" role="list" aria-label="Performance statistics">
         {stats.map((stat, index) => (
           <div key={stat.label} className="relative group" role="listitem">
-            <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
+            <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-[#d5aaf9]/50 hover:shadow-lg hover:shadow-[#d5aaf9]/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
               {/* Animated Chart */}
               <div className="mb-3 sm:mb-4 h-12 sm:h-16 relative">
                 <svg className="w-full h-full" viewBox="0 0 100 40" preserveAspectRatio="none">
@@ -116,14 +116,14 @@ export function AnimatedStats({ className = "" }: AnimatedStatsProps) {
               {/* Stat Value */}
               <div className="text-center">
                 <div 
-                  className="text-2xl sm:text-3xl font-light text-white mb-1 sm:mb-2"
+                  className="text-2xl sm:text-3xl font-light text-black mb-1 sm:mb-2"
                   aria-label={`${stat.label}: ${animatedValues[index].toFixed(stat.value % 1 === 0 ? 0 : 1)}${stat.suffix || ''}`}
                 >
                   {stat.prefix || ''}
                   {animatedValues[index].toFixed(stat.value % 1 === 0 ? 0 : 1)}
                   {stat.suffix || ''}
                 </div>
-                <div className="text-xs sm:text-sm font-light text-[#999999]">{stat.label}</div>
+                <div className="text-xs sm:text-sm font-light text-black">{stat.label}</div>
               </div>
 
               {/* Progress Bar */}

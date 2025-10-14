@@ -99,7 +99,7 @@ export function PullToRefresh({
             opacity: opacity
           }}
         >
-          <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
+          <div className="w-12 h-12 bg-[#32ca73] rounded-full flex items-center justify-center shadow-lg">
             <RefreshCw 
               className="w-6 h-6 text-white transition-transform duration-200"
               style={{ 
@@ -108,7 +108,7 @@ export function PullToRefresh({
               }}
             />
           </div>
-          <p className="text-sm text-green-500 mt-2 font-medium">
+          <p className="text-sm text-[#32ca73] mt-2 font-medium">
             {pullDistance >= threshold ? 'Release to refresh' : 'Pull to refresh'}
           </p>
         </div>
@@ -128,7 +128,7 @@ export function PullToRefresh({
       {isRefreshing && (
         <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 flex items-center space-x-3">
-            <RefreshCw className="w-6 h-6 text-green-500 animate-spin" />
+            <RefreshCw className="w-6 h-6 text-[#32ca73] animate-spin" />
             <span className="text-gray-700">Refreshing...</span>
           </div>
         </div>

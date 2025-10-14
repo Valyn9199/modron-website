@@ -110,7 +110,7 @@ export function MobileSwipeSection({
               onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentIndex 
-                  ? 'bg-green-500 scale-125' 
+                  ? 'bg-[#40d0f2] scale-125' 
                   : 'bg-white/50 hover:bg-white/75'
               }`}
               aria-label={`Go to slide ${index + 1}`}
@@ -124,7 +124,7 @@ export function MobileSwipeSection({
       {autoPlay && (
         <div className="absolute top-4 right-4 z-10">
           <div className={`w-3 h-3 rounded-full transition-all duration-300 ${
-            isAutoPlaying ? 'bg-green-500' : 'bg-gray-500'
+            isAutoPlaying ? 'bg-[#40d0f2]' : 'bg-gray-500'
           }`} />
         </div>
       )}

@@ -14,7 +14,7 @@ export function ScrollButton() {
   return (
     <Button 
       size="lg" 
-      className="text-base sm:text-lg px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+      className="text-base sm:text-lg px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 bg-gradient-to-r from-[#d5aaf9] to-[#40d0f2] hover:from-[#c49ae8] hover:to-[#2bb8d9] border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
       onClick={handleClick}
     >
       Get Compute

@@ -92,8 +92,8 @@ export function Header() {
                   href={item.href}
                   className={`text-xs lg:text-sm font-medium transition-all duration-300 relative ${
                     isActive 
-                      ? "text-green-400" 
-                      : "text-muted-foreground hover:text-white"
+                      ? "text-[#40d0f2]" 
+                      : "text-muted-foreground hover:text-[#40d0f2]"
                   }`}
                   onClick={(e) => {
                     e.preventDefault()
@@ -156,8 +156,8 @@ export function Header() {
           href={item.href}
           className={`group relative px-4 py-4 rounded-xl transition-all duration-300 ${
             isActive 
-              ? "bg-green-500/10 border border-green-500/20 text-green-400" 
-              : "text-gray-300 hover:bg-white/5 hover:text-white border border-transparent"
+              ? "bg-[#d5aaf9]/10 border border-[#d5aaf9]/20 text-[#d5aaf9]" 
+              : "text-gray-300 hover:bg-[#d5aaf9]/5 hover:text-[#40d0f2] border border-transparent"
           }`}
           onClick={(e) => {
             e.preventDefault()
@@ -190,7 +190,7 @@ export function Header() {
           <div className="flex items-center justify-between">
             <span className="text-lg font-medium">{item.name}</span>
             {isActive && (
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-[#40d0f2] rounded-full animate-pulse"></div>
             )}
           </div>
           {isActive && (

@@ -142,18 +142,18 @@ export function SimpleHeader() {
                       isScrolled ? 'text-xs lg:text-sm' : 'text-sm lg:text-base'
                     } ${
                       isActive 
-                        ? "text-green-400 bg-green-400/10 shadow-sm" 
-                        : "text-white hover:text-green-400 hover:bg-white/5 hover:shadow-sm"
+                        ? "text-[#40d0f2] bg-[#40d0f2]/10 shadow-sm" 
+                        : "text-white hover:text-[#40d0f2] hover:bg-white/5 hover:shadow-sm"
                     }`}
                     aria-label={`Navigate to ${item.name} section`}
                     aria-current={isActive ? "page" : undefined}
                   >
                     <span className="relative z-10">{item.name}</span>
                     {isActive && (
-                      <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full transition-all duration-300 ease-out"></div>
+                      <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#40d0f2] to-[#d5aaf9] rounded-full transition-all duration-300 ease-out"></div>
                     )}
                     {/* Hover underline effect */}
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full scale-x-0 transition-transform duration-300 ease-out origin-left group-hover:scale-x-100"></div>
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#40d0f2] to-[#d5aaf9] rounded-full scale-x-0 transition-transform duration-300 ease-out origin-left group-hover:scale-x-100"></div>
                   </button>
                 )
               })}

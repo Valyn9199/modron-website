@@ -17,7 +17,7 @@ export function ViewPricingButton() {
   return (
     <Button 
       size="lg" 
-      className="text-base sm:text-lg px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 sm:active:scale-100 min-h-[44px] min-w-[44px]"
+      className="text-base sm:text-lg px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 bg-[#40d0f2] text-white border-2 border-[#40d0f2] hover:bg-[#2bb8d9] hover:border-[#2bb8d9] transition-all duration-300 transform hover:scale-110 active:scale-95 sm:active:scale-100 min-h-[44px] min-w-[44px]"
       onClick={scrollToPricing}
     >
       View Pricing

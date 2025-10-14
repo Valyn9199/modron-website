@@ -16,7 +16,7 @@ interface HeroBgVideoProps {
 
 export function HeroBgVideo({
   sources = [
-    { src: "/MODRON_GPUS_Immersion.mp4", type: "video/mp4" },
+    { src: "/MODRON_Hero_Containers_04.mp4", type: "video/mp4" },
   ],
   poster = "/hero-poster.jpg",
   overlayOpacity = 0.75,

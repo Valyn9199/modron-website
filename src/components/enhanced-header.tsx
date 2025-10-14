@@ -124,16 +124,16 @@ export function EnhancedHeader() {
                     onClick={() => scrollToSection(item.href)}
                     className={`text-xs lg:text-sm font-medium transition-all duration-300 relative px-2 py-1 rounded-md ${
                       isActive 
-                        ? "text-green-400 bg-green-400/10" 
+                        ? "text-[#40d0f2] bg-[#40d0f2]/10" 
                         : isScrolled 
                           ? "text-muted-foreground hover:text-white hover:bg-white/5"
-                          : "text-white hover:text-green-400 hover:bg-white/10"
+                          : "text-white hover:text-[#40d0f2] hover:bg-white/10"
                     }`}
                     aria-label={`Navigate to ${item.name} section`}
                   >
                     {item.name}
                     {isActive && (
-                      <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full"></div>
+                      <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#40d0f2] to-[#d5aaf9] rounded-full"></div>
                     )}
                   </button>
                 )
@@ -179,7 +179,7 @@ export function EnhancedHeader() {
                           onClick={() => scrollToSection(item.href)}
                           className={`text-left text-lg font-medium transition-all duration-300 p-3 rounded-lg ${
                             isActive 
-                              ? "text-green-400 bg-green-400/10" 
+                              ? "text-[#40d0f2] bg-[#40d0f2]/10" 
                               : "hover:text-white hover:bg-white/5"
                           }`}
                           aria-label={`Navigate to ${item.name} section`}
