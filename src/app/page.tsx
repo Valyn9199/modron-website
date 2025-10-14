@@ -70,8 +70,7 @@ export default function Home() {
     
     {/* Additional sub text */}
     <p className="text-base sm:text-lg md:text-lg lg:text-xl text-gray-800 mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed font-medium reveal reveal-delay-2 will-change-transform px-4">
-      Building Australia's modular, renewable AI infrastructure.<br />
-      Locally built GPU systems for sovereign, sustainable compute.
+      Building Australia's modular, renewable AI infrastructure. Locally built GPU systems for sovereign, sustainable compute.
     </p>
     
     {/* CTA Buttons - Larger on mobile */}
