@@ -18,7 +18,7 @@ export function HeroBgVideo({
   sources = [
     { src: "/MODRON_Hero_Containers_04.mp4", type: "video/mp4" },
   ],
-  poster = "/hero-poster.jpg",
+  poster = "/AI_Clouds_01.png",
   overlayOpacity = 0.75,
   className = "",
 }: HeroBgVideoProps) {
