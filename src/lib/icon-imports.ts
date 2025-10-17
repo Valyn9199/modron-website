@@ -28,4 +28,10 @@ export const Icons = {
   CheckCircle: dynamic(() => import('lucide-react').then(mod => ({ default: mod.CheckCircle }))),
   Star: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Star }))),
   ChevronDown: dynamic(() => import('lucide-react').then(mod => ({ default: mod.ChevronDown }))),
+  Battery: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Battery }))),
+  X: dynamic(() => import('lucide-react').then(mod => ({ default: mod.X }))),
+  User: dynamic(() => import('lucide-react').then(mod => ({ default: mod.User }))),
+  Mail: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Mail }))),
+  Building: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Building }))),
+  ArrowRight: dynamic(() => import('lucide-react').then(mod => ({ default: mod.ArrowRight }))),
 }

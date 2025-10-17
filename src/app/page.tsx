@@ -2,7 +2,7 @@ import { Header } from "@/components/header";
 import { OptimizedScrollIndicator } from "@/components/optimized-scroll-indicator";
 
 import { HoverCard } from "@/components/hover-card";
-import { ContactForm } from "@/components/contact-form";
+import { EnhancedForm } from "@/components/enhanced-form";
 import { SkipToContent } from "@/components/skip-to-content";
 
 import { MobileViewport } from "@/components/mobile-viewport";
@@ -30,9 +30,18 @@ const AnimatedStats = dynamic(() => import("@/components/animated-stats").then(m
 const StaggeredReveal = dynamic(() => import("@/components/page-transition").then(mod => ({ default: mod.StaggeredReveal })));
 const ProgressiveReveal = dynamic(() => import("@/components/page-transition").then(mod => ({ default: mod.ProgressiveReveal })));
 
-import { ViewPricingButton } from "@/components/view-pricing-button";
-import { WaitlistModal } from "@/components/waitlist-modal";
-import { BookingModal } from "@/components/booking-modal";
+import { EnhancedPricingButton } from "@/components/enhanced-pricing-button";
+import { EnhancedBookingButton } from "@/components/enhanced-booking-button";
+import { FloatingStatsOverlay } from "@/components/floating-stats-overlay";
+import { AnimatedProgressBar } from "@/components/animated-progress-bar";
+import { ParallaxSection } from "@/components/parallax-section";
+import { ScrollReveal } from "@/components/scroll-reveal";
+import { AnimatedDivider } from "@/components/animated-divider";
+import { InteractiveInfrastructure } from "@/components/interactive-infrastructure";
+import { DynamicComparison } from "@/components/dynamic-comparison";
+import { AnimatedCounter } from "@/components/animated-counter";
+import { ScrollProgress } from "@/components/scroll-progress";
+import { AnimatedHeadline } from "@/components/animated-headline";
 
 export default function Home() {
   // Performance optimizations in progress - console logs removed for production
@@ -40,10 +49,11 @@ export default function Home() {
   return (
     <MobileViewport>
 
-        <div className="min-h-screen bg-background relative">
+        <div className="min-h-screen bg-background relative scroll-container optimize-paint">
           <SkipToContent />
         
           <Header />
+          <ScrollProgress />
           {/* Spotlight removed for performance */}
           
           <main id="main-content" tabIndex={-1} className="relative">
@@ -54,70 +64,68 @@ export default function Home() {
   <HeroBgVideo overlayOpacity={0} />
 
   {/* Main Content */}
-  <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
-    {/* MODRON Logo removed to keep hero content above the fold */}
-    
+  <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl mt-12 sm:mt-16 md:mt-18 lg:mt-24">
     {/* Main Headline - MODRON-specific and differentiated */}
-      <h1 id="hero-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight mb-4 sm:mb-6 md:mb-8 leading-tight reveal will-change-transform font-heading">
-        <span className="text-gray-800">
-          Building Australia's sovereign AI infrastructure
-        </span>
-      </h1>
+      <AnimatedHeadline />
     
        {/* Subheading - MODRON's unique value proposition */}
-    <p className="text-base sm:text-lg md:text-lg lg:text-xl text-gray-800 mb-3 sm:mb-4 md:mb-6 max-w-3xl mx-auto leading-relaxed font-semibold reveal reveal-delay will-change-transform px-4" style={{ letterSpacing: '0.1em' }}>      IMMERSION-COOLED. SOLAR-POWERED. MODULAR.
+    <p className="hero-subheading text-base sm:text-lg md:text-lg lg:text-xl text-gray-800 mb-3 sm:mb-4 md:mb-6 max-w-3xl mx-auto leading-relaxed font-semibold reveal reveal-delay will-change-transform px-4" style={{ letterSpacing: '0.1em' }}>      IMMERSION-COOLED. SOLAR-POWERED. MODULAR.
     </p>
     
     {/* Additional sub text - MODRON-specific description */}
-    <p className="text-sm sm:text-base md:text-base lg:text-lg text-gray-800 mb-6 sm:mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed font-medium reveal reveal-delay-2 will-change-transform px-4">
+    <p className="hero-description text-sm sm:text-base md:text-base lg:text-lg text-gray-800 mb-6 sm:mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed font-medium reveal reveal-delay-2 will-change-transform px-4">
       MODRON delivers locally-built, renewable-powered GPU clusters for Australian enterprises. 
       Immersion cooling meets solar energy in modular containers designed for rapid deployment and maximum efficiency.
     </p>
     
-    {/* CTA Buttons - Larger on mobile */}
+    {/* CTA Buttons - Enhanced with micro-interactions */}
     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-6 sm:mb-8 md:mb-10">
-      <div className="min-h-[48px] sm:min-h-[52px]">
-        <BookingModal />
+      <div className="touch-feedback">
+        <EnhancedBookingButton />
       </div>
-      <div className="min-h-[48px] sm:min-h-[52px]">
-        <ViewPricingButton />
+      <div className="touch-feedback">
+        <EnhancedPricingButton />
       </div>
     </div>
     
-    {/* Metrics cards - Hidden on mobile, visible on desktop */}
-    <div className="hidden md:block mt-6 sm:mt-8 md:mt-10">
-      <AnimatedStats />
-    </div>
+  {/* Floating Stats Overlay - Desktop only */}
+  <div className="hidden lg:block">
+    <FloatingStatsOverlay />
   </div>
   
   {/* Scroll Indicator */}
   <OptimizedScrollIndicator />
-</section>
-
+  </div>
+  </section>
 
 {/* Mission & Vision Section */}
-      {/* Mission & Vision Section */}
-      <section id="vision" className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#1A1A1A]/20 to-black" role="region" aria-labelledby="vision-heading">
-        <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            {/* Mission Statement */}
-            <div className="text-center mb-12 sm:mb-16 md:mb-20">
-              <h2 id="vision-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
-                Our Mission
-              </h2>
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-[#DDDDDD] leading-relaxed font-light max-w-5xl mx-auto mb-8 sm:mb-12 px-4">
-                Building Australia's first sovereign AI infrastructure platform. From local GPU assembly to solar-powered operations, MODRON delivers compute independence for Australian businesses, researchers, and government agencies.
-              </p>
-              <div className="w-24 h-1 bg-gradient-to-r from-[#d5aaf9] to-[#40d0f2] mx-auto"></div>
-            </div>
-            
-            {/* Why MODRON Grid */}
-            <StaggeredReveal staggerDelay={150}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8" role="list" aria-label="Why choose MODRON">
+<section id="vision" className="mobile-section relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#1A1A1A]/20 to-black" role="region" aria-labelledby="vision-heading">
+  <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+    <div className="max-w-6xl mx-auto">
+      {/* Mission Statement */}
+      <div className="text-center mb-12 sm:mb-16 md:mb-20">
+        <ScrollReveal animation="fade" delay={0}>
+          <h2 id="vision-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
+            Our Mission
+          </h2>
+        </ScrollReveal>
+        <ParallaxSection speed={0.3}>
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-[#DDDDDD] leading-relaxed font-light max-w-5xl mx-auto mb-8 sm:mb-12 px-4">
+            Building Australia's first sovereign and truly modular AI infrastructure platform. From local GPU assembly to solar-powered operations, MODRON delivers compute independence for Australian businesses, researchers, and government agencies.
+          </p>
+        </ParallaxSection>
+        <ScrollReveal animation="zoom" delay={200}>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#d5aaf9] to-[#40d0f2] mx-auto"></div>
+        </ScrollReveal>
+      </div>
+      
+      {/* Why MODRON Grid */}
+      <StaggeredReveal staggerDelay={150}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8" role="list" aria-label="Why choose MODRON">
               {/* Renewable-powered */}
                 <div className="text-center group hover-lift" role="listitem">
-                  <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg hover-glow active:scale-95 sm:active:scale-100" aria-hidden="true">
-                  <Icons.Leaf className="h-8 w-8 text-white" />
+                  <div className="mobile-icon mx-auto mb-6 mobile-icon w-16 h-16 rounded-xl flex items-center justify-center icon-hover shadow-lg hover-glow" style={{ backgroundColor: '#d5aaf9' }} aria-hidden="true">
+                  <Icons.Leaf className="h-8 w-8 text-black" />
                 </div>
                 <h3 className="text-white font-light text-lg mb-3">Renewable-powered</h3>
                 <p className="text-[#999999] leading-relaxed font-light text-sm sm:text-base">
@@ -127,8 +135,8 @@ export default function Home() {
 
               {/* Immersion cooling = lower failure rates */}
                 <div className="text-center group hover-lift">
-                  <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-[#40d0f2] to-[#32ca73] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg hover-glow active:scale-95 sm:active:scale-100">
-                  <Icons.Shield className="h-8 w-8 text-white" />
+                  <div className="mx-auto mb-6 mobile-icon w-16 h-16 rounded-xl flex items-center justify-center icon-hover shadow-lg hover-glow" style={{ backgroundColor: '#40d0f2' }}>
+                  <Icons.Shield className="h-8 w-8 text-black" />
                 </div>
                 <h3 className="text-white font-light text-lg mb-3">Immersion cooling = lower failure rates</h3>
                 <p className="text-[#999999] leading-relaxed font-light text-sm sm:text-base">
@@ -138,8 +146,8 @@ export default function Home() {
 
               {/* Operates at the edge of efficiency */}
                 <div className="text-center group hover-lift">
-                  <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg hover-glow active:scale-95 sm:active:scale-100">
-                  <Icons.Gauge className="h-8 w-8 text-white" />
+                  <div className="mx-auto mb-6 mobile-icon w-16 h-16 rounded-xl flex items-center justify-center icon-hover shadow-lg hover-glow" style={{ backgroundColor: '#32ca73' }}>
+                  <Icons.Gauge className="h-8 w-8 text-black" />
                 </div>
                 <h3 className="text-white font-light text-lg mb-3">Operates at the edge of efficiency</h3>
                 <p className="text-[#999999] leading-relaxed font-light text-sm sm:text-base">
@@ -149,8 +157,8 @@ export default function Home() {
 
               {/* Carbon-aware + Off-grid capable */}
                 <div className="text-center group hover-lift">
-                  <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg hover-glow active:scale-95 sm:active:scale-100">
-                  <Icons.Globe className="h-8 w-8 text-white" />
+                  <div className="mx-auto mb-6 mobile-icon w-16 h-16 rounded-xl flex items-center justify-center icon-hover shadow-lg hover-glow" style={{ backgroundColor: '#fbff52' }}>
+                  <Icons.Globe className="h-8 w-8 text-black" />
                 </div>
                 <h3 className="text-white font-light text-lg mb-3">Carbon-aware + Off-grid capable</h3>
                 <p className="text-[#999999] leading-relaxed font-light text-sm sm:text-base">
@@ -163,17 +171,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Animated Divider */}
+      <AnimatedDivider variant="gradient" color="#40d0f2" />
+
       {/* MODRON Design Philosophy Section */}
       <section className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-[#1A1A1A] via-black to-[#1A1A1A]">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 sm:mb-16 md:mb-20">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
-                MODRON's Design Philosophy
-              </h2>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#CCCCCC] max-w-4xl mx-auto font-light leading-relaxed px-4">
-                Three pillars that define our approach to sovereign AI infrastructure
-              </p>
+              <ScrollReveal animation="slide-up" delay={0}>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
+                  MODRON's Design Philosophy
+                </h2>
+              </ScrollReveal>
+              <ScrollReveal animation="fade" delay={200}>
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#CCCCCC] max-w-4xl mx-auto font-light leading-relaxed px-4">
+                  Three pillars that define our approach to sovereign AI infrastructure
+                </p>
+              </ScrollReveal>
             </div>
             
             <StaggeredReveal staggerDelay={150}>
@@ -204,14 +219,17 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Animated Divider */}
+      <AnimatedDivider variant="wave" color="#32ca73" />
+
       {/* Technology & Infrastructure Section */}
-      <section id="technology" className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-[#1A1A1A] via-black to-[#1A1A1A]">
+      <section id="technology" className="mobile-section relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-[#1A1A1A] via-black to-[#1A1A1A]">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16 md:mb-20">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
+            <h2 className="section-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
               Technology & Infrastructure
             </h2>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#CCCCCC] max-w-4xl mx-auto font-light leading-relaxed px-4">
+            <p className="section-description text-base sm:text-lg md:text-xl lg:text-2xl text-[#CCCCCC] max-w-4xl mx-auto font-light leading-relaxed px-4">
               Modular, scalable architecture designed for maximum performance and efficiency. Our hardware-first approach 
               combines cutting-edge RTX 4090 GPUs with revolutionary immersion cooling technology, all housed in 
               shipping container infrastructure for rapid deployment and scalability.
@@ -226,11 +244,11 @@ export default function Home() {
                   <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
                   {/* Solar + Grid Power */}
                   <div className="flex items-center justify-center mb-6 sm:mb-8">
-                      <div className="bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
-                      <Icons.Sun className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                      <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2]">
+                      <Icons.Sun className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                     </div>
-                      <div className="bg-gradient-to-br from-[#40d0f2] to-[#32ca73] rounded-xl p-3 sm:p-4">
-                      <Icons.Power className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                      <div className="rounded-xl p-3 sm:p-4 bg-gradient-to-br from-[#40d0f2] to-[#32ca73]">
+                      <Icons.Power className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                     </div>
                     <div className="ml-2 sm:ml-4 text-white font-semibold text-sm sm:text-base">Solar + Grid Hybrid Power</div>
                   </div>
@@ -252,11 +270,11 @@ export default function Home() {
                   
                   {/* Network Layer */}
                   <div className="flex items-center justify-center">
-                      <div className="bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
-                      <Icons.Cloud className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                      <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9]">
+                      <Icons.Cloud className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                     </div>
-                      <div className="bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl p-3 sm:p-4">
-                      <Icons.Network className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                      <div className="rounded-xl p-3 sm:p-4 bg-gradient-to-br from-[#fbff52] to-[#d5aaf9]">
+                      <Icons.Network className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                     </div>
                     <div className="ml-2 sm:ml-4 text-white font-semibold text-sm sm:text-base">Vast.ai + Direct Connect</div>
                   </div>
@@ -284,11 +302,11 @@ export default function Home() {
                       <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
                         {/* Solar + Grid Power */}
                         <div className="flex items-center justify-center mb-6 sm:mb-8">
-                            <div className="bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
-                            <Icons.Sun className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                            <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2]">
+                            <Icons.Sun className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                           </div>
-                            <div className="bg-gradient-to-br from-[#40d0f2] to-[#32ca73] rounded-xl p-3 sm:p-4">
-                            <Icons.Power className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                            <div className="rounded-xl p-3 sm:p-4 bg-gradient-to-br from-[#40d0f2] to-[#32ca73]">
+                            <Icons.Power className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                           </div>
                           <div className="ml-2 sm:ml-4 text-white font-semibold text-sm sm:text-base">Solar + Grid Hybrid Power</div>
                         </div>
@@ -310,11 +328,11 @@ export default function Home() {
                         
                         {/* Network Layer */}
                         <div className="flex items-center justify-center">
-                            <div className="bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl p-3 sm:p-4 mr-2 sm:mr-4">
-                            <Icons.Cloud className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                            <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9]">
+                            <Icons.Cloud className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                           </div>
-                            <div className="bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl p-3 sm:p-4">
-                            <Icons.Network className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                            <div className="rounded-xl p-3 sm:p-4 bg-gradient-to-br from-[#fbff52] to-[#d5aaf9]">
+                            <Icons.Network className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                           </div>
                           <div className="ml-2 sm:ml-4 text-white font-semibold text-sm sm:text-base">Vast.ai + Direct Connect</div>
                         </div>
@@ -331,8 +349,8 @@ export default function Home() {
               {/* GPU Nodes */}
                 <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-[#d5aaf9]/30 transition-all duration-200" style={{ willChange: 'transform' }}>
                 <div className="flex items-start">
-                    <div className="bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl p-2 sm:p-3 mr-3 sm:mr-4">
-                    <Icons.Cpu className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                    <div className="rounded-xl p-2 sm:p-3 mr-3 sm:mr-4" style={{ backgroundColor: '#d5aaf9' }}>
+                    <Icons.Cpu className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                   </div>
                   <div>
                     <h3 className="text-white font-bold text-lg sm:text-xl mb-2">MODRON GPU Clusters</h3>
@@ -347,8 +365,8 @@ export default function Home() {
               {/* Immersion Cooling */}
                 <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-[#40d0f2]/30 transition-all duration-200" style={{ willChange: 'transform' }}>
                 <div className="flex items-start">
-                    <div className="bg-gradient-to-br from-[#40d0f2] to-[#32ca73] rounded-xl p-2 sm:p-3 mr-3 sm:mr-4">
-                    <Icons.Droplets className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                    <div className="rounded-xl p-2 sm:p-3 mr-3 sm:mr-4" style={{ backgroundColor: '#40d0f2' }}>
+                    <Icons.Droplets className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                   </div>
                   <div>
                     <h3 className="text-white font-bold text-lg sm:text-xl mb-2">Immersion Cooling</h3>
@@ -363,12 +381,12 @@ export default function Home() {
               {/* Solar + Grid Hybrid */}
                 <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-[#32ca73]/30 transition-all duration-200" style={{ willChange: 'transform' }}>
                 <div className="flex items-start">
-                    <div className="bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl p-2 sm:p-3 mr-3 sm:mr-4">
-                    <Icons.Zap className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                    <div className="rounded-xl p-2 sm:p-3 mr-3 sm:mr-4" style={{ backgroundColor: '#32ca73' }}>
+                    <Icons.Zap className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                   </div>
                   <div>
                     <h3 className="text-white font-bold text-lg sm:text-xl mb-2">Solar + Battery Hybrid</h3>
-                    <p className="text-[#999999] mb-2 sm:mb-3 text-sm sm:text-base">Australian-made solar panels, Tesla Powerwall integration</p>
+                    <p className="text-[#999999] mb-2 sm:mb-3 text-sm sm:text-base">Australian-made solar panels, advanced battery storage integration</p>
                     <p className="text-[#CCCCCC] text-xs sm:text-sm">
                       Grid-independent operation with intelligent energy management.
                     </p>
@@ -379,8 +397,8 @@ export default function Home() {
               {/* Vast.ai + Direct Connect */}
                 <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-[#d5aaf9]/30 transition-all duration-200" style={{ willChange: 'transform' }}>
                 <div className="flex items-start">
-                    <div className="bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl p-2 sm:p-3 mr-3 sm:mr-4">
-                    <Icons.Server className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                    <div className="rounded-xl p-2 sm:p-3 mr-3 sm:mr-4" style={{ backgroundColor: '#fbff52' }}>
+                    <Icons.Server className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                   </div>
                   <div>
                     <h3 className="text-white font-bold text-lg sm:text-xl mb-2">Container Infrastructure</h3>
@@ -397,7 +415,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Interactive Infrastructure Section */}
+      <section className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#32ca73]/10 to-black">
+        <InteractiveInfrastructure />
+      </section>
 
+      {/* Animated Divider */}
+      <AnimatedDivider variant="dots" color="#d5aaf9" />
 
       {/* MODRON Performance Advantages Section */}
       <section className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#40d0f2]/10 to-black">
@@ -414,21 +438,54 @@ export default function Home() {
             
             <StaggeredReveal staggerDelay={150}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-              <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#40d0f2]/30 transition-all duration-200 group">
-                <h3 className="text-white font-bold text-lg mb-2">Cooling Efficiency</h3>
-                <p className="text-[#40d0f2] font-bold text-2xl mb-2">60% lower failure rates</p>
+              <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#40d0f2]/30 transition-all duration-300 hover:scale-105 group">
+                <h3 className="text-white font-bold text-lg mb-4">Cooling Efficiency</h3>
+                <div className="mb-6">
+                  <div className="text-5xl font-bold text-[#40d0f2] mb-2">
+                    <AnimatedCounter end={60} duration={2000} suffix="%" />
+                  </div>
+                  <p className="text-white text-sm font-semibold mb-4">Failure Rate Reduction</p>
+                  <AnimatedProgressBar 
+                    value={60} 
+                    label="" 
+                    color="#40d0f2"
+                    delay={0}
+                  />
+                </div>
                 <p className="text-[#999999] text-sm">Immersion cooling vs traditional air cooling</p>
               </div>
               
-              <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#32ca73]/30 transition-all duration-200 group">
-                <h3 className="text-white font-bold text-lg mb-2">Energy Efficiency</h3>
-                <p className="text-[#32ca73] font-bold text-2xl mb-2">40% less power consumption</p>
+              <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#32ca73]/30 transition-all duration-300 hover:scale-105 group">
+                <h3 className="text-white font-bold text-lg mb-4">Energy Efficiency</h3>
+                <div className="mb-6">
+                  <div className="text-5xl font-bold text-[#32ca73] mb-2">
+                    <AnimatedCounter end={40} duration={2000} suffix="%" delay={100} />
+                  </div>
+                  <p className="text-white text-sm font-semibold mb-4">Power Consumption Savings</p>
+                  <AnimatedProgressBar 
+                    value={40} 
+                    label="" 
+                    color="#32ca73"
+                    delay={200}
+                  />
+                </div>
                 <p className="text-[#999999] text-sm">Immersion cooling + renewable energy optimization</p>
               </div>
               
-              <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#d5aaf9]/30 transition-all duration-200 group">
-                <h3 className="text-white font-bold text-lg mb-2">Deployment Speed</h3>
-                <p className="text-[#d5aaf9] font-bold text-2xl mb-2">90% faster setup</p>
+              <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#d5aaf9]/30 transition-all duration-300 hover:scale-105 group">
+                <h3 className="text-white font-bold text-lg mb-4">Deployment Speed</h3>
+                <div className="mb-6">
+                  <div className="text-5xl font-bold text-[#d5aaf9] mb-2">
+                    <AnimatedCounter end={90} duration={2000} suffix="%" delay={200} />
+                  </div>
+                  <p className="text-white text-sm font-semibold mb-4">Setup Time Reduction</p>
+                  <AnimatedProgressBar 
+                    value={90} 
+                    label="" 
+                    color="#d5aaf9"
+                    delay={400}
+                  />
+                </div>
                 <p className="text-[#999999] text-sm">Container-based infrastructure vs traditional data centers</p>
               </div>
             </div>
@@ -457,8 +514,8 @@ export default function Home() {
                 <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                   {/* Data Preparation */}
                   <div className="text-center">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                      <Icons.Database className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4" style={{ backgroundColor: '#d5aaf9' }}>
+                      <Icons.Database className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                     </div>
                     <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Data Preparation</h4>
                     <p className="text-[#999999] text-xs sm:text-sm">Raw data processing and preprocessing</p>
@@ -466,8 +523,8 @@ export default function Home() {
                   
                   {/* Model Training */}
                   <div className="text-center">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#40d0f2] to-[#32ca73] rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                      <Icons.Brain className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4" style={{ backgroundColor: '#40d0f2' }}>
+                      <Icons.Brain className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                     </div>
                     <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Model Training</h4>
                     <p className="text-[#999999] text-xs sm:text-sm">Neural network training and optimization</p>
@@ -475,8 +532,8 @@ export default function Home() {
                   
                   {/* Model Evaluation */}
                   <div className="text-center">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                      <Icons.BarChart3 className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4" style={{ backgroundColor: '#32ca73' }}>
+                      <Icons.BarChart3 className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                     </div>
                     <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Model Evaluation</h4>
                     <p className="text-[#999999] text-xs sm:text-sm">Performance testing and validation</p>
@@ -484,8 +541,8 @@ export default function Home() {
                   
                   {/* Deployment */}
                   <div className="text-center">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                      <Icons.Server className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4" style={{ backgroundColor: '#fbff52' }}>
+                      <Icons.Server className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                     </div>
                     <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Deployment</h4>
                     <p className="text-[#999999] text-xs sm:text-sm">Production deployment and serving</p>
@@ -510,8 +567,8 @@ export default function Home() {
             <HoverCard 
               className="bg-[#1A1A1A]/50 border-[#262626]"
               icon={
-                <div className="mx-auto w-16 h-16 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center">
-                  <Icons.Shield className="h-8 w-8 text-white" />
+                <div className="mx-auto w-16 h-16 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2]">
+                  <Icons.Shield className="h-8 w-8 text-black" />
                 </div>
               }
               title="Australian Government AI"
@@ -529,8 +586,8 @@ export default function Home() {
             <HoverCard 
               className="bg-[#1A1A1A]/50 border-[#262626]"
               icon={
-                <div className="mx-auto w-16 h-16 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center">
-                  <Icons.Brain className="h-8 w-8 text-white" />
+                <div className="mx-auto w-16 h-16 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#32ca73] to-[#d5aaf9]">
+                  <Icons.Brain className="h-8 w-8 text-black" />
                 </div>
               }
               title="Australian Research & Academia"
@@ -547,8 +604,8 @@ export default function Home() {
             {/* Australian Enterprise */}
             <Card className="bg-[#1A1A1A]/50 border-[#262626] pt-2 hover:border-[#d5aaf9]/50 hover:shadow-lg hover:shadow-[#d5aaf9]/20 transition-all duration-300 group overflow-visible">
               <CardHeader className="text-center pt-6 pb-4">
-                <div className="mx-auto mb-4 w-16 h-16 bg-gradient-to-br from-[#40d0f2] to-[#d5aaf9] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Icons.Server className="h-8 w-8 text-white" />
+                <div className="mx-auto mb-4 mobile-icon w-16 h-16 rounded-xl flex items-center justify-center icon-hover bg-gradient-to-br from-[#40d0f2] to-[#32ca73]">
+                  <Icons.Server className="h-8 w-8 text-black" />
                 </div>
                 <CardTitle className="text-white text-xl">Australian Enterprise</CardTitle>
               </CardHeader>
@@ -568,8 +625,8 @@ export default function Home() {
             {/* Sovereign AI Development */}
             <Card className="bg-[#1A1A1A]/50 border-[#262626] pt-2 hover:border-[#32ca73]/50 hover:shadow-lg hover:shadow-[#32ca73]/20 transition-all duration-300 group overflow-visible">
               <CardHeader className="text-center pt-6 pb-4">
-                <div className="mx-auto mb-4 w-16 h-16 bg-gradient-to-br from-[#40d0f2] to-[#32ca73] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Icons.Code className="h-8 w-8 text-white" />
+                <div className="mx-auto mb-4 mobile-icon w-16 h-16 rounded-xl flex items-center justify-center icon-hover bg-gradient-to-br from-[#fbff52] to-[#d5aaf9]">
+                  <Icons.Code className="h-8 w-8 text-black" />
                 </div>
                 <CardTitle className="text-white text-xl">Sovereign AI Development</CardTitle>
               </CardHeader>
@@ -589,6 +646,11 @@ export default function Home() {
             </StaggeredReveal>
           </div>
         </div>
+      </section>
+
+      {/* Dynamic Competitive Comparison Section */}
+      <section className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#40d0f2]/10 to-black">
+        <DynamicComparison />
       </section>
 
       {/* Features Grid Section */}
@@ -611,8 +673,8 @@ export default function Home() {
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                   {/* Infrastructure Layer */}
                   <div className="text-center">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                      <Icons.Server className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4" style={{ backgroundColor: '#d5aaf9' }}>
+                      <Icons.Server className="h-8 w-8 sm:h-10 sm:w-10 text-black" />
                     </div>
                     <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Infrastructure Layer</h4>
                     <p className="text-[#999999] text-xs sm:text-sm">GPU clusters, cooling systems, power management</p>
@@ -620,8 +682,8 @@ export default function Home() {
                   
                   {/* Platform Layer */}
                   <div className="text-center">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                      <Icons.Cloud className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4" style={{ backgroundColor: '#32ca73' }}>
+                      <Icons.Cloud className="h-8 w-8 sm:h-10 sm:w-10 text-black" />
                     </div>
                     <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Platform Layer</h4>
                     <p className="text-[#999999] text-xs sm:text-sm">Container orchestration, APIs, monitoring</p>
@@ -629,8 +691,8 @@ export default function Home() {
                   
                   {/* Application Layer */}
                   <div className="text-center">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                      <Icons.Code className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4" style={{ backgroundColor: '#40d0f2' }}>
+                      <Icons.Code className="h-8 w-8 sm:h-10 sm:w-10 text-black" />
                     </div>
                     <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Application Layer</h4>
                     <p className="text-[#999999] text-xs sm:text-sm">AI workloads, enterprise integrations</p>
@@ -653,8 +715,8 @@ export default function Home() {
             <div className="group cursor-pointer">
               <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                 <div className="flex items-center mb-4 sm:mb-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                    <Icons.Clock className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mr-3 sm:mr-4 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2]">
+                    <Icons.Clock className="h-5 w-5 sm:h-6 sm:w-6 text-black" />
                   </div>
                   <h3 className="text-white font-bold text-base sm:text-lg">Always-on Availability</h3>
                 </div>
@@ -668,8 +730,8 @@ export default function Home() {
             <div className="group cursor-pointer">
               <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-[#32ca73]/50 hover:shadow-lg hover:shadow-[#32ca73]/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                 <div className="flex items-center mb-4 sm:mb-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                    <Icons.Award className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mr-3 sm:mr-4 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9]">
+                    <Icons.Award className="h-5 w-5 sm:h-6 sm:w-6 text-black" />
                   </div>
                   <h3 className="text-white font-bold text-base sm:text-lg">Clean Energy Credits</h3>
                 </div>
@@ -683,8 +745,8 @@ export default function Home() {
             <div className="group cursor-pointer">
               <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-[#32ca73]/50 hover:shadow-lg hover:shadow-[#32ca73]/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                 <div className="flex items-center mb-4 sm:mb-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                    <Icons.Settings className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mr-3 sm:mr-4 bg-gradient-to-br from-[#40d0f2] to-[#32ca73]">
+                    <Icons.Settings className="h-5 w-5 sm:h-6 sm:w-6 text-black" />
                   </div>
                   <h3 className="text-white font-bold text-base sm:text-lg">Custom Containers & APIs</h3>
                 </div>
@@ -698,8 +760,8 @@ export default function Home() {
             <div className="group cursor-pointer">
               <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-[#32ca73]/50 hover:shadow-lg hover:shadow-[#32ca73]/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                 <div className="flex items-center mb-4 sm:mb-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#40d0f2] to-[#32ca73] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                    <Icons.Calendar className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mr-3 sm:mr-4 bg-gradient-to-br from-[#fbff52] to-[#d5aaf9]">
+                    <Icons.Calendar className="h-5 w-5 sm:h-6 sm:w-6 text-black" />
                   </div>
                   <h3 className="text-white font-bold text-base sm:text-lg">Spot & Reserved Instances</h3>
                 </div>
@@ -713,8 +775,8 @@ export default function Home() {
             <div className="group cursor-pointer">
               <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-green-700/50 hover:shadow-lg hover:shadow-green-700/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                 <div className="flex items-center mb-4 sm:mb-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                    <Icons.Eye className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mr-3 sm:mr-4 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9]">
+                    <Icons.Eye className="h-5 w-5 sm:h-6 sm:w-6 text-black" />
                   </div>
                   <h3 className="text-white font-bold text-base sm:text-lg">Remote Monitoring</h3>
                 </div>
@@ -728,8 +790,8 @@ export default function Home() {
             <div className="group cursor-pointer">
               <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-[#d5aaf9]/50 hover:shadow-lg hover:shadow-[#d5aaf9]/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                 <div className="flex items-center mb-4 sm:mb-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                    <Icons.Headphones className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mr-3 sm:mr-4 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2]">
+                    <Icons.Headphones className="h-5 w-5 sm:h-6 sm:w-6 text-black" />
                   </div>
                   <h3 className="text-white font-bold text-base sm:text-lg">Dedicated Support</h3>
                 </div>
@@ -748,8 +810,8 @@ export default function Home() {
                 <div className="group cursor-pointer">
                   <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                     <div className="flex items-center mb-4 sm:mb-6">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                        <Icons.Clock className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mr-3 sm:mr-4 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2]">
+                        <Icons.Clock className="h-5 w-5 sm:h-6 sm:w-6 text-black" />
                       </div>
                       <h3 className="text-white font-bold text-base sm:text-lg">Always-on Availability</h3>
                     </div>
@@ -763,8 +825,8 @@ export default function Home() {
                 <div className="group cursor-pointer">
                   <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-[#32ca73]/50 hover:shadow-lg hover:shadow-[#32ca73]/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                     <div className="flex items-center mb-4 sm:mb-6">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                        <Icons.Award className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mr-3 sm:mr-4 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9]">
+                        <Icons.Award className="h-5 w-5 sm:h-6 sm:w-6 text-black" />
                       </div>
                       <h3 className="text-white font-bold text-base sm:text-lg">Clean Energy Credits</h3>
                     </div>
@@ -789,8 +851,8 @@ export default function Home() {
                   <div className="group cursor-pointer">
                     <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-[#32ca73]/50 hover:shadow-lg hover:shadow-[#32ca73]/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                       <div className="flex items-center mb-4 sm:mb-6">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                          <Icons.Settings className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mr-3 sm:mr-4 bg-gradient-to-br from-[#40d0f2] to-[#32ca73]">
+                          <Icons.Settings className="h-5 w-5 sm:h-6 sm:w-6 text-black" />
                         </div>
                         <h3 className="text-white font-bold text-base sm:text-lg">Custom Containers & APIs</h3>
                       </div>
@@ -804,8 +866,8 @@ export default function Home() {
                   <div className="group cursor-pointer">
                     <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-[#32ca73]/50 hover:shadow-lg hover:shadow-[#32ca73]/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                       <div className="flex items-center mb-4 sm:mb-6">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#40d0f2] to-[#32ca73] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                          <Icons.Calendar className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mr-3 sm:mr-4 bg-gradient-to-br from-[#fbff52] to-[#d5aaf9]">
+                          <Icons.Calendar className="h-5 w-5 sm:h-6 sm:w-6 text-black" />
                         </div>
                         <h3 className="text-white font-bold text-base sm:text-lg">Spot & Reserved Instances</h3>
                       </div>
@@ -819,8 +881,8 @@ export default function Home() {
                   <div className="group cursor-pointer">
                     <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-green-700/50 hover:shadow-lg hover:shadow-green-700/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                       <div className="flex items-center mb-4 sm:mb-6">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                          <Icons.Eye className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mr-3 sm:mr-4 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9]">
+                          <Icons.Eye className="h-5 w-5 sm:h-6 sm:w-6 text-black" />
                         </div>
                         <h3 className="text-white font-bold text-base sm:text-lg">Remote Monitoring</h3>
                       </div>
@@ -834,8 +896,8 @@ export default function Home() {
                   <div className="group cursor-pointer">
                     <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-[#d5aaf9]/50 hover:shadow-lg hover:shadow-[#d5aaf9]/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
                       <div className="flex items-center mb-4 sm:mb-6">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center mr-3 sm:mr-4">
-                          <Icons.Headphones className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mr-3 sm:mr-4 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2]">
+                          <Icons.Headphones className="h-5 w-5 sm:h-6 sm:w-6 text-black" />
                         </div>
                         <h3 className="text-white font-bold text-base sm:text-lg">Dedicated Support</h3>
                       </div>
@@ -1048,7 +1110,7 @@ export default function Home() {
             {/* 
             <div className="bg-gradient-to-br from-[#d5aaf9]/20 to-[#40d0f2]/20 border border-[#d5aaf9]/30 rounded-2xl p-8 sm:p-12 text-center">
               <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center">
-                <Icons.Star className="h-8 w-8 text-white" />
+                <Icons.Star className="h-8 w-8 text-black" />
               </div>
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
                 Pre-Launch Offer
@@ -1086,9 +1148,9 @@ export default function Home() {
               </div>
 
               {/* Enhanced Star Icon */}
-              <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center relative group">
+              <div className="mx-auto mb-6 w-16 h-16 rounded-xl flex items-center justify-center relative group" style={{ backgroundColor: '#d5aaf9' }}>
                 <Icons.Star className="h-8 w-8 text-white group-hover:scale-110 transition-transform duration-300" />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300"></div>
+                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300" style={{ backgroundColor: '#d5aaf9' }}></div>
               </div>
 
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
@@ -1137,7 +1199,7 @@ export default function Home() {
 
 
               {/* Enhanced CTA */}
-              <WaitlistModal />
+              <EnhancedBookingButton />
             </div>
           </div>
         </div>
@@ -1156,9 +1218,7 @@ export default function Home() {
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-12 sm:mb-16 md:mb-20">
-              <div className="min-h-[44px]">
-                <BookingModal />
-              </div>
+              <EnhancedBookingButton />
             </div>
 
             {/* Contact Form */}
@@ -1168,7 +1228,7 @@ export default function Home() {
                 Have questions? Send us a message and we&apos;ll get back to you within 24 hours.
               </p>
               
-              <ContactForm />
+              <EnhancedForm />
             </div>
           </div>
         </div>

@@ -22,39 +22,39 @@ export function AnimatedHowItWorks() {
   const steps: Step[] = useMemo(() => [
     {
       id: 1,
-      icon: <CheckCircle className="h-8 w-8 text-white" />,
+      icon: <CheckCircle className="h-8 w-8 text-black" />,
       stepLabel: "STEP 1",
       title: "Select Instance",
       description: "Choose from GPU configurations optimized for your specific workload requirements.",
-      gradient: "from-[#d5aaf9] to-[#40d0f2]",
+      gradient: "#40d0f2",
       textColor: "text-[#40d0f2]"
     },
     {
       id: 2,
-      icon: <Server className="h-8 w-8 text-white" />,
+      icon: <Server className="h-8 w-8 text-black" />,
       stepLabel: "STEP 2",
       title: "Connect to Container",
       description: "Access your container environment through secure SSH or web-based interface.",
-      gradient: "from-[#40d0f2] to-[#32ca73]",
+      gradient: "#32ca73",
       textColor: "text-[#32ca73]"
     },
     {
       id: 3,
-      icon: <Play className="h-8 w-8 text-white" />,
+      icon: <Play className="h-8 w-8 text-black" />,
       stepLabel: "STEP 3",
       title: "Start Work",
       description: "Begin AI training, rendering, or data science workloads with full GPU acceleration.",
-      gradient: "from-[#32ca73] to-[#d5aaf9]",
+      gradient: "#d5aaf9",
       textColor: "text-[#d5aaf9]"
     },
     {
       id: 4,
-      icon: <Sparkles className="h-8 w-8 text-white" />,
+      icon: <Sparkles className="h-8 w-8 text-black" />,
       stepLabel: "OPTIONAL",
       title: "Preconfigured AI Environments",
       description: "Use ready-to-go environments with popular AI frameworks and tools pre-installed.",
-      gradient: "from-[#d5aaf9] to-[#40d0f2]",
-      textColor: "text-[#40d0f2]"
+      gradient: "#fbff52",
+      textColor: "text-[#fbff52]"
     }
   ], [])
 
@@ -96,7 +96,7 @@ export function AnimatedHowItWorks() {
                     transitionDelay: `${index * 100}ms`
                   }}
                 >
-                  <div className={`mx-auto mb-4 sm:mb-4 w-16 h-16 sm:w-16 sm:h-16 bg-gradient-to-br ${step.gradient} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 hover-glow`}>
+                  <div className="mx-auto mb-4 sm:mb-4 w-16 h-16 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center icon-hover hover-glow" style={{ backgroundColor: step.gradient }}>
                     {step.icon}
                   </div>
                   <div className={`${step.textColor} font-bold text-sm sm:text-sm mb-3`}>{step.stepLabel}</div>
@@ -110,12 +110,13 @@ export function AnimatedHowItWorks() {
                 {step.id < 4 && (
                   <div className="hidden lg:block absolute top-1/2 -right-6 transform -translate-y-1/2 z-10">
                     <div 
-                      className={`w-8 h-8 bg-gradient-to-r ${step.gradient} rounded-full flex items-center justify-center transition-all duration-700 ${
+                      className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-700 ${
                         visibleSteps.includes(step.id + 1) 
                           ? 'opacity-100 scale-100' 
                           : 'opacity-0 scale-75'
                       }`}
                       style={{
+                        backgroundColor: step.gradient,
                         transitionDelay: `${(index + 1) * 100}ms`
                       }}
                     >

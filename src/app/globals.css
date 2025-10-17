@@ -14,6 +14,113 @@
   border: 0;
 }
 
+/* Enhanced card animations and interactions */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px -5px rgba(64, 208, 242, 0.3);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(64, 208, 242, 0.5);
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.card-3d:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(2deg) scale(1.02);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.animate-ripple {
+  animation: ripple 0.6s linear;
+}
+
+/* Enhanced icon hover animations */
+@keyframes icon-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes icon-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes icon-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes icon-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+/* Icon container hover effects */
+.icon-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.icon-hover:hover {
+  transform: scale(1.1) translateY(-2px);
+}
+
+.icon-hover:active {
+  transform: scale(0.95);
+}
+
+/* Icon glow effect on hover */
+.icon-hover::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.icon-hover:hover::after {
+  opacity: 0.3;
+  box-shadow: 0 0 20px currentColor;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /* DM Sans heading font class */
@@ -165,6 +272,12 @@
       transition: none !important;
       scroll-behavior: auto !important;
     }
+    
+    .reduce-motion * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
   
   /* Custom scrollbar for webkit browsers */
@@ -185,8 +298,82 @@
     background: linear-gradient(to bottom, #16a34a, #059669);
   }
   
-  /* Mobile-specific styles */
-  @media (max-width: 768px) {
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  /* Aggressive mobile text scaling for better readability */
+  .hero-headline {
+    font-size: clamp(1.5rem, 8vw, 2.5rem) !important;
+    line-height: 1.1 !important;
+  }
+  
+  .hero-subheading {
+    font-size: clamp(0.875rem, 4vw, 1.125rem) !important;
+    line-height: 1.3 !important;
+  }
+  
+  .hero-description {
+    font-size: clamp(0.8rem, 3.5vw, 1rem) !important;
+    line-height: 1.4 !important;
+  }
+  
+  .section-heading {
+    font-size: clamp(1.75rem, 7vw, 2.25rem) !important;
+    line-height: 1.2 !important;
+  }
+  
+  .section-description {
+    font-size: clamp(0.9rem, 4vw, 1.1rem) !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* Enhanced touch feedback for mobile */
+  .group:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+  
+  .touch-feedback:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+  
+  .card-active:active {
+    transform: scale(0.98) translateY(-2px);
+    transition: all 0.1s ease;
+  }
+  
+  /* Disable hover effects on mobile for better performance */
+  .icon-hover:hover {
+    transform: none;
+  }
+  
+  .hover-lift:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  /* Optimize animations for mobile performance */
+  .animate-float {
+    animation-duration: 6s; /* Slower animations for better performance */
+  }
+  
+  .animate-pulse-glow {
+    animation-duration: 3s; /* Slower pulse animations */
+  }
+  
+  .animate-shimmer {
+    animation-duration: 3s; /* Slower shimmer effects */
+  }
+  
+  /* Reduce transform-heavy animations on mobile */
+  .card-3d:hover {
+    transform: none; /* Disable 3D transforms on mobile */
+  }
+  
+  /* Simplify parallax effects on mobile */
+  .parallax-mobile {
+    transform: none !important;
+  }
     /* Prevent text selection on interactive elements */
     button, a, [role="button"] {
       -webkit-touch-callout: none;
@@ -197,11 +384,83 @@
       user-select: none;
     }
     
-    /* Improve touch targets */
-    button, a, input, select, textarea {
-      min-height: 44px;
-      min-width: 44px;
-    }
+  /* Improve touch targets - Enhanced for better mobile interaction */
+  button, a, input, select, textarea {
+    min-height: 48px;
+    min-width: 48px;
+  }
+  
+  /* Larger icons on mobile */
+  .mobile-icon {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+  
+  .mobile-icon svg {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+  }
+  
+  /* Larger buttons on mobile */
+  .mobile-button {
+    padding: 0.875rem 1.5rem !important;
+    font-size: 1rem !important;
+    min-height: 3rem !important;
+  }
+  
+  /* Enhanced mobile spacing */
+  .mobile-section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  
+  .mobile-container {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+  
+  .mobile-card {
+    padding: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .mobile-gap {
+    gap: 1.5rem !important;
+  }
+  
+  /* Better mobile margins */
+  .mobile-mb {
+    margin-bottom: 2rem !important;
+  }
+  
+  .mobile-mt {
+    margin-top: 2rem !important;
+  }
+  
+  /* Mobile performance optimizations */
+  * {
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Reduce motion for better mobile performance */
+  .reduce-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  /* Optimize scrolling performance */
+  .scroll-container {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+  
+  /* Reduce paint operations */
+  .optimize-paint {
+    contain: layout style paint;
+  }
     
     /* Smooth scrolling for mobile */
     html {
