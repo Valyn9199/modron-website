@@ -19,7 +19,7 @@ interface InfrastructureComponent {
 }
 
 export function InteractiveInfrastructure() {
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.3 })
+  const { ref } = useScrollAnimation({ threshold: 0.3 })
   const [selectedComponent, setSelectedComponent] = useState<string | null>(null)
 
   const getGradientForComponent = (componentId: string) => {

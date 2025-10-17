@@ -14,7 +14,7 @@ export function EnhancedBookingButton() {
 
   return (
     <EnhancedButton
-      variant="dark"
+      variant="secondary"
       size="lg"
       onClick={handleClick}
       glow

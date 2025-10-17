@@ -29,7 +29,7 @@ const navigationItems = [
 ]
 
 // Improved throttle function with better performance
-function useThrottledCallback<T extends (...args: any[]) => any>(
+function useThrottledCallback<T extends (...args: unknown[]) => unknown>(
   callback: T,
   delay: number
 ): T {
