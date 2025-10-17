@@ -592,7 +592,6 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              </div>
             </MobileCollapsibleSection>
             
             <div className="pointer-events-none h-4"></div>
