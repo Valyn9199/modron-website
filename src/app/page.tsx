@@ -24,9 +24,6 @@ import dynamic from 'next/dynamic';
 const AnimatedHowItWorks = dynamic(() => import("@/components/animated-how-it-works").then(mod => ({ default: mod.AnimatedHowItWorks })), {
   loading: () => <LoadingSkeleton />
 });
-const AnimatedStats = dynamic(() => import("@/components/animated-stats").then(mod => ({ default: mod.AnimatedStats })), {
-  loading: () => <StatsSkeleton />
-});
 const StaggeredReveal = dynamic(() => import("@/components/page-transition").then(mod => ({ default: mod.StaggeredReveal })));
 const ProgressiveReveal = dynamic(() => import("@/components/page-transition").then(mod => ({ default: mod.ProgressiveReveal })));
 

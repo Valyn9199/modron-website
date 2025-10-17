@@ -40,7 +40,7 @@ export function EnhancedInput({
 
   const handleBlur = () => {
     setIsFocused(false)
-    setHasValue(inputRef.current?.value.length > 0 || false)
+    setHasValue((inputRef.current?.value?.length || 0) > 0)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

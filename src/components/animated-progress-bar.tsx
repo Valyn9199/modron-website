@@ -22,7 +22,6 @@ export function AnimatedProgressBar({
 }: AnimatedProgressBarProps) {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.5 })
   const [animatedValue, setAnimatedValue] = useState(0)
-  const percentage = (value / maxValue) * 100
 
   useEffect(() => {
     if (isVisible) {
