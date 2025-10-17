@@ -161,26 +161,34 @@ export function Header() {
           }`}
           onClick={(e) => {
             e.preventDefault()
-            const element = document.querySelector(item.href)
-            if (element) {
-              element.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-              })
-            }
-            setIsMobileMenuOpen(false) // Close the menu
-          }}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault()
-              const element = document.querySelector(item.href)
-              if (element) {
-                element.scrollIntoView({ 
+            const targetElement = document.querySelector(item.href)
+            // Close menu first, then scroll after a brief delay
+            setIsMobileMenuOpen(false)
+            // Wait for sheet close animation to complete before scrolling
+            setTimeout(() => {
+              if (targetElement) {
+                targetElement.scrollIntoView({ 
                   behavior: 'smooth',
                   block: 'start'
                 })
               }
-              setIsMobileMenuOpen(false) // Close the menu
+            }, 300) // Match the sheet animation duration
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault()
+              const targetElement = document.querySelector(item.href)
+              // Close menu first, then scroll after a brief delay
+              setIsMobileMenuOpen(false)
+              // Wait for sheet close animation to complete before scrolling
+              setTimeout(() => {
+                if (targetElement) {
+                  targetElement.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  })
+                }
+              }, 300) // Match the sheet animation duration
             }
           }}
           role="button"

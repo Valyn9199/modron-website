@@ -19,6 +19,20 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Floating animation for Use Cases section */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-8px); 
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
 .hover-lift:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 30px -5px rgba(64, 208, 242, 0.3);

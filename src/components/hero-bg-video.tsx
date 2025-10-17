@@ -23,60 +23,77 @@ export function HeroBgVideo({
   className = "",
 }: HeroBgVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [ready, setReady] = useState(false)
+  const [shouldPlayVideo, setShouldPlayVideo] = useState(false)
+  
+  // Check for reduced motion preference
   const prefersReduced = useMemo(() => {
     if (typeof window === "undefined") return false
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches
   }, [])
-  const isMobile = useMemo(() => {
-    if (typeof window === "undefined") return false
-    return window.matchMedia('(max-width: 768px)').matches
-  }, [])
+
+  // Comprehensive check for video playback suitability
+  useEffect(() => {
+    if (typeof window === "undefined" || prefersReduced) {
+      setShouldPlayVideo(false)
+      return
+    }
+
+    let canPlay = true
+
+    // 1. Check network conditions
+    const connection = (navigator as any).connection || 
+                      (navigator as any).mozConnection || 
+                      (navigator as any).webkitConnection
+    
+    if (connection) {
+      // Respect user's data saver preference
+      if (connection.saveData) {
+        canPlay = false
+      }
+      // Don't play on slow connections
+      else if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+        canPlay = false
+      }
+      // For 3G, only play on desktop
+      else if (connection.effectiveType === '3g') {
+        canPlay = window.matchMedia('(min-width: 1024px)').matches
+      }
+    }
+
+    // 2. Check device memory (if available)
+    const memory = (navigator as any).deviceMemory
+    if (memory && memory < 4) {
+      canPlay = false
+    }
+
+    setShouldPlayVideo(canPlay)
+  }, [prefersReduced])
 
   useEffect(() => {
     const v = videoRef.current
-    if (!v) return
-    // Ensure attributes for instant, inline autoplay
-    v.setAttribute("playsinline", "true")
-    v.muted = true
-    
-    // On mobile or with reduced motion, show poster immediately and don't autoplay
-    if (prefersReduced || isMobile) {
-      setReady(true)
+    if (!v || !shouldPlayVideo) {
       return
     }
     
-    // Kick playback as soon as possible (desktop only)
+    // Ensure attributes for inline autoplay
+    v.setAttribute("playsinline", "true")
+    v.muted = true
+    
+    // Kick playback
     const tryPlay = () => v.play().catch(() => void 0)
-    const markReady = () => setReady(true)
-    // The earliest useful events for first frame
-    v.addEventListener("loadeddata", markReady, { once: true })
-    v.addEventListener("canplay", markReady, { once: true })
-    v.addEventListener("error", markReady, { once: true })
-    // Fallback in case events are delayed
-    const fallback = window.setTimeout(markReady, 600)
-    // Trigger playback attempt
     tryPlay()
-    return () => {
-      window.clearTimeout(fallback)
-      v.removeEventListener("loadeddata", markReady)
-      v.removeEventListener("canplay", markReady)
-      v.removeEventListener("error", markReady)
-    }
-  }, [prefersReduced, isMobile])
+  }, [shouldPlayVideo])
 
   return (
     <div className={`absolute inset-0 w-full max-w-[100vw] ${className}`} aria-hidden>
       <video
         ref={videoRef}
-        className={`absolute inset-0 w-full h-full object-cover scale-105 transition-opacity duration-300 ${
-          ready ? "opacity-100" : "opacity-0"
-        }`}
-        autoPlay={false}
+        className="absolute inset-0 w-full h-full object-cover scale-105"
+        autoPlay={shouldPlayVideo}
         playsInline
         muted
         loop={true}
-        preload="metadata"
+        preload={shouldPlayVideo ? "auto" : "none"}
         poster={poster}
         crossOrigin="anonymous"
         aria-label="Background video showing MODRON's sustainable GPU infrastructure"

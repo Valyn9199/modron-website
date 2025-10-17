@@ -1,3 +1,6 @@
+"use client"
+
+import React from "react";
 import { OptimizedScrollIndicator } from "@/components/optimized-scroll-indicator";
 
 import { HoverCard } from "@/components/hover-card";
@@ -43,6 +46,8 @@ import { AnimatedHeadline } from "@/components/animated-headline";
 
 export default function Home() {
   // Performance optimizations in progress - console logs removed for production
+  const [showWorkflowDetails, setShowWorkflowDetails] = React.useState(false)
+  const [showUseCaseDetails, setShowUseCaseDetails] = React.useState(false)
   
   return (
     <MobileViewport>
@@ -189,62 +194,71 @@ export default function Home() {
               </ScrollReveal>
             </div>
             
-            <MobileCollapsibleSection 
-              title="Design Philosophy Details"
-              className="hidden lg:block"
-            >
+            {/* Philosophy Overview - Always Visible */}
+            <div className="text-center mb-8 sm:mb-12">
+              <h3 className="text-lg sm:text-xl font-semibold text-white mb-6 sm:mb-8">Three Core Pillars</h3>
               <StaggeredReveal staggerDelay={150}>
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12">
-                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#d5aaf9]/30 transition-all duration-200 group">
-                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-[#d5aaf9] transition-colors">Australian Sovereignty</h3>
-                  <p className="text-[#CCCCCC] text-sm leading-relaxed">
-                    Locally assembled, locally operated, locally controlled. Every GPU cluster is built in Australia with Australian oversight and data residency guarantees.
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8">
+                  <div className="text-center group">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#d5aaf9] rounded-lg mx-auto mb-3 sm:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                      <Icons.Shield className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                </div>
+                    <h4 className="text-white font-medium text-sm sm:text-base mb-1">Australian Sovereignty</h4>
+                    <p className="text-[#999999] text-xs sm:text-sm">Locally assembled & controlled</p>
+                </div>
+                  <div className="text-center group">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#40d0f2] rounded-lg mx-auto mb-3 sm:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                      <Icons.Leaf className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                    </div>
+                    <h4 className="text-white font-medium text-sm sm:text-base mb-1">Renewable-First</h4>
+                    <p className="text-[#999999] text-xs sm:text-sm">80-95% renewable energy</p>
+                  </div>
+                  <div className="text-center group">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#32ca73] rounded-lg mx-auto mb-3 sm:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                      <Icons.Server className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                    </div>
+                    <h4 className="text-white font-medium text-sm sm:text-base mb-1">Container-Native</h4>
+                    <p className="text-[#999999] text-xs sm:text-sm">Rapid deployment & scaling</p>
+                </div>
+              </div>
+              </StaggeredReveal>
+              
+              {/* Expandable Details */}
+              <details className="group">
+                <summary className="cursor-pointer list-none">
+                  <div className="flex items-center justify-center p-3 sm:p-4 bg-[#1A1A1A]/50 border border-[#262626] rounded-xl hover:border-[#d5aaf9]/30 transition-all duration-200 max-w-md mx-auto">
+                    <span className="text-[#40d0f2] font-medium mr-2 text-sm sm:text-base">Learn More About Our Philosophy</span>
+                    <Icons.ChevronDown className="h-4 w-4 sm:h-5 sm:w-5 text-[#40d0f2] transition-transform duration-200 group-open:rotate-180" />
+                  </div>
+                </summary>
+                
+                <div className="mt-6">
+              <StaggeredReveal staggerDelay={150}>
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+                      <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-6 hover:border-[#d5aaf9]/30 transition-all duration-200 group">
+                        <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 group-hover:text-[#d5aaf9] transition-colors">Australian Sovereignty</h3>
+                        <p className="text-[#CCCCCC] text-sm sm:text-base leading-relaxed">
+                          Locally assembled, locally operated, locally controlled. Every GPU cluster is built in Australia with Australian oversight and data residency guarantees.
                   </p>
                 </div>
                 
-                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#40d0f2]/30 transition-all duration-200 group">
-                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-[#40d0f2] transition-colors">Renewable-First Operations</h3>
-                  <p className="text-[#CCCCCC] text-sm leading-relaxed">
-                    Solar panels, battery storage, and grid integration designed for 80-95% renewable energy usage with carbon-neutral operations.
+                      <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-6 hover:border-[#40d0f2]/30 transition-all duration-200 group">
+                        <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 group-hover:text-[#40d0f2] transition-colors">Renewable-First Operations</h3>
+                        <p className="text-[#CCCCCC] text-sm sm:text-base leading-relaxed">
+                          Solar panels, battery storage, and grid integration designed for 80-95% renewable energy usage with carbon-neutral operations.
                   </p>
                 </div>
                 
-                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#32ca73]/30 transition-all duration-200 group">
-                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-[#32ca73] transition-colors">Container-Native Architecture</h3>
-                  <p className="text-[#CCCCCC] text-sm leading-relaxed">
-                    Shipping container infrastructure enables rapid deployment, easy scaling, and disaster recovery across multiple Australian locations.
+                      <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-6 hover:border-[#32ca73]/30 transition-all duration-200 group">
+                        <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 group-hover:text-[#32ca73] transition-colors">Container-Native Architecture</h3>
+                        <p className="text-[#CCCCCC] text-sm sm:text-base leading-relaxed">
+                          Shipping container infrastructure enables rapid deployment, easy scaling, and disaster recovery across multiple Australian locations.
                   </p>
                 </div>
               </div>
               </StaggeredReveal>
-            </MobileCollapsibleSection>
-
-            {/* Mobile: Show only key points */}
-            <div className="lg:hidden">
-              <StaggeredReveal staggerDelay={150}>
-              <div className="grid grid-cols-1 gap-4 sm:gap-6">
-                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 hover:border-[#d5aaf9]/30 transition-all duration-200 group">
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#d5aaf9] transition-colors">Australian Sovereignty</h3>
-                  <p className="text-[#CCCCCC] text-sm leading-relaxed">
-                    Locally assembled, locally operated, locally controlled.
-                  </p>
                 </div>
-                
-                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 hover:border-[#40d0f2]/30 transition-all duration-200 group">
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#40d0f2] transition-colors">Renewable-First Operations</h3>
-                  <p className="text-[#CCCCCC] text-sm leading-relaxed">
-                    80-95% renewable energy usage with carbon-neutral operations.
-                  </p>
-                </div>
-                
-                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 hover:border-[#32ca73]/30 transition-all duration-200 group">
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#32ca73] transition-colors">Container-Native Architecture</h3>
-                  <p className="text-[#CCCCCC] text-sm leading-relaxed">
-                    Rapid deployment, easy scaling, disaster recovery across Australia.
-                  </p>
-                </div>
-              </div>
-              </StaggeredReveal>
+              </details>
             </div>
           </div>
         </div>
@@ -538,152 +552,226 @@ export default function Home() {
           </div>
           
           <div className="max-w-7xl mx-auto">
-            {/* AI Workflow Diagram - Collapsible on mobile */}
-            <MobileCollapsibleSection 
-              title="AI Development Workflow"
-              className="mb-12 sm:mb-16 md:mb-20"
-            >
-              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-4 sm:p-6 md:p-8 overflow-hidden relative z-0">
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 sm:mb-8 text-center">AI Development Workflow</h3>
-                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                  {/* Data Preparation */}
-                  <div className="text-center">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4" style={{ backgroundColor: '#d5aaf9' }}>
-                      <Icons.Database className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+            {/* Two Main Cards Side by Side */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+              {/* AI Workflow Card */}
+              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-6 hover:border-[#40d0f2]/30 transition-all duration-300 group relative overflow-hidden">
+                {/* Animated background gradient on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#40d0f2]/5 via-[#d5aaf9]/5 to-[#32ca73]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                
+                <h3 className="text-xl font-bold text-white mb-6 text-center relative z-10">AI Development Process</h3>
+                
+                {/* AI Development Capabilities */}
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#40d0f2]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                        <Icons.Database className="h-5 w-5 text-black" />
                     </div>
-                    <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Data Preparation</h4>
-                    <p className="text-[#999999] text-xs sm:text-sm">Raw data processing and preprocessing</p>
+                      <h4 className="text-white font-semibold">Data Processing</h4>
+                    </div>
+                    <p className="text-gray-300 text-sm">High-performance data pipeline with real-time processing capabilities</p>
                   </div>
                   
-                  {/* Model Training */}
-                  <div className="text-center">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4" style={{ backgroundColor: '#40d0f2' }}>
-                      <Icons.Brain className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                  <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#32ca73]/10 rounded-xl p-4 border border-[#40d0f2]/20 group hover:border-[#40d0f2]/40 transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                        <Icons.Brain className="h-5 w-5 text-black" />
                     </div>
-                    <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Model Training</h4>
-                    <p className="text-[#999999] text-xs sm:text-sm">Neural network training and optimization</p>
+                      <h4 className="text-white font-semibold">Model Training</h4>
+                    </div>
+                    <p className="text-gray-300 text-sm">Renewable-powered GPU clusters for efficient neural network training</p>
                   </div>
                   
-                  {/* Model Evaluation */}
-                  <div className="text-center">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4" style={{ backgroundColor: '#32ca73' }}>
-                      <Icons.BarChart3 className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                  <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#fbff52]/10 rounded-xl p-4 border border-[#32ca73]/20 group hover:border-[#32ca73]/40 transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-[#32ca73] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                        <Icons.BarChart3 className="h-5 w-5 text-black" />
                     </div>
-                    <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Model Evaluation</h4>
-                    <p className="text-[#999999] text-xs sm:text-sm">Performance testing and validation</p>
+                      <h4 className="text-white font-semibold">Performance Monitoring</h4>
+                    </div>
+                    <p className="text-gray-300 text-sm">Real-time evaluation and optimization of model performance</p>
                   </div>
                   
-                  {/* Deployment */}
-                  <div className="text-center">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4" style={{ backgroundColor: '#fbff52' }}>
-                      <Icons.Server className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                  <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-[#fbff52] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                        <Icons.Server className="h-5 w-5 text-black" />
                     </div>
-                    <h4 className="text-white font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Deployment</h4>
-                    <p className="text-[#999999] text-xs sm:text-sm">Production deployment and serving</p>
+                      <h4 className="text-white font-semibold">Container Deployment</h4>
+                    </div>
+                    <p className="text-gray-300 text-sm">Container-native infrastructure for rapid deployment and scaling</p>
                   </div>
                 </div>
                 
-                {/* Connection Lines */}
-                <div className="hidden lg:block mt-8">
-                  <div className="flex justify-center items-center space-x-4">
-                    <div className="w-8 h-1 bg-gradient-to-r from-[#d5aaf9] to-[#40d0f2] rounded-full"></div>
-                    <div className="w-8 h-1 bg-gradient-to-r from-[#32ca73] to-[#d5aaf9] rounded-full"></div>
-                    <div className="w-8 h-1 bg-gradient-to-r from-[#d5aaf9] to-[#40d0f2] rounded-full"></div>
+                
+                <button 
+                  onClick={() => {
+                    console.log('Workflow button clicked, current state:', showWorkflowDetails);
+                    setShowWorkflowDetails(!showWorkflowDetails);
+                  }}
+                  className="w-full bg-[#40d0f2]/20 border border-[#40d0f2]/30 text-[#40d0f2] py-3 rounded-lg hover:bg-[#40d0f2]/30 transition-colors duration-200 flex items-center justify-center relative z-10"
+                >
+                  <span className="font-medium mr-2">View Detailed Workflow</span>
+                  <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showWorkflowDetails ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {showWorkflowDetails && (
+                  <div className="mt-6">
+                    <div className="bg-[#1A1A1A]/30 border border-[#262626] rounded-xl p-4">
+                      <h4 className="text-lg font-semibold text-white mb-4 text-center">Complete AI Workflow</h4>
+                      <div className="space-y-4">
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#d5aaf9' }}>
+                            <Icons.Database className="h-4 w-4 text-black" />
+              </div>
+                          <div>
+                            <h5 className="text-white font-medium text-sm">Data Preparation</h5>
+                            <p className="text-[#999999] text-xs">Raw data processing and preprocessing for AI model training</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#40d0f2' }}>
+                            <Icons.Brain className="h-4 w-4 text-black" />
+                          </div>
+                          <div>
+                            <h5 className="text-white font-medium text-sm">Model Training</h5>
+                            <p className="text-[#999999] text-xs">Neural network training and optimization using MODRON's GPU clusters</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#32ca73' }}>
+                            <Icons.BarChart3 className="h-4 w-4 text-black" />
+                          </div>
+                          <div>
+                            <h5 className="text-white font-medium text-sm">Model Evaluation</h5>
+                            <p className="text-[#999999] text-xs">Performance testing and validation against test datasets</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#fbff52' }}>
+                            <Icons.Server className="h-4 w-4 text-black" />
+                          </div>
+                          <div>
+                            <h5 className="text-white font-medium text-sm">Deployment</h5>
+                            <p className="text-[#999999] text-xs">Production deployment and serving with monitoring</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              
+              {/* Industry Applications Card */}
+              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-6 hover:border-[#d5aaf9]/30 transition-all duration-300 group relative overflow-hidden">
+                {/* Animated background gradient on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#d5aaf9]/5 via-[#32ca73]/5 to-[#40d0f2]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                
+                <h3 className="text-xl font-bold text-white mb-6 text-center relative z-10">Industry Applications</h3>
+                
+                {/* Industry Solutions */}
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#40d0f2]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                        <Icons.Shield className="h-5 w-5 text-black" />
+                </div>
+                      <h4 className="text-white font-semibold">Government</h4>
+                </div>
+                    <p className="text-gray-300 text-sm">Sovereign data residency with guaranteed compliance and security</p>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#32ca73]/20 group hover:border-[#32ca73]/40 transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                        <Icons.Brain className="h-5 w-5 text-black" />
+                </div>
+                      <h4 className="text-white font-semibold">Research</h4>
+                </div>
+                    <p className="text-gray-300 text-sm">Carbon-neutral computing for universities and research institutions</p>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#32ca73]/10 rounded-xl p-4 border border-[#40d0f2]/20 group hover:border-[#40d0f2]/40 transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#40d0f2] to-[#32ca73] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                        <Icons.Server className="h-5 w-5 text-black" />
+                      </div>
+                      <h4 className="text-white font-semibold">Enterprise</h4>
+                    </div>
+                    <p className="text-gray-300 text-sm">Australian-built infrastructure with local support and expertise</p>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#fbff52] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                        <Icons.Code className="h-5 w-5 text-black" />
+                      </div>
+                      <h4 className="text-white font-semibold">Development</h4>
+                    </div>
+                    <p className="text-gray-300 text-sm">Complete data sovereignty with Australian oversight and standards</p>
                   </div>
                 </div>
+                
+                
+                <button 
+                  onClick={() => {
+                    console.log('Use case button clicked, current state:', showUseCaseDetails);
+                    setShowUseCaseDetails(!showUseCaseDetails);
+                  }}
+                  className="w-full bg-[#d5aaf9]/20 border border-[#d5aaf9]/30 text-[#d5aaf9] py-3 rounded-lg hover:bg-[#d5aaf9]/30 transition-colors duration-200 flex items-center justify-center relative z-10"
+                >
+                  <span className="font-medium mr-2">View Detailed Use Cases</span>
+                  <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showUseCaseDetails ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {showUseCaseDetails && (
+                  <div className="mt-6">
+                    <div className="bg-[#1A1A1A]/30 border border-[#262626] rounded-xl p-4">
+                      <h4 className="text-lg font-semibold text-white mb-4 text-center">Complete Use Cases</h4>
+                      <div className="space-y-4">
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2]">
+                            <Icons.Shield className="h-4 w-4 text-black" />
+                          </div>
+                          <div>
+                            <h5 className="text-white font-medium text-sm">Australian Government AI</h5>
+                            <p className="text-[#999999] text-xs">Defense, healthcare, and public services with data residency</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9]">
+                            <Icons.Brain className="h-4 w-4 text-black" />
+                          </div>
+                          <div>
+                            <h5 className="text-white font-medium text-sm">Research & Academia</h5>
+                            <p className="text-[#999999] text-xs">Universities and CSIRO with carbon-neutral operations</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#40d0f2] to-[#32ca73]">
+                            <Icons.Server className="h-4 w-4 text-black" />
+                          </div>
+                          <div>
+                            <h5 className="text-white font-medium text-sm">Australian Enterprise</h5>
+                            <p className="text-[#999999] text-xs">Mining, agriculture, and finance with local support</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#fbff52] to-[#d5aaf9]">
+                            <Icons.Code className="h-4 w-4 text-black" />
+                          </div>
+                          <div>
+                            <h5 className="text-white font-medium text-sm">Sovereign AI Development</h5>
+                            <p className="text-[#999999] text-xs">Complete data sovereignty and Australian oversight</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
-            </MobileCollapsibleSection>
-            
-            <div className="pointer-events-none h-4"></div>
-            {/* Use Case Cards - Collapsible on mobile */}
-            <MobileCollapsibleSection 
-              title="Industry Use Cases"
-              className="mt-6"
-            >
-              <StaggeredReveal staggerDelay={200}>
-                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 relative z-10">
-            {/* Australian Government AI */}
-            <HoverCard 
-              className="bg-[#1A1A1A]/50 border-[#262626]"
-              icon={
-                <div className="mx-auto w-16 h-16 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2]">
-                  <Icons.Shield className="h-8 w-8 text-black" />
-                </div>
-              }
-              title="Australian Government AI"
-              description="Secure, sovereign compute for defense, healthcare, and public services with guaranteed data residency"
-            >
-              <div className="text-sm text-[#999999] space-y-1">
-                <p>• Defense & Security AI</p>
-                <p>• Healthcare Data Analysis</p>
-                <p>• Public Service Automation</p>
-                <p>• Emergency Response Systems</p>
-              </div>
-            </HoverCard>
-
-            {/* Australian Research & Academia */}
-            <HoverCard 
-              className="bg-[#1A1A1A]/50 border-[#262626]"
-              icon={
-                <div className="mx-auto w-16 h-16 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#32ca73] to-[#d5aaf9]">
-                  <Icons.Brain className="h-8 w-8 text-black" />
-                </div>
-              }
-              title="Australian Research & Academia"
-              description="Renewable-powered research clusters for universities and CSIRO with carbon-neutral operations"
-            >
-              <div className="text-sm text-[#999999] space-y-1">
-                <p>• University Research Projects</p>
-                <p>• CSIRO Scientific Computing</p>
-                <p>• Climate & Environmental Modeling</p>
-                <p>• Medical Research AI</p>
-              </div>
-            </HoverCard>
-
-            {/* Australian Enterprise */}
-            <Card className="bg-[#1A1A1A]/50 border-[#262626] pt-2 hover:border-[#d5aaf9]/50 hover:shadow-lg hover:shadow-[#d5aaf9]/20 transition-all duration-300 group overflow-visible">
-              <CardHeader className="text-center pt-6 pb-4">
-                <div className="mx-auto mb-4 mobile-icon w-16 h-16 rounded-xl flex items-center justify-center icon-hover bg-gradient-to-br from-[#40d0f2] to-[#32ca73]">
-                  <Icons.Server className="h-8 w-8 text-black" />
-                </div>
-                <CardTitle className="text-white text-xl">Australian Enterprise</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <CardDescription className="text-[#CCCCCC] text-base mb-4">
-                  Locally-built infrastructure for mining, agriculture, and finance with Australian support and compliance
-                </CardDescription>
-                <div className="text-sm text-[#999999] space-y-1">
-                  <p>• Mining & Resources AI</p>
-                  <p>• Agricultural Automation</p>
-                  <p>• Financial Services</p>
-                  <p>• Supply Chain Optimization</p>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Sovereign AI Development */}
-            <Card className="bg-[#1A1A1A]/50 border-[#262626] pt-2 hover:border-[#32ca73]/50 hover:shadow-lg hover:shadow-[#32ca73]/20 transition-all duration-300 group overflow-visible">
-              <CardHeader className="text-center pt-6 pb-4">
-                <div className="mx-auto mb-4 mobile-icon w-16 h-16 rounded-xl flex items-center justify-center icon-hover bg-gradient-to-br from-[#fbff52] to-[#d5aaf9]">
-                  <Icons.Code className="h-8 w-8 text-black" />
-                </div>
-                <CardTitle className="text-white text-xl">Sovereign AI Development</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <CardDescription className="text-[#CCCCCC] text-base mb-4">
-                  Build and deploy AI models with complete data sovereignty and Australian oversight
-                </CardDescription>
-                <div className="text-sm text-[#999999] space-y-1">
-                  <p>• Custom AI Model Training</p>
-                  <p>• Secure Data Processing</p>
-                  <p>• Australian AI Standards</p>
-                  <p>• Compliance & Auditing</p>
-                </div>
-              </CardContent>
-            </Card>
-                </div>
-              </StaggeredReveal>
-            </MobileCollapsibleSection>
+            </div>
           </div>
         </div>
       </section>
