@@ -11,7 +11,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Icons } from "@/lib/icon-imports";
 import { HeroBgVideo } from "@/components/hero-bg-video";
 import Image from "next/image";
-import { LoadingSkeleton, StatsSkeleton } from "@/components/loading-skeleton";
+import { LoadingSkeleton } from "@/components/loading-skeleton";
  
 
 

@@ -157,7 +157,7 @@ export function EnhancedTextarea({
 
   const handleBlur = () => {
     setIsFocused(false)
-    setHasValue(textareaRef.current?.value.length > 0 || false)
+    setHasValue((textareaRef.current?.value?.length || 0) > 0)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
