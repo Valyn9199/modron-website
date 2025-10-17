@@ -78,10 +78,10 @@ export default function Home() {
     
     {/* CTA Buttons - Enhanced with micro-interactions */}
     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-6 sm:mb-8 md:mb-10">
-      <div className="touch-feedback">
+      <div className="touch-feedback w-full sm:w-auto">
         <EnhancedBookingButton />
       </div>
-      <div className="touch-feedback">
+      <div className="touch-feedback w-full sm:w-auto">
         <EnhancedPricingButton />
       </div>
     </div>
