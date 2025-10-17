@@ -13,6 +13,8 @@ interface EnhancedButtonProps {
   loading?: boolean
   ripple?: boolean
   glow?: boolean
+  onMouseEnter?: () => void
+  onMouseLeave?: () => void
 }
 
 export function EnhancedButton({
@@ -24,7 +26,9 @@ export function EnhancedButton({
   disabled = false,
   loading = false,
   ripple = true,
-  glow = false
+  glow = false,
+  onMouseEnter,
+  onMouseLeave
 }: EnhancedButtonProps) {
   const [ripples, setRipples] = useState<Array<{ id: number; x: number; y: number }>>([])
   const buttonRef = useRef<HTMLButtonElement>(null)
@@ -78,6 +82,8 @@ export function EnhancedButton({
         className
       )}
       onClick={handleClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       disabled={disabled || loading}
     >
       {/* Ripple effects */}

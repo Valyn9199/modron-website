@@ -148,7 +148,7 @@ export function Header() {
   </SheetHeader>
   
   <nav className="flex flex-col space-y-2 mt-8">
-    {navigationItems.map((item, index) => {
+    {navigationItems.map((item) => {
       const isActive = activeSection === item.href.replace("#", "")
       return (
         <Link
