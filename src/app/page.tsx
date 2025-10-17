@@ -75,11 +75,8 @@ export default function Home() {
       Immersion cooling meets solar energy in modular containers designed for rapid deployment and maximum efficiency.
     </p>
     
-    {/* CTA Buttons - Enhanced with micro-interactions */}
-    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-6 sm:mb-8 md:mb-10">
-      <div className="touch-feedback">
-        <EnhancedBookingButton />
-      </div>
+    {/* CTA Button - Enhanced with micro-interactions */}
+    <div className="flex justify-center mb-6 sm:mb-8 md:mb-10">
       <div className="touch-feedback">
         <EnhancedPricingButton />
       </div>
