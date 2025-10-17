@@ -601,7 +601,7 @@ export default function Home() {
               className="mt-6"
             >
               <StaggeredReveal staggerDelay={200}>
-              <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 relative z-10">
+                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 relative z-10">
             {/* Australian Government AI */}
             <HoverCard 
               className="bg-[#1A1A1A]/50 border-[#262626]"
@@ -681,9 +681,8 @@ export default function Home() {
                 </div>
               </CardContent>
             </Card>
-          </div>
+                </div>
               </StaggeredReveal>
-              </div>
             </MobileCollapsibleSection>
           </div>
         </div>
