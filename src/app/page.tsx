@@ -1,4 +1,3 @@
-import { Header } from "@/components/header";
 import { OptimizedScrollIndicator } from "@/components/optimized-scroll-indicator";
 
 import { HoverCard } from "@/components/hover-card";
@@ -49,7 +48,6 @@ export default function Home() {
         <div className="min-h-screen bg-background relative scroll-container optimize-paint">
           <SkipToContent />
         
-          <Header />
           <ScrollProgress />
           {/* Spotlight removed for performance */}
           
