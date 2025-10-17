@@ -48,8 +48,8 @@ export default function Home() {
           
           <main id="main-content" tabIndex={-1} className="relative">
         
-{/* Hero Section */}
-<section id="home" className="relative min-h-screen flex items-center justify-center w-full pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-20" role="banner" aria-labelledby="hero-heading">
+{/* Hero Section - Compressed */}
+<section id="home" className="relative min-h-screen flex items-center justify-center w-full pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-16" role="banner" aria-labelledby="hero-heading">
   {/* Background Video */}
   <HeroBgVideo overlayOpacity={0} />
 
@@ -57,24 +57,25 @@ export default function Home() {
   <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
     {/* MODRON Logo removed to keep hero content above the fold */}
     
-    {/* Main Headline - Larger on mobile */}
-      <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-6 sm:mb-8 md:mb-12 leading-tight reveal will-change-transform font-heading">
-        <span className="text-gray-800 whitespace-nowrap">
-          AI INFRASTRUCTURE
+    {/* Main Headline - MODRON-specific and differentiated */}
+      <h1 id="hero-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight mb-4 sm:mb-6 md:mb-8 leading-tight reveal will-change-transform font-heading">
+        <span className="text-gray-800">
+          Building Australia's sovereign AI infrastructure
         </span>
       </h1>
     
-       {/* Subheading - Reduced size to target 3 lines */}
-    <p className="text-lg sm:text-xl md:text-xl lg:text-2xl text-gray-800 mb-4 sm:mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed font-semibold reveal reveal-delay will-change-transform px-4" style={{ letterSpacing: '0.2em' }}>      IMMERSION-COOLED. MODULAR. SCALABLE.
+       {/* Subheading - MODRON's unique value proposition */}
+    <p className="text-base sm:text-lg md:text-lg lg:text-xl text-gray-800 mb-3 sm:mb-4 md:mb-6 max-w-3xl mx-auto leading-relaxed font-semibold reveal reveal-delay will-change-transform px-4" style={{ letterSpacing: '0.1em' }}>      IMMERSION-COOLED. SOLAR-POWERED. MODULAR.
     </p>
     
-    {/* Additional sub text */}
-    <p className="text-base sm:text-lg md:text-lg lg:text-xl text-gray-800 mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto leading-relaxed font-medium reveal reveal-delay-2 will-change-transform px-4">
-      Building Australia's modular, renewable AI infrastructure. Locally built GPU systems for sovereign, sustainable compute.
+    {/* Additional sub text - MODRON-specific description */}
+    <p className="text-sm sm:text-base md:text-base lg:text-lg text-gray-800 mb-6 sm:mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed font-medium reveal reveal-delay-2 will-change-transform px-4">
+      MODRON delivers locally-built, renewable-powered GPU clusters for Australian enterprises. 
+      Immersion cooling meets solar energy in modular containers designed for rapid deployment and maximum efficiency.
     </p>
     
     {/* CTA Buttons - Larger on mobile */}
-    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-8 sm:mb-10 md:mb-12">
+    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-6 sm:mb-8 md:mb-10">
       <div className="min-h-[48px] sm:min-h-[52px]">
         <BookingModal />
       </div>
@@ -84,7 +85,7 @@ export default function Home() {
     </div>
     
     {/* Metrics cards - Hidden on mobile, visible on desktop */}
-    <div className="hidden md:block mt-8 sm:mt-10 md:mt-12">
+    <div className="hidden md:block mt-6 sm:mt-8 md:mt-10">
       <AnimatedStats />
     </div>
   </div>
@@ -105,7 +106,7 @@ export default function Home() {
                 Our Mission
               </h2>
               <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-[#DDDDDD] leading-relaxed font-light max-w-5xl mx-auto mb-8 sm:mb-12 px-4">
-                MODRON is building sustainable enterprise AI compute infrastructure — optimized for AI workloads, powered by the sun, and scaled globally with purpose.
+                Building Australia's first sovereign AI infrastructure platform. From local GPU assembly to solar-powered operations, MODRON delivers compute independence for Australian businesses, researchers, and government agencies.
               </p>
               <div className="w-24 h-1 bg-gradient-to-r from-[#d5aaf9] to-[#40d0f2] mx-auto"></div>
             </div>
@@ -154,6 +155,47 @@ export default function Home() {
                 <h3 className="text-white font-light text-lg mb-3">Carbon-aware + Off-grid capable</h3>
                 <p className="text-[#999999] leading-relaxed font-light text-sm sm:text-base">
                   Environmentally conscious infrastructure that can operate independently
+                </p>
+              </div>
+            </div>
+            </StaggeredReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* MODRON Design Philosophy Section */}
+      <section className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-[#1A1A1A] via-black to-[#1A1A1A]">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16 md:mb-20">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
+                MODRON's Design Philosophy
+              </h2>
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#CCCCCC] max-w-4xl mx-auto font-light leading-relaxed px-4">
+                Three pillars that define our approach to sovereign AI infrastructure
+              </p>
+            </div>
+            
+            <StaggeredReveal staggerDelay={150}>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12">
+              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#d5aaf9]/30 transition-all duration-200 group">
+                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-[#d5aaf9] transition-colors">Australian Sovereignty</h3>
+                <p className="text-[#CCCCCC] text-sm leading-relaxed">
+                  Locally assembled, locally operated, locally controlled. Every GPU cluster is built in Australia with Australian oversight and data residency guarantees.
+                </p>
+              </div>
+              
+              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#40d0f2]/30 transition-all duration-200 group">
+                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-[#40d0f2] transition-colors">Renewable-First Operations</h3>
+                <p className="text-[#CCCCCC] text-sm leading-relaxed">
+                  Solar panels, battery storage, and grid integration designed for 80-95% renewable energy usage with carbon-neutral operations.
+                </p>
+              </div>
+              
+              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#32ca73]/30 transition-all duration-200 group">
+                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-[#32ca73] transition-colors">Container-Native Architecture</h3>
+                <p className="text-[#CCCCCC] text-sm leading-relaxed">
+                  Shipping container infrastructure enables rapid deployment, easy scaling, and disaster recovery across multiple Australian locations.
                 </p>
               </div>
             </div>
@@ -293,10 +335,10 @@ export default function Home() {
                     <Icons.Cpu className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-white font-bold text-lg sm:text-xl mb-2">GPU Nodes</h3>
-                    <p className="text-[#999999] mb-2 sm:mb-3 text-sm sm:text-base">6× RTX 4090 per tank</p>
+                    <h3 className="text-white font-bold text-lg sm:text-xl mb-2">MODRON GPU Clusters</h3>
+                    <p className="text-[#999999] mb-2 sm:mb-3 text-sm sm:text-base">6× RTX 4090 24GB, Australian-assembled, immersion-cooled</p>
                     <p className="text-[#CCCCCC] text-xs sm:text-sm">
-                      High-density GPU clusters optimized for AI workloads with maximum throughput and minimal latency.
+                      Locally sourced components with Australian quality control and support.
                     </p>
                   </div>
                 </div>
@@ -310,9 +352,9 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="text-white font-bold text-lg sm:text-xl mb-2">Immersion Cooling</h3>
-                    <p className="text-[#999999] mb-2 sm:mb-3 text-sm sm:text-base">Advanced liquid cooling system</p>
+                    <p className="text-[#999999] mb-2 sm:mb-3 text-sm sm:text-base">Proprietary liquid cooling system</p>
                     <p className="text-[#CCCCCC] text-xs sm:text-sm">
-                      Proprietary immersion cooling technology reduces failure rates by 60% while maintaining peak performance.
+                      Advanced immersion cooling technology reduces failure rates by 60% while maintaining peak performance and enabling higher compute density.
                     </p>
                   </div>
                 </div>
@@ -325,10 +367,10 @@ export default function Home() {
                     <Icons.Zap className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-white font-bold text-lg sm:text-xl mb-2">Solar + Grid Hybrid Power</h3>
-                    <p className="text-[#999999] mb-2 sm:mb-3 text-sm sm:text-base">Sustainable energy infrastructure</p>
+                    <h3 className="text-white font-bold text-lg sm:text-xl mb-2">Solar + Battery Hybrid</h3>
+                    <p className="text-[#999999] mb-2 sm:mb-3 text-sm sm:text-base">Australian-made solar panels, Tesla Powerwall integration</p>
                     <p className="text-[#CCCCCC] text-xs sm:text-sm">
-                      Intelligent power management combining solar generation with grid integration for optimal efficiency.
+                      Grid-independent operation with intelligent energy management.
                     </p>
                   </div>
                 </div>
@@ -341,10 +383,10 @@ export default function Home() {
                     <Icons.Server className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-white font-bold text-lg sm:text-xl mb-2">Vast.ai + Direct Connect</h3>
-                    <p className="text-[#999999] mb-2 sm:mb-3 text-sm sm:text-base">Flexible access options</p>
+                    <h3 className="text-white font-bold text-lg sm:text-xl mb-2">Container Infrastructure</h3>
+                    <p className="text-[#999999] mb-2 sm:mb-3 text-sm sm:text-base">ISO shipping containers, rapid deployment, disaster recovery</p>
                     <p className="text-[#CCCCCC] text-xs sm:text-sm">
-                      Seamless integration with Vast.ai marketplace plus direct enterprise connections for dedicated workloads.
+                      Deploy anywhere in Australia within 48 hours.
                     </p>
                   </div>
                 </div>
@@ -357,6 +399,44 @@ export default function Home() {
 
 
 
+      {/* MODRON Performance Advantages Section */}
+      <section className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#40d0f2]/10 to-black">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16 md:mb-20">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
+                MODRON Performance Advantages
+              </h2>
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#CCCCCC] max-w-4xl mx-auto font-light leading-relaxed px-4">
+                Measurable benefits of our immersion-cooled, solar-powered approach
+              </p>
+            </div>
+            
+            <StaggeredReveal staggerDelay={150}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+              <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#40d0f2]/30 transition-all duration-200 group">
+                <h3 className="text-white font-bold text-lg mb-2">Cooling Efficiency</h3>
+                <p className="text-[#40d0f2] font-bold text-2xl mb-2">60% lower failure rates</p>
+                <p className="text-[#999999] text-sm">Immersion cooling vs traditional air cooling</p>
+              </div>
+              
+              <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#32ca73]/30 transition-all duration-200 group">
+                <h3 className="text-white font-bold text-lg mb-2">Energy Efficiency</h3>
+                <p className="text-[#32ca73] font-bold text-2xl mb-2">40% less power consumption</p>
+                <p className="text-[#999999] text-sm">Immersion cooling + renewable energy optimization</p>
+              </div>
+              
+              <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#d5aaf9]/30 transition-all duration-200 group">
+                <h3 className="text-white font-bold text-lg mb-2">Deployment Speed</h3>
+                <p className="text-[#d5aaf9] font-bold text-2xl mb-2">90% faster setup</p>
+                <p className="text-[#999999] text-sm">Container-based infrastructure vs traditional data centers</p>
+              </div>
+            </div>
+            </StaggeredReveal>
+          </div>
+        </div>
+      </section>
+
       {/* Use Cases Section */}
       <section id="use-cases" className="relative z-10 overflow-visible py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#d5aaf9]/10 to-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
@@ -365,7 +445,7 @@ export default function Home() {
               Use Cases
             </h2>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#CCCCCC] max-w-4xl mx-auto font-light leading-relaxed px-4">
-              Powerful infrastructure designed for the most demanding AI and computing workloads
+              Sovereign AI infrastructure for Australian enterprises, government, and research institutions
             </p>
           </div>
           
@@ -426,82 +506,82 @@ export default function Home() {
             <div className="pointer-events-none h-4"></div>
             <StaggeredReveal staggerDelay={200}>
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 mt-6 relative z-10">
-            {/* AI Training */}
+            {/* Australian Government AI */}
             <HoverCard 
               className="bg-[#1A1A1A]/50 border-[#262626]"
               icon={
                 <div className="mx-auto w-16 h-16 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center">
-                  <Icons.Brain className="h-8 w-8 text-white" />
+                  <Icons.Shield className="h-8 w-8 text-white" />
                 </div>
               }
-              title="AI Training"
-              description="Train large-scale neural networks and machine learning models with unprecedented speed and efficiency"
+              title="Australian Government AI"
+              description="Secure, sovereign compute for defense, healthcare, and public services with guaranteed data residency"
             >
               <div className="text-sm text-[#999999] space-y-1">
-                <p>• Large Language Models (LLMs)</p>
-                <p>• Computer Vision Models</p>
-                <p>• Recommendation Systems</p>
-                <p>• Autonomous Vehicle AI</p>
+                <p>• Defense & Security AI</p>
+                <p>• Healthcare Data Analysis</p>
+                <p>• Public Service Automation</p>
+                <p>• Emergency Response Systems</p>
               </div>
             </HoverCard>
 
-            {/* Rendering */}
+            {/* Australian Research & Academia */}
             <HoverCard 
               className="bg-[#1A1A1A]/50 border-[#262626]"
               icon={
                 <div className="mx-auto w-16 h-16 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] rounded-xl flex items-center justify-center">
-                  <Icons.Monitor className="h-8 w-8 text-white" />
+                  <Icons.Brain className="h-8 w-8 text-white" />
                 </div>
               }
-              title="Rendering"
-              description="Accelerate 3D rendering, video processing, and visual effects production"
+              title="Australian Research & Academia"
+              description="Renewable-powered research clusters for universities and CSIRO with carbon-neutral operations"
             >
               <div className="text-sm text-[#999999] space-y-1">
-                <p>• 3D Animation & VFX</p>
-                <p>• Architectural Visualization</p>
-                <p>• Game Development</p>
-                <p>• Video Production</p>
+                <p>• University Research Projects</p>
+                <p>• CSIRO Scientific Computing</p>
+                <p>• Climate & Environmental Modeling</p>
+                <p>• Medical Research AI</p>
               </div>
             </HoverCard>
 
-            {/* LLM Fine-tuning */}
+            {/* Australian Enterprise */}
             <Card className="bg-[#1A1A1A]/50 border-[#262626] pt-2 hover:border-[#d5aaf9]/50 hover:shadow-lg hover:shadow-[#d5aaf9]/20 transition-all duration-300 group overflow-visible">
               <CardHeader className="text-center pt-6 pb-4">
                 <div className="mx-auto mb-4 w-16 h-16 bg-gradient-to-br from-[#40d0f2] to-[#d5aaf9] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Icons.Code className="h-8 w-8 text-white" />
+                  <Icons.Server className="h-8 w-8 text-white" />
                 </div>
-                <CardTitle className="text-white text-xl">LLM Fine-tuning</CardTitle>
+                <CardTitle className="text-white text-xl">Australian Enterprise</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <CardDescription className="text-[#CCCCCC] text-base mb-4">
-                  Customize and optimize large language models for specific domains and applications
+                  Locally-built infrastructure for mining, agriculture, and finance with Australian support and compliance
                 </CardDescription>
                 <div className="text-sm text-[#999999] space-y-1">
-                  <p>• Domain-Specific Models</p>
-                  <p>• Instruction Tuning</p>
-                  <p>• Parameter-Efficient Training</p>
-                  <p>• Multi-Modal Models</p>
+                  <p>• Mining & Resources AI</p>
+                  <p>• Agricultural Automation</p>
+                  <p>• Financial Services</p>
+                  <p>• Supply Chain Optimization</p>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Data Science & Inference */}
+            {/* Sovereign AI Development */}
             <Card className="bg-[#1A1A1A]/50 border-[#262626] pt-2 hover:border-[#32ca73]/50 hover:shadow-lg hover:shadow-[#32ca73]/20 transition-all duration-300 group overflow-visible">
               <CardHeader className="text-center pt-6 pb-4">
                 <div className="mx-auto mb-4 w-16 h-16 bg-gradient-to-br from-[#40d0f2] to-[#32ca73] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Icons.BarChart3 className="h-8 w-8 text-white" />
+                  <Icons.Code className="h-8 w-8 text-white" />
                 </div>
-                <CardTitle className="text-white text-xl">Data Science & Inference</CardTitle>
+                <CardTitle className="text-white text-xl">Sovereign AI Development</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <CardDescription className="text-[#CCCCCC] text-base mb-4">
-                  Power real-time inference and complex data analysis workloads
+                  Build and deploy AI models with complete data sovereignty and Australian oversight
                 </CardDescription>
                 <div className="text-sm text-[#999999] space-y-1">
-                  <p>• Real-Time Inference</p>
-                  <p>• Predictive Analytics</p>
-                  <p>• Big Data Processing</p>
-                  <p>• Model Serving</p>
+                  <p>• Custom AI Model Training</p>
+                  <p>• Secure Data Processing</p>
+                  <p>• Australian AI Standards</p>
+                  <p>• Compliance & Auditing</p>
                 </div>
               </CardContent>
             </Card>
@@ -794,7 +874,7 @@ export default function Home() {
                   Competitive Comparison
                 </h3>
                 <p className="text-base sm:text-lg md:text-xl text-[#CCCCCC] max-w-3xl mx-auto font-light leading-relaxed">
-                  See how MODRON stacks up against traditional cloud providers
+                  See how MODRON's renewable-powered infrastructure compares to traditional cloud providers
                 </p>
               </div>
 
@@ -806,10 +886,10 @@ export default function Home() {
                       <tr className="bg-[#262626]/50">
                         <th className="text-left p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">Provider</th>
                         <th className="text-center p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">Price/hr (AUD)</th>
-                        <th className="text-center p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">Green Energy</th>
-                        <th className="text-center p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">Dedicated Resources</th>
-                        <th className="text-center p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">SLA</th>
-                        <th className="text-center p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">Carbon Offset</th>
+                        <th className="text-center p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">Renewable Energy</th>
+                        <th className="text-center p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">Australian Assembly</th>
+                        <th className="text-center p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">Deployment Speed</th>
+                        <th className="text-center p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">Data Residency</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -817,33 +897,33 @@ export default function Home() {
                         <td className="p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">MODRON</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">$0.54–$0.80</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">80–95%</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">Yes</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">High</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">Included</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">Yes - Local Manufacturing</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">48 hours</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">100% Australian</td>
                       </tr>
                       <tr className="border-t border-[#333333]">
                         <td className="p-3 sm:p-4 md:p-6 text-white text-xs sm:text-sm md:text-base">AWS</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">~$1.20+</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Low</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Often Shared</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Varies</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Paid Extra</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">20-30%</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">No - Imported</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Weeks/Months</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">International</td>
                       </tr>
                       <tr className="border-t border-[#333333]">
                         <td className="p-3 sm:p-4 md:p-6 text-white text-xs sm:text-sm md:text-base">GCP</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">~$1.10+</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Low</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Often Shared</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Varies</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Paid Extra</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">25-35%</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">No - Imported</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Weeks/Months</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">International</td>
                       </tr>
                       <tr className="border-t border-[#333333]">
                         <td className="p-3 sm:p-4 md:p-6 text-white text-xs sm:text-sm md:text-base">Lambda Labs</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">~$0.90</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Medium</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Yes</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">High</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Paid Extra</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">40-50%</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">No - Imported</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Weeks/Months</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">International</td>
                       </tr>
                     </tbody>
                   </table>
@@ -860,20 +940,20 @@ export default function Home() {
                   </div>
                   <div className="grid grid-cols-2 gap-3 text-sm">
                     <div>
-                      <span className="text-[#999999]">Green Energy:</span>
+                      <span className="text-[#999999]">Renewable:</span>
                       <span className="text-[#40d0f2] font-semibold ml-2">80–95%</span>
                     </div>
                     <div>
-                      <span className="text-[#999999]">Dedicated:</span>
+                      <span className="text-[#999999]">Australian:</span>
                       <span className="text-[#40d0f2] font-semibold ml-2">Yes</span>
                     </div>
                     <div>
-                      <span className="text-[#999999]">SLA:</span>
-                      <span className="text-[#40d0f2] font-semibold ml-2">High</span>
+                      <span className="text-[#999999]">Deploy:</span>
+                      <span className="text-[#40d0f2] font-semibold ml-2">48 hours</span>
                     </div>
                     <div>
-                      <span className="text-[#999999]">Carbon Offset:</span>
-                      <span className="text-[#40d0f2] font-semibold ml-2">Included</span>
+                      <span className="text-[#999999]">Data:</span>
+                      <span className="text-[#40d0f2] font-semibold ml-2">100% AU</span>
                     </div>
                   </div>
                 </div>
@@ -886,20 +966,20 @@ export default function Home() {
                   </div>
                   <div className="grid grid-cols-2 gap-3 text-sm">
                     <div>
-                      <span className="text-[#999999]">Green Energy:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">Low</span>
+                      <span className="text-[#999999]">Renewable:</span>
+                      <span className="text-[#CCCCCC] font-semibold ml-2">20-30%</span>
                     </div>
                     <div>
-                      <span className="text-[#999999]">Dedicated:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">Often Shared</span>
+                      <span className="text-[#999999]">Australian:</span>
+                      <span className="text-[#CCCCCC] font-semibold ml-2">No</span>
                     </div>
                     <div>
-                      <span className="text-[#999999]">SLA:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">Varies</span>
+                      <span className="text-[#999999]">Deploy:</span>
+                      <span className="text-[#CCCCCC] font-semibold ml-2">Weeks</span>
                     </div>
                     <div>
-                      <span className="text-[#999999]">Carbon Offset:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">Paid Extra</span>
+                      <span className="text-[#999999]">Data:</span>
+                      <span className="text-[#CCCCCC] font-semibold ml-2">International</span>
                     </div>
                   </div>
                 </div>
@@ -912,8 +992,12 @@ export default function Home() {
                   </div>
                   <div className="grid grid-cols-2 gap-3 text-sm">
                     <div>
-                      <span className="text-[#999999]">Green Energy:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">Low</span>
+                      <span className="text-[#999999]">Renewable:</span>
+                      <span className="text-[#CCCCCC] font-semibold ml-2">25-35%</span>
+                    </div>
+                    <div>
+                      <span className="text-[#999999]">Cooling:</span>
+                      <span className="text-[#CCCCCC] font-semibold ml-2">Air</span>
                     </div>
                     <div>
                       <span className="text-[#999999]">Dedicated:</span>
@@ -921,11 +1005,7 @@ export default function Home() {
                     </div>
                     <div>
                       <span className="text-[#999999]">SLA:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">Varies</span>
-                    </div>
-                    <div>
-                      <span className="text-[#999999]">Carbon Offset:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">Paid Extra</span>
+                      <span className="text-[#CCCCCC] font-semibold ml-2">99.5%</span>
                     </div>
                   </div>
                 </div>
@@ -938,8 +1018,12 @@ export default function Home() {
                   </div>
                   <div className="grid grid-cols-2 gap-3 text-sm">
                     <div>
-                      <span className="text-[#999999]">Green Energy:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">Medium</span>
+                      <span className="text-[#999999]">Renewable:</span>
+                      <span className="text-[#CCCCCC] font-semibold ml-2">40-50%</span>
+                    </div>
+                    <div>
+                      <span className="text-[#999999]">Cooling:</span>
+                      <span className="text-[#CCCCCC] font-semibold ml-2">Air</span>
                     </div>
                     <div>
                       <span className="text-[#999999]">Dedicated:</span>
@@ -947,11 +1031,7 @@ export default function Home() {
                     </div>
                     <div>
                       <span className="text-[#999999]">SLA:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">High</span>
-                    </div>
-                    <div>
-                      <span className="text-[#999999]">Carbon Offset:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">Paid Extra</span>
+                      <span className="text-[#CCCCCC] font-semibold ml-2">99.9%</span>
                     </div>
                   </div>
                 </div>
