@@ -16,7 +16,7 @@ export function EnhancedPricingButton() {
       onClick={handleClick}
       glow
       ripple
-      className="mobile-button group relative overflow-hidden bg-[#40d0f2] hover:bg-[#32ca73] text-white"
+      className="mobile-button w-full sm:w-auto group relative overflow-hidden bg-[#40d0f2] hover:bg-[#32ca73] text-white"
     >
       <div className="flex items-center gap-3">
         <span className="font-semibold">View Pricing</span>

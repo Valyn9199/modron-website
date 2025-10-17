@@ -19,7 +19,7 @@ export function EnhancedBookingButton() {
       onClick={handleClick}
       glow
       ripple
-      className="mobile-button group relative overflow-hidden bg-black hover:bg-gray-800 text-white"
+      className="mobile-button w-full sm:w-auto group relative overflow-hidden bg-black hover:bg-gray-800 text-white"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
