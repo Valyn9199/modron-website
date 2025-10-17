@@ -29,6 +29,7 @@ const ProgressiveReveal = dynamic(() => import("@/components/page-transition").t
 import { EnhancedPricingButton } from "@/components/enhanced-pricing-button";
 import { EnhancedBookingButton } from "@/components/enhanced-booking-button";
 import { FloatingStatsOverlay } from "@/components/floating-stats-overlay";
+import { MobileCollapsibleSection } from "@/components/collapsible-section";
 import { AnimatedProgressBar } from "@/components/animated-progress-bar";
 import { ParallaxSection } from "@/components/parallax-section";
 import { ScrollReveal } from "@/components/scroll-reveal";
@@ -186,30 +187,63 @@ export default function Home() {
               </ScrollReveal>
             </div>
             
-            <StaggeredReveal staggerDelay={150}>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12">
-              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#d5aaf9]/30 transition-all duration-200 group">
-                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-[#d5aaf9] transition-colors">Australian Sovereignty</h3>
-                <p className="text-[#CCCCCC] text-sm leading-relaxed">
-                  Locally assembled, locally operated, locally controlled. Every GPU cluster is built in Australia with Australian oversight and data residency guarantees.
-                </p>
+            <MobileCollapsibleSection 
+              title="Design Philosophy Details"
+              className="hidden lg:block"
+            >
+              <StaggeredReveal staggerDelay={150}>
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12">
+                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#d5aaf9]/30 transition-all duration-200 group">
+                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-[#d5aaf9] transition-colors">Australian Sovereignty</h3>
+                  <p className="text-[#CCCCCC] text-sm leading-relaxed">
+                    Locally assembled, locally operated, locally controlled. Every GPU cluster is built in Australia with Australian oversight and data residency guarantees.
+                  </p>
+                </div>
+                
+                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#40d0f2]/30 transition-all duration-200 group">
+                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-[#40d0f2] transition-colors">Renewable-First Operations</h3>
+                  <p className="text-[#CCCCCC] text-sm leading-relaxed">
+                    Solar panels, battery storage, and grid integration designed for 80-95% renewable energy usage with carbon-neutral operations.
+                  </p>
+                </div>
+                
+                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#32ca73]/30 transition-all duration-200 group">
+                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-[#32ca73] transition-colors">Container-Native Architecture</h3>
+                  <p className="text-[#CCCCCC] text-sm leading-relaxed">
+                    Shipping container infrastructure enables rapid deployment, easy scaling, and disaster recovery across multiple Australian locations.
+                  </p>
+                </div>
               </div>
-              
-              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#40d0f2]/30 transition-all duration-200 group">
-                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-[#40d0f2] transition-colors">Renewable-First Operations</h3>
-                <p className="text-[#CCCCCC] text-sm leading-relaxed">
-                  Solar panels, battery storage, and grid integration designed for 80-95% renewable energy usage with carbon-neutral operations.
-                </p>
+              </StaggeredReveal>
+            </MobileCollapsibleSection>
+
+            {/* Mobile: Show only key points */}
+            <div className="lg:hidden">
+              <StaggeredReveal staggerDelay={150}>
+              <div className="grid grid-cols-1 gap-4 sm:gap-6">
+                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 hover:border-[#d5aaf9]/30 transition-all duration-200 group">
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#d5aaf9] transition-colors">Australian Sovereignty</h3>
+                  <p className="text-[#CCCCCC] text-sm leading-relaxed">
+                    Locally assembled, locally operated, locally controlled.
+                  </p>
+                </div>
+                
+                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 hover:border-[#40d0f2]/30 transition-all duration-200 group">
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#40d0f2] transition-colors">Renewable-First Operations</h3>
+                  <p className="text-[#CCCCCC] text-sm leading-relaxed">
+                    80-95% renewable energy usage with carbon-neutral operations.
+                  </p>
+                </div>
+                
+                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 hover:border-[#32ca73]/30 transition-all duration-200 group">
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#32ca73] transition-colors">Container-Native Architecture</h3>
+                  <p className="text-[#CCCCCC] text-sm leading-relaxed">
+                    Rapid deployment, easy scaling, disaster recovery across Australia.
+                  </p>
+                </div>
               </div>
-              
-              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#32ca73]/30 transition-all duration-200 group">
-                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-[#32ca73] transition-colors">Container-Native Architecture</h3>
-                <p className="text-[#CCCCCC] text-sm leading-relaxed">
-                  Shipping container infrastructure enables rapid deployment, easy scaling, and disaster recovery across multiple Australian locations.
-                </p>
-              </div>
+              </StaggeredReveal>
             </div>
-            </StaggeredReveal>
           </div>
         </div>
       </section>
@@ -502,8 +536,11 @@ export default function Home() {
           </div>
           
           <div className="max-w-7xl mx-auto">
-            {/* AI Workflow Diagram */}
-            <div className="mb-12 sm:mb-16 md:mb-20">
+            {/* AI Workflow Diagram - Collapsible on mobile */}
+            <MobileCollapsibleSection 
+              title="AI Development Workflow"
+              className="mb-12 sm:mb-16 md:mb-20"
+            >
               <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-4 sm:p-6 md:p-8 overflow-hidden relative z-0">
                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 sm:mb-8 text-center">AI Development Workflow</h3>
                 <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -553,11 +590,17 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+              </div>
+            </MobileCollapsibleSection>
             
             <div className="pointer-events-none h-4"></div>
-            <StaggeredReveal staggerDelay={200}>
-            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 mt-6 relative z-10">
+            {/* Use Case Cards - Collapsible on mobile */}
+            <MobileCollapsibleSection 
+              title="Industry Use Cases"
+              className="mt-6"
+            >
+              <StaggeredReveal staggerDelay={200}>
+              <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 relative z-10">
             {/* Australian Government AI */}
             <HoverCard 
               className="bg-[#1A1A1A]/50 border-[#262626]"
@@ -638,7 +681,9 @@ export default function Home() {
               </CardContent>
             </Card>
           </div>
-            </StaggeredReveal>
+              </StaggeredReveal>
+              </div>
+            </MobileCollapsibleSection>
           </div>
         </div>
       </section>
@@ -704,8 +749,12 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Desktop: Show all features */}
-            <div className="hidden md:grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+            {/* Desktop: Show all features with collapsible option */}
+            <MobileCollapsibleSection 
+              title="All Enterprise Features"
+              className="hidden md:block"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             {/* Always-on Availability */}
             <div className="group cursor-pointer">
               <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 h-full hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 group-hover:scale-105 active:scale-95 sm:active:scale-100">
@@ -795,7 +844,8 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            </div>
+              </div>
+            </MobileCollapsibleSection>
 
             {/* Mobile: Progressive disclosure */}
             <div className="md:hidden space-y-4">
