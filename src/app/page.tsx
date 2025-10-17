@@ -26,6 +26,7 @@ const AnimatedHowItWorks = dynamic(() => import("@/components/animated-how-it-wo
 const StaggeredReveal = dynamic(() => import("@/components/page-transition").then(mod => ({ default: mod.StaggeredReveal })));
 const ProgressiveReveal = dynamic(() => import("@/components/page-transition").then(mod => ({ default: mod.ProgressiveReveal })));
 
+import { Header } from "@/components/header";
 import { EnhancedPricingButton } from "@/components/enhanced-pricing-button";
 import { EnhancedBookingButton } from "@/components/enhanced-booking-button";
 import { FloatingStatsOverlay } from "@/components/floating-stats-overlay";
@@ -49,6 +50,7 @@ export default function Home() {
         <div className="min-h-screen bg-background relative scroll-container optimize-paint">
           <SkipToContent />
         
+          <Header />
           <ScrollProgress />
           {/* Spotlight removed for performance */}
           
