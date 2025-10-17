@@ -7,6 +7,7 @@ interface EnhancedButtonProps {
   children: React.ReactNode
   variant?: "primary" | "secondary" | "outline" | "ghost"
   size?: "sm" | "md" | "lg"
+  type?: "button" | "submit" | "reset"
   className?: string
   onClick?: () => void
   disabled?: boolean
@@ -21,6 +22,7 @@ export function EnhancedButton({
   children,
   variant = "primary",
   size = "md",
+  type = "button",
   className,
   onClick,
   disabled = false,
@@ -74,6 +76,7 @@ export function EnhancedButton({
   return (
     <button
       ref={buttonRef}
+      type={type}
       className={cn(
         baseClasses,
         variantClasses[variant],

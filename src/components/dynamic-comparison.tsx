@@ -21,7 +21,7 @@ interface ComparisonMetric {
 }
 
 export function DynamicComparison() {
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.3 })
+  const { ref } = useScrollAnimation({ threshold: 0.3 })
   const [selectedMetric, setSelectedMetric] = useState<string>("performance")
   const [hoveredCompetitor, setHoveredCompetitor] = useState<string | null>(null)
 
@@ -168,7 +168,7 @@ export function DynamicComparison() {
           </div>
 
           <div className="space-y-4">
-            {competitors.map((competitor, index) => {
+            {competitors.map((competitor) => {
               const value = Number(competitor.metrics[selectedMetric])
               const percentage = (value / maxValue) * 100
               const isModron = competitor.name === "MODRON"
