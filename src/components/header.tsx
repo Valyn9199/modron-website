@@ -44,15 +44,30 @@ export function Header() {
         // Update active section based on scroll position
         const sections = ["home", "vision", "technology", "use-cases", "features", "pricing", "contact"]
         const headerHeight = 64 // h-16 = 64px
-        const scrollPosition = window.scrollY + headerHeight + 50 // Add extra buffer
+        const scrollPosition = window.scrollY + headerHeight + 100 // Add buffer for better detection
         
-        for (let i = sections.length - 1; i >= 0; i--) {
+        // If we're near the top of the page, always show "home" as active
+        if (window.scrollY < 200) {
+          setActiveSection("home")
+          return
+        }
+        
+        // Find the current section by checking which section is most visible
+        let currentSection = "home"
+        for (let i = 0; i < sections.length; i++) {
           const section = document.getElementById(sections[i])
-          if (section && section.offsetTop <= scrollPosition) {
-            setActiveSection(sections[i])
-            break
+          if (section) {
+            const sectionTop = section.offsetTop - headerHeight - 100
+            const sectionBottom = sectionTop + section.offsetHeight
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+              currentSection = sections[i]
+              break
+            }
           }
         }
+        
+        setActiveSection(currentSection)
       }, 100) // Small delay to avoid conflicts with smooth scrolling
     }
     
