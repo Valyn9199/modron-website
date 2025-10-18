@@ -238,13 +238,13 @@ export default function Home() {
                     <div className="relative z-10 text-center flex flex-col items-center justify-center h-full">
                       {/* Icon with enhanced styling */}
                       <div className="card-icon card-icon-purple group-hover:scale-110">
-                        <Icons.Shield className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
-                      </div>
+                      <Icons.Shield className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                </div>
                       
                       {/* Text content */}
                       <h4 className="heading-quaternary text-center mb-1 sm:mb-2 group-hover:text-primary-purple transition-normal">Australian Sovereignty</h4>
                       <p className="text-gray-400 text-caption leading-relaxed">Locally assembled & controlled</p>
-                    </div>
+                </div>
                   </div>
 
                   {/* Renewable-First */}
@@ -256,13 +256,13 @@ export default function Home() {
                     <div className="relative z-10 text-center flex flex-col items-center justify-center h-full">
                       {/* Icon with enhanced styling */}
                       <div className="card-icon card-icon-cyan group-hover:scale-110">
-                        <Icons.Leaf className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
-                      </div>
+                      <Icons.Leaf className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                    </div>
                       
                       {/* Text content */}
                       <h4 className="heading-quaternary text-center mb-1 sm:mb-2 group-hover:text-primary-cyan transition-normal">Renewable-First</h4>
                       <p className="text-gray-400 text-caption leading-relaxed">80-95% renewable energy</p>
-                    </div>
+                  </div>
                   </div>
 
                   {/* Container-Native */}
@@ -274,14 +274,14 @@ export default function Home() {
                     <div className="relative z-10 text-center flex flex-col items-center justify-center h-full">
                       {/* Icon with enhanced styling */}
                       <div className="card-icon card-icon-green group-hover:scale-110">
-                        <Icons.Server className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
-                      </div>
+                      <Icons.Server className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                    </div>
                       
                       {/* Text content */}
                       <h4 className="heading-quaternary text-center mb-1 sm:mb-2 group-hover:text-primary-green transition-normal">Container-Native</h4>
                       <p className="text-gray-400 text-caption leading-relaxed">Rapid deployment & scaling</p>
                     </div>
-                  </div>
+                </div>
               </div>
               </StaggeredReveal>
               
@@ -301,21 +301,21 @@ export default function Home() {
                         <h3 className="text-body font-bold text-white mb-3 sm:mb-4 group-hover:text-primary-purple transition-colors">Australian Sovereignty</h3>
                         <p className="text-gray-400 text-caption leading-relaxed">
                           Locally assembled, locally operated, locally controlled. Every GPU cluster is built in Australia with Australian oversight and data residency guarantees.
-                        </p>
+                  </p>
                 </div>
                 
                       <div className="bg-gray-100/50 border border-gray-200 rounded-xl p-4 sm:p-6 hover:border-primary-cyan/30 transition-all duration-200 group">
                         <h3 className="text-body font-bold text-white mb-3 sm:mb-4 group-hover:text-primary-cyan transition-colors">Renewable-First Operations</h3>
                         <p className="text-gray-400 text-caption leading-relaxed">
                           Solar panels, battery storage, and grid integration designed for 80-95% renewable energy usage with carbon-neutral operations.
-                        </p>
+                  </p>
                 </div>
                 
                       <div className="bg-gray-100/50 border border-gray-200 rounded-xl p-4 sm:p-6 hover:border-primary-green/30 transition-all duration-200 group">
                         <h3 className="text-body font-bold text-white mb-3 sm:mb-4 group-hover:text-primary-green transition-colors">Container-Native Architecture</h3>
                         <p className="text-gray-400 text-caption leading-relaxed">
                           Shipping container infrastructure enables rapid deployment, easy scaling, and disaster recovery across multiple Australian locations.
-                        </p>
+                  </p>
                 </div>
               </div>
               </StaggeredReveal>
@@ -627,67 +627,67 @@ export default function Home() {
                     {/* Cooling Efficiency Card */}
                     <div className="w-full flex-shrink-0 px-4">
                       <div className="text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-cyan/30 transition-all duration-300 hover:scale-105 group">
-                        <h3 className="text-white font-bold text-lg mb-4">Cooling Efficiency</h3>
-                        <div className="mb-6">
+                <h3 className="text-white font-bold text-lg mb-4">Cooling Efficiency</h3>
+                <div className="mb-6">
                           <div className="text-5xl font-bold text-primary-cyan mb-2">
-                            <AnimatedCounter end={60} duration={2000} suffix="%" />
-                          </div>
-                          <p className="text-white text-sm font-semibold mb-4">Failure Rate Reduction</p>
-                          <AnimatedProgressBar 
-                            value={60} 
-                            label="" 
-                            color="#40d0f2"
-                            delay={0}
-                          />
-                        </div>
-                        <p className="text-[#999999] text-sm">Immersion cooling vs traditional air cooling</p>
+                    <AnimatedCounter end={60} duration={2000} suffix="%" />
+                  </div>
+                  <p className="text-white text-sm font-semibold mb-4">Failure Rate Reduction</p>
+                  <AnimatedProgressBar 
+                    value={60} 
+                    label="" 
+                    color="#40d0f2"
+                    delay={0}
+                  />
+                </div>
+                <p className="text-[#999999] text-sm">Immersion cooling vs traditional air cooling</p>
                       </div>
-                    </div>
-                    
+              </div>
+              
                     {/* Energy Efficiency Card */}
                     <div className="w-full flex-shrink-0 px-4">
                       <div className="text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-green/30 transition-all duration-300 hover:scale-105 group">
-                        <h3 className="text-white font-bold text-lg mb-4">Energy Efficiency</h3>
-                        <div className="mb-6">
-                          <div className="text-5xl font-bold text-[#32ca73] mb-2">
-                            <AnimatedCounter end={40} duration={2000} suffix="%" delay={100} />
-                          </div>
-                          <p className="text-white text-sm font-semibold mb-4">Power Consumption Savings</p>
-                          <AnimatedProgressBar 
-                            value={40} 
-                            label="" 
-                            color="#32ca73"
-                            delay={200}
-                          />
-                        </div>
-                        <p className="text-[#999999] text-sm">Immersion cooling + renewable energy optimization</p>
+                <h3 className="text-white font-bold text-lg mb-4">Energy Efficiency</h3>
+                <div className="mb-6">
+                  <div className="text-5xl font-bold text-[#32ca73] mb-2">
+                    <AnimatedCounter end={40} duration={2000} suffix="%" delay={100} />
+                  </div>
+                  <p className="text-white text-sm font-semibold mb-4">Power Consumption Savings</p>
+                  <AnimatedProgressBar 
+                    value={40} 
+                    label="" 
+                    color="#32ca73"
+                    delay={200}
+                  />
+                </div>
+                <p className="text-[#999999] text-sm">Immersion cooling + renewable energy optimization</p>
                       </div>
-                    </div>
-                    
+              </div>
+              
                     {/* Deployment Speed Card */}
                     <div className="w-full flex-shrink-0 px-4">
                       <div className="text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-purple/30 transition-all duration-300 hover:scale-105 group">
-                        <h3 className="text-white font-bold text-lg mb-4">Deployment Speed</h3>
-                        <div className="mb-6">
-                          <div className="text-5xl font-bold text-[#d5aaf9] mb-2">
-                            <AnimatedCounter end={90} duration={2000} suffix="%" delay={200} />
-                          </div>
-                          <p className="text-white text-sm font-semibold mb-4">Setup Time Reduction</p>
-                          <AnimatedProgressBar 
-                            value={90} 
-                            label="" 
-                            color="#d5aaf9"
-                            delay={400}
-                          />
-                        </div>
-                        <p className="text-[#999999] text-sm">Container-based infrastructure vs traditional data centers</p>
-                      </div>
-                    </div>
+                <h3 className="text-white font-bold text-lg mb-4">Deployment Speed</h3>
+                <div className="mb-6">
+                  <div className="text-5xl font-bold text-[#d5aaf9] mb-2">
+                    <AnimatedCounter end={90} duration={2000} suffix="%" delay={200} />
                   </div>
-                  
+                  <p className="text-white text-sm font-semibold mb-4">Setup Time Reduction</p>
+                  <AnimatedProgressBar 
+                    value={90} 
+                    label="" 
+                    color="#d5aaf9"
+                    delay={400}
+                  />
                 </div>
+                <p className="text-[#999999] text-sm">Container-based infrastructure vs traditional data centers</p>
               </div>
-              
+            </div>
+          </div>
+
+          </div>
+        </div>
+        
               {/* Desktop: All Cards Visible */}
               <div className="hidden md:block">
                 <StaggeredReveal staggerDelay={150}>
@@ -697,7 +697,7 @@ export default function Home() {
                       <div className="mb-6">
                         <div className="text-5xl font-bold text-primary-cyan mb-2">
                           <AnimatedCounter end={60} duration={2000} suffix="%" />
-                        </div>
+        </div>
                         <p className="text-white text-sm font-semibold mb-4">Failure Rate Reduction</p>
                         <AnimatedProgressBar 
                           value={60} 
@@ -705,16 +705,16 @@ export default function Home() {
                           color="#40d0f2"
                           delay={0}
                         />
-                      </div>
+            </div>
                       <p className="text-[#999999] text-sm">Immersion cooling vs traditional air cooling</p>
-                    </div>
-                    
+                </div>
+                
                     <div className="text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-green/30 transition-all duration-300 hover:scale-105 group">
                       <h3 className="text-white font-bold text-lg mb-4">Energy Efficiency</h3>
                       <div className="mb-6">
                         <div className="text-5xl font-bold text-[#32ca73] mb-2">
                           <AnimatedCounter end={40} duration={2000} suffix="%" delay={100} />
-                        </div>
+                  </div>
                         <p className="text-white text-sm font-semibold mb-4">Power Consumption Savings</p>
                         <AnimatedProgressBar 
                           value={40} 
@@ -722,16 +722,16 @@ export default function Home() {
                           color="#32ca73"
                           delay={200}
                         />
-                      </div>
+                </div>
                       <p className="text-[#999999] text-sm">Immersion cooling + renewable energy optimization</p>
-                    </div>
-                    
+              </div>
+              
                     <div className="text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-purple/30 transition-all duration-300 hover:scale-105 group">
                       <h3 className="text-white font-bold text-lg mb-4">Deployment Speed</h3>
                       <div className="mb-6">
                         <div className="text-5xl font-bold text-[#d5aaf9] mb-2">
                           <AnimatedCounter end={90} duration={2000} suffix="%" delay={200} />
-                        </div>
+                  </div>
                         <p className="text-white text-sm font-semibold mb-4">Setup Time Reduction</p>
                         <AnimatedProgressBar 
                           value={90} 
@@ -739,14 +739,14 @@ export default function Home() {
                           color="#d5aaf9"
                           delay={400}
                         />
-                      </div>
+                </div>
                       <p className="text-[#999999] text-sm">Container-based infrastructure vs traditional data centers</p>
-                    </div>
                   </div>
+                </div>
                 </StaggeredReveal>
               </div>
-          </div>
-          
+                </div>
+                
           {/* Interactive Infrastructure Progressive Disclosure */}
           <div className="text-center mt-12 sm:mt-16 md:mt-20">
             <button
@@ -763,8 +763,8 @@ export default function Home() {
             {showInteractiveInfrastructure && (
               <div className="mt-8">
                 <InteractiveInfrastructure />
-              </div>
-            )}
+          </div>
+        )}
           </div>
         </div>
       </section>
@@ -796,7 +796,7 @@ export default function Home() {
                       : 'text-[#CCCCCC] hover:text-white hover:bg-[#1A1A1A]/50'
                   }`}
                 >
-                  <Icons.Brain className="h-4 w-4 mr-2" />
+                  <Icons.Brain className="h-4 w-4 mr-2 hidden sm:block" />
                   AI Development Process
                 </button>
                 <button
@@ -807,7 +807,7 @@ export default function Home() {
                       : 'text-[#CCCCCC] hover:text-white hover:bg-[#1A1A1A]/50'
                   }`}
                 >
-                  <Icons.Shield className="h-4 w-4 mr-2" />
+                  <Icons.Shield className="h-4 w-4 mr-2 hidden sm:block" />
                   Industry Applications
                 </button>
               </div>
@@ -823,31 +823,31 @@ export default function Home() {
                 <div className="relative z-10">
                       
                       <h3 className="text-xl font-bold text-white mb-6 text-center relative z-10">AI Development Process</h3>
-                
-                {/* AI Development Capabilities */}
+                      
+                      {/* AI Development Capabilities */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                  <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#40d0f2]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
-                    <div className="flex items-center mb-3">
+                        <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#40d0f2]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                          <div className="flex items-center mb-3">
                       <div className="w-10 h-10 rounded-lg bg-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                         <Icons.Database className="h-5 w-5 text-black flex-shrink-0" />
-                    </div>
-                      <h4 className="text-white font-semibold">Data Processing</h4>
-                    </div>
-                    <p className="text-gray-300 text-sm">High-performance data pipeline with real-time processing capabilities</p>
-                  </div>
-                  
-                  <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#32ca73]/10 rounded-xl p-4 border border-[#40d0f2]/20 group hover:border-[#40d0f2]/40 transition-all duration-300">
-                    <div className="flex items-center mb-3">
+                            </div>
+                            <h4 className="text-white font-semibold">Data Processing</h4>
+                          </div>
+                          <p className="text-gray-300 text-sm">High-performance data pipeline with real-time processing capabilities</p>
+                        </div>
+                        
+                        <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#32ca73]/10 rounded-xl p-4 border border-[#40d0f2]/20 group hover:border-[#40d0f2]/40 transition-all duration-300">
+                          <div className="flex items-center mb-3">
                       <div className="w-10 h-10 rounded-lg bg-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                         <Icons.Brain className="h-5 w-5 text-black flex-shrink-0" />
-                    </div>
-                      <h4 className="text-white font-semibold">Model Training</h4>
-                    </div>
-                    <p className="text-gray-300 text-sm">Renewable-powered GPU clusters for efficient neural network training</p>
-                  </div>
-                  
-                  <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#fbff52]/10 rounded-xl p-4 border border-[#32ca73]/20 group hover:border-[#32ca73]/40 transition-all duration-300">
-                    <div className="flex items-center mb-3">
+                            </div>
+                            <h4 className="text-white font-semibold">Model Training</h4>
+                          </div>
+                          <p className="text-gray-300 text-sm">Renewable-powered GPU clusters for efficient neural network training</p>
+                        </div>
+                        
+                        <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#fbff52]/10 rounded-xl p-4 border border-[#32ca73]/20 group hover:border-[#32ca73]/40 transition-all duration-300">
+                          <div className="flex items-center mb-3">
                       <div className="w-10 h-10 rounded-lg bg-[#32ca73] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                         <Icons.BarChart3 className="h-5 w-5 text-black flex-shrink-0" />
                     </div>
@@ -933,11 +933,11 @@ export default function Home() {
                   <h3 className="text-xl font-bold text-white mb-6 text-center">Industry Applications</h3>
                 
                 {/* Industry Solutions */}
-                <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                   <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#40d0f2]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
-                        <Icons.Shield className="h-5 w-5 text-black" />
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <Icons.Shield className="h-5 w-5 text-black flex-shrink-0" />
                 </div>
                       <h4 className="text-white font-semibold">Government</h4>
                 </div>
@@ -946,8 +946,8 @@ export default function Home() {
                   
                   <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#32ca73]/20 group hover:border-[#32ca73]/40 transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
-                        <Icons.Brain className="h-5 w-5 text-black" />
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <Icons.Brain className="h-5 w-5 text-black flex-shrink-0" />
                 </div>
                       <h4 className="text-white font-semibold">Research</h4>
                 </div>
@@ -956,8 +956,8 @@ export default function Home() {
                   
                   <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#32ca73]/10 rounded-xl p-4 border border-[#40d0f2]/20 group hover:border-[#40d0f2]/40 transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#40d0f2] to-[#32ca73] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
-                        <Icons.Server className="h-5 w-5 text-black" />
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#40d0f2] to-[#32ca73] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <Icons.Server className="h-5 w-5 text-black flex-shrink-0" />
                       </div>
                       <h4 className="text-white font-semibold">Enterprise</h4>
                     </div>
@@ -966,8 +966,8 @@ export default function Home() {
                   
                   <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#fbff52] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
-                        <Icons.Code className="h-5 w-5 text-black" />
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#fbff52] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <Icons.Code className="h-5 w-5 text-black flex-shrink-0" />
                       </div>
                       <h4 className="text-white font-semibold">Development</h4>
                     </div>
@@ -1657,13 +1657,13 @@ export default function Home() {
               
               {showContactForm && (
                 <div className="bg-gray-100/50 border border-gray-200 rounded-2xl p-4 sm:p-6 md:p-8 max-w-2xl mx-auto">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Get in Touch</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Get in Touch</h3>
                   <p className="text-[#999999] mb-6 sm:mb-8 text-caption">
-                    Have questions? Send us a message and we&apos;ll get back to you within 24 hours.
-                  </p>
-                  
-                  <EnhancedForm />
-                </div>
+                Have questions? Send us a message and we&apos;ll get back to you within 24 hours.
+              </p>
+              
+              <EnhancedForm />
+            </div>
               )}
             </div>
             
