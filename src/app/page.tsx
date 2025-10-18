@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import React, { useEffect } from "react";
 import { OptimizedScrollIndicator } from "@/components/optimized-scroll-indicator";
 
 import { HoverCard } from "@/components/hover-card";
@@ -48,10 +48,22 @@ export default function Home() {
   // Performance optimizations in progress - console logs removed for production
   const [showWorkflowDetails, setShowWorkflowDetails] = React.useState(false)
   const [showUseCaseDetails, setShowUseCaseDetails] = React.useState(false)
-  const [showInteractiveInfrastructure, setShowInteractiveInfrastructure] = React.useState(false)
   const [activeUseCaseTab, setActiveUseCaseTab] = React.useState<'ai-development' | 'industry-applications'>('ai-development')
   const [showCompetitiveComparison, setShowCompetitiveComparison] = React.useState(false)
   const [showHowItWorks, setShowHowItWorks] = React.useState(false)
+  const [showVisionDetails, setShowVisionDetails] = React.useState(false)
+  const [showInteractiveInfrastructure, setShowInteractiveInfrastructure] = React.useState(false)
+  const [currentCardIndex, setCurrentCardIndex] = React.useState(0)
+  const [showContactForm, setShowContactForm] = React.useState(false)
+  
+  // Auto-cycling for mobile performance cards
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCardIndex((prevIndex) => (prevIndex + 1) % 3)
+    }, 3000) // Change card every 3 seconds
+
+    return () => clearInterval(interval)
+  }, [])
   
   return (
     <MobileViewport>
@@ -88,7 +100,7 @@ export default function Home() {
     {/* CTA Buttons - Enhanced with micro-interactions */}
     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-6 sm:mb-8 md:mb-10">
       <div className="touch-feedback w-full sm:w-auto">
-        <EnhancedBookingButton />
+        <EnhancedBookingButton onOpenContactForm={() => setShowContactForm(true)} />
       </div>
       <div className="touch-feedback w-full sm:w-auto">
         <EnhancedPricingButton />
@@ -126,9 +138,23 @@ export default function Home() {
         </ScrollReveal>
       </div>
       
+      {/* Mobile Progressive Disclosure Trigger */}
+      <div className="block sm:hidden text-center mb-8">
+        <button
+          onClick={() => {
+            console.log('Vision details button clicked, current state:', showVisionDetails);
+            setShowVisionDetails(!showVisionDetails);
+          }}
+          className="w-full bg-[#d5aaf9]/20 border border-[#d5aaf9]/30 text-[#d5aaf9] py-3 rounded-lg hover:bg-[#d5aaf9]/30 transition-colors duration-200 flex items-center justify-center relative z-10 max-w-md mx-auto"
+        >
+          <span className="font-medium mr-2">Why MODRON</span>
+          <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showVisionDetails ? 'rotate-180' : ''}`} />
+        </button>
+      </div>
+
       {/* Why MODRON Grid */}
         <StaggeredReveal staggerDelay={150}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8" role="list" aria-label="Why choose MODRON">
+        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 ${showVisionDetails ? 'block' : 'hidden sm:grid'}`} role="list" aria-label="Why choose MODRON">
               {/* Renewable-powered */}
                 <div className="text-center group hover-lift" role="listitem">
                   <div className="mobile-icon mx-auto mb-6 mobile-icon w-16 h-16 rounded-xl flex items-center justify-center icon-hover shadow-lg hover-glow" style={{ backgroundColor: '#d5aaf9' }} aria-hidden="true">
@@ -203,26 +229,58 @@ export default function Home() {
               <h3 className="text-lg sm:text-xl font-semibold text-white mb-6 sm:mb-8">Three Core Pillars</h3>
               <StaggeredReveal staggerDelay={150}>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8">
-                  <div className="text-center group">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#d5aaf9] rounded-lg mx-auto mb-3 sm:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-                      <Icons.Shield className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                  {/* Australian Sovereignty */}
+                  <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-3 sm:p-6 group hover:border-[#d5aaf9]/30 transition-all duration-300 relative overflow-hidden">
+                    {/* Background gradient effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#d5aaf9]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                    
+                    {/* Content - Centered */}
+                    <div className="relative z-10 text-center flex flex-col items-center justify-center h-full">
+                      {/* Icon with enhanced styling */}
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#d5aaf9] to-[#d5aaf9]/80 rounded-xl flex items-center justify-center mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-200 shadow-lg">
+                        <Icons.Shield className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                 </div>
-                    <h4 className="text-white font-medium text-sm sm:text-base mb-1">Australian Sovereignty</h4>
-                    <p className="text-[#999999] text-xs sm:text-sm">Locally assembled & controlled</p>
+                      
+                      {/* Text content */}
+                      <h4 className="text-white font-bold text-base sm:text-lg mb-1 sm:mb-2 group-hover:text-[#d5aaf9] transition-colors duration-200">Australian Sovereignty</h4>
+                      <p className="text-[#CCCCCC] text-xs sm:text-sm leading-relaxed">Locally assembled & controlled</p>
                 </div>
-                  <div className="text-center group">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#40d0f2] rounded-lg mx-auto mb-3 sm:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-                      <Icons.Leaf className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                     </div>
-                    <h4 className="text-white font-medium text-sm sm:text-base mb-1">Renewable-First</h4>
-                    <p className="text-[#999999] text-xs sm:text-sm">80-95% renewable energy</p>
+
+                  {/* Renewable-First */}
+                  <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-3 sm:p-6 group hover:border-[#40d0f2]/30 transition-all duration-300 relative overflow-hidden">
+                    {/* Background gradient effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#40d0f2]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                    
+                    {/* Content - Centered */}
+                    <div className="relative z-10 text-center flex flex-col items-center justify-center h-full">
+                      {/* Icon with enhanced styling */}
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#40d0f2] to-[#40d0f2]/80 rounded-xl flex items-center justify-center mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-200 shadow-lg">
+                        <Icons.Leaf className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                   </div>
-                  <div className="text-center group">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#32ca73] rounded-lg mx-auto mb-3 sm:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-                      <Icons.Server className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                      
+                      {/* Text content */}
+                      <h4 className="text-white font-bold text-base sm:text-lg mb-1 sm:mb-2 group-hover:text-[#40d0f2] transition-colors duration-200">Renewable-First</h4>
+                      <p className="text-[#CCCCCC] text-xs sm:text-sm leading-relaxed">80-95% renewable energy</p>
                     </div>
-                    <h4 className="text-white font-medium text-sm sm:text-base mb-1">Container-Native</h4>
-                    <p className="text-[#999999] text-xs sm:text-sm">Rapid deployment & scaling</p>
+                  </div>
+
+                  {/* Container-Native */}
+                  <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-3 sm:p-6 group hover:border-[#32ca73]/30 transition-all duration-300 relative overflow-hidden">
+                    {/* Background gradient effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#32ca73]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                    
+                    {/* Content - Centered */}
+                    <div className="relative z-10 text-center flex flex-col items-center justify-center h-full">
+                      {/* Icon with enhanced styling */}
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#32ca73] to-[#32ca73]/80 rounded-xl flex items-center justify-center mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-200 shadow-lg">
+                        <Icons.Server className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                      </div>
+                      
+                      {/* Text content */}
+                      <h4 className="text-white font-bold text-base sm:text-lg mb-1 sm:mb-2 group-hover:text-[#32ca73] transition-colors duration-200">Container-Native</h4>
+                      <p className="text-[#CCCCCC] text-xs sm:text-sm leading-relaxed">Rapid deployment & scaling</p>
+                    </div>
                 </div>
               </div>
               </StaggeredReveal>
@@ -332,20 +390,10 @@ export default function Home() {
               </ProgressiveReveal>
             </div>
 
-            {/* Infrastructure Diagram - Mobile: Progressive Disclosure */}
+            {/* Infrastructure Diagram - Mobile: Always Visible */}
             <div className="lg:hidden">
-              <details className="group mb-6">
-                <summary className="cursor-pointer list-none">
-                  <div className="flex items-center justify-between p-4 bg-[#1A1A1A]/50 border border-[#262626] rounded-xl hover:border-[#d5aaf9]/30 transition-all duration-200">
-                    <h3 className="text-white font-semibold text-lg">Infrastructure Overview</h3>
-                    <div className="flex items-center space-x-2">
-                      <span className="text-[#40d0f2] text-sm font-medium">View Details</span>
-                      <Icons.ChevronDown className="h-5 w-5 text-[#40d0f2] transition-transform duration-200 group-open:rotate-180" />
-                    </div>
-                  </div>
-                </summary>
-                
-                <div className="mt-4 p-4 bg-[#1A1A1A]/30 border border-[#262626] rounded-xl">
+              <div className="mb-6">
+                <div className="p-4 bg-[#1A1A1A]/30 border border-[#262626] rounded-xl">
                   <ProgressiveReveal delay={200}>
                     <div className="relative">
                       <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
@@ -389,10 +437,23 @@ export default function Home() {
                     </div>
                   </ProgressiveReveal>
                 </div>
-              </details>
+              </div>
             </div>
             
-            {/* Infrastructure Details */}
+            {/* Infrastructure Details - Mobile: Progressive Disclosure */}
+            <div className="lg:hidden">
+              <details className="group mb-6">
+                <summary className="cursor-pointer list-none">
+                  <div className="flex items-center justify-between p-4 bg-[#1A1A1A]/50 border border-[#262626] rounded-xl hover:border-[#d5aaf9]/30 transition-all duration-200">
+                    <h3 className="text-white font-semibold text-lg">Infrastructure Overview</h3>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-[#40d0f2] text-sm font-medium">View Details</span>
+                      <Icons.ChevronDown className="h-5 w-5 text-[#40d0f2] transition-transform duration-200 group-open:rotate-180" />
+                    </div>
+                  </div>
+                </summary>
+                
+                <div className="mt-4">
             <StaggeredReveal staggerDelay={100}>
             <div className="space-y-6 sm:space-y-8">
               {/* GPU Nodes */}
@@ -461,26 +522,81 @@ export default function Home() {
             </div>
             </StaggeredReveal>
           </div>
-          
-          {/* Interactive Infrastructure Progressive Disclosure */}
-          <div className="text-center mt-12 sm:mt-16 md:mt-20">
-            <button
-              onClick={() => {
-                console.log('Interactive Infrastructure button clicked, current state:', showInteractiveInfrastructure);
-                setShowInteractiveInfrastructure(!showInteractiveInfrastructure);
-              }}
-              className="w-full bg-[#32ca73]/20 border border-[#32ca73]/30 text-[#32ca73] py-3 rounded-lg hover:bg-[#32ca73]/30 transition-colors duration-200 flex items-center justify-center relative z-10 max-w-md mx-auto"
-            >
-              <span className="font-medium mr-2">Explore Interactive Infrastructure</span>
-              <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showInteractiveInfrastructure ? 'rotate-180' : ''}`} />
-            </button>
+              </details>
+        </div>
             
-            {showInteractiveInfrastructure && (
-              <div className="mt-8">
-        <InteractiveInfrastructure />
-              </div>
-            )}
+            {/* Infrastructure Details - Desktop: Always Visible */}
+            <div className="hidden lg:block">
+              <StaggeredReveal staggerDelay={100}>
+                <div className="space-y-6 sm:space-y-8">
+                  {/* GPU Nodes */}
+                  <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-[#d5aaf9]/30 transition-all duration-200" style={{ willChange: 'transform' }}>
+                    <div className="flex items-start">
+                      <div className="rounded-xl p-2 sm:p-3 mr-3 sm:mr-4" style={{ backgroundColor: '#d5aaf9' }}>
+                        <Icons.Cpu className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                      </div>
+                      <div>
+                        <h3 className="text-white font-bold text-lg sm:text-xl mb-2">MODRON GPU Clusters</h3>
+                        <p className="text-[#999999] mb-2 sm:mb-3 text-sm sm:text-base">6× RTX 4090 24GB, Australian-assembled, immersion-cooled</p>
+                        <p className="text-[#CCCCCC] text-xs sm:text-sm">
+                          Locally sourced components with Australian quality control and support.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Immersion Cooling */}
+                  <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-[#40d0f2]/30 transition-all duration-200" style={{ willChange: 'transform' }}>
+                    <div className="flex items-start">
+                      <div className="rounded-xl p-2 sm:p-3 mr-3 sm:mr-4" style={{ backgroundColor: '#40d0f2' }}>
+                        <Icons.Droplets className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                      </div>
+                      <div>
+                        <h3 className="text-white font-bold text-lg sm:text-xl mb-2">Immersion Cooling</h3>
+                        <p className="text-[#999999] mb-2 sm:mb-3 text-sm sm:text-base">Proprietary liquid cooling system</p>
+                        <p className="text-[#CCCCCC] text-xs sm:text-sm">
+                          Advanced immersion cooling technology reduces failure rates by 60% while maintaining peak performance and enabling higher compute density.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Solar + Battery Hybrid */}
+                  <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-[#32ca73]/30 transition-all duration-200" style={{ willChange: 'transform' }}>
+                    <div className="flex items-start">
+                      <div className="rounded-xl p-2 sm:p-3 mr-3 sm:mr-4" style={{ backgroundColor: '#32ca73' }}>
+                        <Icons.Zap className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                      </div>
+                      <div>
+                        <h3 className="text-white font-bold text-lg sm:text-xl mb-2">Solar + Battery Hybrid</h3>
+                        <p className="text-[#999999] mb-2 sm:mb-3 text-sm sm:text-base">Australian-made solar panels, advanced battery storage integration</p>
+                        <p className="text-[#CCCCCC] text-xs sm:text-sm">
+                          Grid-independent operation with intelligent energy management.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Container Infrastructure */}
+                  <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-4 sm:p-5 md:p-6 hover:border-[#fbff52]/30 transition-all duration-200" style={{ willChange: 'transform' }}>
+                    <div className="flex items-start">
+                      <div className="rounded-xl p-2 sm:p-3 mr-3 sm:mr-4" style={{ backgroundColor: '#fbff52' }}>
+                        <Icons.Server className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                      </div>
+                      <div>
+                        <h3 className="text-white font-bold text-lg sm:text-xl mb-2">Container Infrastructure</h3>
+                        <p className="text-[#999999] mb-2 sm:mb-3 text-sm sm:text-base">ISO shipping containers, rapid deployment, disaster recovery</p>
+                        <p className="text-[#CCCCCC] text-xs sm:text-sm">
+                          Deploy anywhere in Australia within 48 hours.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </StaggeredReveal>
+            </div>
           </div>
+          
         </div>
       </section>
 
@@ -501,60 +617,154 @@ export default function Home() {
               </p>
             </div>
             
-              <StaggeredReveal staggerDelay={150}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-              <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#40d0f2]/30 transition-all duration-300 hover:scale-105 group">
-                <h3 className="text-white font-bold text-lg mb-4">Cooling Efficiency</h3>
-                <div className="mb-6">
-                  <div className="text-5xl font-bold text-[#40d0f2] mb-2">
-                    <AnimatedCounter end={60} duration={2000} suffix="%" />
+              {/* Mobile: Cycling Carousel */}
+              <div className="md:hidden">
+                <div className="relative overflow-hidden">
+                  <div 
+                    className="flex transition-transform duration-500 ease-in-out"
+                    style={{ transform: `translateX(-${currentCardIndex * 100}%)` }}
+                  >
+                    {/* Cooling Efficiency Card */}
+                    <div className="w-full flex-shrink-0 px-4">
+                      <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#40d0f2]/30 transition-all duration-300 hover:scale-105 group">
+                        <h3 className="text-white font-bold text-lg mb-4">Cooling Efficiency</h3>
+                        <div className="mb-6">
+                          <div className="text-5xl font-bold text-[#40d0f2] mb-2">
+                            <AnimatedCounter end={60} duration={2000} suffix="%" />
+                          </div>
+                          <p className="text-white text-sm font-semibold mb-4">Failure Rate Reduction</p>
+                          <AnimatedProgressBar 
+                            value={60} 
+                            label="" 
+                            color="#40d0f2"
+                            delay={0}
+                          />
+                        </div>
+                        <p className="text-[#999999] text-sm">Immersion cooling vs traditional air cooling</p>
+                      </div>
+                    </div>
+                    
+                    {/* Energy Efficiency Card */}
+                    <div className="w-full flex-shrink-0 px-4">
+                      <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#32ca73]/30 transition-all duration-300 hover:scale-105 group">
+                        <h3 className="text-white font-bold text-lg mb-4">Energy Efficiency</h3>
+                        <div className="mb-6">
+                          <div className="text-5xl font-bold text-[#32ca73] mb-2">
+                            <AnimatedCounter end={40} duration={2000} suffix="%" delay={100} />
+                          </div>
+                          <p className="text-white text-sm font-semibold mb-4">Power Consumption Savings</p>
+                          <AnimatedProgressBar 
+                            value={40} 
+                            label="" 
+                            color="#32ca73"
+                            delay={200}
+                          />
+                        </div>
+                        <p className="text-[#999999] text-sm">Immersion cooling + renewable energy optimization</p>
+                      </div>
+                    </div>
+                    
+                    {/* Deployment Speed Card */}
+                    <div className="w-full flex-shrink-0 px-4">
+                      <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#d5aaf9]/30 transition-all duration-300 hover:scale-105 group">
+                        <h3 className="text-white font-bold text-lg mb-4">Deployment Speed</h3>
+                        <div className="mb-6">
+                          <div className="text-5xl font-bold text-[#d5aaf9] mb-2">
+                            <AnimatedCounter end={90} duration={2000} suffix="%" delay={200} />
+                          </div>
+                          <p className="text-white text-sm font-semibold mb-4">Setup Time Reduction</p>
+                          <AnimatedProgressBar 
+                            value={90} 
+                            label="" 
+                            color="#d5aaf9"
+                            delay={400}
+                          />
+                        </div>
+                        <p className="text-[#999999] text-sm">Container-based infrastructure vs traditional data centers</p>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-white text-sm font-semibold mb-4">Failure Rate Reduction</p>
-                  <AnimatedProgressBar 
-                    value={60} 
-                    label="" 
-                    color="#40d0f2"
-                    delay={0}
-                  />
+                  
                 </div>
-                <p className="text-[#999999] text-sm">Immersion cooling vs traditional air cooling</p>
               </div>
               
-              <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#32ca73]/30 transition-all duration-300 hover:scale-105 group">
-                <h3 className="text-white font-bold text-lg mb-4">Energy Efficiency</h3>
-                <div className="mb-6">
-                  <div className="text-5xl font-bold text-[#32ca73] mb-2">
-                    <AnimatedCounter end={40} duration={2000} suffix="%" delay={100} />
+              {/* Desktop: All Cards Visible */}
+              <div className="hidden md:block">
+                <StaggeredReveal staggerDelay={150}>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                    <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#40d0f2]/30 transition-all duration-300 hover:scale-105 group">
+                      <h3 className="text-white font-bold text-lg mb-4">Cooling Efficiency</h3>
+                      <div className="mb-6">
+                        <div className="text-5xl font-bold text-[#40d0f2] mb-2">
+                          <AnimatedCounter end={60} duration={2000} suffix="%" />
+                        </div>
+                        <p className="text-white text-sm font-semibold mb-4">Failure Rate Reduction</p>
+                        <AnimatedProgressBar 
+                          value={60} 
+                          label="" 
+                          color="#40d0f2"
+                          delay={0}
+                        />
+                      </div>
+                      <p className="text-[#999999] text-sm">Immersion cooling vs traditional air cooling</p>
+                    </div>
+                    
+                    <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#32ca73]/30 transition-all duration-300 hover:scale-105 group">
+                      <h3 className="text-white font-bold text-lg mb-4">Energy Efficiency</h3>
+                      <div className="mb-6">
+                        <div className="text-5xl font-bold text-[#32ca73] mb-2">
+                          <AnimatedCounter end={40} duration={2000} suffix="%" delay={100} />
+                        </div>
+                        <p className="text-white text-sm font-semibold mb-4">Power Consumption Savings</p>
+                        <AnimatedProgressBar 
+                          value={40} 
+                          label="" 
+                          color="#32ca73"
+                          delay={200}
+                        />
+                      </div>
+                      <p className="text-[#999999] text-sm">Immersion cooling + renewable energy optimization</p>
+                    </div>
+                    
+                    <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#d5aaf9]/30 transition-all duration-300 hover:scale-105 group">
+                      <h3 className="text-white font-bold text-lg mb-4">Deployment Speed</h3>
+                      <div className="mb-6">
+                        <div className="text-5xl font-bold text-[#d5aaf9] mb-2">
+                          <AnimatedCounter end={90} duration={2000} suffix="%" delay={200} />
+                        </div>
+                        <p className="text-white text-sm font-semibold mb-4">Setup Time Reduction</p>
+                        <AnimatedProgressBar 
+                          value={90} 
+                          label="" 
+                          color="#d5aaf9"
+                          delay={400}
+                        />
+                      </div>
+                      <p className="text-[#999999] text-sm">Container-based infrastructure vs traditional data centers</p>
+                    </div>
                   </div>
-                  <p className="text-white text-sm font-semibold mb-4">Power Consumption Savings</p>
-                  <AnimatedProgressBar 
-                    value={40} 
-                    label="" 
-                    color="#32ca73"
-                    delay={200}
-                  />
-                </div>
-                <p className="text-[#999999] text-sm">Immersion cooling + renewable energy optimization</p>
+                </StaggeredReveal>
               </div>
-              
-              <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#d5aaf9]/30 transition-all duration-300 hover:scale-105 group">
-                <h3 className="text-white font-bold text-lg mb-4">Deployment Speed</h3>
-                <div className="mb-6">
-                  <div className="text-5xl font-bold text-[#d5aaf9] mb-2">
-                    <AnimatedCounter end={90} duration={2000} suffix="%" delay={200} />
-                  </div>
-                  <p className="text-white text-sm font-semibold mb-4">Setup Time Reduction</p>
-                  <AnimatedProgressBar 
-                    value={90} 
-                    label="" 
-                    color="#d5aaf9"
-                    delay={400}
-                  />
-                </div>
-                <p className="text-[#999999] text-sm">Container-based infrastructure vs traditional data centers</p>
+          </div>
+          
+          {/* Interactive Infrastructure Progressive Disclosure */}
+          <div className="text-center mt-12 sm:mt-16 md:mt-20">
+            <button
+              onClick={() => {
+                console.log('Interactive Infrastructure button clicked, current state:', showInteractiveInfrastructure);
+                setShowInteractiveInfrastructure(!showInteractiveInfrastructure);
+              }}
+              className="w-full bg-[#32ca73]/20 border border-[#32ca73]/30 text-[#32ca73] py-3 rounded-lg hover:bg-[#32ca73]/30 transition-colors duration-200 flex items-center justify-center relative z-10 max-w-md mx-auto"
+            >
+              <span className="font-medium mr-2">Explore Interactive Infrastructure</span>
+              <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showInteractiveInfrastructure ? 'rotate-180' : ''}`} />
+            </button>
+            
+            {showInteractiveInfrastructure && (
+              <div className="mt-8">
+                <InteractiveInfrastructure />
               </div>
-            </div>
-            </StaggeredReveal>
+            )}
           </div>
         </div>
       </section>
@@ -828,7 +1038,7 @@ export default function Home() {
 
 
       {/* Features Grid Section */}
-      <section id="features" className="relative z-10 overflow-visible py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-[#1A1A1A] via-black to-[#1A1A1A]">
+      <section id="features" className="hidden md:block relative z-10 overflow-visible py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-[#1A1A1A] via-black to-[#1A1A1A]">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 sm:mb-16 md:mb-20">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
@@ -1402,7 +1612,7 @@ export default function Home() {
             {showCompetitiveComparison && (
               <div className="mt-8">
                 <DynamicComparison />
-              </div>
+            </div>
             )}
           </div>
         </div>
@@ -1420,14 +1630,43 @@ export default function Home() {
             </p>
             
 
-            {/* Contact Form */}
-            <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-4 sm:p-6 md:p-8 max-w-2xl mx-auto">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Get in Touch</h3>
-              <p className="text-[#999999] mb-6 sm:mb-8 text-sm sm:text-base">
-                Have questions? Send us a message and we&apos;ll get back to you within 24 hours.
-              </p>
+            {/* Contact Form - Mobile: Progressive Disclosure */}
+            <div className="md:hidden">
+              <div className="text-center mb-6">
+                <button
+                  onClick={() => {
+                    console.log('Contact Form button clicked, current state:', showContactForm);
+                    setShowContactForm(!showContactForm);
+                  }}
+                  className="w-full bg-[#32ca73]/20 border border-[#32ca73]/30 text-[#32ca73] py-3 rounded-lg hover:bg-[#32ca73]/30 transition-colors duration-200 flex items-center justify-center relative z-10 max-w-md mx-auto"
+                >
+                  <span className="font-medium mr-2">Get in Touch</span>
+                  <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showContactForm ? 'rotate-180' : ''}`} />
+                </button>
+              </div>
               
-              <EnhancedForm />
+              {showContactForm && (
+                <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-4 sm:p-6 md:p-8 max-w-2xl mx-auto">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Get in Touch</h3>
+                  <p className="text-[#999999] mb-6 sm:mb-8 text-sm sm:text-base">
+                    Have questions? Send us a message and we&apos;ll get back to you within 24 hours.
+                  </p>
+                  
+                  <EnhancedForm />
+                </div>
+              )}
+            </div>
+            
+            {/* Contact Form - Desktop: Always Visible */}
+            <div className="hidden md:block">
+              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-4 sm:p-6 md:p-8 max-w-2xl mx-auto">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Get in Touch</h3>
+                <p className="text-[#999999] mb-6 sm:mb-8 text-sm sm:text-base">
+                  Have questions? Send us a message and we&apos;ll get back to you within 24 hours.
+                </p>
+                
+                <EnhancedForm />
+              </div>
             </div>
           </div>
         </div>

@@ -33,21 +33,27 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
 
   React.useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0)
       
-      // Update active section based on scroll position
-      const sections = ["home", "vision", "technology", "use-cases", "features", "pricing", "contact"]
-      const headerHeight = 64 // h-16 = 64px
-      const scrollPosition = window.scrollY + headerHeight + 50 // Add extra buffer
-      
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i])
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i])
-          break
+      // Throttle the active section update to avoid conflicts with smooth scrolling
+      clearTimeout(scrollTimeout)
+      scrollTimeout = setTimeout(() => {
+        // Update active section based on scroll position
+        const sections = ["home", "vision", "technology", "use-cases", "features", "pricing", "contact"]
+        const headerHeight = 64 // h-16 = 64px
+        const scrollPosition = window.scrollY + headerHeight + 50 // Add extra buffer
+        
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const section = document.getElementById(sections[i])
+          if (section && section.offsetTop <= scrollPosition) {
+            setActiveSection(sections[i])
+            break
+          }
         }
-      }
+      }, 100) // Small delay to avoid conflicts with smooth scrolling
     }
     
     // Add the scroll handler
@@ -55,6 +61,7 @@ export function Header() {
     
     return () => {
       window.removeEventListener("scroll", handleScroll)
+      clearTimeout(scrollTimeout)
     }
   }, [])
 
@@ -162,14 +169,18 @@ export function Header() {
           onClick={(e) => {
             e.preventDefault()
             const targetElement = document.querySelector(item.href)
-            // Close menu first, then scroll after a brief delay
+            // Close menu first
             setIsMobileMenuOpen(false)
             // Wait for sheet close animation to complete before scrolling
             setTimeout(() => {
               if (targetElement) {
-                targetElement.scrollIntoView({ 
-                  behavior: 'smooth',
-                  block: 'start'
+                // Use a more reliable scroll method
+                const headerHeight = 64 // Account for fixed header
+                const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight
+                
+                window.scrollTo({
+                  top: elementPosition,
+                  behavior: 'smooth'
                 })
               }
             }, 300) // Match the sheet animation duration
@@ -178,14 +189,18 @@ export function Header() {
             if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault()
               const targetElement = document.querySelector(item.href)
-              // Close menu first, then scroll after a brief delay
+              // Close menu first
               setIsMobileMenuOpen(false)
               // Wait for sheet close animation to complete before scrolling
               setTimeout(() => {
                 if (targetElement) {
-                  targetElement.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
+                  // Use a more reliable scroll method
+                  const headerHeight = 64 // Account for fixed header
+                  const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight
+                  
+                  window.scrollTo({
+                    top: elementPosition,
+                    behavior: 'smooth'
                   })
                 }
               }, 300) // Match the sheet animation duration

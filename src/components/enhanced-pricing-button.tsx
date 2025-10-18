@@ -8,8 +8,16 @@ export function EnhancedPricingButton() {
   const [isHovered, setIsHovered] = useState(false)
 
   const handleClick = () => {
-    // This would normally scroll to pricing section
-    console.log("View pricing clicked")
+    const pricingSection = document.getElementById('pricing')
+    if (pricingSection) {
+      const headerHeight = 64 // Account for fixed header
+      const elementPosition = pricingSection.getBoundingClientRect().top + window.scrollY - headerHeight
+      
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      })
+    }
   }
 
   return (

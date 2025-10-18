@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { Icons } from "@/lib/icon-imports"
 
 interface InfrastructureComponent {
@@ -19,7 +18,6 @@ interface InfrastructureComponent {
 }
 
 export function InteractiveInfrastructure() {
-  const { ref } = useScrollAnimation({ threshold: 0.3 })
   const [selectedComponent, setSelectedComponent] = useState<string | null>(null)
 
   const getGradientForComponent = (componentId: string) => {
@@ -95,7 +93,7 @@ export function InteractiveInfrastructure() {
   const selectedData = components.find(c => c.id === selectedComponent)
 
   return (
-    <div ref={ref as React.RefObject<HTMLDivElement>} className="relative">
+    <div className="relative">
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-white mb-4">Interactive Infrastructure</h2>

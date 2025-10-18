@@ -4,12 +4,31 @@ import { useState } from "react"
 import { EnhancedButton } from "./enhanced-button"
 import { Icons } from "@/lib/icon-imports"
 
-export function EnhancedBookingButton() {
+interface EnhancedBookingButtonProps {
+  onOpenContactForm?: () => void
+}
+
+export function EnhancedBookingButton({ onOpenContactForm }: EnhancedBookingButtonProps) {
   const [isHovered, setIsHovered] = useState(false)
 
   const handleClick = () => {
-    // This would normally open the booking modal
-    console.log("Booking modal clicked")
+    const contactSection = document.getElementById('contact')
+    if (contactSection) {
+      const headerHeight = 64 // Account for fixed header
+      const elementPosition = contactSection.getBoundingClientRect().top + window.scrollY - headerHeight
+      
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      })
+      
+      // Open the contact form after scrolling
+      setTimeout(() => {
+        if (onOpenContactForm) {
+          onOpenContactForm()
+        }
+      }, 500) // Wait for scroll to complete
+    }
   }
 
   return (
