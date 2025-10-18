@@ -37,6 +37,13 @@ export const metadata: Metadata = {
     'geo.placename': 'Sydney',
     'geo.position': '-33.8688;151.2093',
     'ICBM': '-33.8688, 151.2093',
+    'application-name': 'MODRON',
+    'apple-mobile-web-app-title': 'MODRON',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'default',
+    'mobile-web-app-capable': 'yes',
+    'msapplication-TileColor': '#1f2937',
+    'theme-color': '#1f2937',
   },
   verification: {
     google: 'your-google-verification-code',
@@ -61,10 +68,19 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: 'MODRON - Enterprise AI Compute Infrastructure',
+        type: 'image/jpeg',
+      },
+      {
+        url: '/og-image-square.jpg',
+        width: 1200,
+        height: 1200,
+        alt: 'MODRON - Sustainable AI Infrastructure',
+        type: 'image/jpeg',
       },
     ],
     locale: 'en_AU',
     type: 'website',
+    countryName: 'Australia',
   },
   twitter: {
     card: 'summary_large_image',
@@ -72,6 +88,7 @@ export const metadata: Metadata = {
     description: 'High-availability enterprise AI compute infrastructure with SLA-backed hosting. Sustainable GPU rentals with immersion cooling, solar power, and global availability.',
     images: ['/og-image.jpg'],
     creator: '@modron_ai',
+    site: '@modron_ai',
   },
   robots: {
     index: true,
@@ -83,6 +100,12 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  manifest: '/manifest.json',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
   },
 };
 

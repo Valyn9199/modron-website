@@ -3,15 +3,12 @@
 import React, { useEffect } from "react";
 import { OptimizedScrollIndicator } from "@/components/optimized-scroll-indicator";
 
-import { HoverCard } from "@/components/hover-card";
 import { EnhancedForm } from "@/components/enhanced-form";
 import { SkipToContent } from "@/components/skip-to-content";
 import { MobileViewport } from "@/components/mobile-viewport";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Icons } from "@/lib/icon-imports";
 import { HeroBgVideo } from "@/components/hero-bg-video";
 import Image from "next/image";
-import { LoadingSkeleton } from "@/components/loading-skeleton";
 import { EnhancedLoadingSkeleton } from "@/components/enhanced-loading-skeleton";
 
 // Lazy-load non-critical components
