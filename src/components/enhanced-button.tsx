@@ -59,19 +59,19 @@ export function EnhancedButton({
   const baseClasses = "relative overflow-hidden font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
   
   const variantClasses = {
-    primary: "bg-gradient-to-r from-[#40d0f2] to-[#32ca73] text-white hover:from-[#32ca73] hover:to-[#d5aaf9] focus:ring-[#40d0f2] shadow-lg hover:shadow-xl",
-    secondary: "bg-[#1A1A1A] text-white border border-[#262626] hover:bg-[#2A2A2A] hover:border-[#40d0f2] focus:ring-[#40d0f2]",
-    outline: "bg-transparent text-[#40d0f2] border-2 border-[#40d0f2] hover:bg-[#40d0f2] hover:text-white focus:ring-[#40d0f2]",
-    ghost: "bg-transparent text-gray-300 hover:bg-white/10 hover:text-white focus:ring-white"
+    primary: "bg-gradient-primary text-white hover:bg-gradient-primary-hover focus:ring-primary-cyan shadow-lg hover:shadow-xl transition-all duration-300",
+    secondary: "bg-gray-100 text-white border border-gray-200 hover:bg-gray-200 hover:border-primary-cyan focus:ring-primary-cyan transition-all duration-300",
+    outline: "bg-transparent text-primary-cyan border-2 border-primary-cyan hover:bg-primary-cyan hover:text-white focus:ring-primary-cyan transition-all duration-300",
+    ghost: "bg-transparent text-gray-400 hover:bg-white/10 hover:text-white focus:ring-white transition-all duration-300"
   }
 
   const sizeClasses = {
-    sm: "px-3 py-1.5 text-sm rounded-md",
-    md: "px-4 py-2 text-base rounded-lg",
-    lg: "px-6 py-3 text-lg rounded-xl"
+    sm: "px-3 py-1.5 text-caption rounded-md",
+    md: "px-4 py-2 text-body rounded-lg",
+    lg: "px-6 py-3 text-body rounded-xl"
   }
 
-  const glowClasses = glow ? "shadow-[0_0_20px_rgba(64,208,242,0.3)] hover:shadow-[0_0_30px_rgba(64,208,242,0.5)]" : ""
+  const glowClasses = glow ? "shadow-[0_0_20px_#40d0f2] hover:shadow-[0_0_30px_#40d0f2]" : ""
 
   return (
     <button
@@ -120,7 +120,7 @@ export function EnhancedButton({
       </span>
 
       {/* Hover glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#40d0f2]/20 to-[#32ca73]/20 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary-cyan/20 to-primary-green/20 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
     </button>
   )
 }

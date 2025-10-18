@@ -27,7 +27,7 @@ export function EnhancedPricingButton() {
       onClick={handleClick}
       glow
       ripple
-      className="mobile-button w-full sm:w-auto group relative overflow-hidden bg-[#40d0f2] hover:bg-[#32ca73] text-white"
+      className="mobile-button w-full sm:w-auto group relative overflow-hidden bg-primary-cyan hover:bg-primary-green text-white transition-all duration-300"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -45,7 +45,7 @@ export function EnhancedPricingButton() {
       </div>
       
       {/* Animated background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#40d0f2] to-[#32ca73] opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary-cyan to-primary-green opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
     </EnhancedButton>
   )
 }
