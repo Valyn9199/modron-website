@@ -6,25 +6,23 @@ import { OptimizedScrollIndicator } from "@/components/optimized-scroll-indicato
 import { HoverCard } from "@/components/hover-card";
 import { EnhancedForm } from "@/components/enhanced-form";
 import { SkipToContent } from "@/components/skip-to-content";
-
 import { MobileViewport } from "@/components/mobile-viewport";
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Icons } from "@/lib/icon-imports";
 import { HeroBgVideo } from "@/components/hero-bg-video";
 import Image from "next/image";
 import { LoadingSkeleton } from "@/components/loading-skeleton";
- 
+import { EnhancedLoadingSkeleton } from "@/components/enhanced-loading-skeleton";
 
-
-import { ImmersionTankVideo } from "@/components/immersion-tank-video";
+// Lazy-load non-critical components
+const ImmersionTankVideo = dynamic(() => import("@/components/immersion-tank-video").then(mod => ({ default: mod.ImmersionTankVideo })));
 // Lazy-load heavier, below-the-fold components to reduce initial JS
 
 import dynamic from 'next/dynamic';
 
 // Lazy-load heavier, below-the-fold components to reduce initial JS
 const AnimatedHowItWorks = dynamic(() => import("@/components/animated-how-it-works").then(mod => ({ default: mod.AnimatedHowItWorks })), {
-  loading: () => <LoadingSkeleton />
+  loading: () => <EnhancedLoadingSkeleton variant="card" height="300px" />
 });
 const StaggeredReveal = dynamic(() => import("@/components/page-transition").then(mod => ({ default: mod.StaggeredReveal })));
 const ProgressiveReveal = dynamic(() => import("@/components/page-transition").then(mod => ({ default: mod.ProgressiveReveal })));
@@ -32,17 +30,20 @@ const ProgressiveReveal = dynamic(() => import("@/components/page-transition").t
 import { Header } from "@/components/header";
 import { EnhancedPricingButton } from "@/components/enhanced-pricing-button";
 import { EnhancedBookingButton } from "@/components/enhanced-booking-button";
-import { FloatingStatsOverlay } from "@/components/floating-stats-overlay";
-import { MobileCollapsibleSection } from "@/components/collapsible-section";
-import { AnimatedProgressBar } from "@/components/animated-progress-bar";
-import { ParallaxSection } from "@/components/parallax-section";
-import { ScrollReveal } from "@/components/scroll-reveal";
-import { AnimatedDivider } from "@/components/animated-divider";
-import { InteractiveInfrastructure } from "@/components/interactive-infrastructure";
-import { DynamicComparison } from "@/components/dynamic-comparison";
-import { AnimatedCounter } from "@/components/animated-counter";
-import { ScrollProgress } from "@/components/scroll-progress";
-import { AnimatedHeadline } from "@/components/animated-headline";
+// Lazy-load below-the-fold components
+const FloatingStatsOverlay = dynamic(() => import("@/components/floating-stats-overlay").then(mod => ({ default: mod.FloatingStatsOverlay })), {
+  loading: () => <div className="hidden lg:block" />
+});
+const MobileCollapsibleSection = dynamic(() => import("@/components/collapsible-section").then(mod => ({ default: mod.MobileCollapsibleSection })));
+const AnimatedProgressBar = dynamic(() => import("@/components/animated-progress-bar").then(mod => ({ default: mod.AnimatedProgressBar })));
+const ParallaxSection = dynamic(() => import("@/components/parallax-section").then(mod => ({ default: mod.ParallaxSection })));
+const ScrollReveal = dynamic(() => import("@/components/scroll-reveal").then(mod => ({ default: mod.ScrollReveal })));
+const AnimatedDivider = dynamic(() => import("@/components/animated-divider").then(mod => ({ default: mod.AnimatedDivider })));
+const InteractiveInfrastructure = dynamic(() => import("@/components/interactive-infrastructure").then(mod => ({ default: mod.InteractiveInfrastructure })));
+const DynamicComparison = dynamic(() => import("@/components/dynamic-comparison").then(mod => ({ default: mod.DynamicComparison })));
+const AnimatedCounter = dynamic(() => import("@/components/animated-counter").then(mod => ({ default: mod.AnimatedCounter })));
+const ScrollProgress = dynamic(() => import("@/components/scroll-progress").then(mod => ({ default: mod.ScrollProgress })));
+const AnimatedHeadline = dynamic(() => import("@/components/animated-headline").then(mod => ({ default: mod.AnimatedHeadline })));
 
 export default function Home() {
   // Performance optimizations in progress - console logs removed for production
@@ -79,6 +80,7 @@ export default function Home() {
         
 {/* Hero Section - Compressed */}
 <section id="home" className="relative min-h-screen flex items-center justify-center w-full pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-16" role="banner" aria-labelledby="hero-heading">
+  
   {/* Background Video */}
   <HeroBgVideo overlayOpacity={0} />
 
@@ -88,11 +90,11 @@ export default function Home() {
       <AnimatedHeadline />
     
        {/* Subheading - MODRON's unique value proposition */}
-    <p className="hero-subheading text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-800 mb-3 sm:mb-4 md:mb-6 max-w-3xl mx-auto leading-relaxed font-semibold reveal reveal-delay will-change-transform px-4" style={{ letterSpacing: '0.1em' }}>      IMMERSION-COOLED. SOLAR-POWERED. MODULAR.
+    <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-3 sm:mb-4 md:mb-6 max-w-3xl mx-auto leading-relaxed font-semibold px-4" style={{ letterSpacing: '0.1em', color: '#1f2937' }}>      IMMERSION-COOLED. SOLAR-POWERED. MODULAR.
     </p>
     
     {/* Additional sub text - MODRON-specific description */}
-    <p className="hero-description text-body text-gray-800 mb-6 sm:mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed font-bold reveal reveal-delay-2 will-change-transform px-4">
+    <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed font-normal px-4" style={{ color: '#1f2937' }}>
       MODRON delivers locally-built, renewable-powered GPU clusters for Australian enterprises. 
       Immersion cooling meets solar energy in modular containers designed for rapid deployment and maximum efficiency.
     </p>
@@ -1702,7 +1704,9 @@ export default function Home() {
                     width={200}
                     height={53}
                     className="h-12 sm:h-16 w-auto"
-                    priority
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                   />
                 </div>
                 <div className="flex justify-center">
