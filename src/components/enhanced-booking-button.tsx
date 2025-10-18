@@ -51,7 +51,7 @@ export function EnhancedBookingButton({ onOpenContactForm }: EnhancedBookingButt
             </div>
           )}
         </div>
-        <span>Book a Demo</span>
+        <span className="font-semibold">Book a Demo</span>
         <Icons.ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
       </div>
       

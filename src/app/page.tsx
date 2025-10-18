@@ -122,19 +122,19 @@ export default function Home() {
   <div className="layout-container-wide">
     <div className="layout-content-wide">
       {/* Mission Statement */}
-      <div className="section-header">
+      <div className="text-center mb-12 sm:mb-16 md:mb-20">
         <ScrollReveal animation="fade" delay={0}>
-          <h2 id="vision-heading" className="heading-primary">
+          <h2 id="vision-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
             Our Mission
           </h2>
         </ScrollReveal>
         <ParallaxSection speed={0.3}>
-          <p className="text-body text-gray-500 leading-relaxed font-light max-w-5xl mx-auto mb-8 sm:mb-12 px-4">
+          <p className="text-body text-gray-500 leading-relaxed font-light max-w-5xl mx-auto mb-12 sm:mb-16 px-4">
             Building Australia's first sovereign and truly modular AI infrastructure platform. From local GPU assembly to solar-powered operations, MODRON delivers compute independence for Australian businesses, researchers, and government agencies.
           </p>
         </ParallaxSection>
         <ScrollReveal animation="zoom" delay={200}>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#d5aaf9] to-[#40d0f2] mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#d5aaf9] to-[#40d0f2] mx-auto mt-4"></div>
         </ScrollReveal>
       </div>
       
@@ -211,9 +211,9 @@ export default function Home() {
       <section className="relative layout-section mobile-optimized bg-gradient-to-br from-[#1A1A1A] via-black to-[#1A1A1A]">
         <div className="layout-container-wide">
           <div className="layout-content-wide">
-            <div className="section-header">
+            <div className="text-center mb-12 sm:mb-16 md:mb-20">
               <ScrollReveal animation="slide-up" delay={0}>
-                <h2 className="heading-primary">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
                   MODRON's Design Philosophy
                 </h2>
               </ScrollReveal>
@@ -333,7 +333,7 @@ export default function Home() {
       <section id="technology" className="mobile-section relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-[#1A1A1A] via-black to-[#1A1A1A]">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16 md:mb-20">
-            <h2 className="section-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
               Technology & Infrastructure
             </h2>
             <p className="section-description text-body text-gray-400 max-w-4xl mx-auto font-light leading-relaxed px-4">
@@ -602,7 +602,7 @@ export default function Home() {
 
 
       {/* Animated Divider */}
-      <AnimatedDivider variant="dots" color="#d5aaf9" />
+      <AnimatedDivider variant="wave" color="#d5aaf9" />
 
       {/* MODRON Performance Advantages Section */}
       <section className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#40d0f2]/10 to-black">
@@ -769,6 +769,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Animated Divider */}
+      <AnimatedDivider variant="wave" color="#32ca73" />
+
       {/* Use Cases Section */}
       <section id="use-cases" className="relative z-10 overflow-visible py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#d5aaf9]/10 to-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
@@ -822,11 +825,11 @@ export default function Home() {
                       <h3 className="text-xl font-bold text-white mb-6 text-center relative z-10">AI Development Process</h3>
                 
                 {/* AI Development Capabilities */}
-                <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                   <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#40d0f2]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
-                        <Icons.Database className="h-5 w-5 text-black" />
+                      <div className="w-10 h-10 rounded-lg bg-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <Icons.Database className="h-5 w-5 text-black flex-shrink-0" />
                     </div>
                       <h4 className="text-white font-semibold">Data Processing</h4>
                     </div>
@@ -835,8 +838,8 @@ export default function Home() {
                   
                   <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#32ca73]/10 rounded-xl p-4 border border-[#40d0f2]/20 group hover:border-[#40d0f2]/40 transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
-                        <Icons.Brain className="h-5 w-5 text-black" />
+                      <div className="w-10 h-10 rounded-lg bg-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <Icons.Brain className="h-5 w-5 text-black flex-shrink-0" />
                     </div>
                       <h4 className="text-white font-semibold">Model Training</h4>
                     </div>
@@ -845,8 +848,8 @@ export default function Home() {
                   
                   <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#fbff52]/10 rounded-xl p-4 border border-[#32ca73]/20 group hover:border-[#32ca73]/40 transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#32ca73] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
-                        <Icons.BarChart3 className="h-5 w-5 text-black" />
+                      <div className="w-10 h-10 rounded-lg bg-[#32ca73] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <Icons.BarChart3 className="h-5 w-5 text-black flex-shrink-0" />
                     </div>
                       <h4 className="text-white font-semibold">Performance Monitoring</h4>
                     </div>
@@ -855,8 +858,8 @@ export default function Home() {
                   
                   <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#fbff52] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
-                        <Icons.Server className="h-5 w-5 text-black" />
+                      <div className="w-10 h-10 rounded-lg bg-[#fbff52] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <Icons.Server className="h-5 w-5 text-black flex-shrink-0" />
                     </div>
                       <h4 className="text-white font-semibold">Container Deployment</h4>
                     </div>
@@ -1036,6 +1039,8 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Animated Divider */}
+      <AnimatedDivider variant="line" color="#d5aaf9" />
 
       {/* Features Grid Section */}
       <section id="features" className="hidden md:block relative z-10 overflow-visible py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-[#1A1A1A] via-black to-[#1A1A1A]">
@@ -1322,6 +1327,8 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Animated Divider */}
+      <AnimatedDivider variant="line" color="#fbff52" />
 
       {/* Pricing Section */}
       <section id="pricing" className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#40d0f2]/10 to-black">
@@ -1618,6 +1625,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Animated Divider */}
+      <AnimatedDivider variant="gradient" color="#40d0f2" />
+
       {/* CTA / Contact Section */}
       <section id="contact" className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#32ca73]/10 to-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
@@ -1674,6 +1684,9 @@ export default function Home() {
 
 
       </main>
+
+      {/* Animated Divider */}
+      <AnimatedDivider variant="dots" color="#d5aaf9" />
       
       {/* Footer */}
       <footer className="bg-black border-t border-[#d5aaf9]/20" role="contentinfo">

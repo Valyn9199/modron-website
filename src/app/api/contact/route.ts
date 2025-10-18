@@ -1,17 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { ResendClient } from '@/lib/utils'
-
-// Only import Resend if API key is available
-let resend: ResendClient | null = null
-if (process.env.RESEND_API_KEY) {
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { Resend } = require('resend')
-    resend = new Resend(process.env.RESEND_API_KEY)
-  } catch (error) {
-    console.warn('Resend not available:', error)
-  }
-}
 
 export async function POST(request: NextRequest) {
   try {
@@ -42,8 +29,40 @@ export async function POST(request: NextRequest) {
       )
     }
     
-    // If Resend is not available, just log the contact and return success
-    if (!resend) {
+    // Try to send email using Resend if API key is available
+    if (process.env.RESEND_API_KEY) {
+      try {
+        // Dynamic import to avoid build issues
+        const { Resend } = await import('resend')
+        const resend = new Resend(process.env.RESEND_API_KEY)
+        
+        const { data, error } = await resend.emails.send({
+          from: process.env.FROM_EMAIL || 'Modron Contact Form <noreply@yourdomain.com>',
+          to: [process.env.CONTACT_EMAIL || 'contact@modron.com'],
+          subject: `New Contact Form Submission from ${name}`,
+          html: `
+            <h2>New Contact Form Submission</h2>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Company:</strong> ${company || 'Not provided'}</p>
+            <p><strong>Message:</strong></p>
+            <p>${message.replace(/\n/g, '<br>')}</p>
+          `,
+          replyTo: email
+        })
+
+        if (error) {
+          console.error('Resend error:', error)
+          // Don't fail the request if email fails, just log it
+        } else {
+          console.log('Email sent successfully:', data)
+        }
+        
+      } catch (emailError) {
+        console.error('Email sending error:', emailError)
+        // Don't fail the request if email fails, just log it
+      }
+    } else {
       console.log('Contact form submission received (email service not configured):', {
         name,
         email,
@@ -51,46 +70,6 @@ export async function POST(request: NextRequest) {
         message,
         timestamp: new Date().toISOString()
       })
-      
-      return NextResponse.json({
-        success: true,
-        message: 'Message sent successfully (email service not configured)'
-      })
-    }
-    
-    // Send email using Resend
-    try {
-      const { data, error } = await resend.emails.send({
-        from: process.env.FROM_EMAIL || 'Modron Contact Form <noreply@yourdomain.com>',
-        to: [process.env.CONTACT_EMAIL || 'contact@modron.com'],
-        subject: `New Contact Form Submission from ${name}`,
-        html: `
-          <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Company:</strong> ${company || 'Not provided'}</p>
-          <p><strong>Message:</strong></p>
-          <p>${message.replace(/\n/g, '<br>')}</p>
-        `,
-        replyTo: email
-      })
-
-      if (error) {
-        console.error('Resend error:', error)
-        return NextResponse.json(
-          { 
-            success: false, 
-            error: 'Failed to send email' 
-          },
-          { status: 500 }
-        )
-      }
-
-      console.log('Email sent successfully:', data)
-      
-    } catch (emailError) {
-      console.error('Email sending error:', emailError)
-      // Don't fail the request if email fails, just log it
     }
     
     return NextResponse.json({
