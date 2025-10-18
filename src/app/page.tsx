@@ -48,6 +48,10 @@ export default function Home() {
   // Performance optimizations in progress - console logs removed for production
   const [showWorkflowDetails, setShowWorkflowDetails] = React.useState(false)
   const [showUseCaseDetails, setShowUseCaseDetails] = React.useState(false)
+  const [showInteractiveInfrastructure, setShowInteractiveInfrastructure] = React.useState(false)
+  const [activeUseCaseTab, setActiveUseCaseTab] = React.useState<'ai-development' | 'industry-applications'>('ai-development')
+  const [showCompetitiveComparison, setShowCompetitiveComparison] = React.useState(false)
+  const [showHowItWorks, setShowHowItWorks] = React.useState(false)
   
   return (
     <MobileViewport>
@@ -123,7 +127,7 @@ export default function Home() {
       </div>
       
       {/* Why MODRON Grid */}
-      <StaggeredReveal staggerDelay={150}>
+        <StaggeredReveal staggerDelay={150}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8" role="list" aria-label="Why choose MODRON">
               {/* Renewable-powered */}
                 <div className="text-center group hover-lift" role="listitem">
@@ -169,7 +173,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            </StaggeredReveal>
+          </StaggeredReveal>
           </div>
         </div>
       </section>
@@ -457,13 +461,29 @@ export default function Home() {
             </div>
             </StaggeredReveal>
           </div>
+          
+          {/* Interactive Infrastructure Progressive Disclosure */}
+          <div className="text-center mt-12 sm:mt-16 md:mt-20">
+            <button
+              onClick={() => {
+                console.log('Interactive Infrastructure button clicked, current state:', showInteractiveInfrastructure);
+                setShowInteractiveInfrastructure(!showInteractiveInfrastructure);
+              }}
+              className="w-full bg-[#32ca73]/20 border border-[#32ca73]/30 text-[#32ca73] py-3 rounded-lg hover:bg-[#32ca73]/30 transition-colors duration-200 flex items-center justify-center relative z-10 max-w-md mx-auto"
+            >
+              <span className="font-medium mr-2">Explore Interactive Infrastructure</span>
+              <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showInteractiveInfrastructure ? 'rotate-180' : ''}`} />
+            </button>
+            
+            {showInteractiveInfrastructure && (
+              <div className="mt-8">
+        <InteractiveInfrastructure />
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
-      {/* Interactive Infrastructure Section */}
-      <section className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#32ca73]/10 to-black">
-        <InteractiveInfrastructure />
-      </section>
 
       {/* Animated Divider */}
       <AnimatedDivider variant="dots" color="#d5aaf9" />
@@ -481,7 +501,7 @@ export default function Home() {
               </p>
             </div>
             
-            <StaggeredReveal staggerDelay={150}>
+              <StaggeredReveal staggerDelay={150}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
               <div className="text-center bg-[#1A1A1A]/50 border border-[#262626] rounded-xl p-6 hover:border-[#40d0f2]/30 transition-all duration-300 hover:scale-105 group">
                 <h3 className="text-white font-bold text-lg mb-4">Cooling Efficiency</h3>
@@ -552,14 +572,44 @@ export default function Home() {
           </div>
           
           <div className="max-w-7xl mx-auto">
-            {/* Two Main Cards Side by Side */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-              {/* AI Workflow Card */}
-              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-6 hover:border-[#40d0f2]/30 transition-all duration-300 group relative overflow-hidden">
-                {/* Animated background gradient on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#40d0f2]/5 via-[#d5aaf9]/5 to-[#32ca73]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-                
-                <h3 className="text-xl font-bold text-white mb-6 text-center relative z-10">AI Development Process</h3>
+            {/* Tabbed Navigation */}
+            <div className="flex justify-center mb-8">
+              <div className="bg-[#1A1A1A]/30 border border-[#262626] rounded-xl p-1 flex">
+                <button
+                  onClick={() => setActiveUseCaseTab('ai-development')}
+                  className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center ${
+                    activeUseCaseTab === 'ai-development'
+                      ? 'bg-[#40d5f2] text-black'
+                      : 'text-[#CCCCCC] hover:text-white hover:bg-[#1A1A1A]/50'
+                  }`}
+                >
+                  <Icons.Brain className="h-4 w-4 mr-2" />
+                  AI Development Process
+                </button>
+                <button
+                  onClick={() => setActiveUseCaseTab('industry-applications')}
+                  className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center ${
+                    activeUseCaseTab === 'industry-applications'
+                      ? 'bg-[#d5aaf9] text-black'
+                      : 'text-[#CCCCCC] hover:text-white hover:bg-[#1A1A1A]/50'
+                  }`}
+                >
+                  <Icons.Shield className="h-4 w-4 mr-2" />
+                  Industry Applications
+                </button>
+              </div>
+              </div>
+              
+              {/* Tab Content */}
+            <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-6 hover:border-[#40d5f2]/30 transition-all duration-300 group relative overflow-hidden">
+                      {/* Animated background gradient on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#40d5f2]/5 via-[#d5aaf9]/5 to-[#32ca73]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+              
+              {/* AI Development Process Tab Content */}
+              {activeUseCaseTab === 'ai-development' && (
+                <div className="relative z-10">
+                      
+                      <h3 className="text-xl font-bold text-white mb-6 text-center relative z-10">AI Development Process</h3>
                 
                 {/* AI Development Capabilities */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
@@ -662,13 +712,12 @@ export default function Home() {
                   </div>
                 )}
               </div>
+              )}
               
-              {/* Industry Applications Card */}
-              <div className="bg-[#1A1A1A]/50 border border-[#262626] rounded-2xl p-6 hover:border-[#d5aaf9]/30 transition-all duration-300 group relative overflow-hidden">
-                {/* Animated background gradient on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#d5aaf9]/5 via-[#32ca73]/5 to-[#40d0f2]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-                
-                <h3 className="text-xl font-bold text-white mb-6 text-center relative z-10">Industry Applications</h3>
+              {/* Industry Applications Tab Content */}
+              {activeUseCaseTab === 'industry-applications' && (
+                <div className="relative z-10">
+                  <h3 className="text-xl font-bold text-white mb-6 text-center">Industry Applications</h3>
                 
                 {/* Industry Solutions */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
@@ -771,15 +820,12 @@ export default function Home() {
                   </div>
                 )}
               </div>
+              )}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Dynamic Competitive Comparison Section */}
-      <section className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#40d0f2]/10 to-black">
-        <DynamicComparison />
-      </section>
 
       {/* Features Grid Section */}
       <section id="features" className="relative z-10 overflow-visible py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-[#1A1A1A] via-black to-[#1A1A1A]">
@@ -1043,11 +1089,29 @@ export default function Home() {
               </details>
             </div>
           </div>
+          
+          {/* How It Works Progressive Disclosure */}
+          <div className="text-center mt-12 sm:mt-16 md:mt-20">
+            <button
+              onClick={() => {
+                console.log('How It Works button clicked, current state:', showHowItWorks);
+                setShowHowItWorks(!showHowItWorks);
+              }}
+              className="w-full bg-[#40d0f2]/20 border border-[#40d0f2]/30 text-[#40d0f2] py-3 rounded-lg hover:bg-[#40d0f2]/30 transition-colors duration-200 flex items-center justify-center relative z-10 max-w-md mx-auto"
+            >
+              <span className="font-medium mr-2">How It Works</span>
+              <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showHowItWorks ? 'rotate-180' : ''}`} />
+            </button>
+            
+            {showHowItWorks && (
+              <div className="mt-8">
+                <AnimatedHowItWorks />
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <AnimatedHowItWorks />
 
       {/* Pricing Section */}
       <section id="pricing" className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#40d0f2]/10 to-black">
@@ -1064,14 +1128,6 @@ export default function Home() {
 
             {/* Competitive Comparison */}
             <div className="mb-16 sm:mb-20">
-              <div className="text-center mb-12 sm:mb-16">
-                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-white mb-6 sm:mb-8 tracking-tight">
-                  Competitive Comparison
-                </h3>
-                <p className="text-base sm:text-lg md:text-xl text-[#CCCCCC] max-w-3xl mx-auto font-light leading-relaxed">
-                  See how MODRON's renewable-powered infrastructure compares to traditional cloud providers
-                </p>
-              </div>
 
               {/* Desktop Table */}
               <div className="hidden md:block overflow-x-auto -mx-4 sm:mx-0">
@@ -1269,9 +1325,9 @@ export default function Home() {
             </div>
             */}
 
-            {/* Pre-Launch Offer - ENHANCED VERSION */}
+            {/* Pre-Launch Offer - ENHANCED VERSION - HIDDEN */}
+            {/* 
             <div className="bg-gradient-to-br from-[#32ca73]/20 to-[#40d0f2]/20 border border-[#32ca73]/30 rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden">
-              {/* Animated background elements */}
               <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-10 left-10 w-2 h-2 bg-[#40d0f2]/30 rounded-full animate-pulse"></div>
                 <div className="absolute top-20 right-20 w-1 h-1 bg-[#32ca73]/40 rounded-full animate-ping"></div>
@@ -1280,7 +1336,6 @@ export default function Home() {
                 <div className="absolute bottom-20 right-1/3 w-1.5 h-1.5 bg-[#32ca73]/15 rounded-full animate-bounce" style={{animationDelay: '0.5s'}}></div>
               </div>
 
-              {/* Enhanced Star Icon */}
               <div className="mx-auto mb-6 w-16 h-16 rounded-xl flex items-center justify-center relative group" style={{ backgroundColor: '#d5aaf9' }}>
                 <Icons.Star className="h-8 w-8 text-white group-hover:scale-110 transition-transform duration-300" />
                 <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300" style={{ backgroundColor: '#d5aaf9' }}></div>
@@ -1294,9 +1349,6 @@ export default function Home() {
                 Early waitlist members receive priority access to new clusters and pre-launch pricing for the first 6 months.
               </p>
 
-
-
-              {/* Interactive Feature Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                 <div className="group cursor-pointer transform transition-all duration-300 hover:scale-105">
                   <div className="bg-[#40d0f2]/10 border border-[#40d0f2]/20 rounded-xl p-4 hover:bg-[#40d0f2]/20 hover:border-[#40d0f2]/40 transition-all duration-300">
@@ -1329,11 +1381,29 @@ export default function Home() {
                 </div>
               </div>
 
-
-
-              {/* Enhanced CTA */}
               <EnhancedBookingButton />
             </div>
+            */}
+          </div>
+          
+          {/* Competitive Comparison Progressive Disclosure */}
+          <div className="text-center mt-12 sm:mt-16 md:mt-20">
+            <button
+              onClick={() => {
+                console.log('Competitive Comparison button clicked, current state:', showCompetitiveComparison);
+                setShowCompetitiveComparison(!showCompetitiveComparison);
+              }}
+              className="w-full bg-[#40d0f2]/20 border border-[#40d0f2]/30 text-[#40d0f2] py-3 rounded-lg hover:bg-[#40d0f2]/30 transition-colors duration-200 flex items-center justify-center relative z-10 max-w-md mx-auto"
+            >
+              <span className="font-medium mr-2">View Competitive Comparison</span>
+              <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showCompetitiveComparison ? 'rotate-180' : ''}`} />
+            </button>
+            
+            {showCompetitiveComparison && (
+              <div className="mt-8">
+                <DynamicComparison />
+              </div>
+            )}
           </div>
         </div>
       </section>
