@@ -35,4 +35,5 @@ export const Icons = {
   Building: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Building }))),
   ArrowRight: dynamic(() => import('lucide-react').then(mod => ({ default: mod.ArrowRight }))),
   CreditCard: dynamic(() => import('lucide-react').then(mod => ({ default: mod.CreditCard }))),
+  RefreshCw: dynamic(() => import('lucide-react').then(mod => ({ default: mod.RefreshCw }))),
 }

@@ -53,12 +53,10 @@ export default function Home() {
   const [showInteractiveInfrastructure, setShowInteractiveInfrastructure] = React.useState(false)
   const [currentCardIndex, setCurrentCardIndex] = React.useState(0)
   const [showContactForm, setShowContactForm] = React.useState(false)
-  const [videoStarted, setVideoStarted] = React.useState(false)
   const [showPerformanceCards, setShowPerformanceCards] = React.useState(false)
   
   // Handle video start callback
   const handleVideoStart = React.useCallback(() => {
-    setVideoStarted(true)
     // Start 8-second delay after video starts
     setTimeout(() => {
       setShowPerformanceCards(true)
