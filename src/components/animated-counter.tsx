@@ -58,6 +58,41 @@ export function AnimatedCounter({
     }
   }, [isInView, end, duration, isAnimating, delay])
 
+  // Fallback: If component is mounted and not animating, start animation after a short delay
+  useEffect(() => {
+    if (!isAnimating && count === 0) {
+      const fallbackTimer = setTimeout(() => {
+        if (!isAnimating) {
+          setIsAnimating(true)
+          
+          const startDelay = setTimeout(() => {
+            let start = 0
+            const increment = end / (duration / 16)
+            
+            const timer = setInterval(() => {
+              start += increment
+              if (start >= end) {
+                setCount(end)
+                clearInterval(timer)
+                setIsAnimating(false)
+              } else {
+                setCount(start)
+              }
+            }, 16)
+
+            return () => {
+              clearInterval(timer)
+            }
+          }, delay)
+
+          return () => clearTimeout(startDelay)
+        }
+      }, 100)
+
+      return () => clearTimeout(fallbackTimer)
+    }
+  }, [isAnimating, count, end, duration, delay])
+
   const displayValue = decimals > 0 
     ? count.toFixed(decimals) 
     : Math.floor(count)
