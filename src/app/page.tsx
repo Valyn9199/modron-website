@@ -28,9 +28,9 @@ import { Header } from "@/components/header";
 import { EnhancedPricingButton } from "@/components/enhanced-pricing-button";
 import { EnhancedBookingButton } from "@/components/enhanced-booking-button";
 // Lazy-load below-the-fold components
-const FloatingStatsOverlay = dynamic(() => import("@/components/floating-stats-overlay").then(mod => ({ default: mod.FloatingStatsOverlay })), {
-  loading: () => <div className="hidden lg:block" />
-});
+// const FloatingStatsOverlay = dynamic(() => import("@/components/floating-stats-overlay").then(mod => ({ default: mod.FloatingStatsOverlay })), {
+//   loading: () => <div className="hidden lg:block" />
+// }); // REMOVED - cleaner hero without cards
 const MobileCollapsibleSection = dynamic(() => import("@/components/collapsible-section").then(mod => ({ default: mod.MobileCollapsibleSection })));
 const AnimatedProgressBar = dynamic(() => import("@/components/animated-progress-bar").then(mod => ({ default: mod.AnimatedProgressBar })));
 const ParallaxSection = dynamic(() => import("@/components/parallax-section").then(mod => ({ default: mod.ParallaxSection })));
@@ -53,6 +53,33 @@ export default function Home() {
   const [showInteractiveInfrastructure, setShowInteractiveInfrastructure] = React.useState(false)
   const [currentCardIndex, setCurrentCardIndex] = React.useState(0)
   const [showContactForm, setShowContactForm] = React.useState(false)
+  const [videoStarted, setVideoStarted] = React.useState(false)
+  const [showPerformanceCards, setShowPerformanceCards] = React.useState(false)
+  
+  // Handle video start callback
+  const handleVideoStart = React.useCallback(() => {
+    const timestamp = new Date().toLocaleTimeString()
+    console.log(`🎬 VIDEO CALLBACK TRIGGERED at ${timestamp} - setting up 8 second delay`)
+    setVideoStarted(true)
+    // Start 8-second delay after video starts
+    setTimeout(() => {
+      const completionTime = new Date().toLocaleTimeString()
+      console.log(`⏰ 8 second delay completed at ${completionTime} - showing performance cards`)
+      setShowPerformanceCards(true)
+    }, 8000)
+  }, [])
+
+  // Fallback: if no video starts within 12 seconds, show cards anyway
+  useEffect(() => {
+    const fallbackTimer = setTimeout(() => {
+      if (!showPerformanceCards) {
+        console.log('⏰ Fallback: No video started within 12 seconds, showing cards anyway')
+        setShowPerformanceCards(true)
+      }
+    }, 12000)
+    
+    return () => clearTimeout(fallbackTimer)
+  }, [showPerformanceCards])
   
   // Auto-cycling for mobile performance cards
   useEffect(() => {
@@ -79,7 +106,7 @@ export default function Home() {
 <section id="home" className="relative min-h-screen flex items-center justify-center w-full pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-16" role="banner" aria-labelledby="hero-heading">
   
   {/* Background Video */}
-  <HeroBgVideo overlayOpacity={0} />
+  <HeroBgVideo overlayOpacity={0} onVideoStart={handleVideoStart} />
 
   {/* Main Content */}
   <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl mt-12 sm:mt-16 md:mt-18 lg:mt-24">
@@ -106,10 +133,7 @@ export default function Home() {
       </div>
     </div>
     
-  {/* Floating Stats Overlay - Desktop only */}
-  <div className="hidden lg:block">
-    <FloatingStatsOverlay />
-  </div>
+  {/* Floating Stats Overlay - REMOVED for cleaner hero */}
   
   {/* Scroll Indicator */}
   <OptimizedScrollIndicator />
@@ -616,82 +640,12 @@ export default function Home() {
               </p>
             </div>
             
-              {/* Mobile: Cycling Carousel */}
-              <div className="md:hidden">
-                <div className="relative overflow-hidden">
-                  <div 
-                    className="flex transition-transform duration-500 ease-in-out"
-                    style={{ transform: `translateX(-${currentCardIndex * 100}%)` }}
-                  >
-                    {/* Cooling Efficiency Card */}
-                    <div className="w-full flex-shrink-0 px-4">
-                      <div className="text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-cyan/30 transition-all duration-300 hover:scale-105 group">
-                <h3 className="text-white font-bold text-lg mb-4">Cooling Efficiency</h3>
-                <div className="mb-6">
-                          <div className="text-5xl font-bold text-primary-cyan mb-2">
-                    <AnimatedCounter end={60} duration={2000} suffix="%" />
-                  </div>
-                  <p className="text-white text-sm font-semibold mb-4">Failure Rate Reduction</p>
-                  <AnimatedProgressBar 
-                    value={60} 
-                    label="" 
-                    color="#40d0f2"
-                    delay={0}
-                  />
-                </div>
-                <p className="text-[#999999] text-sm">Immersion cooling vs traditional air cooling</p>
-                      </div>
-              </div>
-              
-                    {/* Energy Efficiency Card */}
-                    <div className="w-full flex-shrink-0 px-4">
-                      <div className="text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-green/30 transition-all duration-300 hover:scale-105 group">
-                <h3 className="text-white font-bold text-lg mb-4">Energy Efficiency</h3>
-                <div className="mb-6">
-                  <div className="text-5xl font-bold text-[#32ca73] mb-2">
-                    <AnimatedCounter end={40} duration={2000} suffix="%" delay={100} />
-                  </div>
-                  <p className="text-white text-sm font-semibold mb-4">Power Consumption Savings</p>
-                  <AnimatedProgressBar 
-                    value={40} 
-                    label="" 
-                    color="#32ca73"
-                    delay={200}
-                  />
-                </div>
-                <p className="text-[#999999] text-sm">Immersion cooling + renewable energy optimization</p>
-                      </div>
-              </div>
-              
-                    {/* Deployment Speed Card */}
-                    <div className="w-full flex-shrink-0 px-4">
-                      <div className="text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-purple/30 transition-all duration-300 hover:scale-105 group">
-                <h3 className="text-white font-bold text-lg mb-4">Deployment Speed</h3>
-                <div className="mb-6">
-                  <div className="text-5xl font-bold text-[#d5aaf9] mb-2">
-                    <AnimatedCounter end={90} duration={2000} suffix="%" delay={200} />
-                  </div>
-                  <p className="text-white text-sm font-semibold mb-4">Setup Time Reduction</p>
-                  <AnimatedProgressBar 
-                    value={90} 
-                    label="" 
-                    color="#d5aaf9"
-                    delay={400}
-                  />
-                </div>
-                <p className="text-[#999999] text-sm">Container-based infrastructure vs traditional data centers</p>
-              </div>
-            </div>
-          </div>
-
-          </div>
-        </div>
+              {/* Mobile: Cycling Carousel - COMPLETELY REMOVED TO PROVE CARDS CAN BE HIDDEN */}
         
               {/* Desktop: All Cards Visible */}
               <div className="hidden md:block">
-                <StaggeredReveal staggerDelay={150}>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-                    <div className="text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-cyan/30 transition-all duration-300 hover:scale-105 group">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                    <div className={`text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-cyan/30 transition-all duration-300 hover:scale-105 group transition-opacity duration-500 ${showPerformanceCards ? 'opacity-100' : 'opacity-0'}`}>
                       <h3 className="text-white font-bold text-lg mb-4">Cooling Efficiency</h3>
                       <div className="mb-6">
                         <div className="text-5xl font-bold text-primary-cyan mb-2">
@@ -708,7 +662,7 @@ export default function Home() {
                       <p className="text-[#999999] text-sm">Immersion cooling vs traditional air cooling</p>
                 </div>
                 
-                    <div className="text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-green/30 transition-all duration-300 hover:scale-105 group">
+                    <div className={`text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-green/30 transition-all duration-300 hover:scale-105 group transition-opacity duration-500 ${showPerformanceCards ? 'opacity-100' : 'opacity-0'}`}>
                       <h3 className="text-white font-bold text-lg mb-4">Energy Efficiency</h3>
                       <div className="mb-6">
                         <div className="text-5xl font-bold text-[#32ca73] mb-2">
@@ -725,7 +679,7 @@ export default function Home() {
                       <p className="text-[#999999] text-sm">Immersion cooling + renewable energy optimization</p>
               </div>
               
-                    <div className="text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-purple/30 transition-all duration-300 hover:scale-105 group">
+                    <div className={`text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-purple/30 transition-all duration-300 hover:scale-105 group transition-opacity duration-500 ${showPerformanceCards ? 'opacity-100' : 'opacity-0'}`}>
                       <h3 className="text-white font-bold text-lg mb-4">Deployment Speed</h3>
                       <div className="mb-6">
                         <div className="text-5xl font-bold text-[#d5aaf9] mb-2">
@@ -742,11 +696,14 @@ export default function Home() {
                       <p className="text-[#999999] text-sm">Container-based infrastructure vs traditional data centers</p>
                   </div>
                 </div>
-                </StaggeredReveal>
               </div>
-                </div>
+            </div>
+          </div>
+        </section>
                 
-          {/* Interactive Infrastructure Progressive Disclosure */}
+      {/* Interactive Infrastructure Progressive Disclosure */}
+      <section className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#32ca73]/10 to-black">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mt-12 sm:mt-16 md:mt-20">
             <button
               onClick={() => {
@@ -762,8 +719,8 @@ export default function Home() {
             {showInteractiveInfrastructure && (
               <div className="mt-8">
                 <InteractiveInfrastructure />
-          </div>
-        )}
+              </div>
+            )}
           </div>
         </div>
       </section>
