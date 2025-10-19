@@ -813,7 +813,7 @@ export default function Home() {
                   onClick={() => setActiveUseCaseTab('ai-development')}
                   className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center ${
                     activeUseCaseTab === 'ai-development'
-                      ? 'bg-[#40d5f2] text-black'
+                      ? 'bg-[#1A1A1A]/50 text-white underline underline-offset-4'
                       : 'text-[#CCCCCC] hover:text-white hover:bg-[#1A1A1A]/50'
                   }`}
                 >
@@ -824,7 +824,7 @@ export default function Home() {
                   onClick={() => setActiveUseCaseTab('industry-applications')}
                   className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center ${
                     activeUseCaseTab === 'industry-applications'
-                      ? 'bg-[#d5aaf9] text-black'
+                      ? 'bg-[#1A1A1A]/50 text-white underline underline-offset-4'
                       : 'text-[#CCCCCC] hover:text-white hover:bg-[#1A1A1A]/50'
                   }`}
                 >
