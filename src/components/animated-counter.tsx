@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useInView } from 'framer-motion'
 
 interface AnimatedCounterProps {
@@ -11,6 +11,7 @@ interface AnimatedCounterProps {
   decimals?: number
   className?: string
   delay?: number
+  reanimateOnView?: boolean // New prop to control re-animation behavior
 }
 
 export function AnimatedCounter({ 
@@ -20,78 +21,67 @@ export function AnimatedCounter({
   prefix = '',
   decimals = 0,
   className = '',
-  delay = 0
+  delay = 0,
+  reanimateOnView = false // Default to false for desktop
 }: AnimatedCounterProps) {
   const [count, setCount] = useState(0)
   const ref = useRef<HTMLSpanElement>(null)
-  const isInView = useInView(ref, { once: false })
-  const [isAnimating, setIsAnimating] = useState(false)
+  const isInView = useInView(ref, { once: !reanimateOnView })
 
+  // For desktop: Simple one-time animation
   useEffect(() => {
-    if (isInView && !isAnimating) {
-      setIsAnimating(true)
-      
-      const startDelay = setTimeout(() => {
+    if (!reanimateOnView) {
+      const timer = setTimeout(() => {
         let start = 0
         const increment = end / (duration / 16)
         
-        const timer = setInterval(() => {
+        const animationTimer = setInterval(() => {
           start += increment
           if (start >= end) {
             setCount(end)
-            clearInterval(timer)
-            setIsAnimating(false)
+            clearInterval(animationTimer)
           } else {
             setCount(start)
           }
         }, 16)
 
         return () => {
-          clearInterval(timer)
+          clearInterval(animationTimer)
         }
       }, delay)
 
-      return () => clearTimeout(startDelay)
-    } else if (!isInView) {
-      // Reset animation state when out of view so it can animate again
-      setIsAnimating(false)
+      return () => clearTimeout(timer)
     }
-  }, [isInView, end, duration, isAnimating, delay])
+  }, [end, duration, delay, reanimateOnView])
 
-  // Fallback: If component is mounted and not animating, start animation after a short delay
+  // For mobile carousel: Re-animate when coming into view
   useEffect(() => {
-    if (!isAnimating && count === 0) {
-      const fallbackTimer = setTimeout(() => {
-        if (!isAnimating) {
-          setIsAnimating(true)
-          
-          const startDelay = setTimeout(() => {
-            let start = 0
-            const increment = end / (duration / 16)
-            
-            const timer = setInterval(() => {
-              start += increment
-              if (start >= end) {
-                setCount(end)
-                clearInterval(timer)
-                setIsAnimating(false)
-              } else {
-                setCount(start)
-              }
-            }, 16)
+    if (reanimateOnView && isInView) {
+      // Reset count and start animation
+      setCount(0)
+      
+      const timer = setTimeout(() => {
+        let start = 0
+        const increment = end / (duration / 16)
+        
+        const animationTimer = setInterval(() => {
+          start += increment
+          if (start >= end) {
+            setCount(end)
+            clearInterval(animationTimer)
+          } else {
+            setCount(start)
+          }
+        }, 16)
 
-            return () => {
-              clearInterval(timer)
-            }
-          }, delay)
-
-          return () => clearTimeout(startDelay)
+        return () => {
+          clearInterval(animationTimer)
         }
-      }, 100)
+      }, delay)
 
-      return () => clearTimeout(fallbackTimer)
+      return () => clearTimeout(timer)
     }
-  }, [isAnimating, count, end, duration, delay])
+  }, [isInView, end, duration, delay, reanimateOnView])
 
   const displayValue = decimals > 0 
     ? count.toFixed(decimals) 
