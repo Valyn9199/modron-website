@@ -700,6 +700,76 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+      {/* Mobile: Cycling Cards */}
+      <div className="md:hidden">
+        <div className="relative overflow-hidden">
+          <div 
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentCardIndex * 100}%)` }}
+          >
+            {/* Card 1: Cooling Efficiency */}
+            <div className="w-full flex-shrink-0 px-4">
+              <div className={`text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 transition-opacity duration-500 ${showPerformanceCards ? 'opacity-100' : 'opacity-0'}`}>
+                <h3 className="text-white font-bold text-lg mb-4">Cooling Efficiency</h3>
+                <div className="mb-6">
+                  <div className="text-5xl font-bold text-primary-cyan mb-2">
+                    <AnimatedCounter end={60} duration={2000} suffix="%" />
+                  </div>
+                  <p className="text-white text-sm font-semibold mb-4">Failure Rate Reduction</p>
+                  <AnimatedProgressBar 
+                    value={60} 
+                    label="" 
+                    color="#40d0f2"
+                    delay={0}
+                  />
+                </div>
+                <p className="text-[#999999] text-sm">Immersion cooling vs traditional air cooling</p>
+              </div>
+            </div>
+            
+            {/* Card 2: Energy Efficiency */}
+            <div className="w-full flex-shrink-0 px-4">
+              <div className={`text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 transition-opacity duration-500 ${showPerformanceCards ? 'opacity-100' : 'opacity-0'}`}>
+                <h3 className="text-white font-bold text-lg mb-4">Energy Efficiency</h3>
+                <div className="mb-6">
+                  <div className="text-5xl font-bold text-[#32ca73] mb-2">
+                    <AnimatedCounter end={40} duration={2000} suffix="%" delay={100} />
+                  </div>
+                  <p className="text-white text-sm font-semibold mb-4">Power Consumption Savings</p>
+                  <AnimatedProgressBar 
+                    value={40} 
+                    label="" 
+                    color="#32ca73"
+                    delay={200}
+                  />
+                </div>
+                <p className="text-[#999999] text-sm">Immersion cooling + renewable energy optimization</p>
+              </div>
+            </div>
+            
+            {/* Card 3: Deployment Speed */}
+            <div className="w-full flex-shrink-0 px-4">
+              <div className={`text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 transition-opacity duration-500 ${showPerformanceCards ? 'opacity-100' : 'opacity-0'}`}>
+                <h3 className="text-white font-bold text-lg mb-4">Deployment Speed</h3>
+                <div className="mb-6">
+                  <div className="text-5xl font-bold text-[#d5aaf9] mb-2">
+                    <AnimatedCounter end={90} duration={2000} suffix="%" delay={200} />
+                  </div>
+                  <p className="text-white text-sm font-semibold mb-4">Setup Time Reduction</p>
+                  <AnimatedProgressBar 
+                    value={90} 
+                    label="" 
+                    color="#d5aaf9"
+                    delay={400}
+                  />
+                </div>
+                <p className="text-[#999999] text-sm">Container-based infrastructure vs traditional data centers</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
                 
       {/* Interactive Infrastructure Progressive Disclosure */}
       <section className="relative py-6 md:py-8 lg:py-10 xl:py-12 bg-gradient-to-br from-black via-[#32ca73]/10 to-black">
