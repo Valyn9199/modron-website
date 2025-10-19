@@ -55,14 +55,54 @@ export function Header() {
           const sectionTop = section.offsetTop - headerHeight - 50
           const sectionBottom = sectionTop + section.offsetHeight
           
-          // Special handling for vision section - make it more generous
+          // Special handling for vision section - includes Design Philosophy
           if (sections[i] === "vision") {
             const visionBottom = sectionBottom + 100 // Add extra buffer for vision section
             if (scrollPosition >= sectionTop && scrollPosition < visionBottom) {
               currentSection = sections[i]
               break
             }
-          } else {
+          }
+          // Special handling for technology section - includes Performance Advantages
+          else if (sections[i] === "technology") {
+            // Find the Performance Advantages section to extend technology section boundary
+            let technologyBottom = sectionBottom
+            
+            // Look for the Performance Advantages section by finding the h2 with that text
+            const allSections = document.querySelectorAll('section')
+            for (const sec of allSections) {
+              const h2 = sec.querySelector('h2')
+              if (h2 && h2.textContent?.includes('MODRON Performance Advantages')) {
+                const performanceTop = sec.offsetTop - headerHeight - 50
+                const performanceBottom = performanceTop + sec.offsetHeight
+                technologyBottom = performanceBottom + 50 // Extend to include performance section
+                break
+              }
+            }
+            
+            if (scrollPosition >= sectionTop && scrollPosition < technologyBottom) {
+              currentSection = sections[i]
+              break
+            }
+          }
+          // Special handling for use-cases section - includes Enterprise Features
+          else if (sections[i] === "use-cases") {
+            // Find the Enterprise Features section to extend use-cases section boundary
+            const featuresSection = document.getElementById("features")
+            let useCasesBottom = sectionBottom
+            
+            if (featuresSection) {
+              const featuresTop = featuresSection.offsetTop - headerHeight - 50
+              const featuresBottom = featuresTop + featuresSection.offsetHeight
+              useCasesBottom = featuresBottom + 50 // Extend to include features section
+            }
+            
+            if (scrollPosition >= sectionTop && scrollPosition < useCasesBottom) {
+              currentSection = sections[i]
+              break
+            }
+          }
+          else {
             // Normal detection for other sections
             if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
               currentSection = sections[i]
