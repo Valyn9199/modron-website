@@ -109,13 +109,13 @@ export default function Home() {
       <AnimatedHeadline />
     
        {/* Subheading - MODRON's unique value proposition */}
-    <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-3 sm:mb-4 md:mb-6 max-w-3xl mx-auto leading-relaxed font-semibold px-4" style={{ letterSpacing: '0.1em', color: '#1f2937' }}>      IMMERSION-COOLED. SOLAR-POWERED. MODULAR.
+    <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-3 sm:mb-4 md:mb-6 max-w-3xl mx-auto leading-relaxed font-semibold px-4" style={{ letterSpacing: '0.1em', color: '#1f2937' }}>      MODULAR. IMMERSION-COOLED. SOLAR-POWERED.
     </p>
     
     {/* Additional sub text - MODRON-specific description */}
     <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed font-normal px-4" style={{ color: '#1f2937' }}>
       MODRON delivers locally-built, renewable-powered GPU clusters for Australian enterprises. 
-      Immersion cooling meets solar energy in modular containers designed for rapid deployment and maximum efficiency.
+      Deploy anywhere in Australia within 48 hours using modular containers with immersion cooling and solar power.
     </p>
     
     {/* CTA Buttons - Enhanced with micro-interactions */}
@@ -675,21 +675,21 @@ export default function Home() {
               </div>
               
                     <div className="text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-purple/30 transition-all duration-300 hover:scale-105 group opacity-100">
-                <h3 className="text-white font-bold text-lg mb-4">Deployment Speed</h3>
-                <div className="mb-6">
-                  <div className="text-5xl font-bold text-[#d5aaf9] mb-2">
-                    <AnimatedCounter end={90} duration={2000} suffix="%" delay={200} />
-                  </div>
-                  <p className="text-white text-sm font-semibold mb-4">Setup Time Reduction</p>
-                  <AnimatedProgressBar 
-                    value={90} 
-                    label="" 
-                    color="#d5aaf9"
-                    delay={400}
-                  />
-                </div>
-                <p className="text-[#999999] text-sm">Container-based infrastructure vs traditional data centers</p>
-              </div>
+                      <h3 className="text-white font-bold text-lg mb-4">Deployment Time</h3>
+                      <div className="mb-6">
+                        <div className="text-5xl font-bold text-[#d5aaf9] mb-2">
+                          <AnimatedCounter end={2} duration={2000} suffix=" days" delay={200} />
+                        </div>
+                        <p className="text-white text-sm font-semibold mb-4">Anywhere in Australia</p>
+                        <AnimatedProgressBar 
+                          value={100} 
+                          label="" 
+                          color="#d5aaf9"
+                          delay={400}
+                        />
+                      </div>
+                      <p className="text-[#999999] text-sm">vs 6-12 months for traditional data centers</p>
+                    </div>
             </div>
           </div>
           </div>
@@ -743,25 +743,25 @@ export default function Home() {
               </div>
                 </div>
                 
-            {/* Card 3: Deployment Speed */}
+            {/* Card 3: Deployment Time */}
             <div className="w-full flex-shrink-0 px-4">
               <div className="text-center p-6 opacity-100">
-                <h3 className="text-white font-bold text-lg mb-4">Deployment Speed</h3>
+                <h3 className="text-white font-bold text-lg mb-4">Deployment Time</h3>
                 <div className="mb-6">
                   <div className="text-5xl font-bold text-[#d5aaf9] mb-2">
-                    <AnimatedCounter end={90} duration={2000} suffix="%" delay={200} reanimateOnView={true} />
+                    <AnimatedCounter end={2} duration={2000} suffix=" days" delay={200} reanimateOnView={true} />
                   </div>
-                  <p className="text-white text-sm font-semibold mb-4">Setup Time Reduction</p>
+                  <p className="text-white text-sm font-semibold mb-4">Anywhere in Australia</p>
                   <AnimatedProgressBar 
-                    value={90} 
+                    value={100} 
                     label="" 
                     color="#d5aaf9"
                     delay={400}
                   />
                 </div>
-                <p className="text-[#999999] text-sm">Container-based infrastructure vs traditional data centers</p>
+                <p className="text-[#999999] text-sm">vs 6-12 months for traditional data centers</p>
               </div>
-                  </div>
+            </div>
                   </div>
                 </div>
               </div>
@@ -993,6 +993,26 @@ export default function Home() {
                       <h4 className="text-white font-semibold">Development</h4>
                     </div>
                     <p className="text-gray-300 text-sm">Complete data sovereignty with Australian oversight and standards</p>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-[#ff6b6b]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#ff6b6b]/20 group hover:border-[#ff6b6b]/40 transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#ff6b6b] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <Icons.Zap className="h-5 w-5 text-black flex-shrink-0" />
+                      </div>
+                      <h4 className="text-white font-semibold">Emergency AI Infrastructure</h4>
+                    </div>
+                    <p className="text-gray-300 text-sm">Deploy critical AI compute within 48 hours for emergency response and disaster management</p>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-[#4ecdc4]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#4ecdc4]/20 group hover:border-[#4ecdc4]/40 transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#4ecdc4] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <Icons.RefreshCw className="h-5 w-5 text-black flex-shrink-0" />
+                      </div>
+                      <h4 className="text-white font-semibold">Disaster Recovery</h4>
+                    </div>
+                    <p className="text-gray-300 text-sm">Rapid infrastructure restoration with modular containers for business continuity</p>
                   </div>
                 </div>
                 
