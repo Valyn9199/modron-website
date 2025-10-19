@@ -702,9 +702,9 @@ export default function Home() {
         </section>
                 
       {/* Interactive Infrastructure Progressive Disclosure */}
-      <section className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#32ca73]/10 to-black">
+      <section className="relative py-6 md:py-8 lg:py-10 xl:py-12 bg-gradient-to-br from-black via-[#32ca73]/10 to-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-          <div className="text-center mt-12 sm:mt-16 md:mt-20">
+          <div className="text-center mt-4 sm:mt-6 md:mt-8">
             <button
               onClick={() => {
                 console.log('Interactive Infrastructure button clicked, current state:', showInteractiveInfrastructure);
@@ -1317,7 +1317,7 @@ export default function Home() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className="border-t border-[#333333] bg-[#d5aaf9]/10">
+                      <tr className="border-t border-[#333333] bg-[#d5aaf9]/10 modron-highlight-row">
                         <td className="p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">MODRON</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">$0.54–$0.80</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">80–95%</td>
@@ -1325,7 +1325,7 @@ export default function Home() {
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">48 hours</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">100% Australian</td>
                       </tr>
-                      <tr className="border-t border-[#333333]">
+                      <tr className="border-t border-[#333333] pricing-table-row">
                         <td className="p-3 sm:p-4 md:p-6 text-white text-xs sm:text-sm md:text-base">AWS</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">~$1.20+</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">20-30%</td>
@@ -1333,7 +1333,7 @@ export default function Home() {
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Weeks/Months</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">International</td>
                       </tr>
-                      <tr className="border-t border-[#333333]">
+                      <tr className="border-t border-[#333333] pricing-table-row">
                         <td className="p-3 sm:p-4 md:p-6 text-white text-xs sm:text-sm md:text-base">GCP</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">~$1.10+</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">25-35%</td>
@@ -1341,7 +1341,7 @@ export default function Home() {
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">Weeks/Months</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">International</td>
                       </tr>
-                      <tr className="border-t border-[#333333]">
+                      <tr className="border-t border-[#333333] pricing-table-row">
                         <td className="p-3 sm:p-4 md:p-6 text-white text-xs sm:text-sm md:text-base">Lambda Labs</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">~$0.90</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#CCCCCC] text-xs sm:text-sm md:text-base">40-50%</td>

@@ -1445,3 +1445,41 @@ section {
   left: -9999px !important;
   top: -9999px !important;
 }
+
+/* ========================================
+   MODRON PRICING TABLE ANIMATIONS
+   ======================================== */
+
+/* Subtle pulse and glow effect for MODRON row */
+@keyframes modron-pulse {
+  0%, 100% { 
+    background-color: rgba(50, 202, 115, 0.05);
+    box-shadow: 0 0 0 0 rgba(50, 202, 115, 0.1);
+    border-color: rgba(50, 202, 115, 0.2);
+  }
+  50% { 
+    background-color: rgba(50, 202, 115, 0.08);
+    box-shadow: 0 0 20px 0 rgba(50, 202, 115, 0.15);
+    border-color: rgba(50, 202, 115, 0.3);
+  }
+}
+
+.modron-highlight-row {
+  animation: modron-pulse 4s ease-in-out infinite;
+  position: relative;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .modron-highlight-row {
+    animation: none;
+    background-color: rgba(50, 202, 115, 0.06);
+    border-color: rgba(50, 202, 115, 0.25);
+  }
+}
+
+/* Subtle hover effect for other pricing table rows */
+.pricing-table-row:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+  transition: background-color 0.2s ease;
+}
