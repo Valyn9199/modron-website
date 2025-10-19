@@ -5,7 +5,7 @@ export function EnhancedStructuredData() {
     "name": "MODRON",
     "url": "https://www.modron.com",
     "logo": "https://www.modron.com/Modron_logo.png",
-    "description": "High-availability enterprise AI compute infrastructure with SLA-backed hosting and sustainable GPU rentals",
+    "description": "Australia's first sovereign AI infrastructure platform with locally-built, immersion-cooled GPU clusters and solar-powered modular containers",
     "foundingDate": "2024",
     "address": {
       "@type": "PostalAddress",
@@ -39,13 +39,13 @@ export function EnhancedStructuredData() {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Enterprise AI Training Infrastructure",
-            "description": "High-performance GPU clusters for enterprise AI model training in Asia Pacific",
+            "name": "Sovereign AI Training Infrastructure",
+            "description": "Australian-built, immersion-cooled GPU clusters for sovereign AI model training with data sovereignty",
             "provider": {
               "@type": "LocalBusiness",
               "name": "MODRON"
             },
-            "areaServed": ["Australia", "Asia Pacific", "APAC", "US", "Europe"],
+            "areaServed": ["Australia"],
             "serviceType": "AI Compute Infrastructure"
           },
           "priceRange": "$$$",
@@ -56,7 +56,7 @@ export function EnhancedStructuredData() {
           "itemOffered": {
             "@type": "Service",
             "name": "Immersion Cooling Technology",
-            "description": "Proprietary liquid cooling system reducing failure rates by 60% for enterprise workloads",
+            "description": "Australian-developed immersion cooling technology reducing GPU failure rates by 60% for sovereign AI infrastructure",
             "provider": {
               "@type": "LocalBusiness",
               "name": "MODRON"
@@ -71,7 +71,7 @@ export function EnhancedStructuredData() {
           "itemOffered": {
             "@type": "Service",
             "name": "Solar-Powered Computing",
-            "description": "Sustainable energy infrastructure with solar and grid hybrid power for Asia Pacific region",
+            "description": "Solar-powered modular container infrastructure providing sustainable energy for Australian sovereign AI compute",
             "provider": {
               "@type": "LocalBusiness",
               "name": "MODRON"
@@ -87,41 +87,32 @@ export function EnhancedStructuredData() {
       {
         "@type": "Country",
         "name": "Australia"
-      },
-      {
-        "@type": "Country", 
-        "name": "United States"
-      },
-      {
-        "@type": "Country",
-        "name": "United Kingdom"
-      },
-      {
-        "@type": "Place",
-        "name": "Asia Pacific"
       }
     ],
-    "serviceType": "Enterprise AI Compute Infrastructure",
-    "slogan": "Sustainable enterprise AI compute for global enterprises",
-    "keywords": "Australian enterprise AI compute, GPU rental Asia Pacific, Green AI compute infrastructure Australia, Sustainable AI compute hosting, High-performance GPU hosting Australia",
+    "serviceType": "Sovereign AI Compute Infrastructure",
+    "slogan": "Building Australia's first sovereign AI infrastructure platform",
+    "keywords": "Australia sovereign AI infrastructure, Australian-built GPU clusters, Immersion-cooled GPUs Australia, Solar-powered AI compute, Modular AI infrastructure, Australian data sovereignty, Locally-assembled GPUs, Sovereign AI compute Australia",
     "knowsAbout": [
       "Artificial Intelligence",
       "Machine Learning",
       "GPU Computing",
       "Immersion Cooling",
-      "Sustainable Technology",
-      "Enterprise Infrastructure"
+      "Solar Power Technology",
+      "Modular Infrastructure",
+      "Data Sovereignty",
+      "Australian Manufacturing",
+      "Sovereign AI Infrastructure"
     ],
     "makesOffer": [
       {
         "@type": "Offer",
-        "name": "GPU Rental Services",
-        "description": "High-performance GPU rental for AI training and inference"
+        "name": "Sovereign GPU Infrastructure",
+        "description": "Australian-built, immersion-cooled GPU clusters for sovereign AI training and inference"
       },
       {
         "@type": "Offer", 
-        "name": "Enterprise AI Infrastructure",
-        "description": "Complete AI infrastructure solutions for enterprise clients"
+        "name": "Modular AI Infrastructure",
+        "description": "Solar-powered modular container infrastructure for Australian enterprises"
       }
     ]
   };
@@ -131,7 +122,7 @@ export function EnhancedStructuredData() {
     "@type": "WebSite",
     "name": "MODRON",
     "url": "https://www.modron.com",
-    "description": "High-availability enterprise AI compute infrastructure with SLA-backed hosting. Sustainable GPU rentals with immersion cooling, solar power, and global availability.",
+    "description": "Australia's first sovereign AI infrastructure platform. Locally-built, immersion-cooled GPU clusters with solar power and modular containers for Australian enterprises.",
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://www.modron.com/search?q={search_term_string}",
@@ -145,7 +136,7 @@ export function EnhancedStructuredData() {
     "name": "MODRON",
     "url": "https://www.modron.com",
     "logo": "https://www.modron.com/Modron_logo.png",
-    "description": "Leading provider of sustainable enterprise AI compute infrastructure with immersion cooling and solar power technology",
+    "description": "Australia's leading provider of sovereign AI compute infrastructure with locally-built, immersion-cooled GPU clusters and solar-powered modular containers",
     "foundingDate": "2024",
     "address": {
       "@type": "PostalAddress",
@@ -168,9 +159,11 @@ export function EnhancedStructuredData() {
       "Machine Learning", 
       "GPU Computing",
       "Immersion Cooling",
-      "Sustainable Technology",
-      "Enterprise Infrastructure",
-      "Data Center Operations"
+      "Solar Power Technology",
+      "Modular Infrastructure",
+      "Data Sovereignty",
+      "Australian Manufacturing",
+      "Sovereign AI Infrastructure"
     ]
   };
 
@@ -183,7 +176,7 @@ export function EnhancedStructuredData() {
         "name": "What is MODRON's immersion cooling technology?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "MODRON's proprietary immersion cooling system reduces GPU failure rates by 60% compared to traditional air cooling, enabling higher performance and longer hardware lifespan for enterprise AI workloads."
+          "text": "MODRON's Australian-developed immersion cooling system reduces GPU failure rates by 60% compared to traditional air cooling, enabling higher performance and longer hardware lifespan for sovereign AI infrastructure."
         }
       },
       {
@@ -191,7 +184,7 @@ export function EnhancedStructuredData() {
         "name": "How does MODRON's solar-powered infrastructure work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "MODRON uses a hybrid solar and grid power system that provides sustainable energy for our AI compute infrastructure, reducing carbon footprint while maintaining high availability for enterprise clients."
+          "text": "MODRON uses solar-powered modular containers that provide sustainable energy for our sovereign AI infrastructure, reducing carbon footprint while ensuring data sovereignty for Australian enterprises."
         }
       },
       {
@@ -199,15 +192,15 @@ export function EnhancedStructuredData() {
         "name": "What regions does MODRON serve?",
         "acceptedAnswer": {
           "@type": "Answer", 
-          "text": "MODRON provides enterprise AI compute infrastructure services globally, with primary focus on Australia, Asia Pacific, United States, and Europe regions."
+          "text": "MODRON provides sovereign AI compute infrastructure services exclusively for Australia, ensuring data sovereignty and local control for Australian enterprises, researchers, and government agencies."
         }
       },
       {
         "@type": "Question",
-        "name": "What GPU types are available for enterprise AI training?",
+        "name": "What GPU types are available for sovereign AI training?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "MODRON offers high-performance GPU clusters including RTX 4090 and other enterprise-grade GPUs optimized for AI model training and inference workloads."
+          "text": "MODRON offers Australian-assembled, immersion-cooled GPU clusters including RTX 4090 and other enterprise-grade GPUs optimized for sovereign AI model training and inference workloads with complete data sovereignty."
         }
       }
     ]

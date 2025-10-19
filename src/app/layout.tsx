@@ -24,9 +24,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "MODRON | Enterprise AI Compute Infrastructure | Sustainable GPU Hosting",
-  description: "High-availability enterprise AI compute infrastructure with SLA-backed hosting. Sustainable GPU rentals with immersion cooling, solar power, and global availability for enterprise workloads.",
-  keywords: ["Enterprise AI compute infrastructure", "High-availability GPU hosting", "SLA-backed AI compute", "Sustainable AI infrastructure", "Enterprise-grade GPU rentals", "Immersion cooled GPUs", "Solar powered AI compute", "Global AI compute infrastructure", "Green AI cloud for enterprises", "Rent RTX 4090 for AI training", "Enterprise GPU hosting for US Europe Asia", "AI compute Australia", "Enterprise GPU hosting NSW", "Sustainable data centre Sydney", "MODRON", "AI training", "machine learning", "data center"],
+  title: "MODRON | Australia's Sovereign AI Infrastructure | Immersion-Cooled GPU Clusters",
+  description: "Australia's first sovereign AI infrastructure platform. Locally-built, immersion-cooled GPU clusters with solar power and modular containers. Australian assembly, data sovereignty, and compute independence for enterprises.",
+  keywords: ["Australia sovereign AI infrastructure", "Australian-built GPU clusters", "Immersion-cooled GPUs Australia", "Solar-powered AI compute", "Modular AI infrastructure", "Australian data sovereignty", "Locally-assembled GPUs", "Sovereign AI compute Australia", "MODRON Australia", "Australian AI infrastructure", "Data sovereignty Australia", "Immersion cooling technology", "Solar-powered data centers", "Modular container infrastructure", "Australian GPU assembly", "Sovereign compute platform", "Australian enterprises AI", "Immersion-cooled RTX 4090", "Solar-powered GPU hosting", "Modular container AI"],
   authors: [{ name: "MODRON" }],
   creator: "MODRON",
   publisher: "MODRON",
@@ -58,8 +58,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "MODRON | Enterprise AI Compute Infrastructure | Sustainable GPU Hosting",
-    description: "High-availability enterprise AI compute infrastructure with SLA-backed hosting. Sustainable GPU rentals with immersion cooling, solar power, and global availability.",
+    title: "MODRON | Australia's Sovereign AI Infrastructure | Immersion-Cooled GPU Clusters",
+    description: "Australia's first sovereign AI infrastructure platform. Locally-built, immersion-cooled GPU clusters with solar power and modular containers. Australian assembly, data sovereignty, and compute independence.",
     url: 'https://www.modron.com',
     siteName: 'MODRON',
     images: [
@@ -84,8 +84,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MODRON | Enterprise AI Compute Infrastructure | Sustainable GPU Hosting',
-    description: 'High-availability enterprise AI compute infrastructure with SLA-backed hosting. Sustainable GPU rentals with immersion cooling, solar power, and global availability.',
+    title: 'MODRON | Australia\'s Sovereign AI Infrastructure | Immersion-Cooled GPU Clusters',
+    description: 'Australia\'s first sovereign AI infrastructure platform. Locally-built, immersion-cooled GPU clusters with solar power and modular containers. Australian assembly, data sovereignty, and compute independence.',
     images: ['/og-image.jpg'],
     creator: '@modron_ai',
     site: '@modron_ai',
