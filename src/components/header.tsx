@@ -32,13 +32,35 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
 
   React.useEffect(() => {
+    // Cache section data for performance
+    let sectionCache: Array<{name: string, top: number, bottom: number}> = []
+    let cacheValid = false
+    
+    const updateSectionCache = () => {
+      sectionCache = []
+      const navTriggers = document.querySelectorAll('[class*="nav-trigger-"]')
+      const headerHeight = 64
+      
+      for (const element of navTriggers) {
+        const classes = element.className.split(' ')
+        const navClass = classes.find(cls => cls.startsWith('nav-trigger-'))
+        
+        if (navClass) {
+          const sectionName = navClass.replace('nav-trigger-', '')
+          const elementTop = (element as HTMLElement).offsetTop - headerHeight - 50
+          const elementBottom = elementTop + (element as HTMLElement).offsetHeight
+          
+          sectionCache.push({ name: sectionName, top: elementTop, bottom: elementBottom })
+        }
+      }
+      
+      // Sort by position for faster lookup
+      sectionCache.sort((a, b) => a.top - b.top)
+      cacheValid = true
+    }
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0)
-      
-      // Update active section based on scroll position
-      const sections = ["home", "vision", "technology", "use-cases", "pricing", "contact"]
-      const headerHeight = 64 // h-16 = 64px
-      const scrollPosition = window.scrollY + headerHeight + 50 // Reduced buffer for more responsive detection
       
       // If we're near the top of the page, always show "home" as active
       if (window.scrollY < 100) {
@@ -46,68 +68,31 @@ export function Header() {
         return
       }
       
-      // Find the current section by checking which section is most visible
+      // Update cache if needed (on resize or first load)
+      if (!cacheValid) {
+        updateSectionCache()
+      }
+      
+      const scrollPosition = window.scrollY + 114 // headerHeight + 50
+      
+      // Fast binary search-like approach
       let currentSection = "home"
       
-      for (let i = 0; i < sections.length; i++) {
-        const section = document.getElementById(sections[i])
-        if (section) {
-          const sectionTop = section.offsetTop - headerHeight - 50
-          const sectionBottom = sectionTop + section.offsetHeight
-          
-          // Special handling for vision section - includes Design Philosophy
-          if (sections[i] === "vision") {
-            const visionBottom = sectionBottom + 100 // Add extra buffer for vision section
-            if (scrollPosition >= sectionTop && scrollPosition < visionBottom) {
-              currentSection = sections[i]
-              break
-            }
-          }
-          // Special handling for technology section - includes Performance Advantages
-          else if (sections[i] === "technology") {
-            // Find the Performance Advantages section to extend technology section boundary
-            let technologyBottom = sectionBottom
-            
-            // Look for the Performance Advantages section by finding the h2 with that text
-            const allSections = document.querySelectorAll('section')
-            for (const sec of allSections) {
-              const h2 = sec.querySelector('h2')
-              if (h2 && h2.textContent?.includes('MODRON Performance Advantages')) {
-                const performanceTop = sec.offsetTop - headerHeight - 50
-                const performanceBottom = performanceTop + sec.offsetHeight
-                technologyBottom = performanceBottom + 50 // Extend to include performance section
-                break
-              }
-            }
-            
-            if (scrollPosition >= sectionTop && scrollPosition < technologyBottom) {
-              currentSection = sections[i]
-              break
-            }
-          }
-          // Special handling for use-cases section - includes Enterprise Features
-          else if (sections[i] === "use-cases") {
-            // Find the Enterprise Features section to extend use-cases section boundary
-            const featuresSection = document.getElementById("features")
-            let useCasesBottom = sectionBottom
-            
-            if (featuresSection) {
-              const featuresTop = featuresSection.offsetTop - headerHeight - 50
-              const featuresBottom = featuresTop + featuresSection.offsetHeight
-              useCasesBottom = featuresBottom + 50 // Extend to include features section
-            }
-            
-            if (scrollPosition >= sectionTop && scrollPosition < useCasesBottom) {
-              currentSection = sections[i]
-              break
-            }
-          }
-          else {
-            // Normal detection for other sections
-            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-              currentSection = sections[i]
-              break
-            }
+      for (const section of sectionCache) {
+        if (scrollPosition >= section.top && scrollPosition < section.bottom) {
+          currentSection = section.name
+          break
+        }
+      }
+      
+      // If no exact match, find closest
+      if (currentSection === "home" && sectionCache.length > 0) {
+        let closestDistance = Infinity
+        for (const section of sectionCache) {
+          const distance = Math.abs(scrollPosition - section.top)
+          if (distance < closestDistance) {
+            closestDistance = distance
+            currentSection = section.name
           }
         }
       }
@@ -117,12 +102,14 @@ export function Header() {
     
     // Add the scroll handler with immediate execution
     window.addEventListener("scroll", handleScroll, { passive: true })
+    window.addEventListener("resize", () => { cacheValid = false }, { passive: true })
     
     // Run once on mount to set initial state
     handleScroll()
     
     return () => {
       window.removeEventListener("scroll", handleScroll)
+      window.removeEventListener("resize", () => { cacheValid = false })
     }
   }, [])
 

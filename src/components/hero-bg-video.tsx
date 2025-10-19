@@ -91,26 +91,22 @@ export function HeroBgVideo({
     v.setAttribute("playsinline", "true")
     v.muted = true
     
-    // Add event listener for when video starts playing
-    const handlePlay = () => {
-      const timestamp = new Date().toLocaleTimeString()
-      console.log(`🎬 VIDEO PLAY EVENT FIRED at ${timestamp}`)
-      if (onVideoStart) {
-        onVideoStart()
-      }
-      // Dispatch custom event for other components to listen to
-      window.dispatchEvent(new CustomEvent('videoStarted'))
-    }
-    
-    const handlePlaying = () => {
-      const timestamp = new Date().toLocaleTimeString()
-      console.log(`🎬 VIDEO PLAYING EVENT FIRED at ${timestamp}`)
-      if (onVideoStart) {
-        onVideoStart()
-      }
-      // Dispatch custom event for other components to listen to
-      window.dispatchEvent(new CustomEvent('videoStarted'))
-    }
+            // Add event listener for when video starts playing
+            const handlePlay = () => {
+              if (onVideoStart) {
+                onVideoStart()
+              }
+              // Dispatch custom event for other components to listen to
+              window.dispatchEvent(new CustomEvent('videoStarted'))
+            }
+            
+            const handlePlaying = () => {
+              if (onVideoStart) {
+                onVideoStart()
+              }
+              // Dispatch custom event for other components to listen to
+              window.dispatchEvent(new CustomEvent('videoStarted'))
+            }
     
     v.addEventListener('play', handlePlay)
     v.addEventListener('playing', handlePlaying)

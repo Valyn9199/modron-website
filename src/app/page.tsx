@@ -58,13 +58,9 @@ export default function Home() {
   
   // Handle video start callback
   const handleVideoStart = React.useCallback(() => {
-    const timestamp = new Date().toLocaleTimeString()
-    console.log(`🎬 VIDEO CALLBACK TRIGGERED at ${timestamp} - setting up 8 second delay`)
     setVideoStarted(true)
     // Start 8-second delay after video starts
     setTimeout(() => {
-      const completionTime = new Date().toLocaleTimeString()
-      console.log(`⏰ 8 second delay completed at ${completionTime} - showing performance cards`)
       setShowPerformanceCards(true)
     }, 8000)
   }, [])
@@ -73,7 +69,6 @@ export default function Home() {
   useEffect(() => {
     const fallbackTimer = setTimeout(() => {
       if (!showPerformanceCards) {
-        console.log('⏰ Fallback: No video started within 12 seconds, showing cards anyway')
         setShowPerformanceCards(true)
       }
     }, 12000)
@@ -103,7 +98,7 @@ export default function Home() {
           <main id="main-content" tabIndex={-1} className="relative">
         
 {/* Hero Section - Compressed */}
-<section id="home" className="relative min-h-screen flex items-center justify-center w-full pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-16" role="banner" aria-labelledby="hero-heading">
+<section id="home" className="nav-trigger-home relative min-h-screen flex items-center justify-center w-full pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-16" role="banner" aria-labelledby="hero-heading">
   
   {/* Background Video */}
   <HeroBgVideo overlayOpacity={0} onVideoStart={handleVideoStart} />
@@ -141,7 +136,7 @@ export default function Home() {
   </section>
 
 {/* Mission & Vision Section */}
-<section id="vision" className="mobile-section relative layout-section mobile-optimized bg-gradient-to-br from-black via-[#1A1A1A]/20 to-black" role="region" aria-labelledby="vision-heading">
+<section id="vision" className="nav-trigger-vision mobile-section relative layout-section mobile-optimized bg-gradient-to-br from-black via-[#1A1A1A]/20 to-black" role="region" aria-labelledby="vision-heading">
   <div className="layout-container-wide">
     <div className="layout-content-wide">
       {/* Mission Statement */}
@@ -231,7 +226,7 @@ export default function Home() {
       <AnimatedDivider variant="gradient" color="#40d0f2" />
 
       {/* MODRON Design Philosophy Section */}
-      <section className="relative layout-section mobile-optimized bg-gradient-to-br from-[#1A1A1A] via-black to-[#1A1A1A]">
+      <section className="nav-trigger-vision relative layout-section mobile-optimized bg-gradient-to-br from-[#1A1A1A] via-black to-[#1A1A1A]">
         <div className="layout-container-wide">
           <div className="layout-content-wide">
             <div className="text-center mb-12 sm:mb-16 md:mb-20">
@@ -353,7 +348,7 @@ export default function Home() {
       <AnimatedDivider variant="wave" color="#32ca73" />
 
       {/* Technology & Infrastructure Section */}
-      <section id="technology" className="mobile-section relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-[#1A1A1A] via-black to-[#1A1A1A]">
+      <section id="technology" className="nav-trigger-technology mobile-section relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-[#1A1A1A] via-black to-[#1A1A1A]">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16 md:mb-20">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
@@ -628,7 +623,7 @@ export default function Home() {
       <AnimatedDivider variant="wave" color="#d5aaf9" />
 
       {/* MODRON Performance Advantages Section */}
-      <section className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#40d0f2]/10 to-black">
+      <section className="nav-trigger-technology relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#40d0f2]/10 to-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 sm:mb-16 md:mb-20">
@@ -772,7 +767,7 @@ export default function Home() {
       </div>
                 
       {/* Interactive Infrastructure Progressive Disclosure */}
-      <section className="relative py-6 md:py-8 lg:py-10 xl:py-12 bg-gradient-to-br from-black via-[#32ca73]/10 to-black">
+      <section className="nav-trigger-technology relative py-6 md:py-8 lg:py-10 xl:py-12 bg-gradient-to-br from-black via-[#32ca73]/10 to-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mt-4 sm:mt-6 md:mt-8">
             <button
@@ -799,7 +794,7 @@ export default function Home() {
       <AnimatedDivider variant="wave" color="#32ca73" />
 
       {/* Use Cases Section */}
-      <section id="use-cases" className="relative z-10 overflow-visible py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#d5aaf9]/10 to-black">
+      <section id="use-cases" className="nav-trigger-use-cases relative z-10 overflow-visible py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#d5aaf9]/10 to-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 sm:mb-16 md:mb-20">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
@@ -1069,7 +1064,7 @@ export default function Home() {
       <AnimatedDivider variant="line" color="#d5aaf9" />
 
       {/* Features Grid Section */}
-      <section id="features" className="hidden md:block relative z-10 overflow-visible py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-[#1A1A1A] via-black to-[#1A1A1A]">
+      <section id="features" className="nav-trigger-use-cases hidden md:block relative z-10 overflow-visible py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-[#1A1A1A] via-black to-[#1A1A1A]">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 sm:mb-16 md:mb-20">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
@@ -1357,7 +1352,7 @@ export default function Home() {
       <AnimatedDivider variant="line" color="#fbff52" />
 
       {/* Pricing Section */}
-      <section id="pricing" className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#40d0f2]/10 to-black">
+      <section id="pricing" className="nav-trigger-pricing relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#40d0f2]/10 to-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 sm:mb-16 md:mb-20">
@@ -1655,7 +1650,7 @@ export default function Home() {
       <AnimatedDivider variant="gradient" color="#40d0f2" />
 
       {/* CTA / Contact Section */}
-      <section id="contact" className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#32ca73]/10 to-black">
+      <section id="contact" className="nav-trigger-contact relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-black via-[#32ca73]/10 to-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
