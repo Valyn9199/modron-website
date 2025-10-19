@@ -24,11 +24,13 @@ export function AnimatedCounter({
 }: AnimatedCounterProps) {
   const [count, setCount] = useState(0)
   const ref = useRef<HTMLSpanElement>(null)
-  const isInView = useInView(ref, { once: true })
-  const [hasAnimated, setHasAnimated] = useState(false)
+  const isInView = useInView(ref, { once: false })
+  const [isAnimating, setIsAnimating] = useState(false)
 
   useEffect(() => {
-    if (isInView && !hasAnimated) {
+    if (isInView && !isAnimating) {
+      setIsAnimating(true)
+      
       const startDelay = setTimeout(() => {
         let start = 0
         const increment = end / (duration / 16)
@@ -38,7 +40,7 @@ export function AnimatedCounter({
           if (start >= end) {
             setCount(end)
             clearInterval(timer)
-            setHasAnimated(true)
+            setIsAnimating(false)
           } else {
             setCount(start)
           }
@@ -50,8 +52,11 @@ export function AnimatedCounter({
       }, delay)
 
       return () => clearTimeout(startDelay)
+    } else if (!isInView) {
+      // Reset animation state when out of view so it can animate again
+      setIsAnimating(false)
     }
-  }, [isInView, end, duration, hasAnimated, delay])
+  }, [isInView, end, duration, isAnimating, delay])
 
   const displayValue = decimals > 0 
     ? count.toFixed(decimals) 
