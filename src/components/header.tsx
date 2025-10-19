@@ -22,7 +22,6 @@ const navigationItems = [
   { name: "Vision", href: "#vision" },
   { name: "Technology", href: "#technology" },
   { name: "Use Cases", href: "#use-cases" },
-  { name: "Features", href: "#features" },
   { name: "Pricing", href: "#pricing" },
   { name: "Contact", href: "#contact" },
 ]
@@ -33,50 +32,57 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
 
   React.useEffect(() => {
-    let scrollTimeout: NodeJS.Timeout
-    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0)
       
-      // Throttle the active section update to avoid conflicts with smooth scrolling
-      clearTimeout(scrollTimeout)
-      scrollTimeout = setTimeout(() => {
-        // Update active section based on scroll position
-        const sections = ["home", "vision", "technology", "use-cases", "features", "pricing", "contact"]
-        const headerHeight = 64 // h-16 = 64px
-        const scrollPosition = window.scrollY + headerHeight + 100 // Add buffer for better detection
-        
-        // If we're near the top of the page, always show "home" as active
-        if (window.scrollY < 200) {
-          setActiveSection("home")
-          return
-        }
-        
-        // Find the current section by checking which section is most visible
-        let currentSection = "home"
-        for (let i = 0; i < sections.length; i++) {
-          const section = document.getElementById(sections[i])
-          if (section) {
-            const sectionTop = section.offsetTop - headerHeight - 100
-            const sectionBottom = sectionTop + section.offsetHeight
-            
+      // Update active section based on scroll position
+      const sections = ["home", "vision", "technology", "use-cases", "pricing", "contact"]
+      const headerHeight = 64 // h-16 = 64px
+      const scrollPosition = window.scrollY + headerHeight + 50 // Reduced buffer for more responsive detection
+      
+      // If we're near the top of the page, always show "home" as active
+      if (window.scrollY < 100) {
+        setActiveSection("home")
+        return
+      }
+      
+      // Find the current section by checking which section is most visible
+      let currentSection = "home"
+      
+      for (let i = 0; i < sections.length; i++) {
+        const section = document.getElementById(sections[i])
+        if (section) {
+          const sectionTop = section.offsetTop - headerHeight - 50
+          const sectionBottom = sectionTop + section.offsetHeight
+          
+          // Special handling for vision section - make it more generous
+          if (sections[i] === "vision") {
+            const visionBottom = sectionBottom + 100 // Add extra buffer for vision section
+            if (scrollPosition >= sectionTop && scrollPosition < visionBottom) {
+              currentSection = sections[i]
+              break
+            }
+          } else {
+            // Normal detection for other sections
             if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
               currentSection = sections[i]
               break
             }
           }
         }
-        
-        setActiveSection(currentSection)
-      }, 100) // Small delay to avoid conflicts with smooth scrolling
+      }
+      
+      setActiveSection(currentSection)
     }
     
-    // Add the scroll handler
+    // Add the scroll handler with immediate execution
     window.addEventListener("scroll", handleScroll, { passive: true })
+    
+    // Run once on mount to set initial state
+    handleScroll()
     
     return () => {
       window.removeEventListener("scroll", handleScroll)
-      clearTimeout(scrollTimeout)
     }
   }, [])
 
