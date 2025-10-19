@@ -640,7 +640,7 @@ export default function Home() {
               {/* Desktop: All Cards Visible */}
               <div className="hidden md:block">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-                    <div className={`text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-cyan/30 transition-all duration-300 hover:scale-105 group transition-opacity duration-500 ${showPerformanceCards ? 'opacity-100' : 'opacity-0'}`}>
+                    <div className="text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-cyan/30 transition-all duration-300 hover:scale-105 group opacity-100">
                       <h3 className="text-white font-bold text-lg mb-4">Cooling Efficiency</h3>
                       <div className="mb-6">
                         <div className="text-5xl font-bold text-primary-cyan mb-2">
@@ -657,7 +657,7 @@ export default function Home() {
                       <p className="text-[#999999] text-sm">Immersion cooling vs traditional air cooling</p>
                 </div>
                 
-                    <div className={`text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-green/30 transition-all duration-300 hover:scale-105 group transition-opacity duration-500 ${showPerformanceCards ? 'opacity-100' : 'opacity-0'}`}>
+                    <div className="text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-green/30 transition-all duration-300 hover:scale-105 group opacity-100">
                       <h3 className="text-white font-bold text-lg mb-4">Energy Efficiency</h3>
                       <div className="mb-6">
                         <div className="text-5xl font-bold text-[#32ca73] mb-2">
@@ -674,7 +674,7 @@ export default function Home() {
                       <p className="text-[#999999] text-sm">Immersion cooling + renewable energy optimization</p>
               </div>
               
-                    <div className={`text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-purple/30 transition-all duration-300 hover:scale-105 group transition-opacity duration-500 ${showPerformanceCards ? 'opacity-100' : 'opacity-0'}`}>
+                    <div className="text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 hover:border-primary-purple/30 transition-all duration-300 hover:scale-105 group opacity-100">
                       <h3 className="text-white font-bold text-lg mb-4">Deployment Speed</h3>
                       <div className="mb-6">
                         <div className="text-5xl font-bold text-[#d5aaf9] mb-2">
@@ -705,7 +705,7 @@ export default function Home() {
           >
             {/* Card 1: Cooling Efficiency */}
             <div className="w-full flex-shrink-0 px-4">
-              <div className={`text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 transition-opacity duration-500 ${showPerformanceCards ? 'opacity-100' : 'opacity-0'}`}>
+              <div className="text-center p-6 opacity-100">
                 <h3 className="text-white font-bold text-lg mb-4">Cooling Efficiency</h3>
                 <div className="mb-6">
                   <div className="text-5xl font-bold text-primary-cyan mb-2">
@@ -725,7 +725,7 @@ export default function Home() {
             
             {/* Card 2: Energy Efficiency */}
             <div className="w-full flex-shrink-0 px-4">
-              <div className={`text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 transition-opacity duration-500 ${showPerformanceCards ? 'opacity-100' : 'opacity-0'}`}>
+              <div className="text-center p-6 opacity-100">
                 <h3 className="text-white font-bold text-lg mb-4">Energy Efficiency</h3>
                 <div className="mb-6">
                   <div className="text-5xl font-bold text-[#32ca73] mb-2">
@@ -745,7 +745,7 @@ export default function Home() {
             
             {/* Card 3: Deployment Speed */}
             <div className="w-full flex-shrink-0 px-4">
-              <div className={`text-center bg-gray-100/50 border border-gray-200 rounded-xl p-6 transition-opacity duration-500 ${showPerformanceCards ? 'opacity-100' : 'opacity-0'}`}>
+              <div className="text-center p-6 opacity-100">
                 <h3 className="text-white font-bold text-lg mb-4">Deployment Speed</h3>
                 <div className="mb-6">
                   <div className="text-5xl font-bold text-[#d5aaf9] mb-2">
