@@ -257,7 +257,6 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center mb-12 sm:mb-16 md:mb-20">
             {/* Infrastructure Diagram - Desktop: Always visible */}
             <div className="hidden lg:block">
-              <ProgressiveReveal delay={200}>
               <div className="relative">
                   <div className="bg-black border border-gray-600 rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
                   {/* Solar + Grid Power */}
@@ -298,14 +297,12 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              </ProgressiveReveal>
             </div>
 
             {/* Infrastructure Diagram - Mobile: Always Visible */}
             <div className="lg:hidden">
               <div className="mb-6">
                 <div className="p-4 bg-[#1A1A1A]/30 border border-[#262626] rounded-xl">
-                  <ProgressiveReveal delay={200}>
                     <div className="relative">
                       <div className="bg-black border border-gray-600 rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
                         {/* Solar + Grid Power */}
@@ -346,7 +343,6 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </ProgressiveReveal>
                 </div>
               </div>
             </div>
