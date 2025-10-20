@@ -172,7 +172,7 @@ export default function Home() {
               
               {/* Container-Native Architecture */}
                 <div className="text-center group hover-lift" role="listitem">
-                  <div className="mobile-icon mx-auto mb-6 mobile-icon w-16 h-16 rounded-xl flex items-center justify-center icon-hover shadow-lg hover-glow" style={{ backgroundColor: '#40d0f2' }} aria-hidden="true">
+                  <div className="mobile-icon mx-auto mb-6 mobile-icon w-16 h-16 rounded-xl flex items-center justify-center icon-hover shadow-lg hover-glow" style={{ backgroundColor: '#fbff52' }} aria-hidden="true">
                   <Icons.Server className="h-8 w-8 text-black" />
                 </div>
                 <h3 className="text-white font-light text-body mb-3">Container-Native Architecture</h3>
@@ -183,7 +183,7 @@ export default function Home() {
               
               {/* Advanced Cooling & Efficiency */}
                 <div className="text-center group hover-lift" role="listitem">
-                  <div className="mx-auto mb-6 mobile-icon w-16 h-16 rounded-xl flex items-center justify-center icon-hover shadow-lg hover-glow" style={{ backgroundColor: '#fbff52' }}>
+                  <div className="mx-auto mb-6 mobile-icon w-16 h-16 rounded-xl flex items-center justify-center icon-hover shadow-lg hover-glow" style={{ backgroundColor: '#40d0f2' }}>
                   <Icons.Gauge className="h-8 w-8 text-black" />
                 </div>
                 <h3 className="text-white font-light text-body mb-3">Advanced Cooling & Efficiency</h3>
