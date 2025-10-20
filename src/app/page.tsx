@@ -619,6 +619,7 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-8 sm:mb-12 tracking-tight">
               Use Cases
             </h2>
+            {/* Deployment trigger - safe change */}
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#CCCCCC] max-w-4xl mx-auto font-light leading-relaxed px-4">
               Deploy enterprise-grade AI infrastructure anywhere in Australia within 48 hours - sovereign, sustainable, scalable
             </p>
