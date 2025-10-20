@@ -53,7 +53,6 @@ export default function Home() {
   const [activeUseCaseTab, setActiveUseCaseTab] = React.useState<'ai-development' | 'industry-applications' | 'enterprise-features'>('ai-development')
   const [showCompetitiveComparison, setShowCompetitiveComparison] = React.useState(false)
   const [showVisionDetails, setShowVisionDetails] = React.useState(false)
-  const [showInteractiveInfrastructure, setShowInteractiveInfrastructure] = React.useState(false)
   const [showContactForm, setShowContactForm] = React.useState(false)
   
   
@@ -505,23 +504,22 @@ export default function Home() {
         </div>
         
           {/* Interactive Infrastructure Button */}
-        <div className="text-center mt-8 sm:mt-12">
-          <button 
-              onClick={() => {
-                console.log('Interactive Infrastructure button clicked, current state:', showInteractiveInfrastructure);
-                setShowInteractiveInfrastructure(!showInteractiveInfrastructure);
-              }}
-              className="w-full bg-black border border-gray-600 text-gray-400 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-normal flex items-center justify-center relative z-10 max-w-md mx-auto"
-            >
-              <span className="font-medium mr-2">Explore Interactive Infrastructure</span>
-              <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showInteractiveInfrastructure ? 'rotate-180' : ''}`} />
-          </button>
-            
-            {showInteractiveInfrastructure && (
-              <div className="mt-8">
+        <div className="text-center mt-8 sm:mt-12 hidden lg:block">
+            <details className="group">
+              <summary className="cursor-pointer list-none">
+                <div className="flex items-center justify-between p-4 bg-black border border-gray-600 rounded-xl hover:border-primary-purple/30 transition-all duration-200">
+                  <span className="text-white font-semibold text-lg">Explore Interactive Infrastructure</span>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-primary-cyan text-sm font-medium">Explore</span>
+                    <Icons.ChevronDown className="h-5 w-5 text-primary-cyan transition-transform duration-200 group-open:rotate-180" />
+                  </div>
+                </div>
+              </summary>
+              
+              <div className="mt-4">
                 <InteractiveInfrastructure />
               </div>
-            )}
+            </details>
             </div>
             
                   </div>
@@ -613,7 +611,7 @@ export default function Home() {
       <div className="h-16 md:h-24 bg-black"></div>
 
       {/* Use Cases Section */}
-      <section id="use-cases" className="nav-trigger-use-cases relative z-10 overflow-visible py-20 md:py-24 lg:py-28 xl:py-32">
+      <section id="use-cases" className="nav-trigger-use-cases relative z-10 overflow-visible py-20 md:py-24 lg:py-28 xl:py-32 bg-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 sm:mb-16 md:mb-20">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-8 sm:mb-12 tracking-tight">
@@ -1022,7 +1020,7 @@ export default function Home() {
       <div className="h-16 md:h-24 bg-black"></div>
 
       {/* Pricing Section */}
-      <section id="pricing" className="nav-trigger-pricing relative py-20 md:py-24 lg:py-28 xl:py-32">
+      <section id="pricing" className="nav-trigger-pricing relative py-20 md:py-24 lg:py-28 xl:py-32 bg-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 sm:mb-16 md:mb-20">
@@ -1321,7 +1319,7 @@ export default function Home() {
       <div className="h-16 md:h-24 bg-black"></div>
 
       {/* CTA / Contact Section */}
-      <section id="contact" className="nav-trigger-contact relative py-20 md:py-24 lg:py-28 xl:py-32">
+      <section id="contact" className="nav-trigger-contact relative py-20 md:py-24 lg:py-28 xl:py-32 bg-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-8 sm:mb-12 tracking-tight">
@@ -1382,40 +1380,17 @@ export default function Home() {
       <div className="h-12 md:h-16 bg-black"></div>
       
       {/* Footer */}
-      <footer className="bg-black border-t border-[#32ca73]/20" role="contentinfo">
+      <footer className="bg-black" role="contentinfo">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-12 sm:py-16">
           <div className="text-center">
-            {/* Company Info */}
-            <div className="mb-8 sm:mb-12">
-              <div className="flex flex-col items-center space-y-4">
-                <div className="relative">
-                  <Image
-                    src="/Modron_logo.png"
-                    alt="MODRON - Sustainable AI Infrastructure"
-                    width={200}
-                    height={53}
-                    className="h-12 sm:h-16 w-auto"
-                    loading="lazy"
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                  />
-                </div>
-                <div className="flex justify-center">
-                <p className="text-[#999999] text-caption text-center leading-tight whitespace-nowrap pr-[7px]">
-  Modular Operations Data Resource Optimization Network
-</p>              
-                </div>
-              </div>
-            </div>
 
             {/* Contact Information removed at user's request */}
 
 
 
             {/* Legal Text */}
-            <div className="border-t border-[#262626] pt-6 sm:pt-8">
+            <div className="pt-6 sm:pt-8">
               <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4 lg:space-x-6 xl:space-x-8 text-xs sm:text-sm text-[#666666] px-4">
-                <span>Australia</span>
                 <span>&copy; 2025. All rights reserved.</span>
                 <a href="/privacy" className="hover:text-[#999999] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">Privacy Policy</a>
                 <a href="/terms" className="hover:text-[#999999] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">Terms of Service</a>
