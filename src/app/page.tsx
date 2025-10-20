@@ -1,6 +1,17 @@
 "use client"
 
 import React from "react";
+
+// Suppress hydration warnings caused by browser extensions
+if (typeof window !== 'undefined') {
+  const originalError = console.error;
+  console.error = (...args) => {
+    if (typeof args[0] === 'string' && args[0].includes('Hydration failed')) {
+      return;
+    }
+    originalError.apply(console, args);
+  };
+}
 import { OptimizedScrollIndicator } from "@/components/optimized-scroll-indicator";
 
 import { EnhancedForm } from "@/components/enhanced-form";
