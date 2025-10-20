@@ -575,8 +575,8 @@ export default function Home() {
                       <Icons.Zap className="h-3 w-3 sm:h-4 sm:w-4 text-black" />
                   </div>
                     <div>
-                      <h3 className="text-white font-semibold text-base sm:text-lg mb-1 sm:mb-2">100+ PetaFLOPS in Every Container</h3>
-                      <p className="text-[#999999] text-sm sm:text-base">Industry-leading compute density with 1,096 RTX 4090 GPUs per modular unit.</p>
+                      <h3 className="text-white font-semibold text-base sm:text-lg mb-1 sm:mb-2">100+ PetaFLOPS Compute Power</h3>
+                      <p className="text-[#999999] text-sm sm:text-base">Industry-leading performance with RTX 4090 clusters delivering unmatched AI training and inference capabilities.</p>
                 </div>
               </div>
               
