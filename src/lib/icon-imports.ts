@@ -36,4 +36,7 @@ export const Icons = {
   ArrowRight: dynamic(() => import('lucide-react').then(mod => ({ default: mod.ArrowRight }))),
   CreditCard: dynamic(() => import('lucide-react').then(mod => ({ default: mod.CreditCard }))),
   RefreshCw: dynamic(() => import('lucide-react').then(mod => ({ default: mod.RefreshCw }))),
+  Users: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Users }))),
+  FileCheck: dynamic(() => import('lucide-react').then(mod => ({ default: mod.FileCheck }))),
+  TrendingUp: dynamic(() => import('lucide-react').then(mod => ({ default: mod.TrendingUp }))),
 }
