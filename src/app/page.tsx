@@ -108,7 +108,7 @@ export default function Home() {
 <section id="vision" className="nav-trigger-vision mobile-section relative layout-section mobile-optimized bg-gradient-to-br from-black via-[#1A1A1A]/20 to-black" role="region" aria-labelledby="vision-heading">
   <div className="layout-container-wide">
     <div className="layout-content-wide">
-      {/* Mission Statement */}
+      {/* Mission Statement - Updated for fresh deployment */}
       <div className="text-center mb-12 sm:mb-16 md:mb-20">
         <ScrollReveal animation="fade" delay={0}>
           <h2 id="vision-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
