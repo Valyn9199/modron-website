@@ -40,7 +40,7 @@ import { EnhancedBookingButton } from "@/components/enhanced-booking-button";
 // }); // REMOVED - cleaner hero without cards
 const ParallaxSection = dynamic(() => import("@/components/parallax-section").then(mod => ({ default: mod.ParallaxSection })));
 const ScrollReveal = dynamic(() => import("@/components/scroll-reveal").then(mod => ({ default: mod.ScrollReveal })));
-const AnimatedDivider = dynamic(() => import("@/components/animated-divider").then(mod => ({ default: mod.AnimatedDivider })));
+// AnimatedDivider removed - using clean spacing instead
 const InteractiveInfrastructure = dynamic(() => import("@/components/interactive-infrastructure").then(mod => ({ default: mod.InteractiveInfrastructure })));
 const DynamicComparison = dynamic(() => import("@/components/dynamic-comparison").then(mod => ({ default: mod.DynamicComparison })));
 const ScrollProgress = dynamic(() => import("@/components/scroll-progress").then(mod => ({ default: mod.ScrollProgress })));
@@ -108,13 +108,13 @@ export default function Home() {
   </section>
 
 {/* Mission & Vision Section */}
-<section id="vision" className="nav-trigger-vision mobile-section relative layout-section mobile-optimized bg-gradient-to-br from-black via-[#1A1A1A]/20 to-black" role="region" aria-labelledby="vision-heading">
+<section id="vision" className="nav-trigger-vision mobile-section relative layout-section mobile-optimized bg-black" role="region" aria-labelledby="vision-heading">
   <div className="layout-container-wide">
     <div className="layout-content-wide">
       {/* Mission Statement - Updated for fresh deployment */}
       <div className="text-center mb-12 sm:mb-16 md:mb-20">
         <ScrollReveal animation="fade" delay={0}>
-          <h2 id="vision-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
+            <h2 id="vision-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-8 sm:mb-12 tracking-tight">
             Vision
           </h2>
         </ScrollReveal>
@@ -127,7 +127,7 @@ export default function Home() {
           </p>
         </ParallaxSection>
         <ScrollReveal animation="zoom" delay={200}>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#d5aaf9] to-[#40d0f2] mx-auto mt-4"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#32ca73] to-[#40d0f2] mx-auto mt-4"></div>
         </ScrollReveal>
       </div>
       
@@ -237,13 +237,14 @@ export default function Home() {
       </section>
 
       {/* Animated Divider */}
-      <AnimatedDivider variant="wave" color="#32ca73" />
+      {/* Clean spacing between sections */}
+      <div className="h-16 md:h-24"></div>
 
       {/* Technology & Infrastructure Section */}
-      <section id="technology" className="nav-trigger-technology mobile-section relative py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-br from-[#1A1A1A] via-black to-[#1A1A1A]">
+      <section id="technology" className="nav-trigger-technology mobile-section relative py-20 md:py-24 lg:py-28 xl:py-32 bg-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16 md:mb-20">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-8 sm:mb-12 tracking-tight">
               Technology & Infrastructure
             </h2>
             <p className="section-description text-body text-gray-400 max-w-4xl mx-auto font-light leading-relaxed px-4">
@@ -261,7 +262,7 @@ export default function Home() {
                   <div className="bg-gray-100/50 border border-gray-200 rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
                   {/* Solar + Grid Power */}
                   <div className="flex items-center justify-center mb-6 sm:mb-8">
-                      <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2]">
+                      <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#32ca73] to-[#40d0f2]">
                       <Icons.Sun className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                     </div>
                       <div className="rounded-xl p-3 sm:p-4 bg-gradient-to-br from-[#40d0f2] to-[#32ca73]">
@@ -272,7 +273,7 @@ export default function Home() {
                   
                   {/* Connection Line */}
                   <div className="flex justify-center mb-6 sm:mb-8">
-                      <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-[#d5aaf9] to-[#40d0f2]" style={{ willChange: 'transform' }}></div>
+                      <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-[#32ca73] to-[#40d0f2]" style={{ willChange: 'transform' }}></div>
                   </div>
                   
                   {/* GPU Tank */}
@@ -287,10 +288,10 @@ export default function Home() {
                   
                   {/* Network Layer */}
                   <div className="flex items-center justify-center">
-                      <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9]">
+                      <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#32ca73] to-[#40d0f2]">
                       <Icons.Cloud className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                     </div>
-                      <div className="rounded-xl p-3 sm:p-4 bg-gradient-to-br from-[#fbff52] to-[#d5aaf9]">
+                      <div className="rounded-xl p-3 sm:p-4 bg-gradient-to-br from-[#fbff52] to-[#40d0f2]">
                       <Icons.Network className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                     </div>
                     <div className="ml-2 sm:ml-4 text-white font-semibold text-caption">Vast.ai + Direct Connect</div>
@@ -309,7 +310,7 @@ export default function Home() {
                       <div className="bg-gray-100/50 border border-gray-200 rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
                         {/* Solar + Grid Power */}
                         <div className="flex items-center justify-center mb-6 sm:mb-8">
-                            <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2]">
+                            <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#32ca73] to-[#40d0f2]">
                             <Icons.Sun className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                           </div>
                             <div className="rounded-xl p-3 sm:p-4 bg-gradient-to-br from-[#40d0f2] to-[#32ca73]">
@@ -320,7 +321,7 @@ export default function Home() {
                         
                         {/* Connection Line */}
                         <div className="flex justify-center mb-6 sm:mb-8">
-                            <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-[#d5aaf9] to-[#40d0f2]" style={{ willChange: 'transform' }}></div>
+                            <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-[#32ca73] to-[#40d0f2]" style={{ willChange: 'transform' }}></div>
                         </div>
                         
                         {/* GPU Tank */}
@@ -335,10 +336,10 @@ export default function Home() {
                         
                         {/* Network Layer */}
                         <div className="flex items-center justify-center">
-                            <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9]">
+                            <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#32ca73] to-[#40d0f2]">
                             <Icons.Cloud className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                           </div>
-                            <div className="rounded-xl p-3 sm:p-4 bg-gradient-to-br from-[#fbff52] to-[#d5aaf9]">
+                            <div className="rounded-xl p-3 sm:p-4 bg-gradient-to-br from-[#fbff52] to-[#40d0f2]">
                             <Icons.Network className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                           </div>
                           <div className="ml-2 sm:ml-4 text-white font-semibold text-caption">Vast.ai + Direct Connect</div>
@@ -531,7 +532,7 @@ export default function Home() {
       </section>
 
       {/* Modular Deployment Section */}
-      <section className="relative py-12 md:py-16 lg:py-20 xl:py-24 bg-black md:bg-gradient-to-br md:from-black md:via-[#1A1A1A] md:to-black">
+      <section className="relative py-20 md:py-24 lg:py-28 xl:py-32 bg-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
             {/* Video Side */}
@@ -576,7 +577,7 @@ export default function Home() {
                 
                 <div className="space-y-4 sm:space-y-6">
                   <div className="flex items-start space-x-3 sm:space-x-4">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#fbff52] to-[#d5aaf9] flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#fbff52] to-[#40d0f2] flex items-center justify-center flex-shrink-0 mt-1">
                       <Icons.Zap className="h-3 w-3 sm:h-4 sm:w-4 text-black" />
                   </div>
                     <div>
@@ -586,7 +587,7 @@ export default function Home() {
               </div>
               
                   <div className="flex items-start space-x-3 sm:space-x-4">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#32ca73] to-[#40d0f2] flex items-center justify-center flex-shrink-0 mt-1">
                       <Icons.Clock className="h-3 w-3 sm:h-4 sm:w-4 text-black" />
                   </div>
                     <div>
@@ -612,14 +613,14 @@ export default function Home() {
       </section>
 
       {/* Animated Divider */}
-      <AnimatedDivider variant="wave" color="#d5aaf9" />
-
+      {/* Clean spacing between sections */}
+      <div className="h-16 md:h-24"></div>
 
       {/* Use Cases Section */}
-      <section id="use-cases" className="nav-trigger-use-cases relative z-10 overflow-visible py-12 md:py-16 lg:py-20 xl:py-24">
+      <section id="use-cases" className="nav-trigger-use-cases relative z-10 overflow-visible py-20 md:py-24 lg:py-28 xl:py-32">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 sm:mb-16 md:mb-20">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-8 sm:mb-12 tracking-tight">
               Use Cases
             </h2>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#CCCCCC] max-w-4xl mx-auto font-light leading-relaxed px-4">
@@ -680,7 +681,7 @@ export default function Home() {
                       
                       {/* AI Development Capabilities */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                        <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#40d0f2]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                        <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#40d0f2]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
                           <div className="flex items-center mb-3">
                       <div className="w-10 h-10 rounded-lg bg-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                         <Icons.Database className="h-5 w-5 text-black flex-shrink-0" />
@@ -710,7 +711,7 @@ export default function Home() {
                     <p className="text-gray-300 text-sm">Real-time evaluation and optimization of model performance</p>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
+                  <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#40d0f2]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
                     <div className="flex items-center mb-3">
                       <div className="w-10 h-10 rounded-lg bg-[#fbff52] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                         <Icons.Server className="h-5 w-5 text-black flex-shrink-0" />
@@ -788,9 +789,9 @@ export default function Home() {
                 
                 {/* Industry Solutions */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                  <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#40d0f2]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                  <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#40d0f2]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#32ca73] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                         <Icons.Shield className="h-5 w-5 text-black flex-shrink-0" />
                 </div>
                       <h4 className="text-white font-semibold">Government</h4>
@@ -798,9 +799,9 @@ export default function Home() {
                     <p className="text-gray-300 text-sm">Sovereign data residency with guaranteed compliance and security</p>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#32ca73]/20 group hover:border-[#32ca73]/40 transition-all duration-300">
+                  <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#40d0f2]/10 rounded-xl p-4 border border-[#32ca73]/20 group hover:border-[#32ca73]/40 transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#32ca73] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                         <Icons.Brain className="h-5 w-5 text-black flex-shrink-0" />
                 </div>
                       <h4 className="text-white font-semibold">Research</h4>
@@ -818,9 +819,9 @@ export default function Home() {
                     <p className="text-gray-300 text-sm">Australian-built infrastructure with local support and expertise</p>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
+                  <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#40d0f2]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#fbff52] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#fbff52] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                         <Icons.Code className="h-5 w-5 text-black flex-shrink-0" />
                       </div>
                       <h4 className="text-white font-semibold">Development</h4>
@@ -828,9 +829,9 @@ export default function Home() {
                     <p className="text-gray-300 text-sm">Complete data sovereignty with Australian oversight and standards</p>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-[#ff6b6b]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#ff6b6b]/20 group hover:border-[#ff6b6b]/40 transition-all duration-300">
+                  <div className="bg-gradient-to-br from-[#ff6b6b]/10 to-[#40d0f2]/10 rounded-xl p-4 border border-[#ff6b6b]/20 group hover:border-[#ff6b6b]/40 transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#ff6b6b] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#ff6b6b] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                         <Icons.Zap className="h-5 w-5 text-black flex-shrink-0" />
                       </div>
                       <h4 className="text-white font-semibold">Emergency AI Infrastructure</h4>
@@ -838,9 +839,9 @@ export default function Home() {
                     <p className="text-gray-300 text-sm">Deploy critical AI compute within 48 hours for emergency response and disaster management</p>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-[#4ecdc4]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#4ecdc4]/20 group hover:border-[#4ecdc4]/40 transition-all duration-300">
+                  <div className="bg-gradient-to-br from-[#4ecdc4]/10 to-[#40d0f2]/10 rounded-xl p-4 border border-[#4ecdc4]/20 group hover:border-[#4ecdc4]/40 transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#4ecdc4] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#4ecdc4] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                         <Icons.RefreshCw className="h-5 w-5 text-black flex-shrink-0" />
                       </div>
                       <h4 className="text-white font-semibold">Disaster Recovery</h4>
@@ -867,7 +868,7 @@ export default function Home() {
                       <h4 className="text-lg font-semibold text-white mb-4 text-center">Complete Use Cases</h4>
                       <div className="space-y-4">
                         <div className="flex items-start space-x-3">
-                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2]">
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#32ca73] to-[#40d0f2]">
                             <Icons.Shield className="h-4 w-4 text-black" />
                           </div>
                           <div>
@@ -876,7 +877,7 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="flex items-start space-x-3">
-                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#32ca73] to-[#d5aaf9]">
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#32ca73] to-[#40d0f2]">
                             <Icons.Brain className="h-4 w-4 text-black" />
                           </div>
                           <div>
@@ -894,7 +895,7 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="flex items-start space-x-3">
-                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#fbff52] to-[#d5aaf9]">
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#fbff52] to-[#40d0f2]">
                             <Icons.Code className="h-4 w-4 text-black" />
                           </div>
                           <div>
@@ -920,14 +921,14 @@ export default function Home() {
                       <h4 className="text-lg font-semibold text-white mb-4 text-center">Enterprise System Architecture</h4>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="text-center">
-                          <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] flex items-center justify-center">
+                          <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-br from-[#32ca73] to-[#40d0f2] flex items-center justify-center">
                             <Icons.Server className="h-6 w-6 text-black" />
                     </div>
                           <h5 className="text-white font-medium text-sm">Infrastructure</h5>
                           <p className="text-[#999999] text-xs">GPU clusters, cooling, power</p>
                   </div>
                   <div className="text-center">
-                          <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] flex items-center justify-center">
+                          <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-br from-[#32ca73] to-[#40d0f2] flex items-center justify-center">
                             <Icons.Cloud className="h-6 w-6 text-black" />
                     </div>
                           <h5 className="text-white font-medium text-sm">Platform</h5>
@@ -947,9 +948,9 @@ export default function Home() {
                   {/* Key Enterprise Features */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Always-on Availability */}
-                    <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-transparent rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                    <div className="bg-gradient-to-br from-[#32ca73]/10 to-transparent rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
                       <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#32ca73] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                           <Icons.Clock className="h-5 w-5 text-black flex-shrink-0" />
                   </div>
                         <h4 className="text-white font-semibold">Always-on Availability</h4>
@@ -960,7 +961,7 @@ export default function Home() {
             {/* Clean Energy Credits */}
                     <div className="bg-gradient-to-br from-[#32ca73]/10 to-transparent rounded-xl p-4 border border-[#32ca73]/20 group hover:border-[#32ca73]/40 transition-all duration-300">
                       <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#32ca73] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                           <Icons.Award className="h-5 w-5 text-black flex-shrink-0" />
                   </div>
                         <h4 className="text-white font-semibold">Clean Energy Credits</h4>
@@ -982,7 +983,7 @@ export default function Home() {
             {/* Spot & Reserved Instances */}
                     <div className="bg-gradient-to-br from-[#fbff52]/10 to-transparent rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
                       <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#fbff52] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#fbff52] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                           <Icons.Calendar className="h-5 w-5 text-black flex-shrink-0" />
                   </div>
                         <h4 className="text-white font-semibold">Spot & Reserved Instances</h4>
@@ -993,7 +994,7 @@ export default function Home() {
             {/* Remote Monitoring */}
                     <div className="bg-gradient-to-br from-[#32ca73]/10 to-transparent rounded-xl p-4 border border-[#32ca73]/20 group hover:border-[#32ca73]/40 transition-all duration-300">
                       <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#32ca73] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                           <Icons.Eye className="h-5 w-5 text-black flex-shrink-0" />
                   </div>
                         <h4 className="text-white font-semibold">Remote Monitoring</h4>
@@ -1002,9 +1003,9 @@ export default function Home() {
             </div>
 
                     {/* Compliance & Security */}
-                    <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-transparent rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                    <div className="bg-gradient-to-br from-[#32ca73]/10 to-transparent rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
                       <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#32ca73] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                           <Icons.Shield className="h-5 w-5 text-black flex-shrink-0" />
                   </div>
                         <h4 className="text-white font-semibold">Compliance & Security</h4>
@@ -1020,14 +1021,15 @@ export default function Home() {
       </section>
 
       {/* Animated Divider */}
-      <AnimatedDivider variant="wave" color="#32ca73" />
+      {/* Clean spacing between sections */}
+      <div className="h-16 md:h-24"></div>
 
       {/* Pricing Section */}
-      <section id="pricing" className="nav-trigger-pricing relative py-12 md:py-16 lg:py-20 xl:py-24">
+      <section id="pricing" className="nav-trigger-pricing relative py-20 md:py-24 lg:py-28 xl:py-32">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 sm:mb-16 md:mb-20">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-8 sm:mb-12 tracking-tight">
                 Transparent Pricing
               </h2>
               <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-[#CCCCCC] max-w-4xl mx-auto font-light leading-relaxed px-4">
@@ -1206,8 +1208,8 @@ export default function Home() {
 
             {/* Pre-Launch Offer - BACKUP (COMMENTED OUT) */}
             {/* 
-            <div className="bg-gradient-to-br from-[#d5aaf9]/20 to-[#40d0f2]/20 border border-[#d5aaf9]/30 rounded-2xl p-8 sm:p-12 text-center">
-              <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-[#d5aaf9] to-[#40d0f2] rounded-xl flex items-center justify-center">
+            <div className="bg-gradient-to-br from-[#32ca73]/20 to-[#40d0f2]/20 border border-[#d5aaf9]/30 rounded-2xl p-8 sm:p-12 text-center">
+              <div className="mx-auto mb-6 w-16 h-16 bg-gradient-to-br from-[#32ca73] to-[#40d0f2] rounded-xl flex items-center justify-center">
                 <Icons.Star className="h-8 w-8 text-black" />
               </div>
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
@@ -1318,13 +1320,14 @@ export default function Home() {
       </section>
 
       {/* Animated Divider */}
-      <AnimatedDivider variant="gradient" color="#40d0f2" />
+      {/* Clean spacing between sections */}
+      <div className="h-16 md:h-24"></div>
 
       {/* CTA / Contact Section */}
-      <section id="contact" className="nav-trigger-contact relative py-12 md:py-16 lg:py-20 xl:py-24">
+      <section id="contact" className="nav-trigger-contact relative py-20 md:py-24 lg:py-28 xl:py-32">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-8 sm:mb-12 tracking-tight">
               Ready to Get Started?
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-[#CCCCCC] mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto font-light leading-relaxed px-4">
@@ -1378,10 +1381,11 @@ export default function Home() {
       </main>
 
       {/* Animated Divider */}
-      <AnimatedDivider variant="dots" color="#d5aaf9" />
+      {/* Clean spacing before footer */}
+      <div className="h-12 md:h-16"></div>
       
       {/* Footer */}
-      <footer className="bg-black border-t border-[#d5aaf9]/20" role="contentinfo">
+      <footer className="bg-black border-t border-[#32ca73]/20" role="contentinfo">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-12 sm:py-16">
           <div className="text-center">
             {/* Company Info */}
