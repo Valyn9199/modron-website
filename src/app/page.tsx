@@ -624,7 +624,7 @@ export default function Home() {
               Use Cases
             </h2>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#CCCCCC] max-w-4xl mx-auto font-light leading-relaxed px-4">
-              Deploy enterprise-grade AI infrastructure anywhere in Australia within 48 hours—sovereign, sustainable, scalable
+              Deploy enterprise-grade AI infrastructure anywhere in Australia within 48 hours - sovereign, sustainable, scalable
             </p>
           </div>
           
