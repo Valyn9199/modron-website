@@ -238,7 +238,7 @@ export default function Home() {
 
       {/* Animated Divider */}
       {/* Clean spacing between sections */}
-      <div className="h-16 md:h-24"></div>
+      <div className="h-16 md:h-24 bg-black"></div>
 
       {/* Technology & Infrastructure Section */}
       <section id="technology" className="nav-trigger-technology mobile-section relative py-20 md:py-24 lg:py-28 xl:py-32 bg-black">
@@ -614,7 +614,7 @@ export default function Home() {
 
       {/* Animated Divider */}
       {/* Clean spacing between sections */}
-      <div className="h-16 md:h-24"></div>
+      <div className="h-16 md:h-24 bg-black"></div>
 
       {/* Use Cases Section */}
       <section id="use-cases" className="nav-trigger-use-cases relative z-10 overflow-visible py-20 md:py-24 lg:py-28 xl:py-32">
@@ -1022,7 +1022,7 @@ export default function Home() {
 
       {/* Animated Divider */}
       {/* Clean spacing between sections */}
-      <div className="h-16 md:h-24"></div>
+      <div className="h-16 md:h-24 bg-black"></div>
 
       {/* Pricing Section */}
       <section id="pricing" className="nav-trigger-pricing relative py-20 md:py-24 lg:py-28 xl:py-32">
@@ -1321,7 +1321,7 @@ export default function Home() {
 
       {/* Animated Divider */}
       {/* Clean spacing between sections */}
-      <div className="h-16 md:h-24"></div>
+      <div className="h-16 md:h-24 bg-black"></div>
 
       {/* CTA / Contact Section */}
       <section id="contact" className="nav-trigger-contact relative py-20 md:py-24 lg:py-28 xl:py-32">
@@ -1382,7 +1382,7 @@ export default function Home() {
 
       {/* Animated Divider */}
       {/* Clean spacing before footer */}
-      <div className="h-12 md:h-16"></div>
+      <div className="h-12 md:h-16 bg-black"></div>
       
       {/* Footer */}
       <footer className="bg-black border-t border-[#32ca73]/20" role="contentinfo">
