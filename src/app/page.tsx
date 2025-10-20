@@ -138,7 +138,7 @@ export default function Home() {
             console.log('Vision details button clicked, current state:', showVisionDetails);
             setShowVisionDetails(!showVisionDetails);
           }}
-          className="w-full bg-gray-100/50 border border-gray-200 text-gray-400 py-3 rounded-lg hover:bg-gray-200/50 hover:text-white transition-normal flex items-center justify-center relative z-10 max-w-md mx-auto touch-friendly"
+          className="w-full bg-black border border-gray-600 text-gray-400 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-normal flex items-center justify-center relative z-10 max-w-md mx-auto touch-friendly"
         >
           <span className="font-medium mr-2">Why MODRON</span>
           <Icons.ChevronDown className={`h-4 w-4 transition-normal ${showVisionDetails ? 'rotate-180' : ''}`} />
@@ -198,7 +198,7 @@ export default function Home() {
           <div className="mt-12 text-center">
               <details className="group">
                 <summary className="cursor-pointer list-none">
-                <div className="flex items-center justify-center p-3 sm:p-4 bg-gray-100/50 border border-gray-200 rounded-xl hover:border-gray-400 transition-all duration-200 max-w-md mx-auto">
+                <div className="flex items-center justify-center p-3 sm:p-4 bg-black border border-gray-600 rounded-xl hover:border-gray-400 transition-all duration-200 max-w-md mx-auto">
                   <span className="text-gray-400 font-medium mr-2 text-caption">Learn More About Our Philosophy</span>
                   <Icons.ChevronDown className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 transition-transform duration-200 group-open:rotate-180" />
                   </div>
@@ -207,21 +207,21 @@ export default function Home() {
                 <div className="mt-6">
               <StaggeredReveal staggerDelay={150}>
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
-                    <div className="bg-gray-100/50 border border-gray-200 rounded-xl p-4 sm:p-6 hover:border-primary-purple/30 transition-all duration-200 group">
+                    <div className="bg-black border border-gray-600 rounded-xl p-4 sm:p-6 hover:border-primary-purple/30 transition-all duration-200 group">
                       <h3 className="text-body font-bold text-white mb-3 sm:mb-4 group-hover:text-primary-purple transition-colors">Australian Sovereignty</h3>
                       <p className="text-gray-400 text-caption leading-relaxed">
                           Locally assembled, locally operated, locally controlled. Every GPU cluster is built in Australia with Australian oversight and data residency guarantees.
                   </p>
                 </div>
                 
-                    <div className="bg-gray-100/50 border border-gray-200 rounded-xl p-4 sm:p-6 hover:border-primary-cyan/30 transition-all duration-200 group">
+                    <div className="bg-black border border-gray-600 rounded-xl p-4 sm:p-6 hover:border-primary-cyan/30 transition-all duration-200 group">
                       <h3 className="text-body font-bold text-white mb-3 sm:mb-4 group-hover:text-primary-cyan transition-colors">Renewable-First Operations</h3>
                       <p className="text-gray-400 text-caption leading-relaxed">
                           Solar panels, battery storage, and grid integration designed for 80-95% renewable energy usage with carbon-neutral operations.
                   </p>
                 </div>
                 
-                    <div className="bg-gray-100/50 border border-gray-200 rounded-xl p-4 sm:p-6 hover:border-primary-green/30 transition-all duration-200 group">
+                    <div className="bg-black border border-gray-600 rounded-xl p-4 sm:p-6 hover:border-primary-green/30 transition-all duration-200 group">
                       <h3 className="text-body font-bold text-white mb-3 sm:mb-4 group-hover:text-primary-green transition-colors">Container-Native Architecture</h3>
                       <p className="text-gray-400 text-caption leading-relaxed">
                           Shipping container infrastructure enables rapid deployment, easy scaling, and disaster recovery across multiple Australian locations.
@@ -259,7 +259,7 @@ export default function Home() {
             <div className="hidden lg:block">
               <ProgressiveReveal delay={200}>
               <div className="relative">
-                  <div className="bg-gray-100/50 border border-gray-200 rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
+                  <div className="bg-black border border-gray-600 rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
                   {/* Solar + Grid Power */}
                   <div className="flex items-center justify-center mb-6 sm:mb-8">
                       <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#32ca73] to-[#40d0f2]">
@@ -307,7 +307,7 @@ export default function Home() {
                 <div className="p-4 bg-[#1A1A1A]/30 border border-[#262626] rounded-xl">
                   <ProgressiveReveal delay={200}>
                     <div className="relative">
-                      <div className="bg-gray-100/50 border border-gray-200 rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
+                      <div className="bg-black border border-gray-600 rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
                         {/* Solar + Grid Power */}
                         <div className="flex items-center justify-center mb-6 sm:mb-8">
                             <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#32ca73] to-[#40d0f2]">
@@ -355,7 +355,7 @@ export default function Home() {
             <div className="lg:hidden">
               <details className="group mb-6">
                 <summary className="cursor-pointer list-none">
-                  <div className="flex items-center justify-between p-4 bg-gray-100/50 border border-gray-200 rounded-xl hover:border-primary-purple/30 transition-all duration-200">
+                  <div className="flex items-center justify-between p-4 bg-black border border-gray-600 rounded-xl hover:border-primary-purple/30 transition-all duration-200">
                     <h3 className="text-white font-semibold text-lg">Infrastructure Overview</h3>
                     <div className="flex items-center space-x-2">
                       <span className="text-primary-cyan text-sm font-medium">View Details</span>
@@ -368,7 +368,7 @@ export default function Home() {
             <StaggeredReveal staggerDelay={100}>
             <div className="space-y-6 sm:space-y-8">
               {/* GPU Nodes */}
-                <div className="bg-gray-100/50 border border-gray-200 rounded-xl p-4 sm:p-5 md:p-6 hover:border-primary-purple/30 transition-all duration-200" style={{ willChange: 'transform' }}>
+                <div className="bg-black border border-gray-600 rounded-xl p-4 sm:p-5 md:p-6 hover:border-primary-purple/30 transition-all duration-200" style={{ willChange: 'transform' }}>
                 <div className="flex items-start">
                     <div className="rounded-xl p-2 sm:p-3 mr-3 sm:mr-4" style={{ backgroundColor: '#d5aaf9' }}>
                     <Icons.Cpu className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
@@ -384,7 +384,7 @@ export default function Home() {
               </div>
               
               {/* Immersion Cooling */}
-                <div className="bg-gray-100/50 border border-gray-200 rounded-xl p-4 sm:p-5 md:p-6 hover:border-primary-cyan/30 transition-all duration-200" style={{ willChange: 'transform' }}>
+                <div className="bg-black border border-gray-600 rounded-xl p-4 sm:p-5 md:p-6 hover:border-primary-cyan/30 transition-all duration-200" style={{ willChange: 'transform' }}>
                 <div className="flex items-start">
                     <div className="rounded-xl p-2 sm:p-3 mr-3 sm:mr-4" style={{ backgroundColor: '#40d0f2' }}>
                     <Icons.Droplets className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
@@ -400,7 +400,7 @@ export default function Home() {
               </div>
               
               {/* Solar + Grid Hybrid */}
-                <div className="bg-gray-100/50 border border-gray-200 rounded-xl p-4 sm:p-5 md:p-6 hover:border-primary-green/30 transition-all duration-200" style={{ willChange: 'transform' }}>
+                <div className="bg-black border border-gray-600 rounded-xl p-4 sm:p-5 md:p-6 hover:border-primary-green/30 transition-all duration-200" style={{ willChange: 'transform' }}>
                 <div className="flex items-start">
                     <div className="rounded-xl p-2 sm:p-3 mr-3 sm:mr-4" style={{ backgroundColor: '#32ca73' }}>
                     <Icons.Zap className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
@@ -416,7 +416,7 @@ export default function Home() {
               </div>
               
               {/* Vast.ai + Direct Connect */}
-                <div className="bg-gray-100/50 border border-gray-200 rounded-xl p-4 sm:p-5 md:p-6 hover:border-primary-purple/30 transition-all duration-200" style={{ willChange: 'transform' }}>
+                <div className="bg-black border border-gray-600 rounded-xl p-4 sm:p-5 md:p-6 hover:border-primary-purple/30 transition-all duration-200" style={{ willChange: 'transform' }}>
                 <div className="flex items-start">
                     <div className="rounded-xl p-2 sm:p-3 mr-3 sm:mr-4" style={{ backgroundColor: '#fbff52' }}>
                     <Icons.Server className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
@@ -441,7 +441,7 @@ export default function Home() {
               <StaggeredReveal staggerDelay={100}>
                 <div className="space-y-6 sm:space-y-8">
                   {/* GPU Nodes */}
-                  <div className="bg-gray-100/50 border border-gray-200 rounded-xl p-4 sm:p-5 md:p-6 hover:border-primary-purple/30 transition-all duration-200" style={{ willChange: 'transform' }}>
+                  <div className="bg-black border border-gray-600 rounded-xl p-4 sm:p-5 md:p-6 hover:border-primary-purple/30 transition-all duration-200" style={{ willChange: 'transform' }}>
                     <div className="flex items-start">
                       <div className="rounded-xl p-2 sm:p-3 mr-3 sm:mr-4" style={{ backgroundColor: '#d5aaf9' }}>
                         <Icons.Cpu className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
@@ -457,7 +457,7 @@ export default function Home() {
             </div>
             
                   {/* Immersion Cooling */}
-                  <div className="bg-gray-100/50 border border-gray-200 rounded-xl p-4 sm:p-5 md:p-6 hover:border-primary-cyan/30 transition-all duration-200" style={{ willChange: 'transform' }}>
+                  <div className="bg-black border border-gray-600 rounded-xl p-4 sm:p-5 md:p-6 hover:border-primary-cyan/30 transition-all duration-200" style={{ willChange: 'transform' }}>
                     <div className="flex items-start">
                       <div className="rounded-xl p-2 sm:p-3 mr-3 sm:mr-4" style={{ backgroundColor: '#40d0f2' }}>
                         <Icons.Droplets className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
@@ -473,7 +473,7 @@ export default function Home() {
               </div>
               
                   {/* Solar + Battery Hybrid */}
-                  <div className="bg-gray-100/50 border border-gray-200 rounded-xl p-4 sm:p-5 md:p-6 hover:border-primary-green/30 transition-all duration-200" style={{ willChange: 'transform' }}>
+                  <div className="bg-black border border-gray-600 rounded-xl p-4 sm:p-5 md:p-6 hover:border-primary-green/30 transition-all duration-200" style={{ willChange: 'transform' }}>
                     <div className="flex items-start">
                       <div className="rounded-xl p-2 sm:p-3 mr-3 sm:mr-4" style={{ backgroundColor: '#32ca73' }}>
                         <Icons.Zap className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
@@ -489,7 +489,7 @@ export default function Home() {
               </div>
               
                   {/* Container Infrastructure */}
-                  <div className="bg-gray-100/50 border border-gray-200 rounded-xl p-4 sm:p-5 md:p-6 hover:border-[#fbff52]/30 transition-all duration-200" style={{ willChange: 'transform' }}>
+                  <div className="bg-black border border-gray-600 rounded-xl p-4 sm:p-5 md:p-6 hover:border-[#fbff52]/30 transition-all duration-200" style={{ willChange: 'transform' }}>
                     <div className="flex items-start">
                       <div className="rounded-xl p-2 sm:p-3 mr-3 sm:mr-4" style={{ backgroundColor: '#fbff52' }}>
                         <Icons.Server className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
@@ -515,7 +515,7 @@ export default function Home() {
                 console.log('Interactive Infrastructure button clicked, current state:', showInteractiveInfrastructure);
                 setShowInteractiveInfrastructure(!showInteractiveInfrastructure);
               }}
-              className="w-full bg-gray-100/50 border border-gray-200 text-gray-400 py-3 rounded-lg hover:bg-gray-200/50 hover:text-white transition-normal flex items-center justify-center relative z-10 max-w-md mx-auto"
+              className="w-full bg-black border border-gray-600 text-gray-400 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-normal flex items-center justify-center relative z-10 max-w-md mx-auto"
             >
               <span className="font-medium mr-2">Explore Interactive Infrastructure</span>
               <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showInteractiveInfrastructure ? 'rotate-180' : ''}`} />
@@ -669,7 +669,7 @@ export default function Home() {
               </div>
               
               {/* Tab Content */}
-            <div className="bg-gray-100/50 border border-gray-200 rounded-2xl p-6 hover:border-[#40d5f2]/30 transition-all duration-300 group relative overflow-hidden">
+            <div className="bg-black border border-gray-600 rounded-2xl p-6 hover:border-[#40d5f2]/30 transition-all duration-300 group relative overflow-hidden">
                       {/* Animated background gradient on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#40d5f2]/5 via-[#d5aaf9]/5 to-[#32ca73]/5 opacity-0 group-hover:opacity-100 transition-slow rounded-2xl"></div>
               
@@ -728,7 +728,7 @@ export default function Home() {
                     console.log('Workflow button clicked, current state:', showWorkflowDetails);
                     setShowWorkflowDetails(!showWorkflowDetails);
                   }}
-                  className="w-full bg-gray-100/50 border border-gray-200 text-gray-400 py-3 rounded-lg hover:bg-gray-200/50 hover:text-white transition-normal flex items-center justify-center relative z-10"
+                  className="w-full bg-black border border-gray-600 text-gray-400 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-normal flex items-center justify-center relative z-10"
                 >
                   <span className="font-medium mr-2">View Detailed Workflow</span>
                   <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showWorkflowDetails ? 'rotate-180' : ''}`} />
@@ -856,7 +856,7 @@ export default function Home() {
                     console.log('Use case button clicked, current state:', showUseCaseDetails);
                     setShowUseCaseDetails(!showUseCaseDetails);
                   }}
-                  className="w-full bg-gray-100/50 border border-gray-200 text-gray-400 py-3 rounded-lg hover:bg-gray-200/50 hover:text-white transition-normal flex items-center justify-center relative z-10"
+                  className="w-full bg-black border border-gray-600 text-gray-400 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-normal flex items-center justify-center relative z-10"
                 >
                   <span className="font-medium mr-2">View Detailed Use Cases</span>
                   <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showUseCaseDetails ? 'rotate-180' : ''}`} />
@@ -917,7 +917,7 @@ export default function Home() {
                   
                   {/* Simplified Enterprise System Architecture */}
                   <div className="mb-8">
-                    <div className="bg-gray-100/50 border border-gray-200 rounded-xl p-6">
+                    <div className="bg-black border border-gray-600 rounded-xl p-6">
                       <h4 className="text-lg font-semibold text-white mb-4 text-center">Enterprise System Architecture</h4>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="text-center">
@@ -1043,7 +1043,7 @@ export default function Home() {
               {/* Desktop Table */}
               <div className="hidden md:block overflow-x-auto -mx-4 sm:mx-0">
                 <div className="min-w-[800px] sm:min-w-0">
-                  <table className="w-full bg-gray-100/50 border border-gray-200 rounded-xl overflow-hidden">
+                  <table className="w-full bg-black border border-gray-600 rounded-xl overflow-hidden">
                     <thead>
                       <tr className="bg-[#262626]/50">
                         <th className="text-left p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">Provider</th>
@@ -1121,7 +1121,7 @@ export default function Home() {
                 </div>
 
                 {/* AWS Card */}
-                <div className="bg-gray-100/50 border border-gray-200 rounded-xl p-4">
+                <div className="bg-black border border-gray-600 rounded-xl p-4">
                   <div className="flex items-center justify-between mb-3">
                     <h4 className="text-white font-bold text-lg">AWS</h4>
                     <span className="text-[#CCCCCC] font-bold text-lg">~$1.20+</span>
@@ -1147,7 +1147,7 @@ export default function Home() {
                 </div>
 
                 {/* GCP Card */}
-                <div className="bg-gray-100/50 border border-gray-200 rounded-xl p-4">
+                <div className="bg-black border border-gray-600 rounded-xl p-4">
                   <div className="flex items-center justify-between mb-3">
                     <h4 className="text-white font-bold text-lg">GCP</h4>
                     <span className="text-[#CCCCCC] font-bold text-lg">~$1.10+</span>
@@ -1173,7 +1173,7 @@ export default function Home() {
                 </div>
 
                 {/* Lambda Labs Card */}
-                <div className="bg-gray-100/50 border border-gray-200 rounded-xl p-4">
+                <div className="bg-black border border-gray-600 rounded-xl p-4">
                   <div className="flex items-center justify-between mb-3">
                     <h4 className="text-white font-bold text-lg">Lambda Labs</h4>
                     <span className="text-[#CCCCCC] font-bold text-lg">~$0.90</span>
@@ -1304,7 +1304,7 @@ export default function Home() {
                 console.log('Competitive Comparison button clicked, current state:', showCompetitiveComparison);
                 setShowCompetitiveComparison(!showCompetitiveComparison);
               }}
-              className="w-full bg-gray-100/50 border border-gray-200 text-gray-400 py-3 rounded-lg hover:bg-gray-200/50 hover:text-white transition-normal flex items-center justify-center relative z-10 max-w-md mx-auto"
+              className="w-full bg-black border border-gray-600 text-gray-400 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-normal flex items-center justify-center relative z-10 max-w-md mx-auto"
             >
               <span className="font-medium mr-2">View Competitive Comparison</span>
               <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showCompetitiveComparison ? 'rotate-180' : ''}`} />
@@ -1343,7 +1343,7 @@ export default function Home() {
                     console.log('Contact Form button clicked, current state:', showContactForm);
                     setShowContactForm(!showContactForm);
                   }}
-                  className="w-full bg-gray-100/50 border border-gray-200 text-gray-400 py-3 rounded-lg hover:bg-gray-200/50 hover:text-white transition-normal flex items-center justify-center relative z-10 max-w-md mx-auto"
+                  className="w-full bg-black border border-gray-600 text-gray-400 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-normal flex items-center justify-center relative z-10 max-w-md mx-auto"
                 >
                   <span className="font-medium mr-2">Get in Touch</span>
                   <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showContactForm ? 'rotate-180' : ''}`} />
@@ -1351,7 +1351,7 @@ export default function Home() {
               </div>
               
               {showContactForm && (
-                <div className="bg-gray-100/50 border border-gray-200 rounded-2xl p-4 sm:p-6 md:p-8 max-w-2xl mx-auto">
+                <div className="bg-black border border-gray-600 rounded-2xl p-4 sm:p-6 md:p-8 max-w-2xl mx-auto">
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Get in Touch</h3>
                   <p className="text-[#999999] mb-6 sm:mb-8 text-caption">
                 Have questions? Send us a message and we&apos;ll get back to you within 24 hours.
@@ -1364,7 +1364,7 @@ export default function Home() {
             
             {/* Contact Form - Desktop: Always Visible */}
             <div className="hidden md:block">
-              <div className="bg-gray-100/50 border border-gray-200 rounded-2xl p-4 sm:p-6 md:p-8 max-w-2xl mx-auto">
+              <div className="bg-black border border-gray-600 rounded-2xl p-4 sm:p-6 md:p-8 max-w-2xl mx-auto">
                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Get in Touch</h3>
                 <p className="text-[#999999] mb-6 sm:mb-8 text-caption">
                   Have questions? Send us a message and we&apos;ll get back to you within 24 hours.
