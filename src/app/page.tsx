@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from "react";
+import React from "react";
 import { OptimizedScrollIndicator } from "@/components/optimized-scroll-indicator";
 
 import { EnhancedForm } from "@/components/enhanced-form";
@@ -9,7 +9,6 @@ import { MobileViewport } from "@/components/mobile-viewport";
 import { Icons } from "@/lib/icon-imports";
 import { HeroBgVideo } from "@/components/hero-bg-video";
 import Image from "next/image";
-import { EnhancedLoadingSkeleton } from "@/components/enhanced-loading-skeleton";
  
 // Lazy-load non-critical components
 const ImmersionTankVideo = dynamic(() => import("@/components/immersion-tank-video").then(mod => ({ default: mod.ImmersionTankVideo })));
@@ -18,9 +17,6 @@ const ImmersionTankVideo = dynamic(() => import("@/components/immersion-tank-vid
 import dynamic from 'next/dynamic';
 
 // Lazy-load heavier, below-the-fold components to reduce initial JS
-const AnimatedHowItWorks = dynamic(() => import("@/components/animated-how-it-works").then(mod => ({ default: mod.AnimatedHowItWorks })), {
-  loading: () => <EnhancedLoadingSkeleton variant="card" height="300px" />
-});
 const StaggeredReveal = dynamic(() => import("@/components/page-transition").then(mod => ({ default: mod.StaggeredReveal })));
 const ProgressiveReveal = dynamic(() => import("@/components/page-transition").then(mod => ({ default: mod.ProgressiveReveal })));
 
@@ -31,14 +27,11 @@ import { EnhancedBookingButton } from "@/components/enhanced-booking-button";
 // const FloatingStatsOverlay = dynamic(() => import("@/components/floating-stats-overlay").then(mod => ({ default: mod.FloatingStatsOverlay })), {
 //   loading: () => <div className="hidden lg:block" />
 // }); // REMOVED - cleaner hero without cards
-const MobileCollapsibleSection = dynamic(() => import("@/components/collapsible-section").then(mod => ({ default: mod.MobileCollapsibleSection })));
-const AnimatedProgressBar = dynamic(() => import("@/components/animated-progress-bar").then(mod => ({ default: mod.AnimatedProgressBar })));
 const ParallaxSection = dynamic(() => import("@/components/parallax-section").then(mod => ({ default: mod.ParallaxSection })));
 const ScrollReveal = dynamic(() => import("@/components/scroll-reveal").then(mod => ({ default: mod.ScrollReveal })));
 const AnimatedDivider = dynamic(() => import("@/components/animated-divider").then(mod => ({ default: mod.AnimatedDivider })));
 const InteractiveInfrastructure = dynamic(() => import("@/components/interactive-infrastructure").then(mod => ({ default: mod.InteractiveInfrastructure })));
 const DynamicComparison = dynamic(() => import("@/components/dynamic-comparison").then(mod => ({ default: mod.DynamicComparison })));
-const AnimatedCounter = dynamic(() => import("@/components/animated-counter").then(mod => ({ default: mod.AnimatedCounter })));
 const ScrollProgress = dynamic(() => import("@/components/scroll-progress").then(mod => ({ default: mod.ScrollProgress })));
 const AnimatedHeadline = dynamic(() => import("@/components/animated-headline").then(mod => ({ default: mod.AnimatedHeadline })));
 
@@ -48,7 +41,6 @@ export default function Home() {
   const [showUseCaseDetails, setShowUseCaseDetails] = React.useState(false)
   const [activeUseCaseTab, setActiveUseCaseTab] = React.useState<'ai-development' | 'industry-applications' | 'enterprise-features'>('ai-development')
   const [showCompetitiveComparison, setShowCompetitiveComparison] = React.useState(false)
-  const [showHowItWorks, setShowHowItWorks] = React.useState(false)
   const [showVisionDetails, setShowVisionDetails] = React.useState(false)
   const [showInteractiveInfrastructure, setShowInteractiveInfrastructure] = React.useState(false)
   const [showContactForm, setShowContactForm] = React.useState(false)
