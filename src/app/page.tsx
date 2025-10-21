@@ -50,7 +50,7 @@ export default function Home() {
   // Performance optimizations in progress - console logs removed for production
   const [showWorkflowDetails, setShowWorkflowDetails] = React.useState(false)
   const [showUseCaseDetails, setShowUseCaseDetails] = React.useState(false)
-  const [activeUseCaseTab, setActiveUseCaseTab] = React.useState<'ai-development' | 'industry-applications' | 'enterprise-features' | 'gpu-solutions'>('ai-development')
+  const [activeUseCaseTab, setActiveUseCaseTab] = React.useState<'overview' | 'ai-development' | 'industry-applications' | 'enterprise-features' | 'gpu-solutions'>('overview')
   const [showCompetitiveComparison, setShowCompetitiveComparison] = React.useState(false)
   const [showVisionDetails, setShowVisionDetails] = React.useState(false)
   const [showContactForm, setShowContactForm] = React.useState(false)
@@ -562,7 +562,7 @@ export default function Home() {
             {/* Content Side */}
             <div className="order-2 lg:order-2">
               <div className="max-w-lg mx-auto lg:mx-0">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6 sm:mb-8 tracking-tight">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-6 sm:mb-8 tracking-tight">
                   Modular Deployment
                 </h2>
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-[#CCCCCC] mb-6 sm:mb-8 font-light leading-relaxed">
@@ -628,10 +628,21 @@ export default function Home() {
           <div className="max-w-7xl mx-auto">
             {/* Tabbed Navigation */}
             <div className="flex justify-center mb-8">
-              <div className="bg-[#1A1A1A]/30 border border-[#262626] rounded-xl p-1 flex">
+              <div className="bg-[#1A1A1A]/30 border border-[#262626] rounded-xl p-1 flex overflow-x-auto w-full max-w-4xl" style={{ scrollbarWidth: 'thin', scrollbarColor: '#4B5563 transparent' }}>
+                <button
+                  onClick={() => setActiveUseCaseTab('overview')}
+                  className={`px-2 sm:px-6 py-1.5 sm:py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center text-xs sm:text-base whitespace-nowrap flex-shrink-0 ${
+                    activeUseCaseTab === 'overview'
+                      ? 'bg-[#1A1A1A]/50 text-white underline underline-offset-4'
+                      : 'text-[#CCCCCC] hover:text-white hover:bg-[#1A1A1A]/50'
+                  }`}
+                >
+                  <Icons.Eye className="h-4 w-4 mr-2 hidden sm:block" />
+                  Overview
+                </button>
                 <button
                   onClick={() => setActiveUseCaseTab('ai-development')}
-                  className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center ${
+                  className={`px-2 sm:px-6 py-1.5 sm:py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center text-xs sm:text-base whitespace-nowrap flex-shrink-0 ${
                     activeUseCaseTab === 'ai-development'
                       ? 'bg-[#1A1A1A]/50 text-white underline underline-offset-4'
                       : 'text-[#CCCCCC] hover:text-white hover:bg-[#1A1A1A]/50'
@@ -642,7 +653,7 @@ export default function Home() {
                 </button>
                 <button
                   onClick={() => setActiveUseCaseTab('industry-applications')}
-                  className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center ${
+                  className={`px-2 sm:px-6 py-1.5 sm:py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center text-xs sm:text-base whitespace-nowrap flex-shrink-0 ${
                     activeUseCaseTab === 'industry-applications'
                       ? 'bg-[#1A1A1A]/50 text-white underline underline-offset-4'
                       : 'text-[#CCCCCC] hover:text-white hover:bg-[#1A1A1A]/50'
@@ -653,7 +664,7 @@ export default function Home() {
                 </button>
                 <button
                   onClick={() => setActiveUseCaseTab('enterprise-features')}
-                  className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center ${
+                  className={`px-2 sm:px-6 py-1.5 sm:py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center text-xs sm:text-base whitespace-nowrap flex-shrink-0 ${
                     activeUseCaseTab === 'enterprise-features'
                       ? 'bg-[#1A1A1A]/50 text-white underline underline-offset-4'
                       : 'text-[#CCCCCC] hover:text-white hover:bg-[#1A1A1A]/50'
@@ -664,7 +675,7 @@ export default function Home() {
                 </button>
                 <button
                   onClick={() => setActiveUseCaseTab('gpu-solutions')}
-                  className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center ${
+                  className={`px-2 sm:px-6 py-1.5 sm:py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center text-xs sm:text-base whitespace-nowrap flex-shrink-0 ${
                     activeUseCaseTab === 'gpu-solutions'
                       ? 'bg-[#1A1A1A]/50 text-white underline underline-offset-4'
                       : 'text-[#CCCCCC] hover:text-white hover:bg-[#1A1A1A]/50'
@@ -680,6 +691,38 @@ export default function Home() {
             <div className="bg-black border border-[#4A4A4A] rounded-2xl p-6 hover:border-[#40d5f2]/30 transition-all duration-300 group relative overflow-hidden">
                       {/* Animated background gradient on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#40d5f2]/5 via-[#d5aaf9]/5 to-[#32ca73]/5 opacity-0 group-hover:opacity-100 transition-slow rounded-2xl"></div>
+              
+              {/* Overview Tab Content */}
+              {activeUseCaseTab === 'overview' && (
+                <div className="relative z-10">
+                  <h3 className="text-xl font-bold text-white mb-6 text-center">Supercomputing Made Simple</h3>
+                  
+                  {/* Video Section */}
+                  <div className="mb-8">
+                    <div className="relative w-full max-w-4xl mx-auto aspect-video bg-black rounded-xl overflow-hidden border border-[#4A4A4A]">
+                      <video
+                        className="w-full h-full object-cover"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        poster="/AI_Clouds_01.png"
+                        aria-label="MODRON Use Cases Overview - Shipping Container Infrastructure"
+                      >
+                        <source src="/MODRON_Hero_Containers_04.mp4" type="video/mp4" />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="text-center">
+                            <Icons.Eye className="h-16 w-16 text-white mx-auto mb-4 opacity-80" />
+                            <p className="text-white text-lg mb-2">MODRON Use Cases Overview</p>
+                            <p className="text-gray-400 text-sm">Discover the possibilities with Australia's first deployable supercomputers</p>
+                          </div>
+                        </div>
+                      </video>
+                    </div>
+                  </div>
+                  
+                </div>
+              )}
               
               {/* AI Development Process Tab Content */}
               {activeUseCaseTab === 'ai-development' && (
@@ -1233,7 +1276,7 @@ export default function Home() {
                 </div>
 
                 {/* AWS Card */}
-                <div className="bg-black border border-[#4A4A4A] rounded-xl p-4">
+                <div className="hidden md:block bg-black border border-[#4A4A4A] rounded-xl p-4">
                   <div className="flex items-center justify-between mb-3">
                     <h4 className="text-white font-bold text-lg">AWS</h4>
                     <span className="text-[#CCCCCC] font-bold text-lg">~$1.20+</span>
@@ -1259,7 +1302,7 @@ export default function Home() {
                 </div>
 
                 {/* GCP Card */}
-                <div className="bg-black border border-[#4A4A4A] rounded-xl p-4">
+                <div className="hidden md:block bg-black border border-[#4A4A4A] rounded-xl p-4">
                   <div className="flex items-center justify-between mb-3">
                     <h4 className="text-white font-bold text-lg">GCP</h4>
                     <span className="text-[#CCCCCC] font-bold text-lg">~$1.10+</span>
@@ -1285,7 +1328,7 @@ export default function Home() {
                 </div>
 
                 {/* Lambda Labs Card */}
-                <div className="bg-black border border-[#4A4A4A] rounded-xl p-4">
+                <div className="hidden md:block bg-black border border-[#4A4A4A] rounded-xl p-4">
                   <div className="flex items-center justify-between mb-3">
                     <h4 className="text-white font-bold text-lg">Lambda Labs</h4>
                     <span className="text-[#CCCCCC] font-bold text-lg">~$0.90</span>
