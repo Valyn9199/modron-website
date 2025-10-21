@@ -137,7 +137,7 @@ export default function Home() {
             console.log('Vision details button clicked, current state:', showVisionDetails);
             setShowVisionDetails(!showVisionDetails);
           }}
-          className="w-full bg-black border border-[#4A4A4A] text-gray-400 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-normal flex items-center justify-center relative z-10 max-w-md mx-auto touch-friendly"
+          className="w-full bg-black border border-[#4A4A4A] text-gray-400 py-3 rounded-lg hover:bg-[#2A2A2A] hover:text-white transition-normal flex items-center justify-center relative z-10 max-w-md mx-auto touch-friendly"
         >
           <span className="font-medium mr-2">Why MODRON</span>
           <Icons.ChevronDown className={`h-4 w-4 transition-normal ${showVisionDetails ? 'rotate-180' : ''}`} />
@@ -735,7 +735,7 @@ export default function Home() {
                     console.log('Workflow button clicked, current state:', showWorkflowDetails);
                     setShowWorkflowDetails(!showWorkflowDetails);
                   }}
-                  className="w-full bg-black border border-[#4A4A4A] text-gray-400 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-normal flex items-center justify-center relative z-10"
+                  className="w-full bg-black border border-[#4A4A4A] text-gray-400 py-3 rounded-lg hover:bg-[#2A2A2A] hover:text-white transition-normal flex items-center justify-center relative z-10"
                 >
                   <span className="font-medium mr-2">View Detailed Workflow</span>
                   <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showWorkflowDetails ? 'rotate-180' : ''}`} />
@@ -863,7 +863,7 @@ export default function Home() {
                     console.log('Use case button clicked, current state:', showUseCaseDetails);
                     setShowUseCaseDetails(!showUseCaseDetails);
                   }}
-                  className="w-full bg-black border border-[#4A4A4A] text-gray-400 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-normal flex items-center justify-center relative z-10"
+                  className="w-full bg-black border border-[#4A4A4A] text-gray-400 py-3 rounded-lg hover:bg-[#2A2A2A] hover:text-white transition-normal flex items-center justify-center relative z-10"
                 >
                   <span className="font-medium mr-2">View Detailed Use Cases</span>
                   <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showUseCaseDetails ? 'rotate-180' : ''}`} />
@@ -1415,7 +1415,7 @@ export default function Home() {
                 console.log('Competitive Comparison button clicked, current state:', showCompetitiveComparison);
                 setShowCompetitiveComparison(!showCompetitiveComparison);
               }}
-              className="w-full bg-black border border-[#4A4A4A] text-gray-400 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-normal flex items-center justify-center relative z-10 max-w-md mx-auto"
+              className="w-full bg-black border border-[#4A4A4A] text-gray-400 py-3 rounded-lg hover:bg-[#2A2A2A] hover:text-white transition-normal flex items-center justify-center relative z-10 max-w-md mx-auto"
             >
               <span className="font-medium mr-2">View Competitive Comparison</span>
               <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showCompetitiveComparison ? 'rotate-180' : ''}`} />
@@ -1454,7 +1454,7 @@ export default function Home() {
                     console.log('Contact Form button clicked, current state:', showContactForm);
                     setShowContactForm(!showContactForm);
                   }}
-                  className="w-full bg-black border border-[#4A4A4A] text-gray-400 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-normal flex items-center justify-center relative z-10 max-w-md mx-auto"
+                  className="w-full bg-black border border-[#4A4A4A] text-gray-400 py-3 rounded-lg hover:bg-[#2A2A2A] hover:text-white transition-normal flex items-center justify-center relative z-10 max-w-md mx-auto"
                 >
                   <span className="font-medium mr-2">Get in Touch</span>
                   <Icons.ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showContactForm ? 'rotate-180' : ''}`} />

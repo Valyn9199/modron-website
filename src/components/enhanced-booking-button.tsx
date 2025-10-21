@@ -38,7 +38,7 @@ export function EnhancedBookingButton({ onOpenContactForm }: EnhancedBookingButt
       onClick={handleClick}
       glow
       ripple
-      className="mobile-button w-full sm:w-auto group relative overflow-hidden bg-gray-100 hover:bg-gray-200 text-white transition-all duration-300"
+      className="mobile-button w-full sm:w-auto group relative overflow-hidden bg-gray-100 hover:bg-[#E0E0E0] text-white transition-all duration-300"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

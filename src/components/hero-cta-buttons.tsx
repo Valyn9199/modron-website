@@ -38,7 +38,7 @@ export function HeroCTAButtons() {
       <LoadingButton 
         variant="outline" 
         size="lg" 
-        className="text-body px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 border-2 border-[#4A4A4A] text-gray-400 hover:bg-gray-200 hover:border-primary-cyan hover:text-white transition-all duration-300 transform hover:scale-105"
+        className="text-body px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 border-2 border-[#4A4A4A] text-gray-400 hover:bg-[#E0E0E0] hover:border-primary-cyan hover:text-white transition-all duration-300 transform hover:scale-105"
         loadingText="Connecting..."
         onClick={handleGetCompute}
         aria-label="Get compute access and scroll to contact section"
