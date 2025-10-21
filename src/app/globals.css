@@ -961,6 +961,15 @@
   .parallax-mobile {
     transform: none !important;
   }
+
+  /* Simplified video styling - no conflicting transforms */
+  .video-container {
+    position: relative;
+  }
+  
+  video {
+    position: relative;
+  }
     /* Prevent text selection on interactive elements */
     button, a, [role="button"] {
       -webkit-touch-callout: none;

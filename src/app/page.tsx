@@ -112,22 +112,16 @@ export default function Home() {
     <div className="layout-content-wide">
       {/* Mission Statement - Updated for fresh deployment */}
       <div className="text-center mb-12 sm:mb-16 md:mb-20">
-        <ScrollReveal animation="fade" delay={0}>
-            <h2 id="vision-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-8 sm:mb-12 tracking-tight">
-            Vision
-          </h2>
-        </ScrollReveal>
-        <ParallaxSection speed={0.3}>
-          <p className="text-body text-gray-500 leading-relaxed !font-bold max-w-5xl mx-auto mb-8 px-4">
-            Australia's first deployable supercomputers in a box. Locally assembled, solar powered, and modular, delivering rapid deployment and compute independence for Australian businesses, researchers, and government agencies.
-          </p>
-          <p className="text-body text-gray-400 leading-relaxed font-light max-w-4xl mx-auto mb-12 sm:mb-16 px-4">
-            Built on three pillars: Australian sovereignty, renewable first operations, and container native architecture.
-          </p>
-        </ParallaxSection>
-        <ScrollReveal animation="zoom" delay={200}>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#32ca73] via-[#40d0f2] via-[#d5aaf9] to-[#fbff52] mx-auto mt-4"></div>
-        </ScrollReveal>
+        <h2 id="vision-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-8 sm:mb-12 tracking-tight">
+          Vision
+        </h2>
+        <p className="text-body text-gray-500 leading-relaxed !font-bold max-w-5xl mx-auto mb-8 px-4">
+          Australia's first deployable supercomputers in a box. Locally assembled, solar powered, and modular, delivering rapid deployment and compute independence for Australian businesses, researchers, and government agencies.
+        </p>
+        <p className="text-body text-gray-400 leading-relaxed font-light max-w-4xl mx-auto mb-12 sm:mb-16 px-4">
+          Built on three pillars: Australian sovereignty, renewable first operations, and container native architecture.
+        </p>
+        <div className="w-24 h-1 bg-gradient-to-r from-[#32ca73] via-[#40d0f2] via-[#d5aaf9] to-[#fbff52] mx-auto mt-4"></div>
       </div>
       
       {/* Vision Tab Navigation */}
@@ -544,29 +538,22 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
             {/* Video Side */}
             <div className="order-1 lg:order-1">
-              <div className="relative rounded-2xl overflow-hidden bg-black min-h-[256px] h-64 sm:h-80 md:h-80 lg:h-96">
+              <div className="video-container relative rounded-2xl overflow-hidden bg-black min-h-[256px] h-64 sm:h-80 md:h-80 lg:h-96">
                 <video
                   autoPlay
                   loop
                   muted
                   playsInline
                   preload="metadata"
-                  className="w-full h-full object-cover object-center will-change-transform"
-                  style={{
-                    transform: 'translate3d(0, 0, 0)',
-                    backfaceVisibility: 'hidden',
-                    contain: 'layout style paint',
-                    isolation: 'isolate',
-                    imageRendering: 'auto'
-                  }}
+                  className="w-full h-full object-cover object-center"
                   poster="/MODRON_Gold_Delivery_poster.png"
                 >
                   <source src="/MODRON_Gold_Delivery.mp4" type="video/mp4" />
                 </video>
-                {/* Fallback text overlay for mobile */}
-                <div className="absolute bottom-4 right-4 lg:hidden">
-                  <p className="text-sm font-medium text-black opacity-75">* Requires site suitability thresholds</p>
-                </div>
+                {/* Transparent rounded rectangle overlay */}
+                <div className="absolute inset-0 border-6 border-black rounded-2xl bg-transparent z-20 pointer-events-none"></div>
+                {/* Subtle overlay to mask lighter sections */}
+                <div className="absolute inset-0 bg-black/10"></div>
               </div>
                   </div>
 
@@ -580,10 +567,12 @@ export default function Home() {
                   Deploy anywhere in Australia within 48 hours using modular containers with industry-leading compute density and immersion cooling.
                   <span className="hidden sm:block text-xs text-gray-500 mt-2">* Requires site suitability thresholds</span>
                 </p>
+                {/* Mobile disclaimer */}
+                <p className="sm:hidden text-xs text-gray-500 mb-4">* Requires site suitability thresholds</p>
                 
                 <div className="space-y-4 sm:space-y-6">
                   <div className="flex items-start space-x-3 sm:space-x-4">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#32ca73] to-[#fbff52] flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-[#fbff52] flex items-center justify-center flex-shrink-0 mt-1">
                       <Icons.Zap className="h-3 w-3 sm:h-4 sm:w-4 text-black" />
                   </div>
                     <div>
@@ -593,7 +582,7 @@ export default function Home() {
               </div>
               
                   <div className="flex items-start space-x-3 sm:space-x-4">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#40d0f2] to-[#d5aaf9] flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-[#d5aaf9] flex items-center justify-center flex-shrink-0 mt-1">
                       <Icons.Clock className="h-3 w-3 sm:h-4 sm:w-4 text-black" />
                   </div>
                     <div>
@@ -603,7 +592,7 @@ export default function Home() {
                 </div>
                 
                   <div className="flex items-start space-x-3 sm:space-x-4">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#d5aaf9] to-[#32ca73] flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-[#40d0f2] flex items-center justify-center flex-shrink-0 mt-1">
                       <Icons.Settings className="h-3 w-3 sm:h-4 sm:w-4 text-black" />
                   </div>
                     <div>
@@ -710,7 +699,7 @@ export default function Home() {
                   
                   {/* Video Section */}
                   <div className="mb-8">
-                    <div className="relative w-full max-w-4xl mx-auto aspect-video bg-black rounded-xl overflow-hidden border border-[#4A4A4A]">
+                    <div className="video-container relative w-full max-w-4xl mx-auto aspect-video bg-black rounded-xl overflow-hidden border border-[#4A4A4A]">
                       <video
                         className="w-full h-full object-cover"
                         autoPlay
@@ -729,6 +718,8 @@ export default function Home() {
                           </div>
                         </div>
                       </video>
+                      {/* Transparent rounded rectangle overlay */}
+                      <div className="absolute inset-0 border-6 border-black rounded-xl bg-transparent z-20 pointer-events-none"></div>
                     </div>
                   </div>
                   

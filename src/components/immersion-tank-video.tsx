@@ -47,7 +47,7 @@ export function ImmersionTankVideo({
   }, [])
 
   return (
-    <div className={`relative rounded-xl overflow-hidden bg-black ${className}`} style={{ willChange: 'transform' }}>
+    <div className={`video-container relative rounded-xl overflow-hidden bg-black ${className}`}>
       {/* Video Background */}
       <video
         ref={videoRef}
@@ -60,8 +60,7 @@ export function ImmersionTankVideo({
           isLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         style={{ 
-          willChange: 'transform',
-          transform: 'translateZ(0)' // Hardware acceleration
+          objectPosition: 'center center'
         }}
         aria-label="Immersion cooling tank video showing high-performance GPUs"
         aria-describedby="tank-video-description"
@@ -72,6 +71,9 @@ export function ImmersionTankVideo({
         </div>
         Your browser does not support the video tag.
       </video>
+      
+      {/* Transparent rounded rectangle overlay */}
+      <div className="absolute inset-0 border-6 border-black rounded-xl bg-transparent z-20 pointer-events-none"></div>
       
       {/* Dark overlay for readability */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#40d0f2]/40 to-[#d5aaf9]/40" />
