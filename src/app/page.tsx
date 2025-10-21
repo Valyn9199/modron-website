@@ -559,9 +559,9 @@ export default function Home() {
                     isolation: 'isolate',
                     imageRendering: 'auto'
                   }}
-                  poster="/MODRON_Gold_08_poster.png"
+                  poster="/MODRON_Gold_Delivery_poster.png"
                 >
-                  <source src="/MODRON_Gold_08.mp4" type="video/mp4" />
+                  <source src="/MODRON_Gold_Delivery.mp4" type="video/mp4" />
                 </video>
                 {/* Fallback text overlay for mobile */}
                 <div className="absolute bottom-4 right-4 lg:hidden">
