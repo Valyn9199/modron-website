@@ -5,7 +5,7 @@ export function EnhancedStructuredData() {
     "name": "MODRON",
     "url": "https://www.modron.com",
     "logo": "https://www.modron.com/Modron_logo.png",
-    "description": "Australia's first sovereign AI infrastructure platform with locally-built, immersion-cooled GPU clusters and solar-powered modular containers",
+    "description": "Australia's first deployable supercomputers in a box with locally-built, immersion-cooled GPU clusters and solar-powered modular containers",
     "foundingDate": "2024",
     "address": {
       "@type": "PostalAddress",
@@ -90,7 +90,7 @@ export function EnhancedStructuredData() {
       }
     ],
     "serviceType": "Sovereign AI Compute Infrastructure",
-    "slogan": "Building Australia's first sovereign AI infrastructure platform",
+    "slogan": "Building Australia's first deployable supercomputers in a box",
     "keywords": "Australia sovereign AI infrastructure, Australian-built GPU clusters, Immersion-cooled GPUs Australia, Solar-powered AI compute, Modular AI infrastructure, Australian data sovereignty, Locally-assembled GPUs, Sovereign AI compute Australia",
     "knowsAbout": [
       "Artificial Intelligence",
@@ -122,7 +122,7 @@ export function EnhancedStructuredData() {
     "@type": "WebSite",
     "name": "MODRON",
     "url": "https://www.modron.com",
-    "description": "Australia's first sovereign AI infrastructure platform. Locally-built, immersion-cooled GPU clusters with solar power and modular containers for Australian enterprises.",
+    "description": "Australia's first deployable supercomputers in a box. Locally-built, immersion-cooled GPU clusters with solar power and modular containers for Australian enterprises.",
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://www.modron.com/search?q={search_term_string}",

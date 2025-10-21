@@ -25,7 +25,7 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "MODRON | Australia's Sovereign AI Infrastructure | Immersion-Cooled GPU Clusters",
-  description: "Australia's first sovereign AI infrastructure platform. Locally-built, immersion-cooled GPU clusters with solar power and modular containers. Australian assembly, data sovereignty, and compute independence for enterprises.",
+  description: "Australia's first deployable supercomputers in a box. Locally-built, immersion-cooled GPU clusters with solar power and modular containers. Rapid deployment, Australian assembly, data sovereignty, and compute independence for enterprises.",
   keywords: ["Australia sovereign AI infrastructure", "Australian-built GPU clusters", "Immersion-cooled GPUs Australia", "Solar-powered AI compute", "Modular AI infrastructure", "Australian data sovereignty", "Locally-assembled GPUs", "Sovereign AI compute Australia", "MODRON Australia", "Australian AI infrastructure", "Data sovereignty Australia", "Immersion cooling technology", "Solar-powered data centers", "Modular container infrastructure", "Australian GPU assembly", "Sovereign compute platform", "Australian enterprises AI", "Immersion-cooled RTX 4090", "Solar-powered GPU hosting", "Modular container AI"],
   authors: [{ name: "MODRON" }],
   creator: "MODRON",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "MODRON | Australia's Sovereign AI Infrastructure | Immersion-Cooled GPU Clusters",
-    description: "Australia's first sovereign AI infrastructure platform. Locally-built, immersion-cooled GPU clusters with solar power and modular containers. Australian assembly, data sovereignty, and compute independence.",
+    description: "Australia's first deployable supercomputers in a box. Locally-built, immersion-cooled GPU clusters with solar power and modular containers. Rapid deployment, Australian assembly, data sovereignty, and compute independence.",
     url: 'https://www.modron.com',
     siteName: 'MODRON',
     images: [
@@ -85,7 +85,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'MODRON | Australia\'s Sovereign AI Infrastructure | Immersion-Cooled GPU Clusters',
-    description: 'Australia\'s first sovereign AI infrastructure platform. Locally-built, immersion-cooled GPU clusters with solar power and modular containers. Australian assembly, data sovereignty, and compute independence.',
+    description: 'Australia\'s first deployable supercomputers in a box. Locally-built, immersion-cooled GPU clusters with solar power and modular containers. Rapid deployment, Australian assembly, data sovereignty, and compute independence.',
     images: ['/og-image.jpg'],
     creator: '@modron_ai',
     site: '@modron_ai',

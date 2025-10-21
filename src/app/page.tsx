@@ -119,7 +119,7 @@ export default function Home() {
         </ScrollReveal>
         <ParallaxSection speed={0.3}>
           <p className="text-body text-gray-500 leading-relaxed !font-bold max-w-5xl mx-auto mb-8 px-4">
-            Australia's first sovereign AI infrastructure platform. Locally assembled, solar powered, and modular, delivering compute independence for Australian businesses, researchers, and government agencies.
+            Australia's first deployable supercomputers in a box. Locally assembled, solar powered, and modular, delivering rapid deployment and compute independence for Australian businesses, researchers, and government agencies.
           </p>
           <p className="text-body text-gray-400 leading-relaxed font-light max-w-4xl mx-auto mb-12 sm:mb-16 px-4">
             Built on three pillars: Australian sovereignty, renewable first operations, and container native architecture.
