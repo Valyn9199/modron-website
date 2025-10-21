@@ -59,7 +59,7 @@ export function EnhancedButton({
   const baseClasses = "relative overflow-hidden font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
   
   const variantClasses = {
-    primary: "bg-gradient-primary text-white hover:bg-gradient-primary-hover focus:ring-primary-cyan shadow-lg hover:shadow-xl transition-all duration-300",
+    primary: "bg-black border border-gray-600 text-white hover:bg-gray-900 hover:border-gray-500 focus:ring-gray-500 transition-all duration-200",
     secondary: "bg-gray-100 text-white border border-gray-200 hover:bg-gray-200 hover:border-primary-cyan focus:ring-primary-cyan transition-all duration-300",
     outline: "bg-transparent text-primary-cyan border-2 border-primary-cyan hover:bg-primary-cyan hover:text-white focus:ring-primary-cyan transition-all duration-300",
     ghost: "bg-transparent text-gray-400 hover:bg-white/10 hover:text-white focus:ring-white transition-all duration-300"
@@ -71,7 +71,7 @@ export function EnhancedButton({
     lg: "px-6 py-3 text-body rounded-xl"
   }
 
-  const glowClasses = glow ? "shadow-[0_0_20px_#40d0f2] hover:shadow-[0_0_30px_#40d0f2]" : ""
+  const glowClasses = glow ? "" : ""
 
   return (
     <button
@@ -119,8 +119,7 @@ export function EnhancedButton({
         {children}
       </span>
 
-      {/* Hover glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary-cyan/20 to-primary-green/20 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      {/* Hover glow effect - removed for minimalist style */}
     </button>
   )
 }

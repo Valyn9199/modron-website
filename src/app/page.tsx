@@ -50,7 +50,7 @@ export default function Home() {
   // Performance optimizations in progress - console logs removed for production
   const [showWorkflowDetails, setShowWorkflowDetails] = React.useState(false)
   const [showUseCaseDetails, setShowUseCaseDetails] = React.useState(false)
-  const [activeUseCaseTab, setActiveUseCaseTab] = React.useState<'ai-development' | 'industry-applications' | 'enterprise-features'>('ai-development')
+  const [activeUseCaseTab, setActiveUseCaseTab] = React.useState<'ai-development' | 'industry-applications' | 'enterprise-features' | 'gpu-solutions'>('ai-development')
   const [showCompetitiveComparison, setShowCompetitiveComparison] = React.useState(false)
   const [showVisionDetails, setShowVisionDetails] = React.useState(false)
   const [showContactForm, setShowContactForm] = React.useState(false)
@@ -86,7 +86,7 @@ export default function Home() {
     {/* Additional sub text - MODRON-specific description */}
     <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed font-normal px-4" style={{ color: '#1f2937' }}>
       MODRON delivers locally-built, renewable-powered GPU clusters for Australian enterprises. 
-      Deploy anywhere in Australia within 48 hours using modular containers with immersion cooling and solar power.
+      Deploy anywhere in Australia within 48 hours using modular containers with industry-leading compute density and immersion cooling.
     </p>
     
     {/* CTA Buttons - Enhanced with micro-interactions */}
@@ -248,7 +248,7 @@ export default function Home() {
             </h2>
             <p className="section-description text-body text-gray-400 max-w-4xl mx-auto font-light leading-relaxed px-4">
               Modular, scalable architecture designed for maximum performance and efficiency. Our hardware-first approach 
-              combines cutting-edge RTX 4090 GPUs with revolutionary immersion cooling technology, all housed in 
+              combines cutting-edge high-performance GPUs (RTX 4090, H200, L40S, Blackwell GB300) with revolutionary immersion cooling technology, all housed in 
               shipping container infrastructure for rapid deployment and scalability.
             </p>
           </div>
@@ -370,7 +370,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="text-white font-bold text-lg sm:text-xl mb-2">MODRON GPU Clusters</h3>
-                    <p className="text-[#999999] mb-2 sm:mb-3 text-caption">6× RTX 4090 24GB, Australian-assembled, immersion-cooled</p>
+                    <p className="text-[#999999] mb-2 sm:mb-3 text-caption">6× High-Performance GPUs (RTX 4090/H200/L40S), Australian-assembled, immersion-cooled</p>
                     <p className="text-[#CCCCCC] text-xs sm:text-sm">
                       Locally sourced components with Australian quality control and support.
                     </p>
@@ -420,7 +420,7 @@ export default function Home() {
                     <h3 className="text-white font-bold text-lg sm:text-xl mb-2">Container Infrastructure</h3>
                     <p className="text-[#999999] mb-2 sm:mb-3 text-caption">ISO shipping containers, rapid deployment, disaster recovery</p>
                     <p className="text-[#CCCCCC] text-xs sm:text-sm">
-                      Deploy anywhere in Australia within 48 hours vs 6-12 months for traditional data centers.
+                      Deploy anywhere in Australia within 48 hours vs 6-12 months for traditional data centers. Industry-leading compute density in a compact footprint.
                     </p>
                   </div>
                 </div>
@@ -443,7 +443,7 @@ export default function Home() {
                       </div>
                       <div>
                         <h3 className="text-white font-bold text-lg sm:text-xl mb-2">MODRON GPU Clusters</h3>
-                        <p className="text-[#999999] mb-2 sm:mb-3 text-caption">6× RTX 4090 24GB, Australian-assembled, immersion-cooled</p>
+                        <p className="text-[#999999] mb-2 sm:mb-3 text-caption">6× High-Performance GPUs (RTX 4090/H200/L40S), Australian-assembled, immersion-cooled</p>
                         <p className="text-[#CCCCCC] text-xs sm:text-sm">
                           Locally sourced components with Australian quality control and support.
                         </p>
@@ -493,7 +493,7 @@ export default function Home() {
                         <h3 className="text-white font-bold text-lg sm:text-xl mb-2">Container Infrastructure</h3>
                         <p className="text-[#999999] mb-2 sm:mb-3 text-caption">ISO shipping containers, rapid deployment, disaster recovery</p>
                         <p className="text-[#CCCCCC] text-xs sm:text-sm">
-                          Deploy anywhere in Australia within 48 hours vs 6-12 months for traditional data centers.
+                          Deploy anywhere in Australia within 48 hours vs 6-12 months for traditional data centers. Industry-leading compute density in a compact footprint.
                         </p>
                 </div>
                     </div>
@@ -566,7 +566,7 @@ export default function Home() {
                   Modular Deployment
                 </h2>
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-[#CCCCCC] mb-6 sm:mb-8 font-light leading-relaxed">
-                  Deploy anywhere in Australia within 48 hours using modular containers with immersion cooling and solar power.
+                  Deploy anywhere in Australia within 48 hours using modular containers with industry-leading compute density and immersion cooling.
                 </p>
                 
                 <div className="space-y-4 sm:space-y-6">
@@ -576,7 +576,7 @@ export default function Home() {
                   </div>
                     <div>
                       <h3 className="text-white font-semibold text-base sm:text-lg mb-1 sm:mb-2">100+ PetaFLOPS Compute Power</h3>
-                      <p className="text-[#999999] text-sm sm:text-base">Industry-leading performance with RTX 4090 clusters delivering unmatched AI training and inference capabilities.</p>
+                      <p className="text-[#999999] text-sm sm:text-base">Industry-leading performance with our diverse GPU portfolio delivering unmatched AI training and inference capabilities across all workload types.</p>
                 </div>
               </div>
               
@@ -610,6 +610,7 @@ export default function Home() {
       {/* Clean spacing between sections */}
       <div className="h-16 md:h-24 bg-black"></div>
 
+
       {/* Use Cases Section */}
       <section id="use-cases" className="nav-trigger-use-cases relative z-10 overflow-visible py-20 md:py-24 lg:py-28 xl:py-32 bg-black">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
@@ -619,7 +620,7 @@ export default function Home() {
             </h2>
             {/* Deployment trigger - safe change */}
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#CCCCCC] max-w-4xl mx-auto font-light leading-relaxed px-4">
-              Deploy enterprise-grade AI infrastructure anywhere in Australia within 48 hours - sovereign, sustainable, scalable
+              Deploy enterprise-grade AI infrastructure anywhere in Australia within 48 hours - sovereign, scalable, with industry-leading compute density
             </p>
           </div>
           
@@ -659,6 +660,17 @@ export default function Home() {
                 >
                   <Icons.Settings className="h-4 w-4 mr-2 hidden sm:block" />
                   Enterprise Features
+                </button>
+                <button
+                  onClick={() => setActiveUseCaseTab('gpu-solutions')}
+                  className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center ${
+                    activeUseCaseTab === 'gpu-solutions'
+                      ? 'bg-[#1A1A1A]/50 text-white underline underline-offset-4'
+                      : 'text-[#CCCCCC] hover:text-white hover:bg-[#1A1A1A]/50'
+                  }`}
+                >
+                  <Icons.Cpu className="h-4 w-4 mr-2 hidden sm:block" />
+                  GPU Solutions
                 </button>
               </div>
               </div>
@@ -1010,6 +1022,110 @@ export default function Home() {
             </div>
               </div>
               )}
+              
+              {/* GPU Solutions Tab Content */}
+              {activeUseCaseTab === 'gpu-solutions' && (
+                <div className="relative z-10">
+                  <h3 className="text-xl font-bold text-white mb-6 text-center">GPU Solutions</h3>
+                  
+                  <p className="text-gray-400 text-center mb-8 max-w-3xl mx-auto leading-relaxed">
+                    Choose the right GPU configuration for your workload - from cost-effective development clusters to enterprise training systems and next-generation research platforms.
+                  </p>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+                    {/* Development & Inference Tier */}
+                    <div className="bg-black border border-gray-600 rounded-xl p-6 hover:border-[#d5aaf9]/30 transition-all duration-300 group">
+                      <div className="text-center mb-6">
+                        <div className="w-16 h-16 mx-auto mb-4 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: '#d5aaf9' }}>
+                          <Icons.Cpu className="h-8 w-8 text-black" />
+                        </div>
+                        <h3 className="text-white font-bold text-xl mb-2">Development & Inference</h3>
+                        <p className="text-[#32ca73] font-semibold text-sm mb-3">RTX 4090, L40S</p>
+                      </div>
+                      <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                        Cost-effective high-performance GPUs for AI development, inference workloads, and smaller model training. Perfect for startups and development teams.
+                      </p>
+                      <ul className="text-gray-300 text-xs space-y-2">
+                        <li className="flex items-center">
+                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#32ca73] flex-shrink-0" />
+                          Cost-optimized for development
+                        </li>
+                        <li className="flex items-center">
+                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#32ca73] flex-shrink-0" />
+                          High inference performance
+                        </li>
+                        <li className="flex items-center">
+                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#32ca73] flex-shrink-0" />
+                          Rapid prototyping support
+                        </li>
+                      </ul>
+                    </div>
+
+                    {/* Enterprise Training Tier */}
+                    <div className="bg-black border border-gray-600 rounded-xl p-6 hover:border-[#40d0f2]/30 transition-all duration-300 group">
+                      <div className="text-center mb-6">
+                        <div className="w-16 h-16 mx-auto mb-4 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: '#40d0f2' }}>
+                          <Icons.Server className="h-8 w-8 text-black" />
+                        </div>
+                        <h3 className="text-white font-bold text-xl mb-2">Enterprise Training</h3>
+                        <p className="text-[#40d0f2] font-semibold text-sm mb-3">H200, L40S</p>
+                      </div>
+                      <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                        High-memory enterprise GPUs for large model training, production AI workloads, and enterprise-scale deployments with maximum reliability.
+                      </p>
+                      <ul className="text-gray-300 text-xs space-y-2">
+                        <li className="flex items-center">
+                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#40d0f2] flex-shrink-0" />
+                          Large model training capability
+                        </li>
+                        <li className="flex items-center">
+                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#40d0f2] flex-shrink-0" />
+                          Enterprise-grade reliability
+                        </li>
+                        <li className="flex items-center">
+                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#40d0f2] flex-shrink-0" />
+                          Production-ready infrastructure
+                        </li>
+                      </ul>
+                    </div>
+
+                    {/* Next-Gen Research Tier */}
+                    <div className="bg-black border border-gray-600 rounded-xl p-6 hover:border-[#32ca73]/30 transition-all duration-300 group">
+                      <div className="text-center mb-6">
+                        <div className="w-16 h-16 mx-auto mb-4 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: '#32ca73' }}>
+                          <Icons.Zap className="h-8 w-8 text-black" />
+                        </div>
+                        <h3 className="text-white font-bold text-xl mb-2">Next-Gen Research</h3>
+                        <p className="text-[#32ca73] font-semibold text-sm mb-3">Blackwell GB300</p>
+                      </div>
+                      <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                        Cutting-edge AI research GPUs for massive model training, breakthrough research, and the most demanding AI workloads requiring maximum performance.
+                      </p>
+                      <ul className="text-gray-300 text-xs space-y-2">
+                        <li className="flex items-center">
+                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#32ca73] flex-shrink-0" />
+                          Massive model training
+                        </li>
+                        <li className="flex items-center">
+                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#32ca73] flex-shrink-0" />
+                          Research-grade performance
+                        </li>
+                        <li className="flex items-center">
+                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#32ca73] flex-shrink-0" />
+                          Future-proof architecture
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="text-center mt-8">
+                    <p className="text-gray-400 text-sm max-w-3xl mx-auto leading-relaxed">
+                      All GPU configurations include Australian assembly, immersion cooling, and solar power integration. 
+                      Contact us to discuss the optimal setup for your specific workload requirements.
+                    </p>
+                  </div>
+                </div>
+              )}
                       </div>
           </div>
         </div>
@@ -1052,7 +1168,7 @@ export default function Home() {
                     <tbody>
                       <tr className="border-t border-[#333333] bg-[#d5aaf9]/10 modron-highlight-row">
                         <td className="p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">MODRON</td>
-                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">$0.54–$0.80</td>
+                        <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">$0.54–$0.90</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">80–95%</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">Yes - Local Manufacturing</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">48 hours</td>
@@ -1093,7 +1209,7 @@ export default function Home() {
                 <div className="bg-[#d5aaf9]/10 border border-[#d5aaf9]/30 rounded-xl p-4">
                   <div className="flex items-center justify-between mb-3">
                     <h4 className="text-white font-bold text-lg">MODRON</h4>
-                    <span className="text-[#32ca73] font-bold text-lg">$0.54–$0.80</span>
+                    <span className="text-[#32ca73] font-bold text-lg">$0.54–$0.90</span>
                   </div>
                   <div className="grid grid-cols-2 gap-3 text-sm">
                     <div>
@@ -1196,7 +1312,7 @@ export default function Home() {
 
               <div className="mt-8 text-center">
                 <p className="text-[#999999] text-sm">
-                  * Prices shown for equivalent RTX 4090 class GPU instances
+                  * Prices shown for equivalent high-performance GPU instances. Contact us for specific GPU configurations and pricing.
                 </p>
               </div>
             </div>

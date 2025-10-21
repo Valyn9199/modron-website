@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { LoadingButton } from '@/components/loading-button'
-import { Mail, ArrowRight, CheckCircle, AlertCircle } from 'lucide-react'
+import { Mail, ArrowRight, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
 
 interface FormData {
   name: string
@@ -28,6 +28,7 @@ export function ContactForm() {
   
   const [errors, setErrors] = useState<FormErrors>({})
   const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [submitError, setSubmitError] = useState<string>('')
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -50,6 +51,7 @@ export function ContactForm() {
     if (e) e.preventDefault()
     setSubmitError("")
     setSubmitSuccess(false)
+    setIsLoading(true)
 
     try {
       // Send to Next.js API route
@@ -90,7 +92,7 @@ export function ContactForm() {
       console.error('Form submission error:', error)
       setSubmitError("Network error. Please check your connection and try again, or email us directly at contact@modron.com")
     } finally {
-      // Form submission completed
+      setIsLoading(false)
     }
   }
 
@@ -241,16 +243,24 @@ export function ContactForm() {
       </div>
       
       <div className="flex flex-col sm:flex-row gap-4">
-        <LoadingButton 
+        <button 
           type="submit"
-          size="lg" 
-          className="flex-1 h-12 sm:h-14 bg-gradient-to-r from-[#d5aaf9] to-[#40d0f2] hover:from-[#c49ae8] hover:to-[#2bb8d9] border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 sm:active:scale-100 font-semibold text-base sm:text-lg min-h-[44px]"
-          loadingText="Sending..."
+          disabled={isLoading}
+          className="flex-1 h-12 sm:h-14 bg-red-500 border-2 border-red-600 text-white hover:bg-red-600 hover:border-red-700 transition-all duration-200 font-medium text-base sm:text-lg min-h-[44px] rounded-lg shadow-none flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={handleSubmit}
         >
-          Send Message
-          <ArrowRight className="ml-2 h-5 w-5" />
-        </LoadingButton>
+          {isLoading ? (
+            <>
+              <Loader2 className="h-5 w-5 animate-spin" />
+              Sending...
+            </>
+          ) : (
+            <>
+              Send Message
+              <ArrowRight className="h-5 w-5" />
+            </>
+          )}
+        </button>
         
         <a 
           href="mailto:contact@modron.com?subject=Inquiry about MODRON services"
