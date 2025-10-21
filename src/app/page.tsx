@@ -540,7 +540,7 @@ export default function Home() {
 
       {/* Modular Deployment Section */}
       <section className="nav-trigger-technology relative py-20 md:py-24 lg:py-28 xl:py-32 bg-black">
-        <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        <div className="container mx-auto px-8 sm:px-4 md:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
             {/* Video Side */}
             <div className="order-1 lg:order-1">
@@ -564,10 +564,8 @@ export default function Home() {
                   <source src="/MODRON_Gold_08.mp4" type="video/mp4" />
                 </video>
                 {/* Fallback text overlay for mobile */}
-                <div className="absolute inset-0 flex items-center justify-center lg:hidden">
-                  <div className="text-center text-white p-4">
-                    <p className="text-sm opacity-75">Modular GPU Container</p>
-                  </div>
+                <div className="absolute bottom-4 right-4 lg:hidden">
+                  <p className="text-sm font-medium text-black opacity-75">* Requires site suitability thresholds</p>
                 </div>
               </div>
                   </div>
@@ -580,7 +578,7 @@ export default function Home() {
                 </h2>
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-[#CCCCCC] mb-6 sm:mb-8 font-light leading-relaxed">
                   Deploy anywhere in Australia within 48 hours using modular containers with industry-leading compute density and immersion cooling.
-                  <span className="block text-xs text-gray-500 mt-2">* Requires site suitability thresholds</span>
+                  <span className="hidden sm:block text-xs text-gray-500 mt-2">* Requires site suitability thresholds</span>
                 </p>
                 
                 <div className="space-y-4 sm:space-y-6">
