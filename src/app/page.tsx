@@ -80,7 +80,7 @@ export default function Home() {
       <AnimatedHeadline />
     
        {/* Subheading - MODRON's unique value proposition */}
-    <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-3 sm:mb-4 md:mb-6 max-w-3xl mx-auto leading-relaxed font-semibold px-4" style={{ letterSpacing: '0.1em', color: '#1f2937' }}>      MODULAR. IMMERSION-COOLED. SOLAR-POWERED.
+    <p className="text-xl sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-3 sm:mb-4 md:mb-6 max-w-3xl mx-auto leading-relaxed font-semibold px-4" style={{ letterSpacing: '0.1em', color: '#1f2937' }}>      MODULAR. IMMERSION-COOLED. SOLAR-POWERED.
     </p>
     
     {/* Additional sub text - MODRON-specific description */}
