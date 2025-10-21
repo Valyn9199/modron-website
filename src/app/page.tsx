@@ -126,7 +126,7 @@ export default function Home() {
           </p>
         </ParallaxSection>
         <ScrollReveal animation="zoom" delay={200}>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#d5aaf9] to-[#fbff52] mx-auto mt-4"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#32ca73] via-[#40d0f2] via-[#d5aaf9] to-[#fbff52] mx-auto mt-4"></div>
         </ScrollReveal>
       </div>
       
@@ -523,8 +523,8 @@ export default function Home() {
                 <div className="flex items-center justify-between p-4 bg-black border border-[#4A4A4A] rounded-xl hover:border-primary-purple/30 transition-all duration-200">
                   <span className="text-white font-semibold text-lg">Explore Interactive Infrastructure</span>
                   <div className="flex items-center space-x-2">
-                    <span className="text-primary-cyan text-sm font-medium">Explore</span>
-                    <Icons.ChevronDown className="h-5 w-5 text-primary-cyan transition-transform duration-200 group-open:rotate-180" />
+                    <span className="text-gray-400 text-sm font-medium">Explore</span>
+                    <Icons.ChevronDown className="h-5 w-5 text-gray-400 transition-transform duration-200 group-open:rotate-180" />
                   </div>
                 </div>
               </summary>
