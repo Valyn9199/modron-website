@@ -567,6 +567,7 @@ export default function Home() {
                 </h2>
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-[#CCCCCC] mb-6 sm:mb-8 font-light leading-relaxed">
                   Deploy anywhere in Australia within 48 hours using modular containers with industry-leading compute density and immersion cooling.
+                  <span className="block text-xs text-gray-500 mt-2">* Requires site suitability thresholds</span>
                 </p>
                 
                 <div className="space-y-4 sm:space-y-6">

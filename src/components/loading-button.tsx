@@ -42,7 +42,7 @@ export function LoadingButton({
       disabled={isLoading}
       type={type}
       className={`relative overflow-hidden transition-all duration-300 ${
-        isLoading ? 'cursor-not-allowed' : 'hover:scale-105'
+        isLoading ? 'cursor-not-allowed' : 'cursor-pointer hover:scale-105'
       } ${className}`}
       variant={variant}
       size={size}
