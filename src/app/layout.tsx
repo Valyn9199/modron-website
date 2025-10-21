@@ -25,8 +25,8 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "MODRON | Australia's Sovereign AI Infrastructure | Immersion-Cooled GPU Clusters",
-  description: "Australia's first deployable supercomputers in a box. Locally-built, immersion-cooled GPU clusters with solar power and modular containers. Rapid deployment, Australian assembly, data sovereignty, and compute independence for enterprises.",
-  keywords: ["Australia sovereign AI infrastructure", "Australian-built GPU clusters", "Immersion-cooled GPUs Australia", "Solar-powered AI compute", "Modular AI infrastructure", "Australian data sovereignty", "Locally-assembled GPUs", "Sovereign AI compute Australia", "MODRON Australia", "Australian AI infrastructure", "Data sovereignty Australia", "Immersion cooling technology", "Solar-powered data centers", "Modular container infrastructure", "Australian GPU assembly", "Sovereign compute platform", "Australian enterprises AI", "Immersion-cooled RTX 4090", "Solar-powered GPU hosting", "Modular container AI"],
+  description: "Australia's first deployable supercomputers in a box. Enterprise-grade AI infrastructure with industry-leading compute density. Locally-built, immersion-cooled GPU clusters (RTX 4090, H200, L40S, Blackwell GB300) with solar power and modular containers. 48-hour deployment, Australian assembly, data sovereignty, and compute independence for enterprises.",
+  keywords: ["Australia sovereign AI infrastructure", "Australian-built GPU clusters", "High-performance GPU clusters Australia", "Enterprise AI infrastructure Australia", "Industry-leading compute density", "Immersion-cooled GPUs Australia", "Solar-powered AI compute", "Modular AI infrastructure", "Australian data sovereignty", "Locally-assembled GPUs", "Sovereign AI compute Australia", "MODRON Australia", "Australian AI infrastructure", "Data sovereignty Australia", "Immersion cooling technology", "Solar-powered modular containers", "Modular container infrastructure", "Australian GPU assembly", "Sovereign compute platform", "Australian enterprises AI", "RTX 4090 Australia", "H200 L40S Australia", "Blackwell GB300 Australia", "Enterprise-grade AI compute", "Rapid deployment AI infrastructure", "48-hour AI deployment Australia", "Immersion-cooled RTX 4090", "Solar-powered GPU hosting", "Modular container AI"],
   authors: [{ name: "MODRON" }],
   creator: "MODRON",
   publisher: "MODRON",
@@ -42,8 +42,8 @@ export const metadata: Metadata = {
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'default',
     'mobile-web-app-capable': 'yes',
-    'msapplication-TileColor': '#1f2937',
-    'theme-color': '#1f2937',
+    'msapplication-TileColor': '#fbff52',
+    'theme-color': '#fbff52',
   },
   verification: {
     google: 'your-google-verification-code',
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "MODRON | Australia's Sovereign AI Infrastructure | Immersion-Cooled GPU Clusters",
-    description: "Australia's first deployable supercomputers in a box. Locally-built, immersion-cooled GPU clusters with solar power and modular containers. Rapid deployment, Australian assembly, data sovereignty, and compute independence.",
+    description: "Australia's first deployable supercomputers in a box. Enterprise-grade AI infrastructure with industry-leading compute density. Locally-built, immersion-cooled GPU clusters (RTX 4090, H200, L40S, Blackwell GB300) with solar power and modular containers. 48-hour deployment, Australian assembly, data sovereignty, and compute independence.",
     url: 'https://www.modron.com',
     siteName: 'MODRON',
     images: [
@@ -85,7 +85,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'MODRON | Australia\'s Sovereign AI Infrastructure | Immersion-Cooled GPU Clusters',
-    description: 'Australia\'s first deployable supercomputers in a box. Locally-built, immersion-cooled GPU clusters with solar power and modular containers. Rapid deployment, Australian assembly, data sovereignty, and compute independence.',
+    description: 'Australia\'s first deployable supercomputers in a box. Enterprise-grade AI infrastructure with industry-leading compute density. Locally-built, immersion-cooled GPU clusters (RTX 4090, H200, L40S, Blackwell GB300) with solar power and modular containers. 48-hour deployment, Australian assembly, data sovereignty, and compute independence.',
     images: ['/og-image.jpg'],
     creator: '@modron_ai',
     site: '@modron_ai',
@@ -101,11 +101,31 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  manifest: '/manifest.json',
+  manifest: '/site.webmanifest',
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' }
+    ],
     shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
+    ],
+    other: [
+      {
+        rel: 'icon',
+        url: '/android-chrome-192x192.png',
+        sizes: '192x192',
+        type: 'image/png'
+      },
+      {
+        rel: 'icon', 
+        url: '/android-chrome-512x512.png',
+        sizes: '512x512',
+        type: 'image/png'
+      }
+    ]
   },
 };
 
