@@ -18,6 +18,8 @@
   --color-gray-300: #999999;
   --color-gray-400: #CCCCCC;
   --color-gray-500: #DDDDDD;
+  --color-gray-600: #6B7280;
+  --color-gray-700: #374151;
   
   /* Opacity Scale */
   --opacity-light: 0.1;
@@ -487,6 +489,8 @@
 .border-gray-300 { border-color: var(--color-gray-300); }
 .border-gray-400 { border-color: var(--color-gray-400); }
 .border-gray-500 { border-color: var(--color-gray-500); }
+.border-gray-600 { border-color: var(--color-gray-600); }
+.border-gray-700 { border-color: var(--color-gray-700); }
 
 /* Gradient Classes */
 .bg-gradient-primary { background: linear-gradient(to right, var(--color-primary-cyan), var(--color-primary-green)); }

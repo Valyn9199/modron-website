@@ -59,7 +59,7 @@ export function EnhancedButton({
   const baseClasses = "relative overflow-hidden font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
   
   const variantClasses = {
-    primary: "bg-black border border-gray-600 text-white hover:bg-gray-900 hover:border-gray-500 focus:ring-gray-500 transition-all duration-200",
+    primary: "bg-black border border-[#4A4A4A] text-white hover:bg-gray-900 hover:border-[#5A5A5A] focus:ring-[#5A5A5A] transition-all duration-200",
     secondary: "bg-gray-100 text-white border border-gray-200 hover:bg-gray-200 hover:border-primary-cyan focus:ring-primary-cyan transition-all duration-300",
     outline: "bg-transparent text-primary-cyan border-2 border-primary-cyan hover:bg-primary-cyan hover:text-white focus:ring-primary-cyan transition-all duration-300",
     ghost: "bg-transparent text-gray-400 hover:bg-white/10 hover:text-white focus:ring-white transition-all duration-300"

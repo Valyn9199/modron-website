@@ -196,8 +196,8 @@ export function Header() {
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="!z-[60] bg-black/95 backdrop-blur-sm border-l border-gray-800">
-  <SheetHeader className="pb-6 border-b border-gray-800">
+              <SheetContent side="right" className="!z-[60] bg-black/95 backdrop-blur-sm border-l border-[#4A4A4A]">
+  <SheetHeader className="pb-6 border-b border-[#4A4A4A]">
     <SheetTitle className="text-2xl font-bold text-white">Navigation</SheetTitle>
     <SheetDescription className="text-gray-400 text-base">
       Explore our sustainable AI infrastructure
@@ -275,7 +275,7 @@ export function Header() {
   </nav>
   
   {/* Footer section */}
-  <div className="mt-auto pt-8 border-t border-gray-800">
+  <div className="mt-auto pt-8 border-t border-[#4A4A4A]">
     <div className="text-center">
       <p className="text-gray-500 text-sm mb-4">Ready to get started?</p>
       <div className="space-y-3">
