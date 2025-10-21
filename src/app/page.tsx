@@ -583,7 +583,7 @@ export default function Home() {
                 
                 <div className="space-y-4 sm:space-y-6">
                   <div className="flex items-start space-x-3 sm:space-x-4">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#fbff52] to-[#d5aaf9] flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#32ca73] to-[#fbff52] flex items-center justify-center flex-shrink-0 mt-1">
                       <Icons.Zap className="h-3 w-3 sm:h-4 sm:w-4 text-black" />
                   </div>
                     <div>
@@ -593,7 +593,7 @@ export default function Home() {
               </div>
               
                   <div className="flex items-start space-x-3 sm:space-x-4">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#d5aaf9] to-[#fbff52] flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#40d0f2] to-[#d5aaf9] flex items-center justify-center flex-shrink-0 mt-1">
                       <Icons.Clock className="h-3 w-3 sm:h-4 sm:w-4 text-black" />
                   </div>
                     <div>
@@ -603,7 +603,7 @@ export default function Home() {
                 </div>
                 
                   <div className="flex items-start space-x-3 sm:space-x-4">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#fbff52] to-[#d5aaf9] flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#d5aaf9] to-[#32ca73] flex items-center justify-center flex-shrink-0 mt-1">
                       <Icons.Settings className="h-3 w-3 sm:h-4 sm:w-4 text-black" />
                   </div>
                     <div>
