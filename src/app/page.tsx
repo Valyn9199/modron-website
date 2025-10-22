@@ -120,11 +120,11 @@ export default function Home() {
         </p>
         <div className="max-w-4xl mx-auto mb-12 sm:mb-16 px-4">
           <p className="text-center text-gray-400 mb-4 font-light">Built on four pillars:</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <span className="px-4 py-2 rounded-full bg-[#32ca73]/10 border border-[#32ca73]/30 text-[#32ca73] text-sm font-medium">Australian sovereignty</span>
-            <span className="px-4 py-2 rounded-full bg-[#d5aaf9]/10 border border-[#d5aaf9]/30 text-[#d5aaf9] text-sm font-medium">Modular infrastructure</span>
-            <span className="px-4 py-2 rounded-full bg-[#40d0f2]/10 border border-[#40d0f2]/30 text-[#40d0f2] text-sm font-medium">Renewable first operations</span>
-            <span className="px-4 py-2 rounded-full bg-[#fbff52]/10 border border-[#fbff52]/30 text-[#fbff52] text-sm font-medium">Container native architecture</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mx-auto">
+            <span className="px-4 py-2 rounded-full bg-[#32ca73]/10 border border-[#32ca73]/30 text-[#32ca73] text-sm font-medium text-center w-full">Australian sovereignty</span>
+            <span className="px-4 py-2 rounded-full bg-[#d5aaf9]/10 border border-[#d5aaf9]/30 text-[#d5aaf9] text-sm font-medium text-center w-full">Modular infrastructure</span>
+            <span className="px-4 py-2 rounded-full bg-[#40d0f2]/10 border border-[#40d0f2]/30 text-[#40d0f2] text-sm font-medium text-center w-full">Renewable first operations</span>
+            <span className="px-4 py-2 rounded-full bg-[#fbff52]/10 border border-[#fbff52]/30 text-[#fbff52] text-sm font-medium text-center w-full">Container native architecture</span>
           </div>
         </div>
         <div className="flex justify-center mt-4">
