@@ -535,9 +535,9 @@ export default function Home() {
                   playsInline
                   preload="metadata"
                   className="w-full h-full object-cover object-center"
-                  poster="/MODRON_Gold_Delivery_poster.png"
+                  poster="/MODRON_Gold_Delivery_02_poster.png"
                 >
-                  <source src="/MODRON_Gold_Delivery.mp4" type="video/mp4" />
+                  <source src="/MODRON_Gold_Delivery_02.mp4" type="video/mp4" />
                 </video>
                 {/* Transparent rounded rectangle overlay */}
                 <div className="absolute inset-0 border-6 border-black rounded-2xl bg-transparent z-20 pointer-events-none"></div>
@@ -626,7 +626,7 @@ export default function Home() {
                       : 'text-[#CCCCCC] hover:text-white hover:bg-[#1A1A1A]/50'
                   }`}
                 >
-                  <Icons.Eye className="h-4 w-4 mr-2 hidden sm:block" />
+                  <img alt="MODRON" className="h-4 w-4 mr-2 hidden sm:block" src="/ICON_GENESIS_01.png" />
                   Overview
                 </button>
                 <button
@@ -698,10 +698,10 @@ export default function Home() {
                         poster="/AI_Clouds_01.png"
                         aria-label="MODRON Use Cases Overview - Shipping Container Infrastructure"
                       >
-                        <source src="/MODRON_use_cases_01.mp4" type="video/mp4" />
+                        <source src="/MODRON_use_cases_04.mp4" type="video/mp4" />
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center">
-                            <Icons.Eye className="h-16 w-16 text-white mx-auto mb-4 opacity-80" />
+                            <img alt="MODRON" className="h-16 w-16 mx-auto mb-4 opacity-80" src="/ICON_GENESIS_01.png" />
                             <p className="text-white text-lg mb-2">MODRON Use Cases Overview</p>
                             <p className="text-gray-400 text-sm">Discover the possibilities with Australia's first deployable supercomputers</p>
                           </div>
