@@ -116,12 +116,24 @@ export default function Home() {
           Vision
         </h2>
         <p className="text-body text-gray-500 leading-relaxed !font-bold max-w-5xl mx-auto mb-8 px-4">
-          Australia's first deployable supercomputers in a box. Locally assembled, solar powered, and modular, delivering rapid deployment and compute independence for Australian businesses, researchers, and government agencies.
+          <span className="text-white !font-extrabold tracking-tight">Australia's first deployable supercomputers in a box.</span> Locally assembled, solar powered, and modular, delivering rapid deployment and compute independence for Australian businesses, researchers, and government agencies.
         </p>
-        <p className="text-body text-gray-400 leading-relaxed font-light max-w-4xl mx-auto mb-12 sm:mb-16 px-4">
-          Built on three pillars: Australian sovereignty, renewable first operations, and container native architecture.
-        </p>
-        <div className="w-24 h-1 bg-gradient-to-r from-[#32ca73] via-[#40d0f2] via-[#d5aaf9] to-[#fbff52] mx-auto mt-4"></div>
+        <div className="max-w-4xl mx-auto mb-12 sm:mb-16 px-4">
+          <p className="text-center text-gray-400 mb-4 font-light">Built on four pillars:</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <span className="px-4 py-2 rounded-full bg-[#32ca73]/10 border border-[#32ca73]/30 text-[#32ca73] text-sm font-medium">Australian sovereignty</span>
+            <span className="px-4 py-2 rounded-full bg-[#d5aaf9]/10 border border-[#d5aaf9]/30 text-[#d5aaf9] text-sm font-medium">Modular infrastructure</span>
+            <span className="px-4 py-2 rounded-full bg-[#40d0f2]/10 border border-[#40d0f2]/30 text-[#40d0f2] text-sm font-medium">Renewable first operations</span>
+            <span className="px-4 py-2 rounded-full bg-[#fbff52]/10 border border-[#fbff52]/30 text-[#fbff52] text-sm font-medium">Container native architecture</span>
+          </div>
+        </div>
+        <div className="flex justify-center mt-4">
+          <img 
+            src="/ICON_GENESIS_01.png" 
+            alt="MODRON Genesis Icon" 
+            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
+          />
+        </div>
       </div>
       
       {/* Vision Tab Navigation */}
@@ -1499,7 +1511,7 @@ export default function Home() {
               Ready to Get Started?
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-[#CCCCCC] mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto font-light leading-relaxed px-4">
-              Join the future of sustainable AI computing. Get in touch to discuss your requirements or start your free trial today. We'll respond within 24 hours.
+              Join the future of sustainable AI computing. Get in touch to discuss your infrastructure requirements. We'll respond within 24 hours.
             </p>
             
 
@@ -1547,13 +1559,17 @@ export default function Home() {
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-12 sm:py-16">
           <div className="text-center">
 
-            {/* Contact Information removed at user's request */}
-
-
-
-            {/* Legal Text */}
+            {/* Footer Links with Logo */}
             <div className="pt-6 sm:pt-8">
               <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4 lg:space-x-6 xl:space-x-8 text-xs sm:text-sm text-[#666666] px-4">
+                {/* Logo as first item */}
+                <div className="flex items-center justify-center min-h-[44px] min-w-[44px]">
+                  <img 
+                    src="/ICON_GENESIS_01.png" 
+                    alt="MODRON" 
+                    className="w-8 h-8 sm:w-10 sm:h-10"
+                  />
+                </div>
                 <span>&copy; 2025. All rights reserved.</span>
                 <a href="/privacy" className="hover:text-[#999999] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">Privacy Policy</a>
                 <a href="/terms" className="hover:text-[#999999] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">Terms of Service</a>
