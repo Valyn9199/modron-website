@@ -256,10 +256,10 @@ export default function Home() {
                   <div className="bg-black border border-[#4A4A4A] rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
                   {/* Solar + Grid Power */}
                   <div className="flex items-center justify-center mb-6 sm:mb-8">
-                      <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#32ca73] to-[#fbff52]">
+                      <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-[#32ca73]">
                       <Icons.Sun className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                     </div>
-                      <div className="rounded-xl p-3 sm:p-4 bg-gradient-to-br from-[#fbff52] to-[#32ca73]">
+                      <div className="rounded-xl p-3 sm:p-4 bg-[#32ca73]">
                       <Icons.Power className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                     </div>
                     <div className="ml-2 sm:ml-4 text-white font-semibold text-caption">Solar + Grid Hybrid Power</div>
@@ -282,10 +282,10 @@ export default function Home() {
                   
                   {/* Network Layer */}
                   <div className="flex items-center justify-center">
-                      <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#d5aaf9] to-[#fbff52]">
+                      <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-[#d5aaf9]">
                       <Icons.Cloud className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                     </div>
-                      <div className="rounded-xl p-3 sm:p-4 bg-gradient-to-br from-[#fbff52] to-[#d5aaf9]">
+                      <div className="rounded-xl p-3 sm:p-4 bg-[#d5aaf9]">
                       <Icons.Network className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                     </div>
                     <div className="ml-2 sm:ml-4 text-white font-semibold text-caption">Vast.ai + Direct Connect</div>
@@ -302,10 +302,10 @@ export default function Home() {
                       <div className="bg-black border border-[#4A4A4A] rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
                         {/* Solar + Grid Power */}
                         <div className="flex items-center justify-center mb-6 sm:mb-8">
-                            <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#32ca73] to-[#fbff52]">
+                            <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-[#32ca73]">
                             <Icons.Sun className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                           </div>
-                            <div className="rounded-xl p-3 sm:p-4 bg-gradient-to-br from-[#fbff52] to-[#32ca73]">
+                            <div className="rounded-xl p-3 sm:p-4 bg-[#32ca73]">
                             <Icons.Power className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                           </div>
                           <div className="ml-2 sm:ml-4 text-white font-semibold text-caption">Solar + Grid Hybrid Power</div>
@@ -328,10 +328,10 @@ export default function Home() {
                         
                         {/* Network Layer */}
                         <div className="flex items-center justify-center">
-                            <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-gradient-to-br from-[#d5aaf9] to-[#fbff52]">
+                            <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-[#d5aaf9]">
                             <Icons.Cloud className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                           </div>
-                            <div className="rounded-xl p-3 sm:p-4 bg-gradient-to-br from-[#fbff52] to-[#d5aaf9]">
+                            <div className="rounded-xl p-3 sm:p-4 bg-[#d5aaf9]">
                             <Icons.Network className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                           </div>
                           <div className="ml-2 sm:ml-4 text-white font-semibold text-caption">Vast.ai + Direct Connect</div>
@@ -698,7 +698,7 @@ export default function Home() {
                         poster="/AI_Clouds_01.png"
                         aria-label="MODRON Use Cases Overview - Shipping Container Infrastructure"
                       >
-                        <source src="/MODRON_Hero_Containers_04.mp4" type="video/mp4" />
+                        <source src="/MODRON_use_cases.mp4" type="video/mp4" />
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center">
                             <Icons.Eye className="h-16 w-16 text-white mx-auto mb-4 opacity-80" />
