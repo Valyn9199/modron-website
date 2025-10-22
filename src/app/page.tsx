@@ -172,48 +172,25 @@ export default function Home() {
       <div className="mt-6">
         {activeVisionTab === 'why-modron' && (
           <StaggeredReveal staggerDelay={150}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6" role="list" aria-label="Why choose MODRON">
-              {/* Australian Sovereignty */}
-              <div className="text-center group hover-lift" role="listitem">
-                <div className="mobile-icon mx-auto mb-6 w-16 h-16 rounded-xl flex items-center justify-center icon-hover shadow-lg hover-glow" style={{ backgroundColor: '#d5aaf9' }} aria-hidden="true">
-                  <Icons.Shield className="h-8 w-8 text-black" />
-                </div>
-                <h3 className="text-white font-light text-body mb-3">Australian Sovereignty</h3>
-                <p className="text-gray-300 leading-relaxed font-light text-caption">
-                  Locally assembled, operated, and controlled with data residency guarantees
-                </p>
-              </div>
-
-              {/* Renewable & Carbon-Neutral */}
-              <div className="text-center group hover-lift" role="listitem">
-                <div className="mobile-icon mx-auto mb-6 w-16 h-16 rounded-xl flex items-center justify-center icon-hover shadow-lg hover-glow" style={{ backgroundColor: '#32ca73' }} aria-hidden="true">
-                  <Icons.Leaf className="h-8 w-8 text-black" />
-                </div>
-                <h3 className="text-white font-light text-body mb-3">Renewable & Carbon-Neutral</h3>
-                <p className="text-gray-300 leading-relaxed font-light text-caption">
-                  80-95% renewable energy with solar panels, battery storage, and off-grid capability
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="bg-black border border-[#4A4A4A] rounded-xl p-6 hover:border-primary-purple/30 transition-all duration-200 group">
+                <h3 className="text-body font-bold text-white mb-4 group-hover:text-primary-purple transition-colors">Supercomputers in a Box</h3>
+                <p className="text-gray-400 text-caption leading-relaxed">
+                  Deploy enterprise-grade AI infrastructure anywhere in Australia within 48 hours. No lengthy construction timelines or complex installations required.
                 </p>
               </div>
               
-              {/* Container-Native Architecture */}
-              <div className="text-center group hover-lift" role="listitem">
-                <div className="mobile-icon mx-auto mb-6 w-16 h-16 rounded-xl flex items-center justify-center icon-hover shadow-lg hover-glow" style={{ backgroundColor: '#fbff52' }} aria-hidden="true">
-                  <Icons.Server className="h-8 w-8 text-black" />
-                </div>
-                <h3 className="text-white font-light text-body mb-3">Container-Native Architecture</h3>
-                <p className="text-gray-300 leading-relaxed font-light text-caption">
-                  Rapid deployment and scaling with shipping container infrastructure
+              <div className="bg-black border border-[#4A4A4A] rounded-xl p-6 hover:border-primary-cyan/30 transition-all duration-200 group">
+                <h3 className="text-body font-bold text-white mb-4 group-hover:text-primary-cyan transition-colors">Compute Independence</h3>
+                <p className="text-gray-400 text-caption leading-relaxed">
+                  Break free from overseas cloud dependencies. Australian businesses, researchers, and government agencies get sovereign AI infrastructure with local control.
                 </p>
               </div>
               
-              {/* Advanced Cooling & Efficiency */}
-              <div className="text-center group hover-lift" role="listitem">
-                <div className="mx-auto mb-6 w-16 h-16 rounded-xl flex items-center justify-center icon-hover shadow-lg hover-glow" style={{ backgroundColor: '#40d0f2' }}>
-                  <Icons.Gauge className="h-8 w-8 text-black" />
-                </div>
-                <h3 className="text-white font-light text-body mb-3">Advanced Cooling & Efficiency</h3>
-                <p className="text-gray-300 leading-relaxed font-light text-caption">
-                  Immersion cooling technology delivering maximum reliability and peak performance
+              <div className="bg-black border border-[#4A4A4A] rounded-xl p-6 hover:border-primary-green/30 transition-all duration-200 group">
+                <h3 className="text-body font-bold text-white mb-4 group-hover:text-primary-green transition-colors">Rapid Deployment</h3>
+                <p className="text-gray-400 text-caption leading-relaxed">
+                  From order to operation in 48 hours. Modular containers with immersion cooling deliver industry-leading compute density in a compact footprint.
                 </p>
               </div>
             </div>
