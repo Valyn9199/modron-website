@@ -686,6 +686,13 @@ export default function Home() {
                 <div className="relative z-10">
                   <h3 className="text-xl font-bold text-white mb-6 text-center">Supercomputing Made Simple</h3>
                   
+                  {/* Intro Paragraph */}
+                  <p className="text-base sm:text-lg text-gray-300 mb-8 max-w-3xl mx-auto text-center leading-relaxed px-4">
+                    Unlock the full potential of AI with sovereign infrastructure designed for Australian businesses. 
+                    Transform document processing, predictive analytics, real-time decision-making, and autonomous 
+                    systems using enterprise-grade GPU computing that stays within Australian borders.
+                  </p>
+                  
                   {/* Video Section */}
                   <div className="mb-8">
                     <div className="video-container relative w-full max-w-4xl mx-auto aspect-video bg-black rounded-xl overflow-hidden border border-[#4A4A4A]">
@@ -698,7 +705,7 @@ export default function Home() {
                         poster="/AI_Clouds_01.png"
                         aria-label="MODRON Use Cases Overview - Shipping Container Infrastructure"
                       >
-                        <source src="/MODRON_use_cases_05.mp4" type="video/mp4" />
+                        <source src="/MODRON_use_cases_06.mp4" type="video/mp4" />
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center">
                             <img alt="MODRON" className="h-16 w-16 mx-auto mb-4 opacity-80" src="/ICON_GENESIS_01.png" />
@@ -709,6 +716,22 @@ export default function Home() {
                       </video>
                       {/* Transparent rounded rectangle overlay */}
                       <div className="absolute inset-0 border-6 border-black rounded-xl bg-transparent z-20 pointer-events-none"></div>
+                    </div>
+                  </div>
+                  
+                  {/* Stats Cards */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-6 border border-[#d5aaf9]/20 text-center">
+                      <div className="text-4xl font-bold text-white mb-2">48 Hours</div>
+                      <p className="text-gray-300 text-sm">From deployment order to production AI workloads</p>
+                    </div>
+                    <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#40d0f2]/10 rounded-xl p-6 border border-[#fbff52]/20 text-center">
+                      <div className="text-4xl font-bold text-white mb-2">100+ PetaFLOPS</div>
+                      <p className="text-gray-300 text-sm">Computational power per container cluster</p>
+                    </div>
+                    <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#32ca73]/10 rounded-xl p-6 border border-[#32ca73]/20 text-center">
+                      <div className="text-4xl font-bold text-white mb-2">80-95% Renewable</div>
+                      <p className="text-gray-300 text-sm">Sustainable AI operations with solar integration</p>
                     </div>
                   </div>
                   
@@ -786,8 +809,8 @@ export default function Home() {
                             <Icons.Database className="h-4 w-4 text-black" />
               </div>
                           <div>
-                            <h5 className="text-white font-medium text-sm">Data Preparation</h5>
-                            <p className="text-[#999999] text-xs">Raw data processing and preprocessing for AI model training</p>
+                            <h5 className="text-white font-medium text-sm">Data Ingestion (Days 1-3)</h5>
+                            <p className="text-[#999999] text-xs">Ingest 10TB+ datasets from S3, Snowflake, or on-prem systems. Built-in data validation, deduplication, and preprocessing pipelines with real-time streaming support.</p>
                           </div>
                         </div>
                         <div className="flex items-start space-x-3">
@@ -795,8 +818,8 @@ export default function Home() {
                             <Icons.Brain className="h-4 w-4 text-black" />
                           </div>
                           <div>
-                            <h5 className="text-white font-medium text-sm">Model Training</h5>
-                            <p className="text-[#999999] text-xs">Neural network training and optimization using MODRON's GPU clusters</p>
+                            <h5 className="text-white font-medium text-sm">Model Training (Days 4-30)</h5>
+                            <p className="text-[#999999] text-xs">Distributed training across 100+ GPUs with automatic fault tolerance. Built-in experiment tracking with Weights & Biases integration and hyperparameter optimization.</p>
                           </div>
                         </div>
                         <div className="flex items-start space-x-3">
@@ -804,8 +827,8 @@ export default function Home() {
                             <Icons.BarChart3 className="h-4 w-4 text-black" />
                           </div>
                           <div>
-                            <h5 className="text-white font-medium text-sm">Model Evaluation</h5>
-                            <p className="text-[#999999] text-xs">Performance testing and validation against test datasets</p>
+                            <h5 className="text-white font-medium text-sm">Model Validation (Days 31-45)</h5>
+                            <p className="text-[#999999] text-xs">A/B testing framework with canary deployments. Real-time performance monitoring with automatic rollback and bias detection tools.</p>
                           </div>
                         </div>
                         <div className="flex items-start space-x-3">
@@ -813,8 +836,8 @@ export default function Home() {
                             <Icons.Server className="h-4 w-4 text-black" />
                           </div>
                           <div>
-                            <h5 className="text-white font-medium text-sm">Deployment</h5>
-                            <p className="text-[#999999] text-xs">Production deployment and serving with monitoring</p>
+                            <h5 className="text-white font-medium text-sm">Production Deployment (Days 46+)</h5>
+                            <p className="text-[#999999] text-xs">Container orchestration with Kubernetes. Auto-scaling based on traffic patterns and global edge deployment in 48 hours.</p>
                           </div>
                         </div>
                       </div>
@@ -838,7 +861,7 @@ export default function Home() {
                 </div>
                       <h4 className="text-white font-semibold">Government</h4>
                 </div>
-                    <p className="text-gray-300 text-sm">Sovereign data residency with guaranteed compliance and security</p>
+                    <p className="text-gray-300 text-sm">Defense-grade AI for classified data processing with ISO27001-ready infrastructure supporting air-gapped deployments</p>
                   </div>
                   
                   <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
@@ -848,7 +871,7 @@ export default function Home() {
                 </div>
                       <h4 className="text-white font-semibold">Research</h4>
                 </div>
-                    <p className="text-gray-300 text-sm">Carbon-neutral computing for universities and research institutions</p>
+                    <p className="text-gray-300 text-sm">High-performance computing at 95% lower carbon footprint enabling breakthrough discoveries without environmental impact</p>
                   </div>
                   
                   <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
@@ -858,7 +881,7 @@ export default function Home() {
                       </div>
                       <h4 className="text-white font-semibold">Enterprise</h4>
                     </div>
-                    <p className="text-gray-300 text-sm">Australian-built infrastructure with local support and expertise</p>
+                    <p className="text-gray-300 text-sm">Scale from 1 to 1000 GPUs in minutes with spot pricing at 40% below cloud, keeping all data within Australian borders</p>
                   </div>
                   
                   <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
@@ -868,7 +891,7 @@ export default function Home() {
                       </div>
                       <h4 className="text-white font-semibold">Development</h4>
                     </div>
-                    <p className="text-gray-300 text-sm">Complete data sovereignty with Australian oversight and standards</p>
+                    <p className="text-gray-300 text-sm">Build sovereign AI applications processing sensitive data with guaranteed Australian residency and regulatory compliance</p>
                   </div>
                   
                   <div className="bg-gradient-to-br from-[#ff6b6b]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#ff6b6b]/20 group hover:border-[#ff6b6b]/40 transition-all duration-300">
@@ -878,7 +901,7 @@ export default function Home() {
                       </div>
                       <h4 className="text-white font-semibold">Emergency AI Infrastructure</h4>
                     </div>
-                    <p className="text-gray-300 text-sm">Deploy critical AI compute within 48 hours for emergency response and disaster management</p>
+                    <p className="text-gray-300 text-sm">Rapid AI deployment for bushfire prediction, flood assessment, and search & rescue coordination - operational within 48 hours</p>
                   </div>
                   
                   <div className="bg-gradient-to-br from-[#4ecdc4]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#4ecdc4]/20 group hover:border-[#4ecdc4]/40 transition-all duration-300">
@@ -889,6 +912,46 @@ export default function Home() {
                       <h4 className="text-white font-semibold">Disaster Recovery</h4>
                     </div>
                     <p className="text-gray-300 text-sm">Rapid infrastructure restoration with modular containers for business continuity</p>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-[#ff6b6b]/10 to-[#40d0f2]/10 rounded-xl p-4 border border-[#ff6b6b]/20 group hover:border-[#ff6b6b]/40 transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#ff6b6b] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <Icons.Heart className="h-5 w-5 text-black flex-shrink-0" />
+                      </div>
+                      <h4 className="text-white font-semibold">Healthcare</h4>
+                    </div>
+                    <p className="text-gray-300 text-sm">AI-powered medical imaging analysis processing radiology scans with HIPAA-compliant infrastructure for Australian hospitals</p>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#32ca73]/20 group hover:border-[#32ca73]/40 transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <Icons.Leaf className="h-5 w-5 text-black flex-shrink-0" />
+                      </div>
+                      <h4 className="text-white font-semibold">Agriculture</h4>
+                    </div>
+                    <p className="text-gray-300 text-sm">Precision farming AI analyzing satellite imagery and sensor data to optimize irrigation and predict crop yields</p>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#fbff52]/10 rounded-xl p-4 border border-[#40d0f2]/20 group hover:border-[#40d0f2]/40 transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#40d0f2] to-[#fbff52] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <Icons.DollarSign className="h-5 w-5 text-black flex-shrink-0" />
+                      </div>
+                      <h4 className="text-white font-semibold">FinTech</h4>
+                    </div>
+                    <p className="text-gray-300 text-sm">Real-time fraud detection processing millions of transactions with &lt;50ms latency and strict regulatory compliance</p>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#32ca73]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#d5aaf9] to-[#32ca73] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <Icons.Hammer className="h-5 w-5 text-black flex-shrink-0" />
+                      </div>
+                      <h4 className="text-white font-semibold">Mining</h4>
+                    </div>
+                    <p className="text-gray-300 text-sm">Autonomous equipment operations with computer vision for safety monitoring and predictive maintenance</p>
                   </div>
                 </div>
                 
@@ -1002,7 +1065,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Always-on Availability</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">99.9% uptime guarantee with redundant systems and automatic failover for continuous operations.</p>
+                      <p className="text-gray-300 text-sm">Eliminate AI downtime with 99.9% uptime, &lt;1 second failover, and automatic backup recovery to keep mission-critical models running continuously.</p>
                     </div>
 
                     {/* Clean Energy Credits */}
@@ -1013,7 +1076,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Clean Energy Credits</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">Earn carbon credits and sustainability certifications through our renewable-powered infrastructure.</p>
+                      <p className="text-gray-300 text-sm">Achieve net-zero AI operations with 80-95% renewable energy usage, qualifying for carbon offset programs and ESG reporting requirements.</p>
                     </div>
 
                     {/* Custom Containers & APIs */}
@@ -1024,7 +1087,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Custom Containers & APIs</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">Tailored container environments and RESTful APIs for seamless integration with your workflows.</p>
+                      <p className="text-gray-300 text-sm">Deploy your existing Docker containers and integrate via RESTful APIs with zero infrastructure changes - works with your current toolchain.</p>
                     </div>
 
                     {/* Spot & Reserved Instances */}
@@ -1035,7 +1098,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Spot & Reserved Instances</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">Flexible pricing models with spot instances for cost optimization and reserved instances for predictable workloads.</p>
+                      <p className="text-gray-300 text-sm">Optimize costs with spot pricing for non-critical workloads and reserve capacity for production systems with predictable cost forecasting.</p>
                     </div>
 
                     {/* Remote Monitoring */}
@@ -1046,7 +1109,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Remote Monitoring</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">Comprehensive monitoring and alerting with real-time performance metrics and automated incident response.</p>
+                      <p className="text-gray-300 text-sm">Gain complete visibility into AI performance with real-time dashboards, automated alerts, and proactive incident management from anywhere.</p>
                     </div>
 
                     {/* Compliance & Security */}
@@ -1057,7 +1120,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Compliance & Security</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">Enterprise-grade security with compliance certifications and data sovereignty guarantees for Australian operations.</p>
+                      <p className="text-gray-300 text-sm">Meet strict regulatory requirements with ISO27001-ready infrastructure, end-to-end encryption, and guaranteed data residency within Australian borders.</p>
                     </div>
             </div>
               </div>
