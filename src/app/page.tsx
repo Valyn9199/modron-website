@@ -1324,106 +1324,109 @@ export default function Home() {
 
               {/* Mobile Cards */}
               <div className="md:hidden space-y-4">
-                {/* MODRON Card */}
-                <div className="bg-[#d5aaf9]/10 border border-[#d5aaf9]/30 rounded-xl p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <h4 className="text-white font-bold text-lg">MODRON</h4>
-                    <span className="text-[#32ca73] font-bold text-lg">$0.54–$0.90</span>
+                {/* MODRON Card - Highlighted */}
+                <div className="bg-gradient-to-br from-[#d5aaf9]/15 to-[#32ca73]/10 border-2 border-[#d5aaf9]/40 rounded-xl p-5 shadow-lg shadow-[#d5aaf9]/20">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-[#32ca73] animate-pulse"></div>
+                      <h4 className="text-white font-bold text-lg">MODRON</h4>
+                    </div>
+                    <span className="text-[#32ca73] font-bold text-xl">$0.54–$0.90</span>
                   </div>
                   <div className="grid grid-cols-2 gap-3 text-sm">
-                    <div>
-                      <span className="text-[#999999]">Renewable:</span>
-                      <span className="text-[#32ca73] font-semibold ml-2">80–95%</span>
+                    <div className="flex flex-col">
+                      <span className="text-[#999999] text-xs mb-1">Renewable</span>
+                      <span className="text-[#32ca73] font-semibold">80–95%</span>
                     </div>
-                    <div>
-                      <span className="text-[#999999]">Australian:</span>
-                      <span className="text-[#32ca73] font-semibold ml-2">Yes</span>
+                    <div className="flex flex-col">
+                      <span className="text-[#999999] text-xs mb-1">Assembly</span>
+                      <span className="text-[#32ca73] font-semibold">Australian</span>
                     </div>
-                    <div>
-                      <span className="text-[#999999]">Deploy:</span>
-                      <span className="text-[#32ca73] font-semibold ml-2">48 hours</span>
+                    <div className="flex flex-col">
+                      <span className="text-[#999999] text-xs mb-1">Deployment</span>
+                      <span className="text-[#32ca73] font-semibold">48 hours</span>
                     </div>
-                    <div>
-                      <span className="text-[#999999]">Data:</span>
-                      <span className="text-[#32ca73] font-semibold ml-2">100% AU</span>
+                    <div className="flex flex-col">
+                      <span className="text-[#999999] text-xs mb-1">Data Residency</span>
+                      <span className="text-[#32ca73] font-semibold">100% AU</span>
                     </div>
                   </div>
                 </div>
 
                 {/* AWS Card */}
-                <div className="hidden md:block bg-black border border-[#4A4A4A] rounded-xl p-4">
+                <div className="bg-black/50 border border-[#4A4A4A] rounded-xl p-4 opacity-70">
                   <div className="flex items-center justify-between mb-3">
-                    <h4 className="text-white font-bold text-lg">AWS</h4>
-                    <span className="text-[#CCCCCC] font-bold text-lg">~$1.20+</span>
+                    <h4 className="text-white font-bold text-base">AWS</h4>
+                    <span className="text-[#CCCCCC] font-bold text-base">~$1.20+</span>
                   </div>
                   <div className="grid grid-cols-2 gap-3 text-sm">
-                    <div>
-                      <span className="text-[#999999]">Renewable:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">20-30%</span>
+                    <div className="flex flex-col">
+                      <span className="text-[#999999] text-xs mb-1">Renewable</span>
+                      <span className="text-[#CCCCCC] font-semibold">20-30%</span>
                     </div>
-                    <div>
-                      <span className="text-[#999999]">Australian:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">No</span>
+                    <div className="flex flex-col">
+                      <span className="text-[#999999] text-xs mb-1">Assembly</span>
+                      <span className="text-[#CCCCCC] font-semibold">No</span>
                     </div>
-                    <div>
-                      <span className="text-[#999999]">Deploy:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">Weeks</span>
+                    <div className="flex flex-col">
+                      <span className="text-[#999999] text-xs mb-1">Deployment</span>
+                      <span className="text-[#CCCCCC] font-semibold">Weeks/Months</span>
                     </div>
-                    <div>
-                      <span className="text-[#999999]">Data:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">International</span>
+                    <div className="flex flex-col">
+                      <span className="text-[#999999] text-xs mb-1">Data Residency</span>
+                      <span className="text-[#CCCCCC] font-semibold">International</span>
                     </div>
                   </div>
                 </div>
 
                 {/* GCP Card */}
-                <div className="hidden md:block bg-black border border-[#4A4A4A] rounded-xl p-4">
+                <div className="bg-black/50 border border-[#4A4A4A] rounded-xl p-4 opacity-70">
                   <div className="flex items-center justify-between mb-3">
-                    <h4 className="text-white font-bold text-lg">GCP</h4>
-                    <span className="text-[#CCCCCC] font-bold text-lg">~$1.10+</span>
+                    <h4 className="text-white font-bold text-base">GCP</h4>
+                    <span className="text-[#CCCCCC] font-bold text-base">~$1.10+</span>
                   </div>
                   <div className="grid grid-cols-2 gap-3 text-sm">
-                    <div>
-                      <span className="text-[#999999]">Renewable:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">25-35%</span>
+                    <div className="flex flex-col">
+                      <span className="text-[#999999] text-xs mb-1">Renewable</span>
+                      <span className="text-[#CCCCCC] font-semibold">25-35%</span>
                     </div>
-                    <div>
-                      <span className="text-[#999999]">Cooling:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">Air</span>
+                    <div className="flex flex-col">
+                      <span className="text-[#999999] text-xs mb-1">Assembly</span>
+                      <span className="text-[#CCCCCC] font-semibold">No</span>
                     </div>
-                    <div>
-                      <span className="text-[#999999]">Dedicated:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">Often Shared</span>
+                    <div className="flex flex-col">
+                      <span className="text-[#999999] text-xs mb-1">Deployment</span>
+                      <span className="text-[#CCCCCC] font-semibold">Weeks/Months</span>
                     </div>
-                    <div>
-                      <span className="text-[#999999]">SLA:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">99.5%</span>
+                    <div className="flex flex-col">
+                      <span className="text-[#999999] text-xs mb-1">Data Residency</span>
+                      <span className="text-[#CCCCCC] font-semibold">International</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Lambda Labs Card */}
-                <div className="hidden md:block bg-black border border-[#4A4A4A] rounded-xl p-4">
+                <div className="bg-black/50 border border-[#4A4A4A] rounded-xl p-4 opacity-70">
                   <div className="flex items-center justify-between mb-3">
-                    <h4 className="text-white font-bold text-lg">Lambda Labs</h4>
-                    <span className="text-[#CCCCCC] font-bold text-lg">~$0.90</span>
+                    <h4 className="text-white font-bold text-base">Lambda Labs</h4>
+                    <span className="text-[#CCCCCC] font-bold text-base">~$0.90</span>
                   </div>
                   <div className="grid grid-cols-2 gap-3 text-sm">
-                    <div>
-                      <span className="text-[#999999]">Renewable:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">40-50%</span>
+                    <div className="flex flex-col">
+                      <span className="text-[#999999] text-xs mb-1">Renewable</span>
+                      <span className="text-[#CCCCCC] font-semibold">40-50%</span>
                     </div>
-                    <div>
-                      <span className="text-[#999999]">Cooling:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">Air</span>
+                    <div className="flex flex-col">
+                      <span className="text-[#999999] text-xs mb-1">Assembly</span>
+                      <span className="text-[#CCCCCC] font-semibold">No</span>
                     </div>
-                    <div>
-                      <span className="text-[#999999]">Dedicated:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">Yes</span>
+                    <div className="flex flex-col">
+                      <span className="text-[#999999] text-xs mb-1">Deployment</span>
+                      <span className="text-[#CCCCCC] font-semibold">Weeks/Months</span>
                     </div>
-                    <div>
-                      <span className="text-[#999999]">SLA:</span>
-                      <span className="text-[#CCCCCC] font-semibold ml-2">99.9%</span>
+                    <div className="flex flex-col">
+                      <span className="text-[#999999] text-xs mb-1">Data Residency</span>
+                      <span className="text-[#CCCCCC] font-semibold">International</span>
                     </div>
                   </div>
                 </div>
