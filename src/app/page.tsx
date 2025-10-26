@@ -732,15 +732,15 @@ export default function Home() {
                     </div>
                     
                     <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-6 border border-[#d5aaf9]/20 text-center flex flex-col items-center justify-center">
-                      <div className="text-2xl font-bold text-white mb-2">48 Hours</div>
+                      <div className="text-lg md:text-xl font-bold text-white mb-2">48 Hours</div>
                       <p className="text-gray-300 text-sm">From deployment order to production AI workloads</p>
                     </div>
                     <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#40d0f2]/10 rounded-xl p-6 border border-[#fbff52]/20 text-center flex flex-col items-center justify-center">
-                      <div className="text-2xl font-bold text-white mb-2">100+ PetaFLOPS</div>
+                      <div className="text-lg md:text-xl font-bold text-white mb-2">100+ PetaFLOPS</div>
                       <p className="text-gray-300 text-sm">Computational power per container cluster</p>
                     </div>
                     <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#32ca73]/10 rounded-xl p-6 border border-[#32ca73]/20 text-center flex flex-col items-center justify-center">
-                      <div className="text-2xl font-bold text-white mb-2">80-95% Renewable</div>
+                      <div className="text-lg md:text-xl font-bold text-white mb-2">80-95% Renewable</div>
                       <p className="text-gray-300 text-sm">Sustainable AI operations with solar integration</p>
                     </div>
                   </div>
