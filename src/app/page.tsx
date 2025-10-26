@@ -139,6 +139,7 @@ export default function Home() {
             src="/ICON_GENESIS_01.png" 
             alt="MODRON Genesis Icon" 
             className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
+            loading="eager"
           />
         </div>
       </div>
@@ -631,7 +632,7 @@ export default function Home() {
                       : 'text-[#CCCCCC] hover:text-white hover:bg-[#1A1A1A]/50'
                   }`}
                 >
-                  <img alt="MODRON" className="h-4 w-4 mr-2 hidden sm:block" src="/ICON_GENESIS_01.png" />
+                  <img alt="MODRON" className="h-4 w-4 mr-2 hidden sm:block" src="/ICON_GENESIS_01.png" loading="lazy" />
                   Overview
                 </button>
                 <button
@@ -707,13 +708,14 @@ export default function Home() {
                         loop
                         muted
                         playsInline
+                        preload="metadata"
                         poster="/AI_Clouds_01.png"
                         aria-label="MODRON Use Cases Overview - Shipping Container Infrastructure"
                       >
                         <source src="/MODRON_use_cases_06.mp4" type="video/mp4" />
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center">
-                            <img alt="MODRON" className="h-16 w-16 mx-auto mb-4 opacity-80" src="/ICON_GENESIS_01.png" />
+                            <img alt="MODRON" className="h-16 w-16 mx-auto mb-4 opacity-80" src="/ICON_GENESIS_01.png" loading="lazy" />
                             <p className="text-white text-lg mb-2">MODRON Use Cases Overview</p>
                             <p className="text-gray-400 text-sm">Discover the possibilities with Australia's first deployable supercomputers</p>
                           </div>
@@ -732,6 +734,7 @@ export default function Home() {
                         src="/ICON_GENESIS_01.png" 
                         alt="MODRON" 
                         className="h-16 w-16 mb-3 object-contain"
+                        loading="lazy"
                       />
                       <p className="text-white font-semibold text-sm">Australian AI Infrastructure</p>
                     </div>
@@ -1626,6 +1629,7 @@ export default function Home() {
                     src="/ICON_GENESIS_01.png" 
                     alt="MODRON" 
                     className="w-8 h-8 sm:w-10 sm:h-10"
+                    loading="lazy"
                   />
                 </div>
                 <span>&copy; 2025. All rights reserved.</span>

@@ -91,7 +91,7 @@ export function EnhancedStructuredData() {
     ],
     "serviceType": "Sovereign AI Compute Infrastructure",
     "slogan": "Building Australia's first deployable supercomputers in a box",
-    "keywords": "Australia sovereign AI infrastructure, Australian-built GPU clusters, High-performance GPU clusters Australia, Enterprise AI infrastructure Australia, Industry-leading compute density, Immersion-cooled GPUs Australia, Solar-powered AI compute, Modular AI infrastructure, Australian data sovereignty, Locally-assembled GPUs, Sovereign AI compute Australia, RTX 4090 Australia, H200 L40S Australia, Blackwell GB300 Australia, Enterprise-grade AI compute, Rapid deployment AI infrastructure, 48-hour AI deployment Australia",
+    "keywords": "Australia sovereign AI infrastructure, Australian-built GPU clusters, High-performance GPU clusters Australia, Enterprise AI infrastructure Australia, Industry-leading compute density, Immersion-cooled GPUs Australia, Solar-powered AI compute, Modular AI infrastructure, Australian data sovereignty, Locally-assembled GPUs, Sovereign AI compute Australia, RTX 4090 Australia, H200 L40S Australia, Blackwell GB300 Australia, Enterprise-grade AI compute, Rapid deployment AI infrastructure, 48-hour AI deployment Australia, on-premises AI infrastructure Australia, GPU cluster deployment Sydney, Australian data sovereignty compliance, enterprise AI hosting Melbourne, sovereign cloud alternative Australia, private AI cloud Australia, Australian AI data residency, enterprise GPU rental Australia, on-site AI deployment Australia, Australian AI infrastructure provider, local AI compute Australia, enterprise AI infrastructure deployment, Australian AI sovereignty",
     "knowsAbout": [
       "Artificial Intelligence",
       "Machine Learning",
@@ -271,6 +271,64 @@ export function EnhancedStructuredData() {
     ]
   };
 
+  const localBusinessStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "MODRON",
+    "url": "https://www.modron.com",
+    "logo": "https://www.modron.com/ICON_GENESIS_01.png",
+    "description": "Australia's leading provider of on-premises AI infrastructure and sovereign GPU clusters",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "AU",
+      "addressRegion": "NSW", 
+      "addressLocality": "Sydney"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "-33.8688",
+      "longitude": "151.2093"
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Sydney",
+        "@id": "https://en.wikipedia.org/wiki/Sydney"
+      },
+      {
+        "@type": "City", 
+        "name": "Melbourne",
+        "@id": "https://en.wikipedia.org/wiki/Melbourne"
+      },
+      {
+        "@type": "City",
+        "name": "Brisbane", 
+        "@id": "https://en.wikipedia.org/wiki/Brisbane"
+      },
+      {
+        "@type": "City",
+        "name": "Perth",
+        "@id": "https://en.wikipedia.org/wiki/Perth"
+      },
+      {
+        "@type": "City",
+        "name": "Adelaide",
+        "@id": "https://en.wikipedia.org/wiki/Adelaide"
+      },
+      {
+        "@type": "Country",
+        "name": "Australia",
+        "@id": "https://en.wikipedia.org/wiki/Australia"
+      }
+    ],
+    "serviceType": "AI Infrastructure Services",
+    "priceRange": "$$$",
+    "email": "contact@modron.com",
+    "openingHours": "Mo-Fr 09:00-17:00",
+    "paymentAccepted": "Invoice, Bank Transfer",
+    "currenciesAccepted": "AUD"
+  };
+
   return (
     <>
       <script
@@ -292,6 +350,10 @@ export function EnhancedStructuredData() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessStructuredData) }}
       />
       {/* hreflang links for international SEO */}
       <link rel="alternate" hrefLang="en-AU" href="https://www.modron.com" />

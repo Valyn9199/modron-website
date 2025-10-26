@@ -121,7 +121,7 @@ export function HeroBgVideo({
         playsInline
         muted
         loop={true}
-        preload={shouldPlayVideo ? "auto" : "none"}
+        preload={shouldPlayVideo ? "metadata" : "none"}
         poster={poster}
         crossOrigin="anonymous"
         aria-label="Background video showing MODRON's sustainable GPU infrastructure"

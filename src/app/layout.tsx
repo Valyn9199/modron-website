@@ -25,8 +25,8 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "MODRON | Australia's Sovereign AI Infrastructure | Immersion-Cooled GPU Clusters",
-  description: "Australia's first deployable supercomputers in a box. Enterprise-grade AI infrastructure with industry-leading compute density. Locally-built, immersion-cooled GPU clusters (RTX 4090, H200, L40S, Blackwell GB300) with solar power and modular containers. 48-hour deployment, Australian assembly, data sovereignty, and compute independence for enterprises.",
-  keywords: ["Australia sovereign AI infrastructure", "Australian-built GPU clusters", "High-performance GPU clusters Australia", "Enterprise AI infrastructure Australia", "Industry-leading compute density", "Immersion-cooled GPUs Australia", "Solar-powered AI compute", "Modular AI infrastructure", "Australian data sovereignty", "Locally-assembled GPUs", "Sovereign AI compute Australia", "MODRON Australia", "Australian AI infrastructure", "Data sovereignty Australia", "Immersion cooling technology", "Solar-powered modular containers", "Modular container infrastructure", "Australian GPU assembly", "Sovereign compute platform", "Australian enterprises AI", "RTX 4090 Australia", "H200 L40S Australia", "Blackwell GB300 Australia", "Enterprise-grade AI compute", "Rapid deployment AI infrastructure", "48-hour AI deployment Australia", "Immersion-cooled RTX 4090", "Solar-powered GPU hosting", "Modular container AI"],
+  description: "Australia's first on-premises AI supercomputers. Enterprise-grade GPU clusters (RTX 4090, H200, L40S, Blackwell GB300) with Australian data sovereignty. Deploy on-premises or access campus facilities in Sydney, Melbourne. 48-hour deployment, immersion cooling, solar power. Complete data residency compliance for Australian enterprises.",
+  keywords: ["Australia sovereign AI infrastructure", "Australian-built GPU clusters", "High-performance GPU clusters Australia", "Enterprise AI infrastructure Australia", "Industry-leading compute density", "Immersion-cooled GPUs Australia", "Solar-powered AI compute", "Modular AI infrastructure", "Australian data sovereignty", "Locally-assembled GPUs", "Sovereign AI compute Australia", "MODRON Australia", "Australian AI infrastructure", "Data sovereignty Australia", "Immersion cooling technology", "Solar-powered modular containers", "Modular container infrastructure", "Australian GPU assembly", "Sovereign compute platform", "Australian enterprises AI", "RTX 4090 Australia", "H200 L40S Australia", "Blackwell GB300 Australia", "Enterprise-grade AI compute", "Rapid deployment AI infrastructure", "48-hour AI deployment Australia", "Immersion-cooled RTX 4090", "Solar-powered GPU hosting", "Modular container AI", "on-premises AI infrastructure Australia", "GPU cluster deployment Sydney", "Australian data sovereignty compliance", "enterprise AI hosting Melbourne", "sovereign cloud alternative Australia", "private AI cloud Australia", "Australian AI data residency", "enterprise GPU rental Australia", "on-site AI deployment Australia", "Australian AI infrastructure provider", "local AI compute Australia", "Australian enterprise AI solutions", "GPU hosting Sydney Melbourne", "Australian AI sovereignty", "enterprise AI infrastructure deployment"],
   authors: [{ name: "MODRON" }],
   creator: "MODRON",
   publisher: "MODRON",
@@ -37,6 +37,12 @@ export const metadata: Metadata = {
     'geo.placename': 'Sydney',
     'geo.position': '-33.8688;151.2093',
     'ICBM': '-33.8688, 151.2093',
+    'geo.country': 'Australia',
+    'geo.state': 'New South Wales',
+    'DC.coverage': 'Australia',
+    'DC.identifier': 'MODRON-Australia-AI-Infrastructure',
+    'serviceArea': 'Sydney, Melbourne, Brisbane, Perth, Adelaide, Canberra',
+    'coverage': 'Australia-wide',
     'application-name': 'MODRON',
     'apple-mobile-web-app-title': 'MODRON',
     'apple-mobile-web-app-capable': 'yes',
@@ -59,7 +65,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "MODRON | Australia's Sovereign AI Infrastructure | Immersion-Cooled GPU Clusters",
-    description: "Australia's first deployable supercomputers in a box. Enterprise-grade AI infrastructure with industry-leading compute density. Locally-built, immersion-cooled GPU clusters (RTX 4090, H200, L40S, Blackwell GB300) with solar power and modular containers. 48-hour deployment, Australian assembly, data sovereignty, and compute independence.",
+    description: "Australia's first on-premises AI supercomputers. Enterprise-grade GPU clusters (RTX 4090, H200, L40S, Blackwell GB300) with Australian data sovereignty. Deploy on-premises or access campus facilities in Sydney, Melbourne. 48-hour deployment, immersion cooling, solar power. Complete data residency compliance for Australian enterprises.",
     url: 'https://www.modron.com',
     siteName: 'MODRON',
     images: [
@@ -85,7 +91,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'MODRON | Australia\'s Sovereign AI Infrastructure | Immersion-Cooled GPU Clusters',
-    description: 'Australia\'s first deployable supercomputers in a box. Enterprise-grade AI infrastructure with industry-leading compute density. Locally-built, immersion-cooled GPU clusters (RTX 4090, H200, L40S, Blackwell GB300) with solar power and modular containers. 48-hour deployment, Australian assembly, data sovereignty, and compute independence.',
+    description: 'Australia\'s first on-premises AI supercomputers. Enterprise-grade GPU clusters (RTX 4090, H200, L40S, Blackwell GB300) with Australian data sovereignty. Deploy on-premises or access campus facilities in Sydney, Melbourne. 48-hour deployment, immersion cooling, solar power. Complete data residency compliance for Australian enterprises.',
     images: ['/og-image.jpg'],
     creator: '@modron_ai',
     site: '@modron_ai',
@@ -144,6 +150,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <EnhancedStructuredData />
+        {/* Resource hints for performance */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//www.google-analytics.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${dmSans.variable} antialiased`}
