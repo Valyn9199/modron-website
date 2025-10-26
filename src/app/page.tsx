@@ -72,7 +72,7 @@ export default function Home() {
 <section id="home" className="nav-trigger-home relative min-h-screen flex items-center justify-center w-full pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-16" role="banner" aria-labelledby="hero-heading">
   
   {/* Background Video */}
-  <HeroBgVideo overlayOpacity={0} />
+  <HeroBgVideo overlayOpacity={0} poster="/hero-poster.jpg" />
 
   {/* Main Content */}
   <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl mt-12 sm:mt-16 md:mt-18 lg:mt-24">
@@ -138,7 +138,7 @@ export default function Home() {
           <img 
             src="/ICON_GENESIS_01.png" 
             alt="MODRON Genesis Icon" 
-            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 opacity-60"
+            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
           />
         </div>
       </div>
@@ -540,7 +540,7 @@ export default function Home() {
                   playsInline
                   preload="metadata"
                   className="w-full h-full object-cover object-center"
-                  poster="/MODRON_Gold_Delivery_02_poster.png"
+                  poster="/MODRON_Gold_Delivery_poster.jpg"
                 >
                   <source src="/MODRON_Gold_Delivery_02.mp4" type="video/mp4" />
                 </video>

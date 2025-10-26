@@ -144,8 +144,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <EnhancedStructuredData />
-        {/* Preload hero poster with proper crossorigin attribute */}
-        <link rel="preload" as="image" href="/hero-poster.jpg" crossOrigin="anonymous" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${dmSans.variable} antialiased`}

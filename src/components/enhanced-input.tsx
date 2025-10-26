@@ -52,9 +52,9 @@ export function EnhancedInput({
   const isFloating = floating && (isFocused || hasValue)
 
   return (
-    <div className={cn("relative", className)}>
+    <div className={cn("relative", className)} suppressHydrationWarning={true}>
       {/* Input container */}
-      <div className="relative">
+      <div className="relative" suppressHydrationWarning={true}>
         {/* Icon */}
         {icon && (
           <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 z-10">
@@ -106,6 +106,7 @@ export function EnhancedInput({
             "absolute inset-0 rounded-lg border-2 border-transparent transition-all duration-200 pointer-events-none",
             isFocused && "border-[#40d0f2] shadow-[0_0_0_1px_rgba(64,208,242,0.2)]"
           )}
+          suppressHydrationWarning={true}
         />
       </div>
 
@@ -169,7 +170,7 @@ export function EnhancedTextarea({
   const isFloating = floating && (isFocused || hasValue)
 
   return (
-    <div className={cn("relative", className)}>
+    <div className={cn("relative", className)} suppressHydrationWarning={true}>
       {/* Textarea container */}
       <div className="relative">
         {/* Textarea field */}
@@ -212,6 +213,7 @@ export function EnhancedTextarea({
             "absolute inset-0 rounded-lg border-2 border-transparent transition-all duration-200 pointer-events-none",
             isFocused && "border-[#40d0f2] shadow-[0_0_0_1px_rgba(64,208,242,0.2)]"
           )}
+          suppressHydrationWarning={true}
         />
       </div>
 

@@ -35,9 +35,7 @@ export function HeroBgVideo({
 
   // Comprehensive check for video playback suitability
   useEffect(() => {
-    console.log('🎬 HeroBgVideo useEffect - checking video playback suitability')
     if (typeof window === "undefined" || prefersReduced) {
-      console.log('🎬 Video disabled: window undefined or reduced motion')
       setShouldPlayVideo(false)
       return
     }
@@ -50,40 +48,32 @@ export function HeroBgVideo({
                       (navigator as any).webkitConnection
     
     if (connection) {
-      console.log('🎬 Network connection detected:', connection.effectiveType, 'saveData:', connection.saveData)
       // Respect user's data saver preference
       if (connection.saveData) {
-        console.log('🎬 Video disabled: data saver enabled')
         canPlay = false
       }
       // Don't play on slow connections
       else if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
-        console.log('🎬 Video disabled: slow connection')
         canPlay = false
       }
       // For 3G, only play on desktop
       else if (connection.effectiveType === '3g') {
         canPlay = window.matchMedia('(min-width: 1024px)').matches
-        console.log('🎬 3G connection - desktop only:', canPlay)
       }
     }
 
     // 2. Check device memory (if available)
     const memory = (navigator as any).deviceMemory
     if (memory && memory < 4) {
-      console.log('🎬 Video disabled: low memory device')
       canPlay = false
     }
 
-    console.log('🎬 Final video decision:', canPlay)
     setShouldPlayVideo(canPlay)
   }, [prefersReduced])
 
   useEffect(() => {
     const v = videoRef.current
-    console.log('🎬 Video playback effect - shouldPlayVideo:', shouldPlayVideo, 'video element:', !!v)
     if (!v || !shouldPlayVideo) {
-      console.log('🎬 Video playback skipped - no video element or shouldPlayVideo is false')
       return
     }
     

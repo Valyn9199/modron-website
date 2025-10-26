@@ -98,7 +98,7 @@ export function EnhancedForm({ onSubmit, className }: EnhancedFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={className}>
+    <form onSubmit={handleSubmit} className={className} suppressHydrationWarning={true}>
       <div className="space-y-6">
         {/* Name Field */}
         <EnhancedInput
