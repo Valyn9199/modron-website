@@ -722,41 +722,25 @@ export default function Home() {
                   {/* Stats Cards */}
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
                     {/* Logo Card */}
-                    <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#32ca73]/10 rounded-xl p-6 border border-[#40d0f2]/20 text-center flex flex-col items-center justify-center group hover:border-[#40d0f2]/40 transition-all duration-300">
-                      <div className="w-16 h-16 rounded-xl bg-[#40d0f2] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <img 
-                          src="/ICON_GENESIS_01.png" 
-                          alt="MODRON" 
-                          className="h-12 w-12 object-contain"
-                        />
-                      </div>
-                      <p className="text-white font-semibold text-base">Australian AI Infrastructure</p>
+                    <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#d5aaf9]/10 rounded-xl p-6 border border-[#32ca73]/20 text-center flex flex-col items-center justify-center">
+                      <img 
+                        src="/ICON_GENESIS_01.png" 
+                        alt="MODRON" 
+                        className="h-16 w-16 mb-3 object-contain"
+                      />
+                      <p className="text-white font-semibold text-sm">Australian AI Infrastructure</p>
                     </div>
                     
-                    {/* 48 Hours Card */}
-                    <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-6 border border-[#d5aaf9]/20 text-center flex flex-col items-center justify-center group hover:border-[#d5aaf9]/40 transition-all duration-300">
-                      <div className="w-16 h-16 rounded-xl bg-[#d5aaf9] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <Icons.Clock className="h-8 w-8 text-black" />
-                      </div>
-                      <div className="text-3xl font-bold text-white mb-2">48 Hours</div>
+                    <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-6 border border-[#d5aaf9]/20 text-center">
+                      <div className="text-4xl font-bold text-white mb-2">48 Hours</div>
                       <p className="text-gray-300 text-sm">From deployment order to production AI workloads</p>
                     </div>
-                    
-                    {/* 100+ PetaFLOPS Card */}
-                    <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#40d0f2]/10 rounded-xl p-6 border border-[#fbff52]/20 text-center flex flex-col items-center justify-center group hover:border-[#fbff52]/40 transition-all duration-300">
-                      <div className="w-16 h-16 rounded-xl bg-[#fbff52] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <Icons.Zap className="h-8 w-8 text-black" />
-                      </div>
-                      <div className="text-3xl font-bold text-white mb-2">100+ PetaFLOPS</div>
+                    <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#40d0f2]/10 rounded-xl p-6 border border-[#fbff52]/20 text-center">
+                      <div className="text-4xl font-bold text-white mb-2">100+ PetaFLOPS</div>
                       <p className="text-gray-300 text-sm">Computational power per container cluster</p>
                     </div>
-                    
-                    {/* 80-95% Renewable Card */}
-                    <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#32ca73]/10 rounded-xl p-6 border border-[#40d0f2]/20 text-center flex flex-col items-center justify-center group hover:border-[#40d0f2]/40 transition-all duration-300">
-                      <div className="w-16 h-16 rounded-xl bg-[#40d0f2] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <Icons.Sun className="h-8 w-8 text-black" />
-                      </div>
-                      <div className="text-3xl font-bold text-white mb-2">80-95% Renewable</div>
+                    <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#32ca73]/10 rounded-xl p-6 border border-[#32ca73]/20 text-center">
+                      <div className="text-4xl font-bold text-white mb-2">80-95% Renewable</div>
                       <p className="text-gray-300 text-sm">Sustainable AI operations with solar integration</p>
                     </div>
                   </div>
