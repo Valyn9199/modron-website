@@ -243,9 +243,7 @@ export default function Home() {
               Technology & Infrastructure
             </h2>
             <p className="section-description text-body text-gray-400 max-w-4xl mx-auto font-light leading-relaxed px-4">
-              Modular, scalable architecture designed for maximum performance and efficiency. Our hardware-first approach 
-              combines cutting-edge high-performance GPUs (RTX 4090, H200, L40S, Blackwell GB300) with revolutionary immersion cooling technology, all housed in 
-              shipping container infrastructure for rapid deployment and scalability.
+              Modular shipping-container infrastructure with cutting-edge GPUs, revolutionary immersion cooling, and solar integration—deployed in days, not months.
             </p>
           </div>
           
@@ -610,7 +608,7 @@ export default function Home() {
             </h2>
             {/* Deployment trigger - safe change */}
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#CCCCCC] max-w-4xl mx-auto font-light leading-relaxed px-4">
-              Deploy enterprise-grade AI infrastructure anywhere in Australia within 48 hours - sovereign, scalable, with industry-leading compute density
+              Enterprise-grade AI infrastructure, deployed anywhere in Australia within 48 hours. Sovereign. Scalable. With industry-leading compute density and Australian data residency.
             </p>
           </div>
           
@@ -1260,7 +1258,7 @@ export default function Home() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 sm:mb-16 md:mb-20">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-8 sm:mb-12 tracking-tight">
-                Transparent Pricing
+                Transparent, Competitive Pricing
               </h2>
               <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-[#CCCCCC] max-w-4xl mx-auto font-light leading-relaxed px-4">
                 Competitive rates with built-in sustainability. No hidden costs, no carbon guilt.
@@ -1564,7 +1562,7 @@ export default function Home() {
               Ready to Get Started?
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-[#CCCCCC] mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto font-light leading-relaxed px-4">
-              Join the future of sustainable AI computing. Get in touch to discuss your infrastructure requirements. We'll respond within 24 hours.
+              Deploy sovereign AI infrastructure in 48 hours. Get in touch to discuss your requirements. We respond within 24 hours.
             </p>
             
 
