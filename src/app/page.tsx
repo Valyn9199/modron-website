@@ -86,7 +86,7 @@ export default function Home() {
     {/* Additional sub text - MODRON-specific description */}
     <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed font-normal px-4" style={{ color: '#1f2937' }}>
       MODRON delivers locally-built, renewable-powered GPU clusters for Australian enterprises. 
-      Deploy anywhere in Australia within 48 hours using modular containers with industry-leading compute density and immersion cooling.
+      Deploy on-premises or access our campus facilities anywhere in Australia within 48 hours using modular containers with industry-leading compute density and immersion cooling.
     </p>
     
     {/* CTA Buttons - Enhanced with micro-interactions */}
@@ -113,7 +113,7 @@ export default function Home() {
       {/* Mission Statement - Aligned with hero style */}
       <div className="text-center mb-12 sm:mb-16 md:mb-20">
         <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-6 sm:mb-8 max-w-5xl mx-auto tracking-tight">
-          <span className="text-white font-bold">Australia's first enterprise-grade, deployable AI supercomputers.</span>
+          <span className="text-white font-bold">Australia's first enterprise-grade, on-premises AI supercomputers.</span>
         </p>
         <p className="text-lg sm:text-xl md:text-2xl text-gray-400 leading-relaxed max-w-4xl mx-auto mb-12 px-4 font-normal">
           Locally assembled, solar-powered, and modular—deployable anywhere in 48 hours for sovereign AI infrastructure.
@@ -615,7 +615,7 @@ export default function Home() {
             </h2>
             {/* Deployment trigger - safe change */}
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#CCCCCC] max-w-4xl mx-auto font-light leading-relaxed px-4">
-              Enterprise-grade AI infrastructure, deployed anywhere in Australia within 48 hours. Sovereign. Scalable. With industry-leading compute density and Australian data residency.
+              Enterprise-grade AI infrastructure—on-premises deployment or campus access—anywhere in Australia within 48 hours. Sovereign. Scalable. With industry-leading compute density and Australian data residency.
             </p>
           </div>
           
@@ -1268,7 +1268,7 @@ export default function Home() {
                 Transparent, Competitive Pricing
               </h2>
               <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-[#CCCCCC] max-w-4xl mx-auto font-light leading-relaxed px-4">
-                Competitive rates with built-in sustainability. No hidden costs, no carbon guilt.
+                Flexible deployment options: on-premises infrastructure or campus compute rental. Competitive rates with built-in sustainability. No hidden costs, no carbon guilt.
               </p>
             </div>
 
@@ -1569,7 +1569,7 @@ export default function Home() {
               Ready to Get Started?
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-[#CCCCCC] mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto font-light leading-relaxed px-4">
-              Deploy sovereign AI infrastructure in 48 hours. Get in touch to discuss your requirements. We respond within 24 hours.
+              Deploy sovereign AI infrastructure on-premises or access our campus facilities. Get in touch to discuss your requirements. We respond within 24 hours.
             </p>
             
 
