@@ -1,3 +1,13 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | MODRON - Australia\'s Sovereign AI Infrastructure',
+  description: 'MODRON\'s Privacy Policy explains how we collect, use, and protect your information when you visit our website or use our sovereign AI infrastructure services in Australia.',
+  alternates: {
+    canonical: '/privacy',
+  },
+}
+
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-black text-white py-12 sm:py-16 md:py-20">

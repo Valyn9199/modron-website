@@ -1,3 +1,13 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Cookie Policy | MODRON - Australia\'s Sovereign AI Infrastructure',
+  description: 'MODRON\'s Cookie Policy explains how we use cookies and tracking technologies on our website to enhance your experience with our sovereign AI infrastructure services.',
+  alternates: {
+    canonical: '/cookies',
+  },
+}
+
 export default function CookiePolicy() {
   return (
     <div className="min-h-screen bg-black text-white py-12 sm:py-16 md:py-20">

@@ -4,7 +4,7 @@ export function EnhancedStructuredData() {
     "@type": ["LocalBusiness", "TechnologyCompany", "Service"],
     "name": "MODRON",
     "url": "https://www.modron.com",
-    "logo": "https://www.modron.com/Modron_logo.png",
+    "logo": "https://www.modron.com/ICON_GENESIS_01.png",
     "description": "Australia's first deployable supercomputers in a box with enterprise-grade AI infrastructure and industry-leading compute density. Locally-built, immersion-cooled GPU clusters (RTX 4090, H200, L40S, Blackwell GB300) and solar-powered modular containers with 48-hour deployment.",
     "foundingDate": "2024",
     "address": {
@@ -135,7 +135,7 @@ export function EnhancedStructuredData() {
     "@type": "Organization",
     "name": "MODRON",
     "url": "https://www.modron.com",
-    "logo": "https://www.modron.com/Modron_logo.png",
+    "logo": "https://www.modron.com/ICON_GENESIS_01.png",
     "description": "Australia's leading provider of sovereign AI compute infrastructure with enterprise-grade AI infrastructure and industry-leading compute density. Locally-built, immersion-cooled GPU clusters (RTX 4090, H200, L40S, Blackwell GB300) and solar-powered modular containers with 48-hour deployment",
     "foundingDate": "2024",
     "address": {
@@ -206,6 +206,71 @@ export function EnhancedStructuredData() {
     ]
   };
 
+  const productStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "MODRON Immersion-Cooled GPU Clusters",
+    "description": "Enterprise-grade, immersion-cooled GPU clusters featuring RTX 4090, H200, L40S, and Blackwell GB300. Australian-assembled, solar-powered, with industry-leading compute density. Deploy in 48 hours with complete data sovereignty.",
+    "brand": {
+      "@type": "Brand",
+      "name": "MODRON"
+    },
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "MODRON",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "AU",
+        "addressRegion": "NSW",
+        "addressLocality": "Sydney"
+      }
+    },
+    "category": "High-Performance Computing",
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "AUD",
+      "priceRange": "$$$",
+      "availability": "https://schema.org/InStock",
+      "availabilityStarts": "2024-01-01",
+      "seller": {
+        "@type": "Organization",
+        "name": "MODRON"
+      }
+    },
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "GPU Models",
+        "value": "RTX 4090, H200, L40S, Blackwell GB300"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Compute Density",
+        "value": "Industry-leading"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Cooling Technology",
+        "value": "Immersion cooling"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Power Source",
+        "value": "Solar-powered"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Deployment Time",
+        "value": "48 hours"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Data Sovereignty",
+        "value": "Australian data residency"
+      }
+    ]
+  };
+
   return (
     <>
       <script
@@ -224,6 +289,13 @@ export function EnhancedStructuredData() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productStructuredData) }}
+      />
+      {/* hreflang links for international SEO */}
+      <link rel="alternate" hrefLang="en-AU" href="https://www.modron.com" />
+      <link rel="alternate" hrefLang="x-default" href="https://www.modron.com" />
     </>
   );
 }

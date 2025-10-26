@@ -1,3 +1,13 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Terms of Service | MODRON - Australia\'s Sovereign AI Infrastructure',
+  description: 'Read MODRON\'s Terms of Service for GPU rental and cloud computing services. Australian sovereign AI infrastructure with enterprise-grade SLA-backed uptime.',
+  alternates: {
+    canonical: '/terms',
+  },
+}
+
 export default function TermsPage() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
