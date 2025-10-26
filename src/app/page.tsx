@@ -366,7 +366,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="text-white font-bold text-lg sm:text-xl mb-2">MODRON GPU Clusters</h3>
-                    <p className="text-[#999999] mb-2 sm:mb-3 text-caption">6× High-Performance GPUs (RTX 4090/H200/L40S), Australian-assembled, immersion-cooled</p>
+                    <p className="text-[#999999] mb-2 sm:mb-3 text-caption">6× High-Performance GPUs (RTX 4090/H200/L40S/GB300), Australian-assembled, immersion-cooled</p>
                     <p className="text-[#CCCCCC] text-xs sm:text-sm">
                       Locally sourced components with Australian quality control and support.
                     </p>
@@ -439,7 +439,7 @@ export default function Home() {
                       </div>
                       <div>
                         <h3 className="text-white font-bold text-lg sm:text-xl mb-2">MODRON GPU Clusters</h3>
-                        <p className="text-[#999999] mb-2 sm:mb-3 text-caption">6× High-Performance GPUs (RTX 4090/H200/L40S), Australian-assembled, immersion-cooled</p>
+                        <p className="text-[#999999] mb-2 sm:mb-3 text-caption">6× High-Performance GPUs (RTX 4090/H200/L40S/GB300), Australian-assembled, immersion-cooled</p>
                         <p className="text-[#CCCCCC] text-xs sm:text-sm">
                           Locally sourced components with Australian quality control and support.
                         </p>

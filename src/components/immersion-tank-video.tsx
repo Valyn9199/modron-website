@@ -88,7 +88,7 @@ export function ImmersionTankVideo({
             </div>
           ))}
         </div>
-        <div className="text-white/80 text-xs sm:text-sm">6× High-Performance GPUs (RTX 4090/H200/L40S)</div>
+        <div className="text-white/80 text-xs sm:text-sm">6× High-Performance GPUs (RTX 4090/H200/L40S/GB300)</div>
       </div>
     </div>
   )
