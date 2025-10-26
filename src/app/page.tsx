@@ -720,7 +720,17 @@ export default function Home() {
                   </div>
                   
                   {/* Stats Cards */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
+                    {/* Logo Card */}
+                    <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#d5aaf9]/10 rounded-xl p-6 border border-[#32ca73]/20 text-center flex flex-col items-center justify-center">
+                      <img 
+                        src="/ICON_GENESIS_01.png" 
+                        alt="MODRON" 
+                        className="h-16 w-16 mb-3 object-contain"
+                      />
+                      <p className="text-white font-semibold text-sm">Australian AI Infrastructure</p>
+                    </div>
+                    
                     <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-6 border border-[#d5aaf9]/20 text-center">
                       <div className="text-4xl font-bold text-white mb-2">48 Hours</div>
                       <p className="text-gray-300 text-sm">From deployment order to production AI workloads</p>
