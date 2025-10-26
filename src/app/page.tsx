@@ -1038,7 +1038,7 @@ export default function Home() {
                           </div>
                           <h4 className="text-white font-semibold">Infrastructure</h4>
                         </div>
-                        <p className="text-gray-300 text-sm">GPU clusters, cooling, power</p>
+                        <p className="text-gray-300 text-sm">Shipping container architecture with immersion cooling and solar power</p>
                       </div>
                       
                       <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
@@ -1048,7 +1048,7 @@ export default function Home() {
                           </div>
                           <h4 className="text-white font-semibold">Platform</h4>
                         </div>
-                        <p className="text-gray-300 text-sm">APIs, monitoring, orchestration</p>
+                        <p className="text-gray-300 text-sm">Kubernetes orchestration with monitoring APIs</p>
                       </div>
                       
                       <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
@@ -1058,7 +1058,7 @@ export default function Home() {
                           </div>
                           <h4 className="text-white font-semibold">Application</h4>
                         </div>
-                        <p className="text-gray-300 text-sm">AI workloads, integrations</p>
+                        <p className="text-gray-300 text-sm">Custom AI workloads with zero-downtime deployment</p>
                       </div>
                     </div>
                   </div>
@@ -1073,7 +1073,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Always-on Availability</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">Eliminate AI downtime with 99.9% uptime, &lt;1 second failover, and automatic backup recovery to keep mission-critical models running continuously.</p>
+                      <p className="text-gray-300 text-sm">99.9% uptime SLA with automatic failover in under 1 second for mission-critical production systems.</p>
                     </div>
 
                     {/* Clean Energy Credits */}
@@ -1084,7 +1084,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Clean Energy Credits</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">Achieve net-zero AI operations with 80-95% renewable energy usage, qualifying for carbon offset programs and ESG reporting requirements.</p>
+                      <p className="text-gray-300 text-sm">80-95% renewable energy with automatic carbon reporting for ESG compliance and net-zero certification.</p>
                     </div>
 
                     {/* Custom Containers & APIs */}
@@ -1095,7 +1095,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Custom Containers & APIs</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">Deploy your existing Docker containers and integrate via RESTful APIs with zero infrastructure changes - works with your current toolchain.</p>
+                      <p className="text-gray-300 text-sm">Zero-migration deployment of existing Docker containers and REST APIs with native Kubernetes orchestration.</p>
                     </div>
 
                     {/* Spot & Reserved Instances */}
@@ -1106,7 +1106,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Spot & Reserved Instances</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">Optimize costs with spot pricing for non-critical workloads and reserve capacity for production systems with predictable cost forecasting.</p>
+                      <p className="text-gray-300 text-sm">Flexible pricing with spot instances (up to 70% savings) and reserved capacity (predictable costs) for production workloads.</p>
                     </div>
 
                     {/* Remote Monitoring */}
@@ -1117,7 +1117,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Remote Monitoring</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">Gain complete visibility into AI performance with real-time dashboards, automated alerts, and proactive incident management from anywhere.</p>
+                      <p className="text-gray-300 text-sm">Real-time performance dashboards with automated alerts, predictive maintenance, and 24/7 incident management.</p>
                     </div>
 
                     {/* Compliance & Security */}
@@ -1128,7 +1128,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Compliance & Security</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">Meet strict regulatory requirements with ISO27001-ready infrastructure, end-to-end encryption, and guaranteed data residency within Australian borders.</p>
+                      <p className="text-gray-300 text-sm">Australian data residency with ISO27001-ready infrastructure and end-to-end encryption.</p>
                     </div>
             </div>
               </div>
