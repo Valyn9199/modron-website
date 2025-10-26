@@ -1065,10 +1065,10 @@ export default function Home() {
             
                   {/* Key Enterprise Features */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {/* Always-on Availability */}
-                    <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                    {/* Always-on Availability - Reliability (Green) */}
+                    <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#32ca73]/5 rounded-xl p-4 border border-[#32ca73]/20 group hover:border-[#32ca73]/40 transition-all duration-300">
                       <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <div className="w-10 h-10 rounded-lg bg-[#32ca73] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                           <Icons.Clock className="h-5 w-5 text-black flex-shrink-0" />
                         </div>
                         <h4 className="text-white font-semibold">Always-on Availability</h4>
@@ -1076,10 +1076,10 @@ export default function Home() {
                       <p className="text-gray-300 text-sm">99.9% uptime SLA with automatic failover in under 1 second for mission-critical production systems.</p>
                     </div>
 
-                    {/* Clean Energy Credits */}
-                    <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
+                    {/* Clean Energy Credits - Sustainability (Blue) */}
+                    <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#40d0f2]/5 rounded-xl p-4 border border-[#40d0f2]/20 group hover:border-[#40d0f2]/40 transition-all duration-300">
                       <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-[#fbff52] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <div className="w-10 h-10 rounded-lg bg-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                           <Icons.Award className="h-5 w-5 text-black flex-shrink-0" />
                         </div>
                         <h4 className="text-white font-semibold">Clean Energy Credits</h4>
@@ -1087,10 +1087,10 @@ export default function Home() {
                       <p className="text-gray-300 text-sm">80-95% renewable energy with automatic carbon reporting for ESG compliance and net-zero certification.</p>
                     </div>
 
-                    {/* Custom Containers & APIs */}
-                    <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                    {/* Custom Containers & APIs - Deployment (Purple) */}
+                    <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#d5aaf9]/5 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
                       <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-[#32ca73] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <div className="w-10 h-10 rounded-lg bg-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                           <Icons.Settings className="h-5 w-5 text-black flex-shrink-0" />
                         </div>
                         <h4 className="text-white font-semibold">Custom Containers & APIs</h4>
@@ -1098,8 +1098,8 @@ export default function Home() {
                       <p className="text-gray-300 text-sm">Zero-migration deployment of existing Docker containers and REST APIs with native Kubernetes orchestration.</p>
                     </div>
 
-                    {/* Spot & Reserved Instances */}
-                    <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
+                    {/* Spot & Reserved Instances - Cost Optimization (Yellow) */}
+                    <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#fbff52]/5 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
                       <div className="flex items-center mb-3">
                         <div className="w-10 h-10 rounded-lg bg-[#fbff52] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                           <Icons.Calendar className="h-5 w-5 text-black flex-shrink-0" />
@@ -1109,10 +1109,10 @@ export default function Home() {
                       <p className="text-gray-300 text-sm">Flexible pricing with spot instances (up to 70% savings) and reserved capacity (predictable costs) for production workloads.</p>
                     </div>
 
-                    {/* Remote Monitoring */}
-                    <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                    {/* Remote Monitoring - Reliability (Green) */}
+                    <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#32ca73]/5 rounded-xl p-4 border border-[#32ca73]/20 group hover:border-[#32ca73]/40 transition-all duration-300">
                       <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <div className="w-10 h-10 rounded-lg bg-[#32ca73] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                           <Icons.Eye className="h-5 w-5 text-black flex-shrink-0" />
                         </div>
                         <h4 className="text-white font-semibold">Remote Monitoring</h4>
@@ -1120,10 +1120,10 @@ export default function Home() {
                       <p className="text-gray-300 text-sm">Real-time performance dashboards with automated alerts, predictive maintenance, and 24/7 incident management.</p>
                     </div>
 
-                    {/* Compliance & Security */}
-                    <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
+                    {/* Compliance & Security - Compliance (Blue) */}
+                    <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#40d0f2]/5 rounded-xl p-4 border border-[#40d0f2]/20 group hover:border-[#40d0f2]/40 transition-all duration-300">
                       <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-[#fbff52] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <div className="w-10 h-10 rounded-lg bg-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                           <Icons.Shield className="h-5 w-5 text-black flex-shrink-0" />
                         </div>
                         <h4 className="text-white font-semibold">Compliance & Security</h4>
