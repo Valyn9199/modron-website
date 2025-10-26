@@ -110,28 +110,35 @@ export default function Home() {
 <section id="vision" className="nav-trigger-vision mobile-section relative layout-section mobile-optimized bg-black" role="region" aria-labelledby="vision-heading">
   <div className="layout-container-wide">
     <div className="layout-content-wide">
-      {/* Mission Statement - Updated for fresh deployment */}
+      {/* Mission Statement - Aligned with hero style */}
       <div className="text-center mb-12 sm:mb-16 md:mb-20">
-        <h2 id="vision-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-8 sm:mb-12 tracking-tight">
-          Vision
-        </h2>
-        <p className="text-body text-gray-500 leading-relaxed !font-bold max-w-5xl mx-auto mb-8 px-4">
-          <span className="text-white !font-extrabold tracking-tight">Australia's first deployable supercomputers in a box.</span> Locally assembled, solar powered, and modular, delivering rapid deployment and compute independence for Australian businesses, researchers, and government agencies.
+        <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-6 sm:mb-8 max-w-5xl mx-auto tracking-tight">
+          <span className="text-white font-bold">Australia's first enterprise-grade, deployable AI supercomputers.</span>
         </p>
-        <div className="max-w-4xl mx-auto mb-12 sm:mb-16 px-4">
-          <p className="text-center text-gray-400 mb-4 font-light">Built on four pillars:</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mx-auto">
-            <span className="px-4 py-2 rounded-full bg-[#32ca73]/10 border border-[#32ca73]/30 text-[#32ca73] text-sm font-medium text-center w-full">Australian sovereignty</span>
-            <span className="px-4 py-2 rounded-full bg-[#d5aaf9]/10 border border-[#d5aaf9]/30 text-[#d5aaf9] text-sm font-medium text-center w-full">Modular infrastructure</span>
-            <span className="px-4 py-2 rounded-full bg-[#40d0f2]/10 border border-[#40d0f2]/30 text-[#40d0f2] text-sm font-medium text-center w-full">Renewable first operations</span>
-            <span className="px-4 py-2 rounded-full bg-[#fbff52]/10 border border-[#fbff52]/30 text-[#fbff52] text-sm font-medium text-center w-full">Container native architecture</span>
+        <p className="text-lg sm:text-xl md:text-2xl text-gray-400 leading-relaxed max-w-4xl mx-auto mb-12 px-4 font-normal">
+          Locally assembled, solar-powered, and modular—deployable anywhere in 48 hours for sovereign AI infrastructure.
+        </p>
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto mb-12">
+            <div className="flex flex-col items-center justify-center">
+              <span className="px-4 py-2 rounded-full bg-[#32ca73]/10 border border-[#32ca73]/30 text-[#32ca73] text-sm font-medium text-center w-full">Australian sovereignty</span>
+            </div>
+            <div className="flex flex-col items-center justify-center">
+              <span className="px-4 py-2 rounded-full bg-[#d5aaf9]/10 border border-[#d5aaf9]/30 text-[#d5aaf9] text-sm font-medium text-center w-full">Modular infrastructure</span>
+            </div>
+            <div className="flex flex-col items-center justify-center">
+              <span className="px-4 py-2 rounded-full bg-[#40d0f2]/10 border border-[#40d0f2]/30 text-[#40d0f2] text-sm font-medium text-center w-full">Renewable first</span>
+            </div>
+            <div className="flex flex-col items-center justify-center">
+              <span className="px-4 py-2 rounded-full bg-[#fbff52]/10 border border-[#fbff52]/30 text-[#fbff52] text-sm font-medium text-center w-full">Container native</span>
+            </div>
           </div>
         </div>
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center mt-8">
           <img 
             src="/ICON_GENESIS_01.png" 
             alt="MODRON Genesis Icon" 
-            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
+            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 opacity-60"
           />
         </div>
       </div>
