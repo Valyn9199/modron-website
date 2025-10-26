@@ -1571,8 +1571,11 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-8 sm:mb-12 tracking-tight">
               Ready to Get Started?
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-[#CCCCCC] mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto font-light leading-relaxed px-4">
-              Deploy sovereign AI infrastructure on-premises or access our campus facilities. Get in touch to discuss your requirements. We respond within 24 hours.
+            <p className="text-lg sm:text-xl md:text-2xl text-[#CCCCCC] mb-4 max-w-3xl mx-auto font-light leading-relaxed px-4">
+              Deploy sovereign AI infrastructure on-premises or access our campus facilities. Get in touch to discuss your requirements.
+            </p>
+            <p className="text-sm sm:text-base text-[#999999] mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto px-4">
+              We respond within 24 hours.
             </p>
             
 
