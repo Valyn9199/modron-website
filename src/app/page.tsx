@@ -1604,6 +1604,7 @@ export default function Home() {
             {/* Contact Form - Desktop: Always Visible */}
             <div className="hidden md:block">
               <div className="bg-black border border-[#4A4A4A] rounded-2xl p-4 sm:p-6 md:p-8 max-w-2xl mx-auto">
+                {/* Contact form submits to /api/contact with email sending enabled */}
                 <EnhancedForm />
               </div>
             </div>
