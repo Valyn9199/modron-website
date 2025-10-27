@@ -58,8 +58,20 @@ export function EnhancedForm({ onSubmit, className }: EnhancedFormProps) {
     setIsSubmitting(true)
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      // Send to Next.js API route
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      })
+
+      const result = await response.json()
+      
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Failed to send message')
+      }
       
       onSubmit?.(formData)
       setIsSubmitted(true)
@@ -72,6 +84,7 @@ export function EnhancedForm({ onSubmit, className }: EnhancedFormProps) {
       
     } catch (error) {
       console.error("Form submission error:", error)
+      setErrors({ message: "Failed to send message. Please try again." })
     } finally {
       setIsSubmitting(false)
     }
