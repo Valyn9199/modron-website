@@ -74,12 +74,13 @@ export function EnhancedInput({
           disabled={disabled}
           required={required}
           className={cn(
-            "w-full px-4 py-3 bg-[#1A1A1A] border border-[#262626] rounded-lg",
+            "w-full px-4 pt-5 pb-3 bg-[#1A1A1A] border border-[#262626] rounded-lg",
             "text-white placeholder-gray-500 transition-all duration-200",
             "focus:outline-none focus:border-[#40d0f2] focus:ring-1 focus:ring-[#40d0f2]",
             "hover:border-[#404040] disabled:opacity-50 disabled:cursor-not-allowed",
             error && "border-red-500 focus:border-red-500 focus:ring-red-500",
-            icon && "pl-10"
+            icon && "pl-10",
+            floating && !isFloating && "pt-3"
           )}
         />
 
@@ -185,10 +186,11 @@ export function EnhancedTextarea({
           required={required}
           rows={rows}
           className={cn(
-            "w-full px-4 py-3 bg-[#1A1A1A] border border-[#262626] rounded-lg",
+            "w-full px-4 pt-6 pb-3 bg-[#1A1A1A] border border-[#262626] rounded-lg",
             "text-white placeholder-gray-500 transition-all duration-200 resize-none",
             "focus:outline-none focus:border-[#40d0f2] focus:ring-1 focus:ring-[#40d0f2]",
-            "hover:border-[#404040] disabled:opacity-50 disabled:cursor-not-allowed"
+            "hover:border-[#404040] disabled:opacity-50 disabled:cursor-not-allowed",
+            floating && !isFloating && "pt-3"
           )}
         />
 
