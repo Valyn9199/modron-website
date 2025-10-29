@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 interface Competitor {
@@ -24,6 +24,9 @@ export function DynamicComparison() {
   const { ref } = useScrollAnimation({ threshold: 0.3 })
   const [selectedMetric, setSelectedMetric] = useState<string>("performance")
   const [hoveredCompetitor, setHoveredCompetitor] = useState<string | null>(null)
+  const [isAutoCycling, setIsAutoCycling] = useState(true)
+  const [userInteracted, setUserInteracted] = useState(false)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
   const competitors: Competitor[] = [
     {
@@ -125,6 +128,43 @@ export function DynamicComparison() {
     }
   ]
 
+  // Auto-cycling effect
+  useEffect(() => {
+    if (isAutoCycling && !userInteracted) {
+      intervalRef.current = setInterval(() => {
+        setSelectedMetric(prevMetric => {
+          const currentIndex = metrics.findIndex(m => m.key === prevMetric)
+          const nextIndex = (currentIndex + 1) % metrics.length
+          return metrics[nextIndex].key
+        })
+      }, 3000) // 3 seconds per tab
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+  }, [isAutoCycling, userInteracted])
+
+  // Handle manual tab selection
+  const handleMetricClick = (metricKey: string) => {
+    setSelectedMetric(metricKey)
+    setIsAutoCycling(false)
+    setUserInteracted(true)
+    
+    // Clear any existing interval
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+    }
+  }
+
+  // Optional: Restart auto-cycling
+  const restartAutoCycling = () => {
+    setIsAutoCycling(true)
+    setUserInteracted(false)
+  }
+
   const selectedMetricData = metrics.find(m => m.key === selectedMetric)
   const maxValue = Math.max(...competitors.map(c => Number(c.metrics[selectedMetric])))
 
@@ -143,7 +183,7 @@ export function DynamicComparison() {
           {metrics.map((metric) => (
             <button
               key={metric.key}
-              onClick={() => setSelectedMetric(metric.key)}
+              onClick={() => handleMetricClick(metric.key)}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                 selectedMetric === metric.key
                   ? 'bg-white text-black'
@@ -153,6 +193,17 @@ export function DynamicComparison() {
               {metric.label}
             </button>
           ))}
+          
+          {/* Restart auto-cycling button */}
+          {userInteracted && (
+            <button
+              onClick={restartAutoCycling}
+              className="px-3 py-2 rounded-lg text-sm font-medium bg-[#40d0f2]/20 text-[#40d0f2] hover:bg-[#40d0f2]/30 transition-all duration-300"
+              title="Restart auto-cycling"
+            >
+              🔄 Auto
+            </button>
+          )}
         </div>
 
         {/* Comparison Chart */}
