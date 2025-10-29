@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
               
               <div style="text-align: center; margin-top: 30px; color: #666; font-size: 14px;">
                 <p>This message was sent from the MODRON website contact form.</p>
-                <p>Reply directly to this email to respond to ${email}.</p>
+                <p>Reply to ${email} to respond to ${name}.</p>
               </div>
             </div>
           `,
@@ -119,7 +119,7 @@ ${message}
 
 ---
 This message was sent from the MODRON website contact form.
-Reply directly to this email to respond to ${email}.
+Reply to ${email} to respond to ${name}.
           `,
           replyTo: email
         })
