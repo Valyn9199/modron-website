@@ -5,7 +5,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     
     // Validate required fields
-    const { name, email, message, company } = body
+    const { name, email, message, company, userDetails } = body
     
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -28,6 +28,26 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       )
     }
+
+    // Extract server-side user details
+    const ip = request.headers.get('x-forwarded-for') || 
+               request.headers.get('x-real-ip') || 
+               request.headers.get('cf-connecting-ip') ||
+               'Unknown'
+    
+    const userAgent = request.headers.get('user-agent') || 'Unknown'
+    const referer = request.headers.get('referer') || 'Direct'
+    const timestamp = new Date().toISOString()
+    
+    // Parse user agent for device info
+    const isMobile = /Mobile|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)
+    const isTablet = /iPad|Android(?=.*Mobile)/i.test(userAgent)
+    const browser = userAgent.includes('Chrome') ? 'Chrome' :
+                   userAgent.includes('Firefox') ? 'Firefox' :
+                   userAgent.includes('Safari') ? 'Safari' :
+                   userAgent.includes('Edge') ? 'Edge' : 'Other'
+    
+    const deviceType = isTablet ? 'Tablet' : isMobile ? 'Mobile' : 'Desktop'
     
     // Try to send email using Resend if API key is available
     if (process.env.RESEND_API_KEY) {
@@ -49,10 +69,26 @@ export async function POST(request: NextRequest) {
               
               <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #40d0f2;">
                 <h2 style="color: #333; margin-top: 0;">New Contact Form Submission</h2>
-                <p><strong>Name:</strong> ${name}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Company:</strong> ${company || 'Not provided'}</p>
-                <p><strong>Message:</strong></p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                  <div>
+                    <h3 style="color: #40d0f2; margin: 0 0 10px 0; font-size: 16px;">Contact Details</h3>
+                    <p><strong>Name:</strong> ${name}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Company:</strong> ${company || 'Not provided'}</p>
+                  </div>
+                  
+                  <div>
+                    <h3 style="color: #40d0f2; margin: 0 0 10px 0; font-size: 16px;">Technical Details</h3>
+                    <p><strong>Device:</strong> ${deviceType}</p>
+                    <p><strong>Browser:</strong> ${browser}</p>
+                    <p><strong>IP Address:</strong> ${ip}</p>
+                    <p><strong>Referrer:</strong> ${referer}</p>
+                    <p><strong>Timestamp:</strong> ${new Date(timestamp).toLocaleString()}</p>
+                  </div>
+                </div>
+                
+                <h3 style="color: #40d0f2; margin: 0 0 10px 0; font-size: 16px;">Message</h3>
                 <div style="background: white; padding: 15px; border-radius: 4px; margin-top: 10px;">
                   ${message.replace(/\n/g, '<br>')}
                 </div>
@@ -67,11 +103,19 @@ export async function POST(request: NextRequest) {
           text: `
 MODRON - New Contact Form Submission
 
+CONTACT DETAILS:
 Name: ${name}
 Email: ${email}
 Company: ${company || 'Not provided'}
 
-Message:
+TECHNICAL DETAILS:
+Device: ${deviceType}
+Browser: ${browser}
+IP Address: ${ip}
+Referrer: ${referer}
+Timestamp: ${new Date(timestamp).toLocaleString()}
+
+MESSAGE:
 ${message}
 
 ---
@@ -98,7 +142,12 @@ Reply directly to this email to respond to ${name}.
         email,
         company,
         message,
-        timestamp: new Date().toISOString()
+        timestamp,
+        ip,
+        userAgent,
+        referer,
+        deviceType,
+        browser
       })
     }
     
