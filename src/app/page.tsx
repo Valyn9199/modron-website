@@ -136,7 +136,7 @@ export default function Home() {
         </div>
         <div className="flex justify-center mt-8">
           <img 
-            src="/ICON_GENESIS_01.png" 
+            src="/MODRON_ICON.png" 
             alt="MODRON Genesis Icon" 
             className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
             loading="eager"
@@ -632,7 +632,7 @@ export default function Home() {
                       : 'text-[#CCCCCC] hover:text-white hover:bg-[#1A1A1A]/50'
                   }`}
                 >
-                  <img alt="MODRON" className="h-4 w-4 mr-2 hidden sm:block" src="/ICON_GENESIS_01.png" loading="lazy" />
+                  <img alt="MODRON" className="h-4 w-4 mr-2 hidden sm:block" src="/MODRON_ICON.png" loading="lazy" />
                   Overview
                 </button>
                 <button
@@ -715,7 +715,7 @@ export default function Home() {
                         <source src="/MODRON_use_cases_06.mp4" type="video/mp4" />
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center">
-                            <img alt="MODRON" className="h-16 w-16 mx-auto mb-4 opacity-80" src="/ICON_GENESIS_01.png" loading="lazy" />
+                            <img alt="MODRON" className="h-16 w-16 mx-auto mb-4 opacity-80" src="/MODRON_ICON.png" loading="lazy" />
                             <p className="text-white text-lg mb-2">MODRON Use Cases Overview</p>
                             <p className="text-gray-400 text-sm">Discover the possibilities with Australia's first deployable supercomputers</p>
                           </div>
@@ -731,7 +731,7 @@ export default function Home() {
                     {/* Logo Card */}
                     <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#d5aaf9]/10 rounded-xl p-6 border border-[#32ca73]/20 text-center flex flex-col items-center justify-center">
                       <img 
-                        src="/ICON_GENESIS_01.png" 
+                        src="/MODRON_ICON.png" 
                         alt="MODRON" 
                         className="h-16 w-16 mb-3 object-contain"
                         loading="lazy"
@@ -1630,7 +1630,7 @@ export default function Home() {
                 {/* Logo as first item */}
                 <div className="flex items-center justify-center min-h-[44px] min-w-[44px]">
                   <img 
-                    src="/ICON_GENESIS_01.png" 
+                    src="/MODRON_ICON.png" 
                     alt="MODRON" 
                     className="w-8 h-8 sm:w-10 sm:h-10"
                     loading="lazy"

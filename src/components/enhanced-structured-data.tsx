@@ -4,7 +4,7 @@ export function EnhancedStructuredData() {
     "@type": ["LocalBusiness", "TechnologyCompany", "Service"],
     "name": "MODRON",
     "url": "https://www.modron.com",
-    "logo": "https://www.modron.com/ICON_GENESIS_01.png",
+    "logo": "https://www.modron.com/MODRON_ICON.png",
     "description": "Australia's first deployable supercomputers in a box with enterprise-grade AI infrastructure and industry-leading compute density. Locally-built, immersion-cooled GPU clusters (RTX 4090, H200, L40S, Blackwell GB300) and solar-powered modular containers with 48-hour deployment.",
     "foundingDate": "2024",
     "address": {
@@ -135,7 +135,7 @@ export function EnhancedStructuredData() {
     "@type": "Organization",
     "name": "MODRON",
     "url": "https://www.modron.com",
-    "logo": "https://www.modron.com/ICON_GENESIS_01.png",
+    "logo": "https://www.modron.com/MODRON_ICON.png",
     "description": "Australia's leading provider of sovereign AI compute infrastructure with enterprise-grade AI infrastructure and industry-leading compute density. Locally-built, immersion-cooled GPU clusters (RTX 4090, H200, L40S, Blackwell GB300) and solar-powered modular containers with 48-hour deployment",
     "foundingDate": "2024",
     "address": {
@@ -276,7 +276,7 @@ export function EnhancedStructuredData() {
     "@type": "LocalBusiness",
     "name": "MODRON",
     "url": "https://www.modron.com",
-    "logo": "https://www.modron.com/ICON_GENESIS_01.png",
+    "logo": "https://www.modron.com/MODRON_ICON.png",
     "description": "Australia's leading provider of on-premises AI infrastructure and sovereign GPU clusters",
     "address": {
       "@type": "PostalAddress",
