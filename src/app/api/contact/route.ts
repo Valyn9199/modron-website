@@ -63,8 +63,7 @@ export async function POST(request: NextRequest) {
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
               <div style="text-align: center; margin-bottom: 30px;">
-                <img src="https://www.modron.com/MODRON_ICON.png" alt="MODRON" style="width: 60px; height: 60px; border-radius: 8px;">
-                <h1 style="color: #40d0f2; margin: 10px 0; font-size: 24px;">MODRON</h1>
+                <img src="https://www.modron.com/MODRON_ICON.png" alt="MODRON" style="width: 60px; height: 60px; border-radius: 8px; margin-bottom: 10px;">
               </div>
               
               <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #40d0f2;">
@@ -96,7 +95,7 @@ export async function POST(request: NextRequest) {
               
               <div style="text-align: center; margin-top: 30px; color: #666; font-size: 14px;">
                 <p>This message was sent from the MODRON website contact form.</p>
-                <p>Reply directly to this email to respond to ${name}.</p>
+                <p>Reply directly to this email to respond to ${email}.</p>
               </div>
             </div>
           `,
@@ -120,7 +119,7 @@ ${message}
 
 ---
 This message was sent from the MODRON website contact form.
-Reply directly to this email to respond to ${name}.
+Reply directly to this email to respond to ${email}.
           `,
           replyTo: email
         })
