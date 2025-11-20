@@ -60,7 +60,7 @@ export function EnhancedButton({
   
   const variantClasses = {
     primary: "bg-black text-white hover:bg-[#2A2A2A] focus:ring-[#5A5A5A] transition-all duration-200",
-    secondary: "bg-gray-100 text-white border border-gray-200 hover:bg-[#E0E0E0] hover:border-primary-cyan focus:ring-primary-cyan transition-all duration-300",
+    secondary: "bg-gray-100 text-gray-900 border border-gray-200 hover:bg-[#E0E0E0] hover:border-primary-cyan hover:text-gray-900 focus:ring-primary-cyan transition-all duration-300",
     outline: "bg-transparent text-primary-cyan border-2 border-primary-cyan hover:bg-primary-cyan hover:text-white focus:ring-primary-cyan transition-all duration-300",
     ghost: "bg-transparent text-gray-400 hover:bg-white/10 hover:text-white focus:ring-white transition-all duration-300"
   }

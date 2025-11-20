@@ -27,7 +27,7 @@ export function EnhancedPricingButton() {
       onClick={handleClick}
       glow
       ripple
-      className="mobile-button w-full sm:w-auto group relative overflow-hidden bg-gray-100 hover:bg-[#E0E0E0] text-white transition-all duration-300"
+      className="mobile-button w-full sm:w-auto group relative overflow-hidden bg-gray-100 hover:bg-[#E0E0E0] text-gray-900 hover:text-gray-900 transition-all duration-300"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
