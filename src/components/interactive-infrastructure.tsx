@@ -69,7 +69,7 @@ export function InteractiveInfrastructure() {
       position: { x: 50, y: 45 },
       color: "#40d0f2",
       details: {
-        capacity: "6x RTX 4090 GPUs",
+        capacity: "6x RTX PRO 6000 GPUs",
         efficiency: "60% less power consumption",
         deployment: "Self-contained unit",
         cost: "40% operational savings"

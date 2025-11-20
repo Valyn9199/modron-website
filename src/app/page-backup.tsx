@@ -170,7 +170,7 @@ export default function Home() {
             </h2>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#CCCCCC] max-w-4xl mx-auto font-light leading-relaxed px-4">
               Modular, scalable architecture designed for maximum performance and efficiency. Our hardware-first approach 
-              combines cutting-edge RTX 4090 GPUs with revolutionary immersion cooling technology, all housed in 
+              combines cutting-edge RTX PRO 6000 GPUs with revolutionary immersion cooling technology, all housed in 
               shipping container infrastructure for rapid deployment and scalability.
             </p>
           </div>
@@ -231,7 +231,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="text-white font-bold text-lg sm:text-xl mb-2">GPU Nodes</h3>
-                    <p className="text-[#999999] mb-2 sm:mb-3 text-sm sm:text-base">6× RTX 4090 per tank</p>
+                    <p className="text-[#999999] mb-2 sm:mb-3 text-sm sm:text-base">6× RTX PRO 6000 per tank</p>
                     <p className="text-[#CCCCCC] text-xs sm:text-sm">
                       High-density GPU clusters optimized for AI workloads with maximum throughput and minimal latency.
                     </p>
@@ -787,7 +787,7 @@ export default function Home() {
 
               <div className="mt-8 text-center">
                 <p className="text-[#999999] text-sm">
-                  * Prices shown for equivalent RTX 4090 class GPU instances
+                  * Prices shown for equivalent RTX PRO 6000 class GPU instances
                 </p>
               </div>
             </div>

@@ -137,7 +137,7 @@ export function ImmersionTankAnimation({
             </div>
           ))}
         </div>
-        <div className="text-white/80 text-sm text-center">6× RTX 4090 GPUs per tank</div>
+        <div className="text-white/80 text-sm text-center">6× RTX PRO 6000 GPUs per tank</div>
       </div>
     </div>
   )

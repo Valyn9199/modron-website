@@ -399,7 +399,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="text-white font-bold text-lg sm:text-xl mb-2">MODRON GPU Clusters</h3>
-                    <p className="text-[#999999] mb-2 sm:mb-3 text-caption">6× High-Performance GPUs (RTX 4090/H200/L40S/GB300), Australian-assembled, immersion-cooled</p>
+                    <p className="text-[#999999] mb-2 sm:mb-3 text-caption">6× High-Performance GPUs (RTX PRO 6000/H200/L40S/GB300), Australian-assembled, immersion-cooled</p>
                     <p className="text-[#CCCCCC] text-xs sm:text-sm">
                       Locally sourced components with Australian quality control and support.
                     </p>
@@ -472,7 +472,7 @@ export default function Home() {
                       </div>
                       <div>
                         <h3 className="text-white font-bold text-lg sm:text-xl mb-2">MODRON GPU Clusters</h3>
-                        <p className="text-[#999999] mb-2 sm:mb-3 text-caption">6× High-Performance GPUs (RTX 4090/H200/L40S/GB300), Australian-assembled, immersion-cooled</p>
+                        <p className="text-[#999999] mb-2 sm:mb-3 text-caption">6× High-Performance GPUs (RTX PRO 6000/H200/L40S/GB300), Australian-assembled, immersion-cooled</p>
                         <p className="text-[#CCCCCC] text-xs sm:text-sm">
                           Locally sourced components with Australian quality control and support.
                         </p>
@@ -1176,7 +1176,7 @@ export default function Home() {
                         </div>
                         <div>
                           <h3 className="text-white font-semibold text-lg">Development & Inference</h3>
-                          <p className="text-[#32ca73] font-medium text-sm">RTX 4090, L40S</p>
+                          <p className="text-[#32ca73] font-medium text-sm">RTX PRO 6000, L40S</p>
                         </div>
                       </div>
                       <p className="text-gray-300 text-sm mb-4 leading-relaxed">
