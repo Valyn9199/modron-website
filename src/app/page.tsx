@@ -729,25 +729,12 @@ export default function Home() {
                   {/* Video Section */}
                   <div className="mb-8">
                     <div className="video-container relative w-full max-w-4xl mx-auto aspect-video bg-black rounded-xl overflow-hidden border border-[#4A4A4A]">
-                      <video
-                        className="w-full h-full object-cover"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="metadata"
-                        poster="/AI_Clouds_01.png"
-                        aria-label="MODRON Use Cases Overview - Shipping Container Infrastructure"
-                      >
-                        <source src="/MODRON_use_cases_06.mp4" type="video/mp4" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-center">
-                            <img alt="MODRON" className="h-16 w-16 mx-auto mb-4 opacity-80" src="/MODRON_ICON.png" loading="lazy" />
-                            <p className="text-white text-lg mb-2">MODRON Use Cases Overview</p>
-                            <p className="text-gray-400 text-sm">Discover the possibilities with Australia's first deployable supercomputers</p>
-                          </div>
-                        </div>
-                      </video>
+                      <HeroVideoSlideshow 
+                        slides={heroSlides}
+                        overlayOpacity={0.15}
+                        autoPlayInterval={4500}
+                        className="absolute inset-0 w-full h-full"
+                      />
                       {/* Transparent rounded rectangle overlay */}
                       <div className="absolute inset-0 border-6 border-black rounded-xl bg-transparent z-20 pointer-events-none"></div>
                     </div>

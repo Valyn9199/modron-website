@@ -228,6 +228,25 @@ export function HeroVideoSlideshow({
     setCurrentSlide(index)
   }
 
+  // Don't render until mounted to avoid hydration issues
+  if (!isMounted) {
+    return (
+      <div className={`absolute inset-0 w-full h-full bg-black z-0 ${className}`} suppressHydrationWarning>
+        <div className="absolute inset-0 w-full h-full overflow-hidden z-0" aria-hidden suppressHydrationWarning>
+          {/* Placeholder for first video poster */}
+          {slides[0]?.poster && (
+            <img 
+              src={slides[0].poster} 
+              alt="" 
+              className="absolute inset-0 w-full h-full object-cover"
+              aria-hidden="true"
+            />
+          )}
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className={`absolute inset-0 w-full h-full bg-black z-0 ${className}`} suppressHydrationWarning>
       {/* Video Container */}
