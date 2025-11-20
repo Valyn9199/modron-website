@@ -18,7 +18,7 @@ import { EnhancedForm } from "@/components/enhanced-form";
 import { SkipToContent } from "@/components/skip-to-content";
 import { MobileViewport } from "@/components/mobile-viewport";
 import { Icons } from "@/lib/icon-imports";
-import { HeroBgVideo } from "@/components/hero-bg-video";
+import { HeroVideoSlideshow, HeroSlideshowContent } from "@/components/hero-video-slideshow";
 import Image from "next/image";
  
 // Lazy-load non-critical components
@@ -44,7 +44,6 @@ const ScrollReveal = dynamic(() => import("@/components/scroll-reveal").then(mod
 const InteractiveInfrastructure = dynamic(() => import("@/components/interactive-infrastructure").then(mod => ({ default: mod.InteractiveInfrastructure })));
 const DynamicComparison = dynamic(() => import("@/components/dynamic-comparison").then(mod => ({ default: mod.DynamicComparison })));
 const ScrollProgress = dynamic(() => import("@/components/scroll-progress").then(mod => ({ default: mod.ScrollProgress })));
-const AnimatedHeadline = dynamic(() => import("@/components/animated-headline").then(mod => ({ default: mod.AnimatedHeadline })));
 
 export default function Home() {
   // Performance optimizations in progress - console logs removed for production
@@ -54,6 +53,39 @@ export default function Home() {
   const [showCompetitiveComparison, setShowCompetitiveComparison] = React.useState(false)
   const [activeVisionTab, setActiveVisionTab] = React.useState<'none' | 'why-modron' | 'philosophy'>('none')
   const [showContactForm, setShowContactForm] = React.useState(false)
+  const [currentHeroSlide, setCurrentHeroSlide] = React.useState(0)
+  
+  // Hero slideshow data
+  const heroSlides = [
+    {
+      videoSrc: "/hero/MODRON_Hero_1.mp4",
+      poster: "/hero-poster-1.jpg",
+      headline: "Building Australia's AI infrastructure",
+      subheading: "MODULAR. IMMERSION-COOLED. SOLAR-POWERED.",
+      description: "Locally-built GPU clusters. Ready in 48 hours."
+    },
+    {
+      videoSrc: "/hero/MODRON_Hero_2.mp4",
+      poster: "/hero-poster-2.jpg",
+      headline: "Rapid Deployment, Anywhere",
+      subheading: "48-HOUR DELIVERY. CONTAINER-BASED. SCALABLE.",
+      description: "Enterprise AI infrastructure. Modular containers anywhere."
+    },
+    {
+      videoSrc: "/hero/MODRON_Hero_3.mp4",
+      poster: "/hero-poster-3.jpg",
+      headline: "Sovereign AI for Australian Enterprise",
+      subheading: "ON-PREMISES. SECURE. SOVEREIGN.",
+      description: "Break free from overseas cloud. Local control and sovereignty."
+    },
+    {
+      videoSrc: "/hero/MODRON_Hero_4.mp4",
+      poster: "/hero-poster-4.jpg",
+      headline: "Renewable-Powered Computing",
+      subheading: "RENEWABLE ENERGY. HIGH PERFORMANCE. SUSTAINABLE.",
+      description: "Maximum performance with clean energy. Lower impact."
+    }
+  ]
   
   
   return (
@@ -68,29 +100,26 @@ export default function Home() {
           
           <main id="main-content" tabIndex={-1} className="relative">
         
-{/* Hero Section - Compressed */}
+{/* Hero Section - Video Slideshow */}
 <section id="home" className="nav-trigger-home relative min-h-screen flex items-center justify-center w-full pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-16" role="banner" aria-labelledby="hero-heading">
   
-  {/* Background Video */}
-  <HeroBgVideo overlayOpacity={0} poster="/hero-poster.jpg" />
+  {/* Background Video Slideshow */}
+  <HeroVideoSlideshow 
+    slides={heroSlides}
+    overlayOpacity={0.15}
+    autoPlayInterval={4500}
+    onSlideChange={setCurrentHeroSlide}
+  />
 
-  {/* Main Content */}
-  <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl mt-12 sm:mt-16 md:mt-18 lg:mt-24">
-    {/* Main Headline - MODRON-specific and differentiated */}
-      <AnimatedHeadline />
-    
-       {/* Subheading - MODRON's unique value proposition */}
-    <p className="text-xl sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-3 sm:mb-4 md:mb-6 max-w-3xl mx-auto leading-relaxed font-semibold px-4" style={{ letterSpacing: '0.1em', color: '#1f2937' }}>      MODULAR. IMMERSION-COOLED. SOLAR-POWERED.
-    </p>
-    
-    {/* Additional sub text - MODRON-specific description */}
-    <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed font-normal px-4" style={{ color: '#1f2937' }}>
-      MODRON delivers locally-built, renewable-powered GPU clusters for Australian enterprises. 
-      Deploy on-premises or access our campus facilities anywhere in Australia within 48 hours using modular containers with industry-leading compute density and immersion cooling.
-    </p>
+  {/* Main Content with Dynamic Text */}
+  <div className="relative z-40 container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl mt-12 sm:mt-16 md:mt-18 lg:mt-24">
+    <HeroSlideshowContent 
+      slides={heroSlides}
+      currentSlide={currentHeroSlide}
+    />
     
     {/* CTA Buttons - Enhanced with micro-interactions */}
-    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-6 sm:mb-8 md:mb-10">
+    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-6 sm:mb-8 md:mb-10 relative z-30">
       <div className="touch-feedback w-full sm:w-auto">
         <EnhancedBookingButton onOpenContactForm={() => setShowContactForm(true)} />
       </div>
@@ -99,12 +128,10 @@ export default function Home() {
       </div>
     </div>
     
-  {/* Floating Stats Overlay - REMOVED for cleaner hero */}
-  
-  {/* Scroll Indicator */}
-  <OptimizedScrollIndicator />
+    {/* Scroll Indicator */}
+    <OptimizedScrollIndicator />
   </div>
-  </section>
+</section>
 
 {/* Mission & Vision Section */}
 <section id="vision" className="nav-trigger-vision mobile-section relative layout-section mobile-optimized bg-black mt-16 sm:mt-20 md:mt-24 lg:mt-32" role="region" aria-labelledby="vision-heading">

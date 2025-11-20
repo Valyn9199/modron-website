@@ -31,7 +31,6 @@ export function EnhancedInput({
   icon
 }: EnhancedInputProps) {
   const [isFocused, setIsFocused] = useState(false)
-  const [hasValue, setHasValue] = useState(value.length > 0)
   const inputRef = useRef<HTMLInputElement>(null)
 
   const handleFocus = () => {
@@ -40,15 +39,15 @@ export function EnhancedInput({
 
   const handleBlur = () => {
     setIsFocused(false)
-    setHasValue((inputRef.current?.value?.length || 0) > 0)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value
-    setHasValue(newValue.length > 0)
     onChange?.(newValue)
   }
 
+  // Derive hasValue from the value prop to ensure consistent server/client rendering
+  const hasValue = (value?.length || 0) > 0
   const isFloating = floating && (isFocused || hasValue)
 
   return (
@@ -150,7 +149,6 @@ export function EnhancedTextarea({
   floating = true
 }: EnhancedTextareaProps) {
   const [isFocused, setIsFocused] = useState(false)
-  const [hasValue, setHasValue] = useState(value.length > 0)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const handleFocus = () => {
@@ -159,15 +157,15 @@ export function EnhancedTextarea({
 
   const handleBlur = () => {
     setIsFocused(false)
-    setHasValue((textareaRef.current?.value?.length || 0) > 0)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = e.target.value
-    setHasValue(newValue.length > 0)
     onChange?.(newValue)
   }
 
+  // Derive hasValue from the value prop to ensure consistent server/client rendering
+  const hasValue = (value?.length || 0) > 0
   const isFloating = floating && (isFocused || hasValue)
 
   return (
