@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState, useCallback } from "react"
 
 interface VideoSlide {
   videoSrc: string
@@ -76,6 +76,18 @@ export function HeroVideoSlideshow({
 
     setShouldPlayVideo(canPlay)
   }, [prefersReduced])
+
+  // Preload next video while current plays
+  useEffect(() => {
+    if (!isMounted) return
+    
+    const nextIndex = (currentSlide + 1) % slides.length
+    const nextVideo = videoRefs.current[nextIndex]
+    
+    if (nextVideo && nextVideo.readyState < 2) {
+      nextVideo.load()
+    }
+  }, [currentSlide, isMounted, slides.length])
 
   // Handle video playback and transitions
   useEffect(() => {
@@ -223,10 +235,12 @@ export function HeroVideoSlideshow({
     }
   }, [currentSlide, onSlideChange])
 
-  // Manual navigation
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index)
-  }
+  // Manual navigation - optimized with useCallback
+  const goToSlide = useCallback((index: number) => {
+    if (index !== currentSlide) {
+      setCurrentSlide(index)
+    }
+  }, [currentSlide])
 
   // Don't render until mounted to avoid hydration issues
   if (!isMounted) {
@@ -250,9 +264,18 @@ export function HeroVideoSlideshow({
   return (
     <div className={`absolute inset-0 w-full h-full bg-black z-0 ${className}`} suppressHydrationWarning>
       {/* Video Container */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden z-0" aria-hidden suppressHydrationWarning>
+      <div 
+        className="absolute inset-0 w-full h-full overflow-hidden z-0" 
+        aria-hidden 
+        suppressHydrationWarning
+        style={{
+          willChange: 'contents',
+          transform: 'translateZ(0)',
+        }}
+      >
         {slides.map((slide, index) => {
           const isActive = index === currentSlide
+          const isNext = index === (currentSlide + 1) % slides.length
           return (
             <video
               key={slide.videoSrc}
@@ -261,7 +284,7 @@ export function HeroVideoSlideshow({
                   videoRefs.current[index] = el
                 }
               }}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                 isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
               }`}
               style={{
@@ -269,12 +292,24 @@ export function HeroVideoSlideshow({
                 minHeight: '100%',
                 width: 'auto',
                 height: 'auto',
+                willChange: isActive || isNext ? 'opacity' : 'auto',
+                transform: 'translateZ(0)', // Force GPU layer
+                backfaceVisibility: 'hidden', // Prevent flickering
+                WebkitTransform: 'translateZ(0)', // Safari support
               }}
               autoPlay={isActive && isMounted}
               playsInline
               muted
               loop
-              preload={index === 0 ? "auto" : isActive ? "auto" : "metadata"}
+              preload={
+                index === 0 
+                  ? "auto" 
+                  : isActive 
+                    ? "auto" 
+                    : isNext
+                      ? "metadata"
+                      : "none"
+              }
               poster={slide.poster}
               crossOrigin="anonymous"
               aria-label={`Background video ${index + 1} of ${slides.length}`}
