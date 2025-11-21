@@ -726,7 +726,7 @@ export default function Home() {
                             </div>
                             <h4 className="text-white font-semibold">Data Processing</h4>
                           </div>
-                          <p className="text-gray-400 text-sm">High-performance data pipeline with real-time processing capabilities</p>
+                          <p className="text-gray-400 text-sm">Process 10TB+ datasets with 95% lower carbon footprint. Real-time pipelines with Australian data residency throughout the entire workflow.</p>
                         </div>
                         
                         <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
@@ -736,7 +736,7 @@ export default function Home() {
                             </div>
                             <h4 className="text-white font-semibold">Model Training</h4>
                           </div>
-                          <p className="text-gray-400 text-sm">Renewable-powered GPU clusters for efficient neural network training</p>
+                          <p className="text-gray-400 text-sm">Train models 3x faster with immersion cooling. Renewable-powered GPU clusters with zero vendor lock-in and container-native architecture.</p>
                         </div>
                         
                         <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
@@ -746,7 +746,7 @@ export default function Home() {
                     </div>
                       <h4 className="text-white font-semibold">Performance Monitoring</h4>
                     </div>
-                    <p className="text-gray-400 text-sm">Real-time evaluation and optimization of model performance</p>
+                    <p className="text-gray-400 text-sm">Real-time evaluation with automatic optimization. Deploy monitoring in 48 hours vs. 6+ months for traditional infrastructure.</p>
                   </div>
                   
                   <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
@@ -756,7 +756,7 @@ export default function Home() {
                     </div>
                       <h4 className="text-white font-semibold">Container Deployment</h4>
                     </div>
-                    <p className="text-gray-400 text-sm">Container-native infrastructure for rapid deployment and scaling</p>
+                    <p className="text-gray-400 text-sm">Zero-migration deployment with Kubernetes orchestration. Scale from 1 to 1000 GPUs in minutes, keeping all data within Australian borders.</p>
                   </div>
                 </div>
                 
@@ -834,7 +834,7 @@ export default function Home() {
                 </div>
                       <h4 className="text-white font-semibold">Government</h4>
                 </div>
-                    <p className="text-gray-400 text-sm">Defense-grade AI for classified data processing with ISO27001-ready infrastructure supporting air-gapped deployments</p>
+                    <p className="text-gray-400 text-sm">Process classified datasets 10x faster with air-gapped security. Defense-grade AI with ISO27001-ready infrastructure supporting Australian data residency requirements.</p>
                   </div>
                   
                   <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
@@ -844,7 +844,7 @@ export default function Home() {
                 </div>
                       <h4 className="text-white font-semibold">Research</h4>
                 </div>
-                    <p className="text-gray-400 text-sm">High-performance computing at 95% lower carbon footprint enabling breakthrough discoveries without environmental impact</p>
+                    <p className="text-gray-400 text-sm">Enable breakthrough discoveries with 95% lower carbon footprint. High-performance computing for universities and CSIRO achieving net-zero AI operations.</p>
                   </div>
                   
                   <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
@@ -854,37 +854,7 @@ export default function Home() {
                       </div>
                       <h4 className="text-white font-semibold">Enterprise</h4>
                     </div>
-                    <p className="text-gray-400 text-sm">Scale from 1 to 1000 GPUs in minutes with spot pricing at 40% below cloud, keeping all data within Australian borders</p>
-                  </div>
-                  
-                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
-                    <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
-                        <Icons.Code className="h-5 w-5 text-gray-400 flex-shrink-0" />
-                      </div>
-                      <h4 className="text-white font-semibold">Development</h4>
-                    </div>
-                    <p className="text-gray-400 text-sm">Build sovereign AI applications processing sensitive data with guaranteed Australian residency and regulatory compliance</p>
-                  </div>
-                  
-                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
-                    <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
-                        <Icons.Zap className="h-5 w-5 text-gray-400 flex-shrink-0" />
-                      </div>
-                      <h4 className="text-white font-semibold">Emergency AI Infrastructure</h4>
-                    </div>
-                    <p className="text-gray-400 text-sm">Rapid AI deployment for bushfire prediction, flood assessment, and search & rescue coordination - operational within 48 hours</p>
-                  </div>
-                  
-                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
-                    <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
-                        <Icons.RefreshCw className="h-5 w-5 text-gray-400 flex-shrink-0" />
-                      </div>
-                      <h4 className="text-white font-semibold">Disaster Recovery</h4>
-                    </div>
-                    <p className="text-gray-400 text-sm">Rapid infrastructure restoration with modular containers for business continuity</p>
+                    <p className="text-gray-400 text-sm">Scale from 1 to 1000 GPUs in minutes with spot pricing at 40% below cloud. All data stays within Australian borders with 99.9% uptime SLA.</p>
                   </div>
                   
                   <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
@@ -894,17 +864,7 @@ export default function Home() {
                       </div>
                       <h4 className="text-white font-semibold">Healthcare</h4>
                     </div>
-                    <p className="text-gray-400 text-sm">AI-powered medical imaging analysis processing radiology scans with HIPAA-compliant infrastructure for Australian hospitals</p>
-                  </div>
-                  
-                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
-                    <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
-                        <Icons.Leaf className="h-5 w-5 text-gray-400 flex-shrink-0" />
-                      </div>
-                      <h4 className="text-white font-semibold">Agriculture</h4>
-                    </div>
-                    <p className="text-gray-400 text-sm">Precision farming AI analyzing satellite imagery and sensor data to optimize irrigation and predict crop yields</p>
+                    <p className="text-gray-400 text-sm">Process radiology scans 5x faster with HIPAA-compliant infrastructure. AI-powered medical imaging analysis for Australian hospitals with guaranteed data residency.</p>
                   </div>
                   
                   <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
@@ -914,7 +874,7 @@ export default function Home() {
                       </div>
                       <h4 className="text-white font-semibold">FinTech</h4>
                     </div>
-                    <p className="text-gray-400 text-sm">Real-time fraud detection processing millions of transactions with &lt;50ms latency and strict regulatory compliance</p>
+                    <p className="text-gray-400 text-sm">Process millions of transactions with &lt;50ms latency. Real-time fraud detection with strict regulatory compliance and Australian data residency.</p>
                   </div>
                   
                   <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
@@ -924,7 +884,7 @@ export default function Home() {
                       </div>
                       <h4 className="text-white font-semibold">Mining</h4>
                     </div>
-                    <p className="text-gray-400 text-sm">Autonomous equipment operations with computer vision for safety monitoring and predictive maintenance</p>
+                    <p className="text-gray-400 text-sm">Reduce equipment downtime by 30% with predictive maintenance. Autonomous operations with computer vision for safety monitoring and operational efficiency.</p>
                   </div>
                 </div>
                 
@@ -1003,7 +963,7 @@ export default function Home() {
                           </div>
                           <h4 className="text-white font-semibold">Infrastructure</h4>
                         </div>
-                        <p className="text-gray-400 text-sm">Shipping container architecture with immersion cooling and solar power</p>
+                        <p className="text-gray-400 text-sm">Modular shipping containers with immersion cooling reduce PUE to 1.05 (vs. 1.5+ for traditional data centers). Solar-powered with 80-95% renewable energy.</p>
                       </div>
                       
                       <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
@@ -1013,7 +973,7 @@ export default function Home() {
                           </div>
                           <h4 className="text-white font-semibold">Platform</h4>
                         </div>
-                        <p className="text-gray-400 text-sm">Kubernetes orchestration with monitoring APIs</p>
+                        <p className="text-gray-400 text-sm">Kubernetes orchestration with auto-scaling APIs. Deploy in hours, not weeks. Zero-migration deployment of existing Docker containers and REST APIs.</p>
                       </div>
                       
                       <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
@@ -1023,7 +983,26 @@ export default function Home() {
                           </div>
                           <h4 className="text-white font-semibold">Application</h4>
                         </div>
-                        <p className="text-gray-400 text-sm">Custom AI workloads with zero-downtime deployment</p>
+                        <p className="text-gray-400 text-sm">Zero-downtime deployments with automatic rollback and canary releases. Custom AI workloads with native Kubernetes orchestration.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* vs. Cloud Providers Comparison */}
+                  <div className="mb-8 bg-black/30 border border-[#4A4A4A] rounded-lg p-4">
+                    <h4 className="text-lg font-semibold text-white mb-4 text-center">MODRON vs. Cloud Providers</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <h5 className="text-white font-medium text-sm mb-2">Cost Savings</h5>
+                        <p className="text-gray-400 text-xs">40-70% lower than AWS/GCP/Azure with spot instances up to 70% savings and predictable reserved capacity pricing.</p>
+                      </div>
+                      <div>
+                        <h5 className="text-white font-medium text-sm mb-2">Data Residency</h5>
+                        <p className="text-gray-400 text-xs">100% Australian data residency vs. uncertain cloud locations. Guaranteed compliance with Australian regulations.</p>
+                      </div>
+                      <div>
+                        <h5 className="text-white font-medium text-sm mb-2">Environmental Impact</h5>
+                        <p className="text-gray-400 text-xs">95% lower carbon footprint vs. traditional cloud. 80-95% renewable energy with automatic ESG reporting.</p>
                       </div>
                     </div>
                   </div>
@@ -1038,7 +1017,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Always-on Availability</h4>
                       </div>
-                      <p className="text-gray-400 text-sm">99.9% uptime SLA with automatic failover in under 1 second for mission-critical production systems.</p>
+                      <p className="text-gray-400 text-sm">99.9% uptime SLA with automatic failover in under 1 second (vs. cloud&apos;s 99.95% with 30s+ failover) for mission-critical production systems.</p>
                     </div>
 
                     {/* Clean Energy Credits */}
@@ -1049,7 +1028,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Clean Energy Credits</h4>
                       </div>
-                      <p className="text-gray-400 text-sm">80-95% renewable energy with automatic carbon reporting for ESG compliance and net-zero certification.</p>
+                      <p className="text-gray-400 text-sm">80-95% renewable energy with automatic carbon reporting for ESG compliance. Achieve net-zero certification with transparent environmental metrics.</p>
                     </div>
 
                     {/* Custom Containers & APIs */}
@@ -1060,7 +1039,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Custom Containers & APIs</h4>
                       </div>
-                      <p className="text-gray-400 text-sm">Zero-migration deployment of existing Docker containers and REST APIs with native Kubernetes orchestration.</p>
+                      <p className="text-gray-400 text-sm">Zero-migration deployment of existing Docker containers and REST APIs. Native Kubernetes orchestration with full compatibility.</p>
                     </div>
 
                     {/* Spot & Reserved Instances */}
@@ -1071,7 +1050,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Spot & Reserved Instances</h4>
                       </div>
-                      <p className="text-gray-400 text-sm">Flexible pricing with spot instances (up to 70% savings) and reserved capacity (predictable costs) for production workloads.</p>
+                      <p className="text-gray-400 text-sm">Flexible pricing with spot instances (up to 70% savings) and reserved capacity (predictable costs). Average customer saves $500K/year vs. cloud.</p>
                     </div>
 
                     {/* Remote Monitoring */}
@@ -1082,7 +1061,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Remote Monitoring</h4>
                       </div>
-                      <p className="text-gray-400 text-sm">Real-time performance dashboards with automated alerts, predictive maintenance, and 24/7 incident management.</p>
+                      <p className="text-gray-400 text-sm">Real-time performance dashboards with automated alerts and predictive maintenance. 24/7 incident management with &lt;1s response time.</p>
                     </div>
 
                     {/* Compliance & Security */}
@@ -1093,7 +1072,7 @@ export default function Home() {
                         </div>
                         <h4 className="text-white font-semibold">Compliance & Security</h4>
                       </div>
-                      <p className="text-gray-400 text-sm">Australian data residency with ISO27001-ready infrastructure and end-to-end encryption.</p>
+                      <p className="text-gray-400 text-sm">Australian data residency with ISO27001-ready infrastructure. End-to-end encryption with air-gapped deployment options for classified workloads.</p>
                     </div>
             </div>
               </div>
