@@ -1127,7 +1127,7 @@ export default function Home() {
                                 <div className="absolute inset-0 animate-pulse bg-[#1A1A1A] rounded-lg" />
                               )}
                               <Image 
-                                src="/gpus/MODRON_gb300.png" 
+                                src="/gpus/MODRON_GB300.png" 
                                 alt="NVIDIA GB300 Blackwell GPU" 
                                 width={400}
                                 height={225}
