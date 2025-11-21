@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { cn } from "@/lib/utils"
 
 interface EnhancedInputProps {
@@ -31,7 +31,13 @@ export function EnhancedInput({
   icon
 }: EnhancedInputProps) {
   const [isFocused, setIsFocused] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+
+  // Ensure consistent hydration - only set mounted after client-side render
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const handleFocus = () => {
     setIsFocused(true)
@@ -48,12 +54,13 @@ export function EnhancedInput({
 
   // Derive hasValue from the value prop to ensure consistent server/client rendering
   const hasValue = (value?.length || 0) > 0
-  const isFloating = floating && (isFocused || hasValue)
+  // Only use isFocused after mount to prevent hydration mismatch
+  const isFloating = floating && ((isMounted && isFocused) || hasValue)
 
   return (
-    <div className={cn("relative", className)} suppressHydrationWarning={true}>
+    <div className={cn("relative", className)}>
       {/* Input container */}
-      <div className="relative" suppressHydrationWarning={true}>
+      <div className="relative">
         {/* Icon */}
         {icon && (
           <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 z-10">
@@ -106,7 +113,6 @@ export function EnhancedInput({
             "absolute inset-0 rounded-lg border-2 border-transparent transition-all duration-200 pointer-events-none",
             isFocused && "border-[#40d0f2] shadow-[0_0_0_1px_rgba(64,208,242,0.2)]"
           )}
-          suppressHydrationWarning={true}
         />
       </div>
 
@@ -149,7 +155,13 @@ export function EnhancedTextarea({
   floating = true
 }: EnhancedTextareaProps) {
   const [isFocused, setIsFocused] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
+
+  // Ensure consistent hydration - only set mounted after client-side render
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const handleFocus = () => {
     setIsFocused(true)
@@ -166,10 +178,11 @@ export function EnhancedTextarea({
 
   // Derive hasValue from the value prop to ensure consistent server/client rendering
   const hasValue = (value?.length || 0) > 0
-  const isFloating = floating && (isFocused || hasValue)
+  // Only use isFocused after mount to prevent hydration mismatch
+  const isFloating = floating && ((isMounted && isFocused) || hasValue)
 
   return (
-    <div className={cn("relative", className)} suppressHydrationWarning={true}>
+    <div className={cn("relative", className)}>
       {/* Textarea container */}
       <div className="relative">
         {/* Textarea field */}
@@ -213,7 +226,6 @@ export function EnhancedTextarea({
             "absolute inset-0 rounded-lg border-2 border-transparent transition-all duration-200 pointer-events-none",
             isFocused && "border-[#40d0f2] shadow-[0_0_0_1px_rgba(64,208,242,0.2)]"
           )}
-          suppressHydrationWarning={true}
         />
       </div>
 
