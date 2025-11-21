@@ -49,11 +49,20 @@ export default function Home() {
   // Performance optimizations in progress - console logs removed for production
   const [showWorkflowDetails, setShowWorkflowDetails] = React.useState(false)
   const [showUseCaseDetails, setShowUseCaseDetails] = React.useState(false)
-  const [activeUseCaseTab, setActiveUseCaseTab] = React.useState<'overview' | 'ai-development' | 'industry-applications' | 'enterprise-features' | 'gpu-solutions'>('overview')
+  const [activeUseCaseTab, setActiveUseCaseTab] = React.useState<'gpu-solutions' | 'ai-development' | 'industry-applications' | 'enterprise-features'>('gpu-solutions')
   const [showCompetitiveComparison, setShowCompetitiveComparison] = React.useState(false)
   const [activeVisionTab, setActiveVisionTab] = React.useState<'none' | 'why-modron' | 'philosophy'>('none')
   const [showContactForm, setShowContactForm] = React.useState(false)
   const [currentHeroSlide, setCurrentHeroSlide] = React.useState(0)
+  const [imageErrors, setImageErrors] = React.useState<Record<string, boolean>>({})
+  const [imageLoaded, setImageLoaded] = React.useState<Record<string, boolean>>({})
+  const [expandedSpecs, setExpandedSpecs] = React.useState<Record<string, boolean>>({
+    h200: false,
+    gb300: false,
+    l40s: false,
+    rtx6000: false
+  })
+  const [showComparison, setShowComparison] = React.useState(false)
   
   // Hero slideshow data
   const heroSlides = [
@@ -651,16 +660,17 @@ export default function Home() {
             {/* Tabbed Navigation */}
             <div className="flex justify-center mb-8">
               <div className="bg-[#1A1A1A]/30 border border-[#262626] rounded-xl p-1 flex overflow-x-auto w-full max-w-4xl" style={{ scrollbarWidth: 'thin', scrollbarColor: '#4B5563 transparent' }}>
+                {/* GPU Solutions - Now First */}
                 <button
-                  onClick={() => setActiveUseCaseTab('overview')}
+                  onClick={() => setActiveUseCaseTab('gpu-solutions')}
                   className={`px-2 sm:px-6 py-1.5 sm:py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center text-xs sm:text-base whitespace-nowrap flex-shrink-0 ${
-                    activeUseCaseTab === 'overview'
+                    activeUseCaseTab === 'gpu-solutions'
                       ? 'bg-[#1A1A1A]/50 text-white underline underline-offset-4'
                       : 'text-[#CCCCCC] hover:text-white hover:bg-[#1A1A1A]/50'
                   }`}
                 >
-                  <img alt="MODRON" className="h-4 w-4 mr-2 hidden sm:block" src="/MODRON_ICON.png" loading="lazy" />
-                  Overview
+                  <Icons.Cpu className="h-4 w-4 mr-2 hidden sm:block" />
+                  GPU Solutions
                 </button>
                 <button
                   onClick={() => setActiveUseCaseTab('ai-development')}
@@ -695,80 +705,11 @@ export default function Home() {
                   <Icons.Settings className="h-4 w-4 mr-2 hidden sm:block" />
                   Enterprise Features
                 </button>
-                <button
-                  onClick={() => setActiveUseCaseTab('gpu-solutions')}
-                  className={`px-2 sm:px-6 py-1.5 sm:py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center text-xs sm:text-base whitespace-nowrap flex-shrink-0 ${
-                    activeUseCaseTab === 'gpu-solutions'
-                      ? 'bg-[#1A1A1A]/50 text-white underline underline-offset-4'
-                      : 'text-[#CCCCCC] hover:text-white hover:bg-[#1A1A1A]/50'
-                  }`}
-                >
-                  <Icons.Cpu className="h-4 w-4 mr-2 hidden sm:block" />
-                  GPU Solutions
-                </button>
               </div>
               </div>
               
               {/* Tab Content */}
-            <div className="bg-black border border-[#4A4A4A] rounded-2xl p-6 hover:border-[#40d5f2]/30 transition-all duration-300 group relative overflow-hidden">
-                      {/* Animated background gradient on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#40d5f2]/5 via-[#d5aaf9]/5 to-[#32ca73]/5 opacity-0 group-hover:opacity-100 transition-slow rounded-2xl"></div>
-              
-              {/* Overview Tab Content */}
-              {activeUseCaseTab === 'overview' && (
-                <div className="relative z-10">
-                  <h3 className="text-xl font-bold text-white mb-6 text-center">Supercomputing Made Simple</h3>
-                  
-                  {/* Intro Paragraph */}
-                  <p className="text-base sm:text-lg text-gray-300 mb-8 max-w-3xl mx-auto text-center leading-relaxed px-4">
-                    Unlock the full potential of AI with sovereign infrastructure designed for Australian businesses. 
-                    Transform document processing, predictive analytics, real-time decision-making, and autonomous 
-                    systems using enterprise-grade GPU computing that stays within Australian borders.
-                  </p>
-                  
-                  {/* Video Section */}
-                  <div className="mb-8">
-                    <div className="video-container relative w-full max-w-4xl mx-auto aspect-video bg-black rounded-xl overflow-hidden border border-[#4A4A4A]">
-                      <HeroVideoSlideshow 
-                        slides={heroSlides}
-                        overlayOpacity={0.15}
-                        autoPlayInterval={4500}
-                        className="absolute inset-0 w-full h-full"
-                      />
-                      {/* Transparent rounded rectangle overlay */}
-                      <div className="absolute inset-0 border-6 border-black rounded-xl bg-transparent z-20 pointer-events-none"></div>
-                    </div>
-                  </div>
-                  
-                  {/* Stats Cards */}
-                  <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
-                    {/* Logo Card */}
-                    <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#d5aaf9]/10 rounded-xl p-6 border border-[#32ca73]/20 text-center flex flex-col items-center justify-center">
-                      <img 
-                        src="/MODRON_ICON.png" 
-                        alt="MODRON" 
-                        className="h-16 w-16 mb-3 object-contain"
-                        loading="lazy"
-                      />
-                      <p className="text-white font-semibold text-sm">Australian AI Infrastructure</p>
-                    </div>
-                    
-                    <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-6 border border-[#d5aaf9]/20 text-center flex flex-col items-center justify-center">
-                      <div className="text-lg md:text-xl font-bold text-white mb-2">48 Hours</div>
-                      <p className="text-gray-300 text-sm">From deployment order to production AI workloads</p>
-                    </div>
-                    <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#40d0f2]/10 rounded-xl p-6 border border-[#fbff52]/20 text-center flex flex-col items-center justify-center">
-                      <div className="text-lg md:text-xl font-bold text-white mb-2">100+ PetaFLOPS</div>
-                      <p className="text-gray-300 text-sm">Computational power per container cluster</p>
-                    </div>
-                    <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#32ca73]/10 rounded-xl p-6 border border-[#32ca73]/20 text-center flex flex-col items-center justify-center">
-                      <div className="text-lg md:text-xl font-bold text-white mb-2">80-95% Renewable</div>
-                      <p className="text-gray-300 text-sm">Sustainable AI operations with solar integration</p>
-                    </div>
-                  </div>
-                  
-                </div>
-              )}
+            <div className="bg-black border border-[#4A4A4A] rounded-2xl p-6 hover:border-[#4A4A4A] transition-all duration-300 group relative overflow-hidden">
               
               {/* AI Development Process Tab Content */}
               {activeUseCaseTab === 'ai-development' && (
@@ -778,44 +719,44 @@ export default function Home() {
                       
                       {/* AI Development Capabilities */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                        <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                        <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                           <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                        <Icons.Database className="h-5 w-5 text-black flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.Database className="h-5 w-5 text-gray-400 flex-shrink-0" />
                             </div>
                             <h4 className="text-white font-semibold">Data Processing</h4>
                           </div>
-                          <p className="text-gray-300 text-sm">High-performance data pipeline with real-time processing capabilities</p>
+                          <p className="text-gray-400 text-sm">High-performance data pipeline with real-time processing capabilities</p>
                         </div>
                         
-                        <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
+                        <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                           <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#fbff52] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                        <Icons.Brain className="h-5 w-5 text-black flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.Brain className="h-5 w-5 text-gray-400 flex-shrink-0" />
                             </div>
                             <h4 className="text-white font-semibold">Model Training</h4>
                           </div>
-                          <p className="text-gray-300 text-sm">Renewable-powered GPU clusters for efficient neural network training</p>
+                          <p className="text-gray-400 text-sm">Renewable-powered GPU clusters for efficient neural network training</p>
                         </div>
                         
-                        <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                        <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                           <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#32ca73] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                        <Icons.BarChart3 className="h-5 w-5 text-black flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.BarChart3 className="h-5 w-5 text-gray-400 flex-shrink-0" />
                     </div>
                       <h4 className="text-white font-semibold">Performance Monitoring</h4>
                     </div>
-                    <p className="text-gray-300 text-sm">Real-time evaluation and optimization of model performance</p>
+                    <p className="text-gray-400 text-sm">Real-time evaluation and optimization of model performance</p>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
+                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#fbff52] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                        <Icons.Server className="h-5 w-5 text-black flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.Server className="h-5 w-5 text-gray-400 flex-shrink-0" />
                     </div>
                       <h4 className="text-white font-semibold">Container Deployment</h4>
                     </div>
-                    <p className="text-gray-300 text-sm">Container-native infrastructure for rapid deployment and scaling</p>
+                    <p className="text-gray-400 text-sm">Container-native infrastructure for rapid deployment and scaling</p>
                   </div>
                 </div>
                 
@@ -833,43 +774,43 @@ export default function Home() {
                 
                 {showWorkflowDetails && (
                   <div className="mt-6">
-                    <div className="bg-[#1A1A1A]/30 border border-[#262626] rounded-xl p-4">
+                    <div className="bg-black/30 border border-[#4A4A4A] rounded-lg p-4">
                       <h4 className="text-lg font-semibold text-white mb-4 text-center">Complete AI Workflow</h4>
                       <div className="space-y-4">
                         <div className="flex items-start space-x-3">
-                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#d5aaf9' }}>
-                            <Icons.Database className="h-4 w-4 text-black" />
+                          <div className="w-8 h-8 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center flex-shrink-0">
+                            <Icons.Database className="h-4 w-4 text-gray-400" />
               </div>
                           <div>
                             <h5 className="text-white font-medium text-sm">Data Ingestion (Days 1-3)</h5>
-                            <p className="text-[#999999] text-xs">Ingest 10TB+ datasets from S3, Snowflake, or on-prem systems. Built-in data validation, deduplication, and preprocessing pipelines with real-time streaming support.</p>
+                            <p className="text-gray-500 text-xs">Ingest 10TB+ datasets from S3, Snowflake, or on-prem systems. Built-in data validation, deduplication, and preprocessing pipelines with real-time streaming support.</p>
                           </div>
                         </div>
                         <div className="flex items-start space-x-3">
-                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#40d0f2' }}>
-                            <Icons.Brain className="h-4 w-4 text-black" />
+                          <div className="w-8 h-8 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center flex-shrink-0">
+                            <Icons.Brain className="h-4 w-4 text-gray-400" />
                           </div>
                           <div>
                             <h5 className="text-white font-medium text-sm">Model Training (Days 4-30)</h5>
-                            <p className="text-[#999999] text-xs">Distributed training across 100+ GPUs with automatic fault tolerance. Built-in experiment tracking with Weights & Biases integration and hyperparameter optimization.</p>
+                            <p className="text-gray-500 text-xs">Distributed training across 100+ GPUs with automatic fault tolerance. Built-in experiment tracking with Weights & Biases integration and hyperparameter optimization.</p>
                           </div>
                         </div>
                         <div className="flex items-start space-x-3">
-                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#32ca73' }}>
-                            <Icons.BarChart3 className="h-4 w-4 text-black" />
+                          <div className="w-8 h-8 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center flex-shrink-0">
+                            <Icons.BarChart3 className="h-4 w-4 text-gray-400" />
                           </div>
                           <div>
                             <h5 className="text-white font-medium text-sm">Model Validation (Days 31-45)</h5>
-                            <p className="text-[#999999] text-xs">A/B testing framework with canary deployments. Real-time performance monitoring with automatic rollback and bias detection tools.</p>
+                            <p className="text-gray-500 text-xs">A/B testing framework with canary deployments. Real-time performance monitoring with automatic rollback and bias detection tools.</p>
                           </div>
                         </div>
                         <div className="flex items-start space-x-3">
-                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#fbff52' }}>
-                            <Icons.Server className="h-4 w-4 text-black" />
+                          <div className="w-8 h-8 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center flex-shrink-0">
+                            <Icons.Server className="h-4 w-4 text-gray-400" />
                           </div>
                           <div>
                             <h5 className="text-white font-medium text-sm">Production Deployment (Days 46+)</h5>
-                            <p className="text-[#999999] text-xs">Container orchestration with Kubernetes. Auto-scaling based on traffic patterns and global edge deployment in 48 hours.</p>
+                            <p className="text-gray-500 text-xs">Container orchestration with Kubernetes. Auto-scaling based on traffic patterns and global edge deployment in 48 hours.</p>
                           </div>
                         </div>
                       </div>
@@ -886,104 +827,104 @@ export default function Home() {
                 
                 {/* Industry Solutions */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                  <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#d5aaf9] to-[#fbff52] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                        <Icons.Shield className="h-5 w-5 text-black flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.Shield className="h-5 w-5 text-gray-400 flex-shrink-0" />
                 </div>
                       <h4 className="text-white font-semibold">Government</h4>
                 </div>
-                    <p className="text-gray-300 text-sm">Defense-grade AI for classified data processing with ISO27001-ready infrastructure supporting air-gapped deployments</p>
+                    <p className="text-gray-400 text-sm">Defense-grade AI for classified data processing with ISO27001-ready infrastructure supporting air-gapped deployments</p>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#d5aaf9] to-[#fbff52] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                        <Icons.Brain className="h-5 w-5 text-black flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.Brain className="h-5 w-5 text-gray-400 flex-shrink-0" />
                 </div>
                       <h4 className="text-white font-semibold">Research</h4>
                 </div>
-                    <p className="text-gray-300 text-sm">High-performance computing at 95% lower carbon footprint enabling breakthrough discoveries without environmental impact</p>
+                    <p className="text-gray-400 text-sm">High-performance computing at 95% lower carbon footprint enabling breakthrough discoveries without environmental impact</p>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
+                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#fbff52] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                        <Icons.Server className="h-5 w-5 text-black flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.Server className="h-5 w-5 text-gray-400 flex-shrink-0" />
                       </div>
                       <h4 className="text-white font-semibold">Enterprise</h4>
                     </div>
-                    <p className="text-gray-300 text-sm">Scale from 1 to 1000 GPUs in minutes with spot pricing at 40% below cloud, keeping all data within Australian borders</p>
+                    <p className="text-gray-400 text-sm">Scale from 1 to 1000 GPUs in minutes with spot pricing at 40% below cloud, keeping all data within Australian borders</p>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
+                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#fbff52] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                        <Icons.Code className="h-5 w-5 text-black flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.Code className="h-5 w-5 text-gray-400 flex-shrink-0" />
                       </div>
                       <h4 className="text-white font-semibold">Development</h4>
                     </div>
-                    <p className="text-gray-300 text-sm">Build sovereign AI applications processing sensitive data with guaranteed Australian residency and regulatory compliance</p>
+                    <p className="text-gray-400 text-sm">Build sovereign AI applications processing sensitive data with guaranteed Australian residency and regulatory compliance</p>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-[#ff6b6b]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#ff6b6b]/20 group hover:border-[#ff6b6b]/40 transition-all duration-300">
+                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#ff6b6b] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                        <Icons.Zap className="h-5 w-5 text-black flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.Zap className="h-5 w-5 text-gray-400 flex-shrink-0" />
                       </div>
                       <h4 className="text-white font-semibold">Emergency AI Infrastructure</h4>
                     </div>
-                    <p className="text-gray-300 text-sm">Rapid AI deployment for bushfire prediction, flood assessment, and search & rescue coordination - operational within 48 hours</p>
+                    <p className="text-gray-400 text-sm">Rapid AI deployment for bushfire prediction, flood assessment, and search & rescue coordination - operational within 48 hours</p>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-[#4ecdc4]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#4ecdc4]/20 group hover:border-[#4ecdc4]/40 transition-all duration-300">
+                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#4ecdc4] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                        <Icons.RefreshCw className="h-5 w-5 text-black flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.RefreshCw className="h-5 w-5 text-gray-400 flex-shrink-0" />
                       </div>
                       <h4 className="text-white font-semibold">Disaster Recovery</h4>
                     </div>
-                    <p className="text-gray-300 text-sm">Rapid infrastructure restoration with modular containers for business continuity</p>
+                    <p className="text-gray-400 text-sm">Rapid infrastructure restoration with modular containers for business continuity</p>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-[#ff6b6b]/10 to-[#40d0f2]/10 rounded-xl p-4 border border-[#ff6b6b]/20 group hover:border-[#ff6b6b]/40 transition-all duration-300">
+                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#ff6b6b] to-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                        <Icons.Heart className="h-5 w-5 text-black flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.Heart className="h-5 w-5 text-gray-400 flex-shrink-0" />
                       </div>
                       <h4 className="text-white font-semibold">Healthcare</h4>
                     </div>
-                    <p className="text-gray-300 text-sm">AI-powered medical imaging analysis processing radiology scans with HIPAA-compliant infrastructure for Australian hospitals</p>
+                    <p className="text-gray-400 text-sm">AI-powered medical imaging analysis processing radiology scans with HIPAA-compliant infrastructure for Australian hospitals</p>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#32ca73]/20 group hover:border-[#32ca73]/40 transition-all duration-300">
+                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#32ca73] to-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                        <Icons.Leaf className="h-5 w-5 text-black flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.Leaf className="h-5 w-5 text-gray-400 flex-shrink-0" />
                       </div>
                       <h4 className="text-white font-semibold">Agriculture</h4>
                     </div>
-                    <p className="text-gray-300 text-sm">Precision farming AI analyzing satellite imagery and sensor data to optimize irrigation and predict crop yields</p>
+                    <p className="text-gray-400 text-sm">Precision farming AI analyzing satellite imagery and sensor data to optimize irrigation and predict crop yields</p>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#fbff52]/10 rounded-xl p-4 border border-[#40d0f2]/20 group hover:border-[#40d0f2]/40 transition-all duration-300">
+                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#40d0f2] to-[#fbff52] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                        <Icons.DollarSign className="h-5 w-5 text-black flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.DollarSign className="h-5 w-5 text-gray-400 flex-shrink-0" />
                       </div>
                       <h4 className="text-white font-semibold">FinTech</h4>
                     </div>
-                    <p className="text-gray-300 text-sm">Real-time fraud detection processing millions of transactions with &lt;50ms latency and strict regulatory compliance</p>
+                    <p className="text-gray-400 text-sm">Real-time fraud detection processing millions of transactions with &lt;50ms latency and strict regulatory compliance</p>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#32ca73]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#d5aaf9] to-[#32ca73] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                        <Icons.Hammer className="h-5 w-5 text-black flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.Hammer className="h-5 w-5 text-gray-400 flex-shrink-0" />
                       </div>
                       <h4 className="text-white font-semibold">Mining</h4>
                     </div>
-                    <p className="text-gray-300 text-sm">Autonomous equipment operations with computer vision for safety monitoring and predictive maintenance</p>
+                    <p className="text-gray-400 text-sm">Autonomous equipment operations with computer vision for safety monitoring and predictive maintenance</p>
                   </div>
                 </div>
                 
@@ -1001,43 +942,43 @@ export default function Home() {
                 
                 {showUseCaseDetails && (
                   <div className="mt-6">
-                    <div className="bg-[#1A1A1A]/30 border border-[#262626] rounded-xl p-4">
+                    <div className="bg-black/30 border border-[#4A4A4A] rounded-lg p-4">
                       <h4 className="text-lg font-semibold text-white mb-4 text-center">Complete Use Cases</h4>
                       <div className="space-y-4">
                         <div className="flex items-start space-x-3">
-                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#d5aaf9] to-[#fbff52]">
-                            <Icons.Shield className="h-4 w-4 text-black" />
+                          <div className="w-8 h-8 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center flex-shrink-0">
+                            <Icons.Shield className="h-4 w-4 text-gray-400" />
                           </div>
                           <div>
                             <h5 className="text-white font-medium text-sm">Australian Government AI</h5>
-                            <p className="text-[#999999] text-xs">Defense, healthcare, and public services with data residency</p>
+                            <p className="text-gray-500 text-xs">Defense, healthcare, and public services with data residency</p>
                           </div>
                         </div>
                         <div className="flex items-start space-x-3">
-                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#d5aaf9] to-[#fbff52]">
-                            <Icons.Brain className="h-4 w-4 text-black" />
+                          <div className="w-8 h-8 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center flex-shrink-0">
+                            <Icons.Brain className="h-4 w-4 text-gray-400" />
                           </div>
                           <div>
                             <h5 className="text-white font-medium text-sm">Research & Academia</h5>
-                            <p className="text-[#999999] text-xs">Universities and CSIRO with carbon-neutral operations</p>
+                            <p className="text-gray-500 text-xs">Universities and CSIRO with carbon-neutral operations</p>
                           </div>
                         </div>
                         <div className="flex items-start space-x-3">
-                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#fbff52] to-[#d5aaf9]">
-                            <Icons.Server className="h-4 w-4 text-black" />
+                          <div className="w-8 h-8 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center flex-shrink-0">
+                            <Icons.Server className="h-4 w-4 text-gray-400" />
                           </div>
                           <div>
                             <h5 className="text-white font-medium text-sm">Australian Enterprise</h5>
-                            <p className="text-[#999999] text-xs">Mining, agriculture, and finance with local support</p>
+                            <p className="text-gray-500 text-xs">Mining, agriculture, and finance with local support</p>
                           </div>
                         </div>
                         <div className="flex items-start space-x-3">
-                          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#fbff52] to-[#d5aaf9]">
-                            <Icons.Code className="h-4 w-4 text-black" />
+                          <div className="w-8 h-8 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center flex-shrink-0">
+                            <Icons.Code className="h-4 w-4 text-gray-400" />
                           </div>
                           <div>
                             <h5 className="text-white font-medium text-sm">Sovereign AI Development</h5>
-                            <p className="text-[#999999] text-xs">Complete data sovereignty and Australian oversight</p>
+                            <p className="text-gray-500 text-xs">Complete data sovereignty and Australian oversight</p>
                           </div>
                         </div>
                       </div>
@@ -1055,217 +996,488 @@ export default function Home() {
                   {/* Enterprise System Architecture */}
                   <div className="mb-8">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                      <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                         <div className="flex items-center mb-3">
-                          <div className="w-10 h-10 rounded-lg bg-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                            <Icons.Server className="h-5 w-5 text-black flex-shrink-0" />
+                          <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                            <Icons.Server className="h-5 w-5 text-gray-400 flex-shrink-0" />
                           </div>
                           <h4 className="text-white font-semibold">Infrastructure</h4>
                         </div>
-                        <p className="text-gray-300 text-sm">Shipping container architecture with immersion cooling and solar power</p>
+                        <p className="text-gray-400 text-sm">Shipping container architecture with immersion cooling and solar power</p>
                       </div>
                       
-                      <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
+                      <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                         <div className="flex items-center mb-3">
-                          <div className="w-10 h-10 rounded-lg bg-[#fbff52] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                            <Icons.Cloud className="h-5 w-5 text-black flex-shrink-0" />
+                          <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                            <Icons.Cloud className="h-5 w-5 text-gray-400 flex-shrink-0" />
                           </div>
                           <h4 className="text-white font-semibold">Platform</h4>
                         </div>
-                        <p className="text-gray-300 text-sm">Kubernetes orchestration with monitoring APIs</p>
+                        <p className="text-gray-400 text-sm">Kubernetes orchestration with monitoring APIs</p>
                       </div>
                       
-                      <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                      <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                         <div className="flex items-center mb-3">
-                          <div className="w-10 h-10 rounded-lg bg-[#32ca73] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                            <Icons.Code className="h-5 w-5 text-black flex-shrink-0" />
+                          <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                            <Icons.Code className="h-5 w-5 text-gray-400 flex-shrink-0" />
                           </div>
                           <h4 className="text-white font-semibold">Application</h4>
                         </div>
-                        <p className="text-gray-300 text-sm">Custom AI workloads with zero-downtime deployment</p>
+                        <p className="text-gray-400 text-sm">Custom AI workloads with zero-downtime deployment</p>
                       </div>
                     </div>
                   </div>
             
                   {/* Key Enterprise Features */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {/* Always-on Availability - Reliability (Green) */}
-                    <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#32ca73]/5 rounded-xl p-4 border border-[#32ca73]/20 group hover:border-[#32ca73]/40 transition-all duration-300">
+                    {/* Always-on Availability */}
+                    <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                       <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-[#32ca73] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                          <Icons.Clock className="h-5 w-5 text-black flex-shrink-0" />
+                        <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                          <Icons.Clock className="h-5 w-5 text-gray-400 flex-shrink-0" />
                         </div>
                         <h4 className="text-white font-semibold">Always-on Availability</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">99.9% uptime SLA with automatic failover in under 1 second for mission-critical production systems.</p>
+                      <p className="text-gray-400 text-sm">99.9% uptime SLA with automatic failover in under 1 second for mission-critical production systems.</p>
                     </div>
 
-                    {/* Clean Energy Credits - Sustainability (Blue) */}
-                    <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#40d0f2]/5 rounded-xl p-4 border border-[#40d0f2]/20 group hover:border-[#40d0f2]/40 transition-all duration-300">
+                    {/* Clean Energy Credits */}
+                    <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                       <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                          <Icons.Award className="h-5 w-5 text-black flex-shrink-0" />
+                        <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                          <Icons.Award className="h-5 w-5 text-gray-400 flex-shrink-0" />
                         </div>
                         <h4 className="text-white font-semibold">Clean Energy Credits</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">80-95% renewable energy with automatic carbon reporting for ESG compliance and net-zero certification.</p>
+                      <p className="text-gray-400 text-sm">80-95% renewable energy with automatic carbon reporting for ESG compliance and net-zero certification.</p>
                     </div>
 
-                    {/* Custom Containers & APIs - Deployment (Purple) */}
-                    <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#d5aaf9]/5 rounded-xl p-4 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
+                    {/* Custom Containers & APIs */}
+                    <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                       <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-[#d5aaf9] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                          <Icons.Settings className="h-5 w-5 text-black flex-shrink-0" />
+                        <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                          <Icons.Settings className="h-5 w-5 text-gray-400 flex-shrink-0" />
                         </div>
                         <h4 className="text-white font-semibold">Custom Containers & APIs</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">Zero-migration deployment of existing Docker containers and REST APIs with native Kubernetes orchestration.</p>
+                      <p className="text-gray-400 text-sm">Zero-migration deployment of existing Docker containers and REST APIs with native Kubernetes orchestration.</p>
                     </div>
 
-                    {/* Spot & Reserved Instances - Cost Optimization (Yellow) */}
-                    <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#fbff52]/5 rounded-xl p-4 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
+                    {/* Spot & Reserved Instances */}
+                    <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                       <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-[#fbff52] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                          <Icons.Calendar className="h-5 w-5 text-black flex-shrink-0" />
+                        <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                          <Icons.Calendar className="h-5 w-5 text-gray-400 flex-shrink-0" />
                         </div>
                         <h4 className="text-white font-semibold">Spot & Reserved Instances</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">Flexible pricing with spot instances (up to 70% savings) and reserved capacity (predictable costs) for production workloads.</p>
+                      <p className="text-gray-400 text-sm">Flexible pricing with spot instances (up to 70% savings) and reserved capacity (predictable costs) for production workloads.</p>
                     </div>
 
-                    {/* Remote Monitoring - Reliability (Green) */}
-                    <div className="bg-gradient-to-br from-[#32ca73]/10 to-[#32ca73]/5 rounded-xl p-4 border border-[#32ca73]/20 group hover:border-[#32ca73]/40 transition-all duration-300">
+                    {/* Remote Monitoring */}
+                    <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                       <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-[#32ca73] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                          <Icons.Eye className="h-5 w-5 text-black flex-shrink-0" />
+                        <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                          <Icons.Eye className="h-5 w-5 text-gray-400 flex-shrink-0" />
                         </div>
                         <h4 className="text-white font-semibold">Remote Monitoring</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">Real-time performance dashboards with automated alerts, predictive maintenance, and 24/7 incident management.</p>
+                      <p className="text-gray-400 text-sm">Real-time performance dashboards with automated alerts, predictive maintenance, and 24/7 incident management.</p>
                     </div>
 
-                    {/* Compliance & Security - Compliance (Blue) */}
-                    <div className="bg-gradient-to-br from-[#40d0f2]/10 to-[#40d0f2]/5 rounded-xl p-4 border border-[#40d0f2]/20 group hover:border-[#40d0f2]/40 transition-all duration-300">
+                    {/* Compliance & Security */}
+                    <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                       <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-[#40d0f2] flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                          <Icons.Shield className="h-5 w-5 text-black flex-shrink-0" />
+                        <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                          <Icons.Shield className="h-5 w-5 text-gray-400 flex-shrink-0" />
                         </div>
                         <h4 className="text-white font-semibold">Compliance & Security</h4>
                       </div>
-                      <p className="text-gray-300 text-sm">Australian data residency with ISO27001-ready infrastructure and end-to-end encryption.</p>
+                      <p className="text-gray-400 text-sm">Australian data residency with ISO27001-ready infrastructure and end-to-end encryption.</p>
                     </div>
             </div>
               </div>
               )}
               
-              {/* GPU Solutions Tab Content */}
+              {/* GPU Solutions Tab Content - Enhanced with Detailed Specifications */}
               {activeUseCaseTab === 'gpu-solutions' && (
-                <div className="relative z-10">
-                  <h3 className="text-xl font-bold text-white mb-6 text-center">GPU Solutions</h3>
+                <section 
+                  id="gpu-solutions" 
+                  aria-labelledby="gpu-solutions-heading"
+                  className="relative z-10 animate-in fade-in duration-300"
+                >
+                  <h2 id="gpu-solutions-heading" className="text-lg sm:text-xl font-bold text-white mb-4 text-center">
+                    GPU Product Specifications
+                  </h2>
                   
-                  <p className="text-gray-400 text-center mb-8 max-w-3xl mx-auto leading-relaxed">
-                    Choose the right GPU configuration for your workload - from cost-effective development clusters to enterprise training systems and next-generation research platforms.
+                  <p className="text-gray-400 text-center mb-6 max-w-3xl mx-auto leading-relaxed px-4 text-sm">
+                    Choose the right GPU configuration for your workload. All GPUs are Australian-assembled, immersion-cooled, and optimized for performance.
                   </p>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
-                    {/* Development & Inference Tier */}
-                    <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-6 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
-                      <div className="flex items-center mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-[#d5aaf9] flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                          <Icons.Cpu className="h-6 w-6 text-black flex-shrink-0" />
-                        </div>
-                        <div>
-                          <h3 className="text-white font-semibold text-lg">Development & Inference</h3>
-                          <p className="text-[#32ca73] font-medium text-sm">RTX PRO 6000, L40S</p>
+                  {/* GPU Product Cards Grid - More Compact */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto mb-6 px-4 sm:px-0">
+                    
+                    {/* NVIDIA GB300 Blackwell - Next-Gen Research */}
+                    <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative">
+                      <div className="mb-3">
+                        <div className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors">
+                          {!imageErrors['gb300'] ? (
+                            <>
+                              {!imageLoaded['gb300'] && (
+                                <div className="absolute inset-0 animate-pulse bg-[#1A1A1A] rounded-lg" />
+                              )}
+                              <Image 
+                                src="/gpus/MODRON_gb300.png" 
+                                alt="NVIDIA GB300 Blackwell GPU" 
+                                width={400}
+                                height={225}
+                                className="object-contain relative z-10"
+                                loading="lazy"
+                                onLoad={() => setImageLoaded(prev => ({ ...prev, gb300: true }))}
+                                onError={() => setImageErrors(prev => ({ ...prev, gb300: true }))}
+                              />
+                            </>
+                          ) : (
+                            <div className="w-full h-full rounded-lg bg-[#2A2A2A] border border-[#4A4A4A] flex items-center justify-center">
+                              <Icons.Zap className="h-6 w-6 text-gray-400" />
+                            </div>
+                          )}
                         </div>
                       </div>
-                      <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                        Cost-effective high-performance GPUs for AI development, inference workloads, and smaller model training. Perfect for startups and development teams.
-                      </p>
-                      <ul className="text-gray-300 text-xs space-y-2">
-                        <li className="flex items-center">
-                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#32ca73] flex-shrink-0" />
-                          Cost-optimized for development
-                        </li>
-                        <li className="flex items-center">
-                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#32ca73] flex-shrink-0" />
-                          High inference performance
-                        </li>
-                        <li className="flex items-center">
-                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#32ca73] flex-shrink-0" />
-                          Rapid prototyping support
-                        </li>
-                      </ul>
+                      
+                      <div className="text-center mb-3">
+                        <h3 className="text-white font-bold text-base mb-1">NVIDIA GB300 Blackwell</h3>
+                        <p className="text-gray-400 font-medium text-xs mb-2">Next-Gen Research & Massive Models</p>
+                        <div className="flex flex-wrap gap-1 justify-center">
+                          <span className="px-1.5 py-0.5 rounded-full bg-[#1A1A1A] border border-[#4A4A4A] text-gray-400 text-[10px] font-medium">
+                            Research
+                          </span>
+                          <span className="px-1.5 py-0.5 rounded-full bg-[#1A1A1A] border border-[#4A4A4A] text-gray-400 text-[10px] font-medium">
+                            Massive Models
+                          </span>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-1.5 mb-3 text-xs">
+                        <div className="flex items-center justify-between">
+                          <span className="text-gray-500">Memory:</span>
+                          <span className="text-white font-medium">192GB HBM3e</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-gray-500">Bandwidth:</span>
+                          <span className="text-white font-medium">8TB/s</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-gray-500">Architecture:</span>
+                          <span className="text-white font-medium">Blackwell</span>
+                        </div>
+                      </div>
+                      
+                      <details className="mb-3">
+                        <summary className="text-gray-300 text-xs cursor-pointer hover:text-white transition-colors flex items-center justify-between list-none">
+                          <span>More Details</span>
+                          <Icons.ChevronDown className={`h-3 w-3 transition-transform duration-200 text-gray-400 ${expandedSpecs['gb300'] ? 'rotate-180' : ''}`} />
+                        </summary>
+                        <div className="mt-2 pt-2 border-t border-[#4A4A4A] text-xs space-y-1">
+                          <div className="flex items-start">
+                            <Icons.CheckCircle className="h-3 w-3 mr-1.5 text-gray-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                            <span className="text-gray-400">Next-generation Blackwell architecture</span>
+                          </div>
+                          <div className="flex items-start">
+                            <Icons.CheckCircle className="h-3 w-3 mr-1.5 text-gray-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                            <span className="text-gray-400">Massive model training capability</span>
+                          </div>
+                        </div>
+                      </details>
                     </div>
 
-                    {/* Enterprise Training Tier */}
-                    <div className="bg-gradient-to-br from-[#fbff52]/10 to-[#d5aaf9]/10 rounded-xl p-6 border border-[#fbff52]/20 group hover:border-[#fbff52]/40 transition-all duration-300">
-                      <div className="flex items-center mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-[#fbff52] flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                          <Icons.Server className="h-6 w-6 text-black flex-shrink-0" />
-                        </div>
-                        <div>
-                          <h3 className="text-white font-semibold text-lg">Enterprise Training</h3>
-                          <p className="text-[#fbff52] font-medium text-sm">H200, L40S</p>
+                    {/* NVIDIA H200 - Enterprise Training */}
+                    <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative">
+                      {/* GPU Image - Widescreen Style - Larger */}
+                      <div className="mb-3">
+                        <div className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors">
+                          {!imageErrors['h200'] ? (
+                            <>
+                              {!imageLoaded['h200'] && (
+                                <div className="absolute inset-0 animate-pulse bg-[#1A1A1A] rounded-lg" />
+                              )}
+                              <Image 
+                                src="/gpus/MODRON_h200.png" 
+                                alt="NVIDIA H200 GPU" 
+                                width={400}
+                                height={225}
+                                className="object-contain relative z-10"
+                                loading="lazy"
+                                onLoad={() => setImageLoaded(prev => ({ ...prev, h200: true }))}
+                                onError={() => setImageErrors(prev => ({ ...prev, h200: true }))}
+                              />
+                            </>
+                          ) : (
+                            <div className="w-full h-full rounded-lg bg-[#2A2A2A] border border-[#4A4A4A] flex items-center justify-center">
+                              <Icons.Zap className="h-6 w-6 text-gray-400" />
+                            </div>
+                          )}
                         </div>
                       </div>
-                      <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                        High-memory enterprise GPUs for large model training, production AI workloads, and enterprise-scale deployments with maximum reliability.
-                      </p>
-                      <ul className="text-gray-300 text-xs space-y-2">
-                        <li className="flex items-center">
-                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#fbff52] flex-shrink-0" />
-                          Large model training capability
-                        </li>
-                        <li className="flex items-center">
-                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#fbff52] flex-shrink-0" />
-                          Enterprise-grade reliability
-                        </li>
-                        <li className="flex items-center">
-                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#fbff52] flex-shrink-0" />
-                          Production-ready infrastructure
-                        </li>
-                      </ul>
+                      
+                      {/* Title and Badges - Compact */}
+                      <div className="text-center mb-3">
+                        <h3 className="text-white font-bold text-base mb-1">NVIDIA H200</h3>
+                        <p className="text-gray-400 font-medium text-xs mb-2">Enterprise Training & LLMs</p>
+                        <div className="flex flex-wrap gap-1 justify-center">
+                          <span className="px-1.5 py-0.5 rounded-full bg-[#1A1A1A] border border-[#4A4A4A] text-gray-400 text-[10px] font-medium">
+                            LLMs
+                          </span>
+                          <span className="px-1.5 py-0.5 rounded-full bg-[#1A1A1A] border border-[#4A4A4A] text-gray-400 text-[10px] font-medium">
+                            Enterprise
+                          </span>
+                        </div>
+                      </div>
+                      
+                      {/* Key Specs - Inline */}
+                      <div className="space-y-1.5 mb-3 text-xs">
+                        <div className="flex items-center justify-between">
+                          <span className="text-gray-500">Memory:</span>
+                          <span className="text-white font-medium">141GB HBM3e</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-gray-500">Bandwidth:</span>
+                          <span className="text-white font-medium">4.8TB/s</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-gray-500">Architecture:</span>
+                          <span className="text-white font-medium">Hopper</span>
+                        </div>
+                      </div>
+                      
+                      {/* Expandable Details */}
+                      <details className="mb-3">
+                        <summary className="text-gray-300 text-xs cursor-pointer hover:text-white transition-colors flex items-center justify-between list-none">
+                          <span>More Details</span>
+                          <Icons.ChevronDown className={`h-3 w-3 transition-transform duration-200 text-gray-400 ${expandedSpecs['h200'] ? 'rotate-180' : ''}`} />
+                        </summary>
+                        <div className="mt-2 pt-2 border-t border-[#4A4A4A] text-xs space-y-1">
+                          <div className="flex items-start">
+                            <Icons.CheckCircle className="h-3 w-3 mr-1.5 text-gray-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                            <span className="text-gray-400">Exceptional inference performance</span>
+                          </div>
+                          <div className="flex items-start">
+                            <Icons.CheckCircle className="h-3 w-3 mr-1.5 text-gray-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                            <span className="text-gray-400">Memory-intensive applications</span>
+                          </div>
+                        </div>
+                      </details>
                     </div>
 
-                    {/* Next-Gen Research Tier */}
-                    <div className="bg-gradient-to-br from-[#d5aaf9]/10 to-[#fbff52]/10 rounded-xl p-6 border border-[#d5aaf9]/20 group hover:border-[#d5aaf9]/40 transition-all duration-300">
-                      <div className="flex items-center mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-[#32ca73] flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                          <Icons.Zap className="h-6 w-6 text-black flex-shrink-0" />
-                        </div>
-                        <div>
-                          <h3 className="text-white font-semibold text-lg">Next-Gen Research</h3>
-                          <p className="text-[#32ca73] font-medium text-sm">Blackwell GB300</p>
+                    {/* RTX PRO 6000 - Development */}
+                    <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative">
+                      <div className="mb-3">
+                        <div className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors">
+                          {!imageErrors['rtx6000'] ? (
+                            <>
+                              {!imageLoaded['rtx6000'] && (
+                                <div className="absolute inset-0 animate-pulse bg-[#1A1A1A] rounded-lg" />
+                              )}
+                              <Image 
+                                src="/gpus/MODRON_rtx6000.png" 
+                                alt="NVIDIA RTX PRO 6000 GPU" 
+                                width={400}
+                                height={225}
+                                className="object-contain relative z-10"
+                                loading="lazy"
+                                onLoad={() => setImageLoaded(prev => ({ ...prev, rtx6000: true }))}
+                                onError={() => setImageErrors(prev => ({ ...prev, rtx6000: true }))}
+                              />
+                            </>
+                          ) : (
+                            <div className="w-full h-full rounded-lg bg-[#2A2A2A] border border-[#4A4A4A] flex items-center justify-center">
+                              <Icons.Code className="h-6 w-6 text-gray-400" />
+                            </div>
+                          )}
                         </div>
                       </div>
-                      <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                        Cutting-edge AI research GPUs for massive model training, breakthrough research, and the most demanding AI workloads requiring maximum performance.
-                      </p>
-                      <ul className="text-gray-300 text-xs space-y-2">
-                        <li className="flex items-center">
-                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#32ca73] flex-shrink-0" />
-                          Massive model training
-                        </li>
-                        <li className="flex items-center">
-                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#32ca73] flex-shrink-0" />
-                          Research-grade performance
-                        </li>
-                        <li className="flex items-center">
-                          <Icons.CheckCircle className="h-3 w-3 mr-2 text-[#32ca73] flex-shrink-0" />
-                          Future-proof architecture
-                        </li>
-                      </ul>
+                      
+                      <div className="text-center mb-3">
+                        <h3 className="text-white font-bold text-base mb-1">RTX PRO 6000</h3>
+                        <p className="text-gray-400 font-medium text-xs mb-2">Development & Prototyping</p>
+                        <div className="flex flex-wrap gap-1 justify-center">
+                          <span className="px-1.5 py-0.5 rounded-full bg-[#1A1A1A] border border-[#4A4A4A] text-gray-400 text-[10px] font-medium">
+                            Development
+                          </span>
+                          <span className="px-1.5 py-0.5 rounded-full bg-[#1A1A1A] border border-[#4A4A4A] text-gray-400 text-[10px] font-medium">
+                            Cost-Effective
+                          </span>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-1.5 mb-3 text-xs">
+                        <div className="flex items-center justify-between">
+                          <span className="text-gray-500">Memory:</span>
+                          <span className="text-white font-medium">48GB GDDR6</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-gray-500">Bandwidth:</span>
+                          <span className="text-white font-medium">960GB/s</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-gray-500">Architecture:</span>
+                          <span className="text-white font-medium">Ada Lovelace</span>
+                        </div>
+                      </div>
+                      
+                      <details className="mb-3">
+                        <summary className="text-gray-300 text-xs cursor-pointer hover:text-white transition-colors flex items-center justify-between list-none">
+                          <span>More Details</span>
+                          <Icons.ChevronDown className={`h-3 w-3 transition-transform duration-200 text-gray-400 ${expandedSpecs['rtx6000'] ? 'rotate-180' : ''}`} />
+                        </summary>
+                        <div className="mt-2 pt-2 border-t border-[#4A4A4A] text-xs space-y-1">
+                          <div className="flex items-start">
+                            <Icons.CheckCircle className="h-3 w-3 mr-1.5 text-gray-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                            <span className="text-gray-400">Cost-optimized for development</span>
+                          </div>
+                          <div className="flex items-start">
+                            <Icons.CheckCircle className="h-3 w-3 mr-1.5 text-gray-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                            <span className="text-gray-400">High inference performance</span>
+                          </div>
+                        </div>
+                      </details>
                     </div>
+
+                    {/* NVIDIA L40S - AI Inference */}
+                    <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative">
+                      <div className="mb-3">
+                        <div className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors">
+                          {!imageErrors['l40s'] ? (
+                            <>
+                              {!imageLoaded['l40s'] && (
+                                <div className="absolute inset-0 animate-pulse bg-[#1A1A1A] rounded-lg" />
+                              )}
+                              <Image 
+                                src="/gpus/MODRON_l40s.png" 
+                                alt="NVIDIA L40S GPU" 
+                                width={400}
+                                height={225}
+                                className="object-contain relative z-10"
+                                loading="lazy"
+                                onLoad={() => setImageLoaded(prev => ({ ...prev, l40s: true }))}
+                                onError={() => setImageErrors(prev => ({ ...prev, l40s: true }))}
+                              />
+                            </>
+                          ) : (
+                            <div className="w-full h-full rounded-lg bg-[#2A2A2A] border border-[#4A4A4A] flex items-center justify-center">
+                              <Icons.Gauge className="h-6 w-6 text-gray-400" />
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      
+                      <div className="text-center mb-3">
+                        <h3 className="text-white font-bold text-base mb-1">NVIDIA L40S</h3>
+                        <p className="text-gray-400 font-medium text-xs mb-2">AI Inference & Visual Computing</p>
+                        <div className="flex flex-wrap gap-1 justify-center">
+                          <span className="px-1.5 py-0.5 rounded-full bg-[#1A1A1A] border border-[#4A4A4A] text-gray-400 text-[10px] font-medium">
+                            Inference
+                          </span>
+                          <span className="px-1.5 py-0.5 rounded-full bg-[#1A1A1A] border border-[#4A4A4A] text-gray-400 text-[10px] font-medium">
+                            Visual
+                          </span>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-1.5 mb-3 text-xs">
+                        <div className="flex items-center justify-between">
+                          <span className="text-gray-500">Memory:</span>
+                          <span className="text-white font-medium">48GB GDDR6</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-gray-500">Bandwidth:</span>
+                          <span className="text-white font-medium">864GB/s</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-gray-500">Architecture:</span>
+                          <span className="text-white font-medium">Ada Lovelace</span>
+                        </div>
+                      </div>
+                      
+                      <details className="mb-3">
+                        <summary className="text-gray-300 text-xs cursor-pointer hover:text-white transition-colors flex items-center justify-between list-none">
+                          <span>More Details</span>
+                          <Icons.ChevronDown className={`h-3 w-3 transition-transform duration-200 text-gray-400 ${expandedSpecs['l40s'] ? 'rotate-180' : ''}`} />
+                        </summary>
+                        <div className="mt-2 pt-2 border-t border-[#4A4A4A] text-xs space-y-1">
+                          <div className="flex items-start">
+                            <Icons.CheckCircle className="h-3 w-3 mr-1.5 text-gray-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                            <span className="text-gray-400">Tensor Cores for inference</span>
+                          </div>
+                          <div className="flex items-start">
+                            <Icons.CheckCircle className="h-3 w-3 mr-1.5 text-gray-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                            <span className="text-gray-400">AI-powered graphics</span>
+                          </div>
+                        </div>
+                      </details>
+                    </div>
+
                   </div>
 
-                  <div className="text-center mt-8">
-                    <p className="text-gray-400 text-sm max-w-3xl mx-auto leading-relaxed">
-                      All GPU configurations include Australian assembly, immersion cooling, and solar power integration. 
-                      Contact us to discuss the optimal setup for your specific workload requirements.
-                    </p>
+                  {/* Compact Comparison Button */}
+                  <div className="text-center mb-4">
+                    <button
+                      onClick={() => setShowComparison(!showComparison)}
+                      className="px-4 py-2 bg-black border border-[#4A4A4A] text-white rounded-lg hover:bg-[#2A2A2A] hover:border-[#32ca73]/50 transition-all duration-200 flex items-center justify-center mx-auto text-sm"
+                      aria-expanded={showComparison}
+                      aria-controls="gpu-comparison-table"
+                    >
+                      <Icons.BarChart3 className="h-3 w-3 mr-2" aria-hidden="true" />
+                      {showComparison ? 'Hide' : 'Compare'} GPUs
+                    </button>
                   </div>
-                </div>
+
+                  {/* GPU Comparison Table - Compact */}
+                  {showComparison && (
+                    <div id="gpu-comparison-table" className="bg-black/30 border border-[#4A4A4A] rounded-lg p-4 mb-4 max-w-6xl mx-auto animate-in fade-in duration-300">
+                      <h3 className="text-white font-bold text-base mb-4 text-center">GPU Comparison</h3>
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-xs">
+                          <thead>
+                            <tr className="border-b border-[#4A4A4A]">
+                              <th className="text-left p-2 text-white font-semibold">GPU Model</th>
+                              <th className="text-center p-2 text-white font-semibold">Memory</th>
+                              <th className="text-center p-2 text-white font-semibold">Bandwidth</th>
+                              <th className="text-center p-2 text-white font-semibold">Best For</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr className="border-b border-[#4A4A4A]/50">
+                              <td className="p-2 text-white font-medium">NVIDIA GB300 Blackwell</td>
+                              <td className="p-2 text-center text-gray-300">192GB HBM3e</td>
+                              <td className="p-2 text-center text-gray-300">8TB/s</td>
+                              <td className="p-2 text-center text-gray-400">Research, Massive Models</td>
+                            </tr>
+                            <tr className="border-b border-[#4A4A4A]/50">
+                              <td className="p-2 text-white font-medium">NVIDIA H200</td>
+                              <td className="p-2 text-center text-gray-300">141GB HBM3e</td>
+                              <td className="p-2 text-center text-gray-300">4.8TB/s</td>
+                              <td className="p-2 text-center text-gray-400">LLMs, Enterprise</td>
+                            </tr>
+                            <tr className="border-b border-[#4A4A4A]/50">
+                              <td className="p-2 text-white font-medium">RTX PRO 6000</td>
+                              <td className="p-2 text-center text-gray-300">48GB GDDR6</td>
+                              <td className="p-2 text-center text-gray-300">960GB/s</td>
+                              <td className="p-2 text-center text-gray-400">Development</td>
+                            </tr>
+                            <tr>
+                              <td className="p-2 text-white font-medium">NVIDIA L40S</td>
+                              <td className="p-2 text-center text-gray-300">48GB GDDR6</td>
+                              <td className="p-2 text-center text-gray-300">864GB/s</td>
+                              <td className="p-2 text-center text-gray-400">Inference, Visual</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  )}
+
+                </section>
               )}
                       </div>
           </div>
