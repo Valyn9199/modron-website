@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useId } from "react"
 import { cn } from "@/lib/utils"
 
 interface EnhancedInputProps {
@@ -33,6 +33,7 @@ export function EnhancedInput({
   const [isFocused, setIsFocused] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const inputId = useId()
 
   // Ensure consistent hydration - only set mounted after client-side render
   useEffect(() => {
@@ -71,6 +72,7 @@ export function EnhancedInput({
         {/* Input field */}
         <input
           ref={inputRef}
+          id={inputId}
           type={type}
           value={value}
           onChange={handleChange}
@@ -79,6 +81,9 @@ export function EnhancedInput({
           placeholder={floating ? "" : placeholder}
           disabled={disabled}
           required={required}
+          aria-label={!floating && label ? label : undefined}
+          aria-describedby={error ? `${inputId}-error` : undefined}
+          aria-invalid={!!error}
           className={cn(
             "w-full px-4 pt-5 pb-3 bg-[#1A1A1A] border border-[#262626] rounded-lg",
             "text-white placeholder-gray-500 transition-all duration-200",
@@ -93,6 +98,7 @@ export function EnhancedInput({
         {/* Floating label */}
         {floating && label && (
           <label
+            htmlFor={inputId}
             className={cn(
               "absolute left-4 transition-all duration-200 pointer-events-none",
               isFloating
@@ -118,7 +124,7 @@ export function EnhancedInput({
 
       {/* Error message */}
       {error && (
-        <div className="mt-2 text-sm text-red-500 flex items-center gap-1">
+        <div id={`${inputId}-error`} className="mt-2 text-sm text-red-500 flex items-center gap-1" role="alert">
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
           </svg>
@@ -157,6 +163,7 @@ export function EnhancedTextarea({
   const [isFocused, setIsFocused] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const textareaId = useId()
 
   // Ensure consistent hydration - only set mounted after client-side render
   useEffect(() => {
@@ -188,6 +195,7 @@ export function EnhancedTextarea({
         {/* Textarea field */}
         <textarea
           ref={textareaRef}
+          id={textareaId}
           value={value}
           onChange={handleChange}
           onFocus={handleFocus}
@@ -196,6 +204,9 @@ export function EnhancedTextarea({
           disabled={disabled}
           required={required}
           rows={rows}
+          aria-label={!floating && label ? label : undefined}
+          aria-describedby={error ? `${textareaId}-error` : undefined}
+          aria-invalid={!!error}
           className={cn(
             "w-full px-4 pt-6 pb-3 bg-[#1A1A1A] border border-[#262626] rounded-lg",
             "text-white placeholder-gray-500 transition-all duration-200 resize-none",
@@ -208,6 +219,7 @@ export function EnhancedTextarea({
         {/* Floating label */}
         {floating && label && (
           <label
+            htmlFor={textareaId}
             className={cn(
               "absolute left-4 transition-all duration-200 pointer-events-none",
               isFloating
@@ -231,7 +243,7 @@ export function EnhancedTextarea({
 
       {/* Error message */}
       {error && (
-        <div className="mt-2 text-sm text-red-500 flex items-center gap-1">
+        <div id={`${textareaId}-error`} className="mt-2 text-sm text-red-500 flex items-center gap-1" role="alert">
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
           </svg>
