@@ -48,29 +48,34 @@ export function ImmersionTankVideo({
 
   return (
     <div className={`video-container relative rounded-xl overflow-hidden bg-black ${className}`}>
-      {/* Video Background */}
-      <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
-          isLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
-        style={{ 
-          objectPosition: 'center center'
-        }}
-        aria-label="Immersion cooling tank video showing high-performance GPUs"
-        aria-describedby="tank-video-description"
-      >
-        <source src={videoSrc} type="video/mp4" />
-        <div id="tank-video-description" className="sr-only">
-          Video showing MODRON's immersion cooling tank with multiple high-performance GPUs submerged in cooling liquid
-        </div>
-        Your browser does not support the video tag.
-      </video>
+      {/* Video wrapper to help with rounded corner clipping */}
+      <div className="absolute inset-0 rounded-xl overflow-hidden">
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          className={`w-full h-full object-cover transition-opacity duration-300 ${
+            isLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{ 
+            objectPosition: 'center center',
+            transform: 'translateZ(0)',
+            backfaceVisibility: 'hidden',
+            willChange: 'opacity',
+          }}
+          aria-label="Immersion cooling tank video showing high-performance GPUs"
+          aria-describedby="tank-video-description"
+        >
+          <source src={videoSrc} type="video/mp4" />
+          <div id="tank-video-description" className="sr-only">
+            Video showing MODRON's immersion cooling tank with multiple high-performance GPUs submerged in cooling liquid
+          </div>
+          Your browser does not support the video tag.
+        </video>
+      </div>
       
       {/* Transparent rounded rectangle overlay */}
       <div className="absolute inset-0 border-6 border-black rounded-xl bg-transparent z-20 pointer-events-none"></div>

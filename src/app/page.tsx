@@ -75,6 +75,9 @@ export default function Home() {
   // GPU hover video state
   const [hoveredGpu, setHoveredGpu] = React.useState<string | null>(null)
   const videoRefs = React.useRef<Record<string, HTMLVideoElement | null>>({})
+  const [videosInView, setVideosInView] = React.useState<Set<string>>(new Set())
+  const videoIntersectionRefs = React.useRef<Record<string, HTMLDivElement | null>>({})
+  const hoverTimeoutRef = React.useRef<Record<string, NodeJS.Timeout | null>>({})
   
   // Hero slideshow data
   const heroSlides = [
@@ -122,6 +125,52 @@ export default function Home() {
       setHeroCTAFadedIn(true)
     }, 500) // Delay slightly after text fades in
     return () => clearTimeout(timer)
+  }, [])
+  
+  // Intersection Observer for lazy loading GPU videos
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return
+    
+    const observers: IntersectionObserver[] = []
+    const gpuIds = ['gb300', 'h200', 'rtx6000', 'l40s']
+    
+    gpuIds.forEach((gpuId) => {
+      const container = videoIntersectionRefs.current[gpuId]
+      if (!container) return
+      
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setVideosInView((prev) => new Set(prev).add(gpuId))
+            } else {
+              setVideosInView((prev) => {
+                const next = new Set(prev)
+                next.delete(gpuId)
+                return next
+              })
+              // Pause and reset video when out of view
+              const video = videoRefs.current[gpuId]
+              if (video) {
+                video.pause()
+                video.currentTime = 0
+              }
+            }
+          })
+        },
+        {
+          rootMargin: '150px', // Start loading 150px before entering viewport
+          threshold: 0.01
+        }
+      )
+      
+      observer.observe(container)
+      observers.push(observer)
+    })
+    
+    return () => {
+      observers.forEach((obs) => obs.disconnect())
+    }
   }, [])
   
   return (
@@ -635,17 +684,25 @@ export default function Home() {
             {/* Video Side */}
             <div className="order-1 lg:order-1">
               <div className="video-container relative rounded-2xl overflow-hidden bg-black min-h-[256px] h-64 sm:h-80 md:h-80 lg:h-96">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="w-full h-full object-cover object-center"
-                  poster="/MODRON_Gold_Delivery_poster.jpg"
-                >
-                  <source src="/MODRON_Gold_Delivery_02.mp4" type="video/mp4" />
-                </video>
+                {/* Video wrapper to help with rounded corner clipping */}
+                <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-full object-cover object-center"
+                    poster="/MODRON_Gold_Delivery_poster.jpg"
+                    style={{
+                      transform: 'translateZ(0)',
+                      backfaceVisibility: 'hidden',
+                      willChange: 'auto',
+                    }}
+                  >
+                    <source src="/MODRON_Gold_Delivery_02.mp4" type="video/mp4" />
+                  </video>
+                </div>
                 {/* Transparent rounded rectangle overlay */}
                 <div className="absolute inset-0 border-6 border-black rounded-2xl bg-transparent z-20 pointer-events-none"></div>
                 {/* Subtle overlay to mask lighter sections */}
@@ -1165,13 +1222,30 @@ export default function Home() {
                     <div 
                       className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative"
                       onMouseEnter={() => {
+                        if (hoverTimeoutRef.current['gb300']) {
+                          clearTimeout(hoverTimeoutRef.current['gb300'])
+                        }
+                        
                         setHoveredGpu('gb300')
                         const video = videoRefs.current['gb300']
-                        if (video) {
-                          video.play().catch(() => {})
+                        if (video && videosInView.has('gb300')) {
+                          hoverTimeoutRef.current['gb300'] = setTimeout(() => {
+                            if (video.readyState >= 2) {
+                              video.play().catch(() => {})
+                            } else {
+                              video.load()
+                              video.addEventListener('canplay', () => {
+                                video.play().catch(() => {})
+                              }, { once: true })
+                            }
+                          }, 50)
                         }
                       }}
                       onMouseLeave={() => {
+                        if (hoverTimeoutRef.current['gb300']) {
+                          clearTimeout(hoverTimeoutRef.current['gb300'])
+                        }
+                        
                         setHoveredGpu(null)
                         const video = videoRefs.current['gb300']
                         if (video) {
@@ -1181,7 +1255,11 @@ export default function Home() {
                       }}
                     >
                       <div className="mb-3">
-                        <div className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors overflow-hidden">
+                        <div 
+                          ref={(el) => { videoIntersectionRefs.current['gb300'] = el }}
+                          className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors overflow-hidden"
+                          style={{ contain: 'layout style paint' }}
+                        >
                           {!imageErrors['gb300'] ? (
                             <>
                               {!imageLoaded['gb300'] && (
@@ -1200,18 +1278,30 @@ export default function Home() {
                                 onLoad={() => setImageLoaded(prev => ({ ...prev, gb300: true }))}
                                 onError={() => setImageErrors(prev => ({ ...prev, gb300: true }))}
                               />
-                              {/* Hover Video */}
-                              <video
-                                ref={(el) => { videoRefs.current['gb300'] = el }}
-                                src="/gpus/MODRON_GB300_animate.mp4"
-                                className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
-                                  hoveredGpu === 'gb300' ? 'opacity-100' : 'opacity-0'
-                                }`}
-                                loop
-                                muted
-                                playsInline
-                                preload="metadata"
-                              />
+                              {/* Hover Video - Lazy loaded */}
+                              {videosInView.has('gb300') && (
+                                <video
+                                  ref={(el) => { videoRefs.current['gb300'] = el }}
+                                  src="/gpus/MODRON_GB300_animate.mp4"
+                                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
+                                    hoveredGpu === 'gb300' ? 'opacity-100' : 'opacity-0'
+                                  }`}
+                                  style={{
+                                    willChange: hoveredGpu === 'gb300' ? 'opacity' : 'auto',
+                                    transform: 'translateZ(0)',
+                                    backfaceVisibility: 'hidden',
+                                  }}
+                                  loop
+                                  muted
+                                  playsInline
+                                  preload="none"
+                                  onLoadedData={(e) => {
+                                    if (hoveredGpu === 'gb300') {
+                                      e.currentTarget.play().catch(() => {})
+                                    }
+                                  }}
+                                />
+                              )}
                             </>
                           ) : (
                             <div className="w-full h-full rounded-lg bg-[#2A2A2A] border border-[#4A4A4A] flex items-center justify-center">
@@ -1271,13 +1361,30 @@ export default function Home() {
                     <div 
                       className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative"
                       onMouseEnter={() => {
+                        if (hoverTimeoutRef.current['h200']) {
+                          clearTimeout(hoverTimeoutRef.current['h200'])
+                        }
+                        
                         setHoveredGpu('h200')
                         const video = videoRefs.current['h200']
-                        if (video) {
-                          video.play().catch(() => {})
+                        if (video && videosInView.has('h200')) {
+                          hoverTimeoutRef.current['h200'] = setTimeout(() => {
+                            if (video.readyState >= 2) {
+                              video.play().catch(() => {})
+                            } else {
+                              video.load()
+                              video.addEventListener('canplay', () => {
+                                video.play().catch(() => {})
+                              }, { once: true })
+                            }
+                          }, 50)
                         }
                       }}
                       onMouseLeave={() => {
+                        if (hoverTimeoutRef.current['h200']) {
+                          clearTimeout(hoverTimeoutRef.current['h200'])
+                        }
+                        
                         setHoveredGpu(null)
                         const video = videoRefs.current['h200']
                         if (video) {
@@ -1288,7 +1395,11 @@ export default function Home() {
                     >
                       {/* GPU Image - Widescreen Style - Larger */}
                       <div className="mb-3">
-                        <div className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors overflow-hidden">
+                        <div 
+                          ref={(el) => { videoIntersectionRefs.current['h200'] = el }}
+                          className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors overflow-hidden"
+                          style={{ contain: 'layout style paint' }}
+                        >
                           {!imageErrors['h200'] ? (
                             <>
                               {!imageLoaded['h200'] && (
@@ -1307,18 +1418,30 @@ export default function Home() {
                                 onLoad={() => setImageLoaded(prev => ({ ...prev, h200: true }))}
                                 onError={() => setImageErrors(prev => ({ ...prev, h200: true }))}
                               />
-                              {/* Hover Video */}
-                              <video
-                                ref={(el) => { videoRefs.current['h200'] = el }}
-                                src="/gpus/MODRON_h200_animate.mp4"
-                                className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
-                                  hoveredGpu === 'h200' ? 'opacity-100' : 'opacity-0'
-                                }`}
-                                loop
-                                muted
-                                playsInline
-                                preload="metadata"
-                              />
+                              {/* Hover Video - Lazy loaded */}
+                              {videosInView.has('h200') && (
+                                <video
+                                  ref={(el) => { videoRefs.current['h200'] = el }}
+                                  src="/gpus/MODRON_h200_animate.mp4"
+                                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
+                                    hoveredGpu === 'h200' ? 'opacity-100' : 'opacity-0'
+                                  }`}
+                                  style={{
+                                    willChange: hoveredGpu === 'h200' ? 'opacity' : 'auto',
+                                    transform: 'translateZ(0)',
+                                    backfaceVisibility: 'hidden',
+                                  }}
+                                  loop
+                                  muted
+                                  playsInline
+                                  preload="none"
+                                  onLoadedData={(e) => {
+                                    if (hoveredGpu === 'h200') {
+                                      e.currentTarget.play().catch(() => {})
+                                    }
+                                  }}
+                                />
+                              )}
                             </>
                           ) : (
                             <div className="w-full h-full rounded-lg bg-[#2A2A2A] border border-[#4A4A4A] flex items-center justify-center">
@@ -1381,13 +1504,30 @@ export default function Home() {
                     <div 
                       className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative"
                       onMouseEnter={() => {
+                        if (hoverTimeoutRef.current['rtx6000']) {
+                          clearTimeout(hoverTimeoutRef.current['rtx6000'])
+                        }
+                        
                         setHoveredGpu('rtx6000')
                         const video = videoRefs.current['rtx6000']
-                        if (video) {
-                          video.play().catch(() => {})
+                        if (video && videosInView.has('rtx6000')) {
+                          hoverTimeoutRef.current['rtx6000'] = setTimeout(() => {
+                            if (video.readyState >= 2) {
+                              video.play().catch(() => {})
+                            } else {
+                              video.load()
+                              video.addEventListener('canplay', () => {
+                                video.play().catch(() => {})
+                              }, { once: true })
+                            }
+                          }, 50)
                         }
                       }}
                       onMouseLeave={() => {
+                        if (hoverTimeoutRef.current['rtx6000']) {
+                          clearTimeout(hoverTimeoutRef.current['rtx6000'])
+                        }
+                        
                         setHoveredGpu(null)
                         const video = videoRefs.current['rtx6000']
                         if (video) {
@@ -1397,7 +1537,11 @@ export default function Home() {
                       }}
                     >
                       <div className="mb-3">
-                        <div className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors overflow-hidden">
+                        <div 
+                          ref={(el) => { videoIntersectionRefs.current['rtx6000'] = el }}
+                          className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors overflow-hidden"
+                          style={{ contain: 'layout style paint' }}
+                        >
                           {!imageErrors['rtx6000'] ? (
                             <>
                               {!imageLoaded['rtx6000'] && (
@@ -1416,18 +1560,30 @@ export default function Home() {
                                 onLoad={() => setImageLoaded(prev => ({ ...prev, rtx6000: true }))}
                                 onError={() => setImageErrors(prev => ({ ...prev, rtx6000: true }))}
                               />
-                              {/* Hover Video */}
-                              <video
-                                ref={(el) => { videoRefs.current['rtx6000'] = el }}
-                                src="/gpus/MODRON_rtx6000_animate.mp4"
-                                className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
-                                  hoveredGpu === 'rtx6000' ? 'opacity-100' : 'opacity-0'
-                                }`}
-                                loop
-                                muted
-                                playsInline
-                                preload="metadata"
-                              />
+                              {/* Hover Video - Lazy loaded */}
+                              {videosInView.has('rtx6000') && (
+                                <video
+                                  ref={(el) => { videoRefs.current['rtx6000'] = el }}
+                                  src="/gpus/MODRON_rtx6000_animate.mp4"
+                                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
+                                    hoveredGpu === 'rtx6000' ? 'opacity-100' : 'opacity-0'
+                                  }`}
+                                  style={{
+                                    willChange: hoveredGpu === 'rtx6000' ? 'opacity' : 'auto',
+                                    transform: 'translateZ(0)',
+                                    backfaceVisibility: 'hidden',
+                                  }}
+                                  loop
+                                  muted
+                                  playsInline
+                                  preload="none"
+                                  onLoadedData={(e) => {
+                                    if (hoveredGpu === 'rtx6000') {
+                                      e.currentTarget.play().catch(() => {})
+                                    }
+                                  }}
+                                />
+                              )}
                             </>
                           ) : (
                             <div className="w-full h-full rounded-lg bg-[#2A2A2A] border border-[#4A4A4A] flex items-center justify-center">
@@ -1487,13 +1643,30 @@ export default function Home() {
                     <div 
                       className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative"
                       onMouseEnter={() => {
+                        if (hoverTimeoutRef.current['l40s']) {
+                          clearTimeout(hoverTimeoutRef.current['l40s'])
+                        }
+                        
                         setHoveredGpu('l40s')
                         const video = videoRefs.current['l40s']
-                        if (video) {
-                          video.play().catch(() => {})
+                        if (video && videosInView.has('l40s')) {
+                          hoverTimeoutRef.current['l40s'] = setTimeout(() => {
+                            if (video.readyState >= 2) {
+                              video.play().catch(() => {})
+                            } else {
+                              video.load()
+                              video.addEventListener('canplay', () => {
+                                video.play().catch(() => {})
+                              }, { once: true })
+                            }
+                          }, 50)
                         }
                       }}
                       onMouseLeave={() => {
+                        if (hoverTimeoutRef.current['l40s']) {
+                          clearTimeout(hoverTimeoutRef.current['l40s'])
+                        }
+                        
                         setHoveredGpu(null)
                         const video = videoRefs.current['l40s']
                         if (video) {
@@ -1503,7 +1676,11 @@ export default function Home() {
                       }}
                     >
                       <div className="mb-3">
-                        <div className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors overflow-hidden">
+                        <div 
+                          ref={(el) => { videoIntersectionRefs.current['l40s'] = el }}
+                          className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors overflow-hidden"
+                          style={{ contain: 'layout style paint' }}
+                        >
                           {!imageErrors['l40s'] ? (
                             <>
                               {!imageLoaded['l40s'] && (
@@ -1522,18 +1699,30 @@ export default function Home() {
                                 onLoad={() => setImageLoaded(prev => ({ ...prev, l40s: true }))}
                                 onError={() => setImageErrors(prev => ({ ...prev, l40s: true }))}
                               />
-                              {/* Hover Video */}
-                              <video
-                                ref={(el) => { videoRefs.current['l40s'] = el }}
-                                src="/gpus/MODRON_l40s_animate.mp4"
-                                className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
-                                  hoveredGpu === 'l40s' ? 'opacity-100' : 'opacity-0'
-                                }`}
-                                loop
-                                muted
-                                playsInline
-                                preload="metadata"
-                              />
+                              {/* Hover Video - Lazy loaded */}
+                              {videosInView.has('l40s') && (
+                                <video
+                                  ref={(el) => { videoRefs.current['l40s'] = el }}
+                                  src="/gpus/MODRON_l40s_animate.mp4"
+                                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
+                                    hoveredGpu === 'l40s' ? 'opacity-100' : 'opacity-0'
+                                  }`}
+                                  style={{
+                                    willChange: hoveredGpu === 'l40s' ? 'opacity' : 'auto',
+                                    transform: 'translateZ(0)',
+                                    backfaceVisibility: 'hidden',
+                                  }}
+                                  loop
+                                  muted
+                                  playsInline
+                                  preload="none"
+                                  onLoadedData={(e) => {
+                                    if (hoveredGpu === 'l40s') {
+                                      e.currentTarget.play().catch(() => {})
+                                    }
+                                  }}
+                                />
+                              )}
                             </>
                           ) : (
                             <div className="w-full h-full rounded-lg bg-[#2A2A2A] border border-[#4A4A4A] flex items-center justify-center">
