@@ -1227,7 +1227,7 @@ export default function Home() {
                     
                     {/* NVIDIA GB300 Blackwell - Next-Gen Research */}
                     <div 
-                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative"
+                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-2 hover:border-[#d5aaf9]/30 relative"
                       onMouseEnter={() => {
                         if (hoverTimeoutRef.current['gb300']) {
                           clearTimeout(hoverTimeoutRef.current['gb300'])
@@ -1278,7 +1278,7 @@ export default function Home() {
                                 alt="NVIDIA GB300 Blackwell GPU" 
                                 width={400}
                                 height={225}
-                                className={`object-contain relative z-10 transition-opacity duration-500 ${
+                                className={`absolute inset-0 w-full h-full object-contain z-10 transition-opacity duration-500 ${
                                   hoveredGpu === 'gb300' ? 'opacity-0' : 'opacity-100'
                                 }`}
                                 loading="lazy"
@@ -1366,7 +1366,7 @@ export default function Home() {
 
                     {/* NVIDIA H200 - Enterprise Training */}
                     <div 
-                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative"
+                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-2 hover:border-[#d5aaf9]/30 relative"
                       onMouseEnter={() => {
                         if (hoverTimeoutRef.current['h200']) {
                           clearTimeout(hoverTimeoutRef.current['h200'])
@@ -1418,7 +1418,7 @@ export default function Home() {
                                 alt="NVIDIA H200 GPU" 
                                 width={400}
                                 height={225}
-                                className={`object-contain relative z-10 transition-opacity duration-500 ${
+                                className={`absolute inset-0 w-full h-full object-contain z-10 transition-opacity duration-500 ${
                                   hoveredGpu === 'h200' ? 'opacity-0' : 'opacity-100'
                                 }`}
                                 loading="lazy"
@@ -1509,7 +1509,7 @@ export default function Home() {
 
                     {/* RTX PRO 6000 - Development */}
                     <div 
-                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative"
+                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-2 hover:border-[#d5aaf9]/30 relative"
                       onMouseEnter={() => {
                         if (hoverTimeoutRef.current['rtx6000']) {
                           clearTimeout(hoverTimeoutRef.current['rtx6000'])
@@ -1560,7 +1560,7 @@ export default function Home() {
                                 alt="NVIDIA RTX PRO 6000 GPU" 
                                 width={400}
                                 height={225}
-                                className={`object-contain relative z-10 transition-opacity duration-500 ${
+                                className={`absolute inset-0 w-full h-full object-contain z-10 transition-opacity duration-500 ${
                                   hoveredGpu === 'rtx6000' ? 'opacity-0' : 'opacity-100'
                                 }`}
                                 loading="lazy"
@@ -1648,7 +1648,7 @@ export default function Home() {
 
                     {/* NVIDIA L40S - AI Inference */}
                     <div 
-                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative"
+                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-2 hover:border-[#d5aaf9]/30 relative"
                       onMouseEnter={() => {
                         if (hoverTimeoutRef.current['l40s']) {
                           clearTimeout(hoverTimeoutRef.current['l40s'])
@@ -1699,7 +1699,7 @@ export default function Home() {
                                 alt="NVIDIA L40S GPU" 
                                 width={400}
                                 height={225}
-                                className={`object-contain relative z-10 transition-opacity duration-500 ${
+                                className={`absolute inset-0 w-full h-full object-contain z-10 transition-opacity duration-500 ${
                                   hoveredGpu === 'l40s' ? 'opacity-0' : 'opacity-100'
                                 }`}
                                 loading="lazy"
