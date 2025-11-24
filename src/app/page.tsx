@@ -204,7 +204,7 @@ export default function Home() {
 </section>
 
 {/* Mission & Vision Section */}
-<section id="vision" className="nav-trigger-vision mobile-section relative layout-section mobile-optimized bg-black mt-16 sm:mt-20 md:mt-24 lg:mt-32" role="region" aria-labelledby="vision-heading">
+<section id="vision" className="nav-trigger-vision mobile-section relative layout-section mobile-optimized bg-black mt-16 sm:mt-20 md:mt-24 lg:mt-32" style={{ scrollMarginTop: '120px' }} role="region" aria-labelledby="vision-heading">
   <div className="layout-container-wide">
     <div className="layout-content-wide">
       {/* Mission Statement - Aligned with hero style */}
