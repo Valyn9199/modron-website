@@ -1151,7 +1151,7 @@ export default function Home() {
                   </h2>
                   
                   <p className="text-gray-400 text-center mb-6 max-w-3xl mx-auto leading-relaxed px-4 text-sm">
-                    Choose the right GPU configuration for your workload. All GPUs are Australian-assembled, immersion-cooled, and optimized for performance.
+                    Choose the right GPU configuration for your workload. All GPUs are Australian-assembled, immersion-cooled, and optimized for performance. Renewable energy options available with solar-powered infrastructure.
                   </p>
                   
                   {/* GPU Product Cards Grid - More Compact */}
