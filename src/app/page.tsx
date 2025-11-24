@@ -72,6 +72,10 @@ export default function Home() {
   const [showComparison, setShowComparison] = React.useState(false)
   const [overlayFadedIn, setOverlayFadedIn] = React.useState(false) // Overlay fade-in state
   
+  // GPU hover video state
+  const [hoveredGpu, setHoveredGpu] = React.useState<string | null>(null)
+  const videoRefs = React.useRef<Record<string, HTMLVideoElement | null>>({})
+  
   // Hero slideshow data
   const heroSlides = [
     {
@@ -1158,23 +1162,55 @@ export default function Home() {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto mb-6 px-4 sm:px-0">
                     
                     {/* NVIDIA GB300 Blackwell - Next-Gen Research */}
-                    <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative">
+                    <div 
+                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative"
+                      onMouseEnter={() => {
+                        setHoveredGpu('gb300')
+                        const video = videoRefs.current['gb300']
+                        if (video) {
+                          video.play().catch(() => {})
+                        }
+                      }}
+                      onMouseLeave={() => {
+                        setHoveredGpu(null)
+                        const video = videoRefs.current['gb300']
+                        if (video) {
+                          video.pause()
+                          video.currentTime = 0
+                        }
+                      }}
+                    >
                       <div className="mb-3">
-                        <div className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors">
+                        <div className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors overflow-hidden">
                           {!imageErrors['gb300'] ? (
                             <>
                               {!imageLoaded['gb300'] && (
                                 <div className="absolute inset-0 animate-pulse bg-[#1A1A1A] rounded-lg" />
                               )}
+                              {/* Thumbnail Image */}
                               <Image 
                                 src="/gpus/MODRON_GB300.png" 
                                 alt="NVIDIA GB300 Blackwell GPU" 
                                 width={400}
                                 height={225}
-                                className="object-contain relative z-10"
+                                className={`object-contain relative z-10 transition-opacity duration-500 ${
+                                  hoveredGpu === 'gb300' ? 'opacity-0' : 'opacity-100'
+                                }`}
                                 loading="lazy"
                                 onLoad={() => setImageLoaded(prev => ({ ...prev, gb300: true }))}
                                 onError={() => setImageErrors(prev => ({ ...prev, gb300: true }))}
+                              />
+                              {/* Hover Video */}
+                              <video
+                                ref={(el) => { videoRefs.current['gb300'] = el }}
+                                src="/gpus/MODRON_GB300_animate.mp4"
+                                className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
+                                  hoveredGpu === 'gb300' ? 'opacity-100' : 'opacity-0'
+                                }`}
+                                loop
+                                muted
+                                playsInline
+                                preload="metadata"
                               />
                             </>
                           ) : (
@@ -1232,24 +1268,56 @@ export default function Home() {
                     </div>
 
                     {/* NVIDIA H200 - Enterprise Training */}
-                    <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative">
+                    <div 
+                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative"
+                      onMouseEnter={() => {
+                        setHoveredGpu('h200')
+                        const video = videoRefs.current['h200']
+                        if (video) {
+                          video.play().catch(() => {})
+                        }
+                      }}
+                      onMouseLeave={() => {
+                        setHoveredGpu(null)
+                        const video = videoRefs.current['h200']
+                        if (video) {
+                          video.pause()
+                          video.currentTime = 0
+                        }
+                      }}
+                    >
                       {/* GPU Image - Widescreen Style - Larger */}
                       <div className="mb-3">
-                        <div className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors">
+                        <div className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors overflow-hidden">
                           {!imageErrors['h200'] ? (
                             <>
                               {!imageLoaded['h200'] && (
                                 <div className="absolute inset-0 animate-pulse bg-[#1A1A1A] rounded-lg" />
                               )}
+                              {/* Thumbnail Image */}
                               <Image 
                                 src="/gpus/MODRON_h200.png" 
                                 alt="NVIDIA H200 GPU" 
                                 width={400}
                                 height={225}
-                                className="object-contain relative z-10"
+                                className={`object-contain relative z-10 transition-opacity duration-500 ${
+                                  hoveredGpu === 'h200' ? 'opacity-0' : 'opacity-100'
+                                }`}
                                 loading="lazy"
                                 onLoad={() => setImageLoaded(prev => ({ ...prev, h200: true }))}
                                 onError={() => setImageErrors(prev => ({ ...prev, h200: true }))}
+                              />
+                              {/* Hover Video */}
+                              <video
+                                ref={(el) => { videoRefs.current['h200'] = el }}
+                                src="/gpus/MODRON_h200_animate.mp4"
+                                className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
+                                  hoveredGpu === 'h200' ? 'opacity-100' : 'opacity-0'
+                                }`}
+                                loop
+                                muted
+                                playsInline
+                                preload="metadata"
                               />
                             </>
                           ) : (
@@ -1310,23 +1378,55 @@ export default function Home() {
                     </div>
 
                     {/* RTX PRO 6000 - Development */}
-                    <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative">
+                    <div 
+                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative"
+                      onMouseEnter={() => {
+                        setHoveredGpu('rtx6000')
+                        const video = videoRefs.current['rtx6000']
+                        if (video) {
+                          video.play().catch(() => {})
+                        }
+                      }}
+                      onMouseLeave={() => {
+                        setHoveredGpu(null)
+                        const video = videoRefs.current['rtx6000']
+                        if (video) {
+                          video.pause()
+                          video.currentTime = 0
+                        }
+                      }}
+                    >
                       <div className="mb-3">
-                        <div className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors">
+                        <div className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors overflow-hidden">
                           {!imageErrors['rtx6000'] ? (
                             <>
                               {!imageLoaded['rtx6000'] && (
                                 <div className="absolute inset-0 animate-pulse bg-[#1A1A1A] rounded-lg" />
                               )}
+                              {/* Thumbnail Image */}
                               <Image 
                                 src="/gpus/MODRON_rtx6000.png" 
                                 alt="NVIDIA RTX PRO 6000 GPU" 
                                 width={400}
                                 height={225}
-                                className="object-contain relative z-10"
+                                className={`object-contain relative z-10 transition-opacity duration-500 ${
+                                  hoveredGpu === 'rtx6000' ? 'opacity-0' : 'opacity-100'
+                                }`}
                                 loading="lazy"
                                 onLoad={() => setImageLoaded(prev => ({ ...prev, rtx6000: true }))}
                                 onError={() => setImageErrors(prev => ({ ...prev, rtx6000: true }))}
+                              />
+                              {/* Hover Video */}
+                              <video
+                                ref={(el) => { videoRefs.current['rtx6000'] = el }}
+                                src="/gpus/MODRON_rtx6000_animate.mp4"
+                                className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
+                                  hoveredGpu === 'rtx6000' ? 'opacity-100' : 'opacity-0'
+                                }`}
+                                loop
+                                muted
+                                playsInline
+                                preload="metadata"
                               />
                             </>
                           ) : (
@@ -1384,23 +1484,55 @@ export default function Home() {
                     </div>
 
                     {/* NVIDIA L40S - AI Inference */}
-                    <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative">
+                    <div 
+                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300 relative"
+                      onMouseEnter={() => {
+                        setHoveredGpu('l40s')
+                        const video = videoRefs.current['l40s']
+                        if (video) {
+                          video.play().catch(() => {})
+                        }
+                      }}
+                      onMouseLeave={() => {
+                        setHoveredGpu(null)
+                        const video = videoRefs.current['l40s']
+                        if (video) {
+                          video.pause()
+                          video.currentTime = 0
+                        }
+                      }}
+                    >
                       <div className="mb-3">
-                        <div className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors">
+                        <div className="relative w-full aspect-[16/9] bg-black/70 rounded-lg p-2 border border-[#4A4A4A] flex items-center justify-center group-hover:border-[#4A4A4A] transition-colors overflow-hidden">
                           {!imageErrors['l40s'] ? (
                             <>
                               {!imageLoaded['l40s'] && (
                                 <div className="absolute inset-0 animate-pulse bg-[#1A1A1A] rounded-lg" />
                               )}
+                              {/* Thumbnail Image */}
                               <Image 
                                 src="/gpus/MODRON_l40s.png" 
                                 alt="NVIDIA L40S GPU" 
                                 width={400}
                                 height={225}
-                                className="object-contain relative z-10"
+                                className={`object-contain relative z-10 transition-opacity duration-500 ${
+                                  hoveredGpu === 'l40s' ? 'opacity-0' : 'opacity-100'
+                                }`}
                                 loading="lazy"
                                 onLoad={() => setImageLoaded(prev => ({ ...prev, l40s: true }))}
                                 onError={() => setImageErrors(prev => ({ ...prev, l40s: true }))}
+                              />
+                              {/* Hover Video */}
+                              <video
+                                ref={(el) => { videoRefs.current['l40s'] = el }}
+                                src="/gpus/MODRON_l40s_animate.mp4"
+                                className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
+                                  hoveredGpu === 'l40s' ? 'opacity-100' : 'opacity-0'
+                                }`}
+                                loop
+                                muted
+                                playsInline
+                                preload="metadata"
                               />
                             </>
                           ) : (
