@@ -263,10 +263,10 @@ export default function Home() {
       {/* Mission Statement - Aligned with hero style */}
       <div className="text-center mb-12 sm:mb-16 md:mb-20">
         <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-6 sm:mb-8 max-w-5xl mx-auto tracking-tight">
-          <span className="text-white font-bold">Australia's first portable enterprise-grade, on-premises AI supercomputers.</span>
+          <span className="text-white font-bold">Australia's first portable, enterprise-grade AI supercomputers.</span>
         </p>
         <p className="text-lg sm:text-xl md:text-2xl text-gray-400 leading-relaxed max-w-4xl mx-auto mb-12 px-4 font-normal">
-          Locally assembled, solar-powered, and modular—deployable anywhere in 48 hours for sovereign AI infrastructure.
+          Locally assembled, solar-powered, and modular—deploy on-premises or rent compute capacity. Deployable anywhere in 48 hours for sovereign AI infrastructure.
         </p>
         <div className="max-w-4xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto mb-12">
