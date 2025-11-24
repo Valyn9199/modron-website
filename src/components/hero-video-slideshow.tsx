@@ -30,6 +30,8 @@ export function HeroVideoSlideshow({
   const [isMounted, setIsMounted] = useState(false)
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
+  const abortControllersRef = useRef<Map<number, AbortController>>(new Map())
+  const errorCountRef = useRef<Map<number, number>>(new Map())
 
   // Ensure component is mounted before doing client-only operations
   useEffect(() => {
@@ -40,6 +42,41 @@ export function HeroVideoSlideshow({
   const prefersReduced = useMemo(() => {
     if (typeof window === "undefined") return false
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  }, [])
+
+  // Get optimal preload strategy based on device capabilities
+  const getOptimalPreload = useCallback((index: number, isActive: boolean, isNext: boolean) => {
+    if (typeof window === "undefined") return "none"
+    
+    // Check device capabilities
+    const connection = (navigator as any).connection || 
+                      (navigator as any).mozConnection || 
+                      (navigator as any).webkitConnection
+    const deviceMemory = (navigator as any).deviceMemory
+    const hardwareConcurrency = navigator.hardwareConcurrency || 2
+    
+    // Low-end devices: more conservative preloading
+    if (deviceMemory && deviceMemory < 4) {
+      return index === 0 && isActive ? "metadata" : "none"
+    }
+    
+    // Low CPU cores: reduce preloading
+    if (hardwareConcurrency < 4) {
+      return isActive ? "metadata" : isNext ? "metadata" : "none"
+    }
+    
+    // Slow connections: only preload metadata
+    if (connection) {
+      if (connection.effectiveType === '2g' || connection.effectiveType === 'slow-2g') {
+        return isActive ? "metadata" : "none"
+      }
+      if (connection.effectiveType === '3g') {
+        return isActive ? "metadata" : isNext ? "metadata" : "none"
+      }
+    }
+    
+    // Default strategy for good devices/connections
+    return index === 0 ? "auto" : isActive ? "auto" : isNext ? "metadata" : "none"
   }, [])
 
   // Comprehensive check for video playback suitability
@@ -74,10 +111,22 @@ export function HeroVideoSlideshow({
       // For 2g and 3g, still allow but with lower quality expectations
     }
 
+    // Check battery status - reduce playback on low battery
+    if ('getBattery' in navigator) {
+      (navigator as any).getBattery().then((battery: any) => {
+        if (battery.level < 0.2 && !battery.charging) {
+          setShouldPlayVideo(false)
+          return
+        }
+      }).catch(() => {
+        // Battery API not available or failed, continue with default
+      })
+    }
+
     setShouldPlayVideo(canPlay)
   }, [prefersReduced])
 
-  // Preload next video while current plays
+  // Preload next video while current plays - with requestIdleCallback optimization
   useEffect(() => {
     if (!isMounted) return
     
@@ -85,22 +134,108 @@ export function HeroVideoSlideshow({
     const nextVideo = videoRefs.current[nextIndex]
     
     if (nextVideo && nextVideo.readyState < 2) {
-      nextVideo.load()
+      // Use requestIdleCallback if available for non-critical preloading
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(() => {
+          if (nextVideo && nextVideo.readyState < 2) {
+            nextVideo.load()
+          }
+        }, { timeout: 2000 })
+      } else {
+        // Fallback for browsers without requestIdleCallback
+        nextVideo.load()
+      }
     }
   }, [currentSlide, isMounted, slides.length])
 
-  // Handle video playback and transitions
+  // Unload distant videos to free memory
+  useEffect(() => {
+    if (!isMounted) return
+    
+    videoRefs.current.forEach((video, index) => {
+      if (!video) return
+      
+      const distance = Math.min(
+        Math.abs(index - currentSlide),
+        Math.abs(index - currentSlide + slides.length),
+        Math.abs(index - currentSlide - slides.length)
+      )
+      
+      // Unload videos more than 2 slides away
+      if (distance > 2 && video.readyState > 0 && video !== videoRefs.current[currentSlide]) {
+        // Only unload if not currently playing
+        if (video.paused) {
+          video.pause()
+          // Remove src to free memory, but keep element for reuse
+          const sources = video.querySelectorAll('source')
+          sources.forEach(source => {
+            const src = source.src
+            source.removeAttribute('src')
+            // Store src for reload if needed
+            if (!video.dataset.originalSrc) {
+              video.dataset.originalSrc = src
+            }
+          })
+          video.load() // This unloads the video buffer
+        }
+      } else if (distance <= 2 && video.dataset.originalSrc && video.readyState === 0) {
+        // Reload if we're getting close and video was unloaded
+        const sources = video.querySelectorAll('source')
+        if (sources.length === 0) {
+          const source = document.createElement('source')
+          source.src = video.dataset.originalSrc
+          source.type = 'video/mp4'
+          video.appendChild(source)
+          video.load()
+        }
+      }
+    })
+  }, [currentSlide, isMounted, slides.length])
+
+  // Handle video error recovery
+  const handleVideoError = useCallback((video: HTMLVideoElement, slide: VideoSlide, index: number) => {
+    const errorCount = errorCountRef.current.get(index) || 0
+    
+    if (errorCount < 3) {
+      errorCountRef.current.set(index, errorCount + 1)
+      
+      // Try to reload after delay
+      setTimeout(() => {
+        if (video.error && errorCount < 2) {
+          video.load()
+        }
+      }, 3000)
+    } else {
+      // After 3 failures, fallback to poster if available
+      console.warn(`Video failed to load after ${errorCount} attempts:`, slide.videoSrc)
+    }
+  }, [])
+
+  // Handle video playback and transitions - optimized with AbortController
   useEffect(() => {
     if (!isMounted) return
     
     const currentVideo = videoRefs.current[currentSlide]
     if (!currentVideo) return
 
+    // Clean up previous abort controller
+    const prevController = abortControllersRef.current.get(currentSlide)
+    if (prevController) {
+      prevController.abort()
+    }
+
+    // Create new abort controller for this slide
+    const abortController = new AbortController()
+    abortControllersRef.current.set(currentSlide, abortController)
+    const signal = abortController.signal
+
     // Check if video is already playing to avoid duplicate play calls
     const isAlreadyPlaying = !currentVideo.paused && currentVideo.currentTime > 0
 
     // Always try to play videos
     const playVideo = async () => {
+      if (signal.aborted) return
+      
       try {
         // Skip if already playing
         if (isAlreadyPlaying) {
@@ -114,21 +249,20 @@ export function HeroVideoSlideshow({
         
         // Always try to play
         await currentVideo.play().catch((err) => {
-          console.warn('Video autoplay failed:', err)
+          if (!signal.aborted) {
+            console.warn('Video autoplay failed:', err)
+          }
         })
       } catch (error) {
-        console.warn('Video playback error:', error)
+        if (!signal.aborted) {
+          console.warn('Video playback error:', error)
+        }
       }
     }
 
-    // Wait for video to be ready
-    const handleCanPlay = () => {
-      if (!currentVideo.paused) return // Already playing
-      playVideo()
-    }
-
-    const handleLoadedData = () => {
-      if (!currentVideo.paused) return // Already playing
+    // Single handler for multiple events
+    const handleReady = () => {
+      if (signal.aborted || !currentVideo || !currentVideo.paused) return
       playVideo()
     }
 
@@ -139,9 +273,10 @@ export function HeroVideoSlideshow({
         playVideo()
       }
     } else {
-      currentVideo.addEventListener('canplay', handleCanPlay, { once: true })
-      currentVideo.addEventListener('loadeddata', handleLoadedData, { once: true })
-      currentVideo.addEventListener('loadedmetadata', handleCanPlay, { once: true })
+      // Use single event listener pattern with AbortController
+      ['canplay', 'loadeddata', 'loadedmetadata'].forEach(event => {
+        currentVideo.addEventListener(event, handleReady, { once: true, signal })
+      })
     }
 
     // Pause other videos - but delay to allow fade transition
@@ -149,8 +284,9 @@ export function HeroVideoSlideshow({
       if (video && index !== currentSlide) {
         // Delay pausing to allow the fade-out transition to complete
         setTimeout(() => {
+          if (signal.aborted) return
           const videoIndex = videoRefs.current.indexOf(video)
-          if (video && videoIndex !== currentSlide) {
+          if (video && videoIndex !== currentSlide && !signal.aborted) {
             video.pause()
             video.currentTime = 0
           }
@@ -164,18 +300,45 @@ export function HeroVideoSlideshow({
     }
 
     intervalRef.current = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length)
+      if (!signal.aborted) {
+        setCurrentSlide((prev) => (prev + 1) % slides.length)
+      }
     }, autoPlayInterval)
 
     return () => {
+      abortController.abort()
       if (intervalRef.current) {
         clearInterval(intervalRef.current)
       }
-      currentVideo.removeEventListener('canplay', handleCanPlay)
-      currentVideo.removeEventListener('loadeddata', handleLoadedData)
-      currentVideo.removeEventListener('loadedmetadata', handleCanPlay)
     }
-  }, [currentSlide, isMounted, slides.length, autoPlayInterval])
+  }, [currentSlide, isMounted, slides.length, autoPlayInterval, handleVideoError])
+
+  // Intersection Observer for lazy loading videos
+  useEffect(() => {
+    if (!isMounted) return
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target as HTMLVideoElement
+          if (entry.isIntersecting && video.readyState === 0) {
+            // Start loading when video is about to be visible
+            video.load()
+          }
+        })
+      },
+      { 
+        rootMargin: '50%', // Start loading when 50% away from viewport
+        threshold: 0.1
+      }
+    )
+    
+    videoRefs.current.forEach((video) => {
+      if (video) observer.observe(video)
+    })
+    
+    return () => observer.disconnect()
+  }, [isMounted])
 
   // Removed redundant initial video load effect - the main playback effect handles initial play
 
@@ -256,30 +419,25 @@ export function HeroVideoSlideshow({
                 minHeight: '100%',
                 width: 'auto',
                 height: 'auto',
-                willChange: isActive || isNext ? 'opacity' : 'auto',
+                willChange: isActive ? 'opacity' : 'auto', // Only set when actively transitioning
                 transform: 'translateZ(0)', // Force GPU layer
                 backfaceVisibility: 'hidden', // Prevent flickering
                 WebkitTransform: 'translateZ(0)', // Safari support
+                contain: 'layout style paint', // CSS containment for performance
               }}
               autoPlay={false}
               playsInline
               muted
               loop
-              preload={
-                index === 0 
-                  ? "auto" 
-                  : isActive 
-                    ? "auto" 
-                    : isNext
-                      ? "metadata"
-                      : "none"
-              }
+              decoding="async"
+              preload={getOptimalPreload(index, isActive, isNext)}
               poster={slide.poster}
               crossOrigin="anonymous"
               aria-label={`Background video ${index + 1} of ${slides.length}`}
               suppressHydrationWarning
               onError={(e) => {
-                console.error('Video load error:', slide.videoSrc, e)
+                const video = e.currentTarget
+                handleVideoError(video, slide, index)
               }}
             >
               <source src={slide.videoSrc} type="video/mp4" />
