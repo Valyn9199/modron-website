@@ -1207,7 +1207,14 @@ export default function Home() {
                   aria-labelledby="gpu-solutions-heading"
                   className="relative z-10 animate-in fade-in duration-300"
                 >
-                  <h2 id="gpu-solutions-heading" className="text-lg sm:text-xl font-bold text-white mb-4 text-center">
+                  <h2 id="gpu-solutions-heading" className="text-lg sm:text-xl font-bold text-white mb-4 text-center flex items-center justify-center gap-2">
+                    <Image 
+                      src="/MODRON_ICON.png" 
+                      alt="MODRON" 
+                      width={24} 
+                      height={24} 
+                      className="w-5 h-5 sm:w-6 sm:h-6"
+                    />
                     GPU Product Specifications
                   </h2>
                   
@@ -1881,7 +1888,18 @@ export default function Home() {
                     </thead>
                     <tbody>
                       <tr className="border-t border-[#333333] bg-[#d5aaf9]/10 modron-highlight-row">
-                        <td className="p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">MODRON</td>
+                        <td className="p-3 sm:p-4 md:p-6 text-white font-bold text-xs sm:text-sm md:text-base">
+                          <div className="flex items-center gap-2">
+                            <Image 
+                              src="/MODRON_ICON.png" 
+                              alt="MODRON" 
+                              width={24} 
+                              height={24} 
+                              className="w-5 h-5 sm:w-6 sm:h-6"
+                            />
+                            <span>MODRON</span>
+                          </div>
+                        </td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">$0.54–$0.90</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">80–95%</td>
                         <td className="text-center p-3 sm:p-4 md:p-6 text-[#32ca73] font-bold text-xs sm:text-sm md:text-base">Yes - Local Manufacturing</td>
@@ -1923,7 +1941,13 @@ export default function Home() {
                 <div className="bg-gradient-to-br from-[#d5aaf9]/15 to-[#32ca73]/10 border-2 border-[#d5aaf9]/40 rounded-xl p-5 shadow-lg shadow-[#d5aaf9]/20">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-[#32ca73] animate-pulse"></div>
+                      <Image 
+                        src="/MODRON_ICON.png" 
+                        alt="MODRON" 
+                        width={24} 
+                        height={24} 
+                        className="w-6 h-6"
+                      />
                       <h4 className="text-white font-bold text-lg">MODRON</h4>
                     </div>
                     <span className="text-[#32ca73] font-bold text-xl">$0.54–$0.90</span>
