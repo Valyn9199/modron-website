@@ -555,7 +555,7 @@ export function HeroSlideshowContent({
         <div 
           className="px-6 py-4 mb-6 sm:mb-8 md:mb-10 rounded-lg hero-content-blur"
           style={{
-            backgroundColor: 'rgba(0,0,0,0.3)',
+            backgroundColor: 'rgba(0,0,0,0.15)',
           }}
         >
           <div className={`transition-opacity duration-1000 ease-out ${
