@@ -446,8 +446,8 @@ export function HeroVideoSlideshow({
         })}
       </div>
 
-      {/* Slide Indicators */}
-      <div className="hidden sm:flex absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-30 gap-1 sm:gap-1.5">
+      {/* Slide Indicators - Hidden on smaller screens */}
+      <div className="hidden md:flex absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-30 gap-1 sm:gap-1.5">
         {slides.map((_, index) => (
           <button
             key={index}
@@ -514,23 +514,30 @@ export function HeroSlideshowContent({
   const currentSlideData = slides[displaySlide]
   
   return (
-    <div className="relative z-40 text-center">
+    <div 
+      className="relative z-50 text-center" 
+      style={{ 
+        isolation: 'isolate', 
+        position: 'relative',
+        zIndex: 50,
+        transform: 'translateZ(0)',
+      }}
+    >
       {/* Text with multiple legibility enhancements */}
       <div className={`transition-opacity duration-1000 ease-out ${
         isMounted && textFadedIn && isVisible ? 'opacity-100' : 'opacity-0'
-      }`}>
+      }`} style={{ opacity: isMounted && textFadedIn && isVisible ? 1 : 0 }}>
         <h1 
           id="hero-heading" 
-          className="text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-4 sm:mb-6 md:mb-8 leading-tight"
+          className="text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-4 sm:mb-6 md:mb-8 leading-tight text-white"
           style={{
             color: '#ffffff',
-            textShadow: `
-              0 2px 4px rgba(0,0,0,0.5),
-              0 4px 8px rgba(0,0,0,0.4),
-              0 8px 16px rgba(0,0,0,0.3),
-              0 0 20px rgba(0,0,0,0.2)
-            `,
-            filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.6))',
+            opacity: 1,
+            textShadow: '0 2px 4px rgba(0,0,0,0.6), 0 4px 8px rgba(0,0,0,0.4)',
+            filter: 'none',
+            WebkitTextFillColor: '#ffffff',
+            mixBlendMode: 'normal',
+            isolation: 'isolate',
           }}
         >
           <span className="inline-block">
@@ -550,22 +557,34 @@ export function HeroSlideshowContent({
         >
           <div className={`transition-opacity duration-1000 ease-out ${
             isMounted && textFadedIn && isVisible ? 'opacity-100' : 'opacity-0'
-          }`}>
+          }`} style={{ opacity: isMounted && textFadedIn && isVisible ? 1 : 0 }}>
             <p 
-              className="text-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed font-semibold mb-3"
+              className="font-semibold mb-3 text-white whitespace-nowrap overflow-hidden"
               style={{ 
                 letterSpacing: '0.1em',
                 color: '#ffffff',
-                textShadow: '0 2px 4px rgba(0,0,0,0.8)',
+                opacity: 1,
+                textShadow: '0 2px 4px rgba(0,0,0,0.9), 0 4px 8px rgba(0,0,0,0.7)',
+                WebkitTextFillColor: '#ffffff',
+                mixBlendMode: 'normal',
+                isolation: 'isolate',
+                fontSize: 'clamp(0.625rem, 2.5vw, 1.5rem)',
+                lineHeight: '1.2',
               }}
             >
               {currentSlideData.subheading}
             </p>
             <p 
-              className="text-base sm:text-lg md:text-xl leading-relaxed font-normal"
+              className="font-normal text-white whitespace-nowrap overflow-hidden"
               style={{ 
                 color: '#ffffff',
-                textShadow: '0 1px 3px rgba(0,0,0,0.8)',
+                opacity: 1,
+                textShadow: '0 1px 3px rgba(0,0,0,0.9), 0 2px 6px rgba(0,0,0,0.7)',
+                WebkitTextFillColor: '#ffffff',
+                mixBlendMode: 'normal',
+                isolation: 'isolate',
+                fontSize: 'clamp(0.75rem, 2vw, 1.25rem)',
+                lineHeight: '1.2',
               }}
             >
               {currentSlideData.description}

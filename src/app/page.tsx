@@ -1,17 +1,6 @@
 "use client"
 
 import React from "react";
-
-// Suppress hydration warnings caused by browser extensions
-if (typeof window !== 'undefined') {
-  const originalError = console.error;
-  console.error = (...args) => {
-    if (typeof args[0] === 'string' && args[0].includes('Hydration failed')) {
-      return;
-    }
-    originalError.apply(console, args);
-  };
-}
 import { OptimizedScrollIndicator } from "@/components/optimized-scroll-indicator";
 
 import { EnhancedForm } from "@/components/enhanced-form";
@@ -48,6 +37,23 @@ const ScrollProgress = dynamic(() => import("@/components/scroll-progress").then
 export default function Home() {
   // Performance optimizations in progress - console logs removed for production
   const [showWorkflowDetails, setShowWorkflowDetails] = React.useState(false)
+  
+  // Suppress hydration warnings caused by browser extensions (after mount)
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const originalError = console.error;
+      console.error = (...args) => {
+        if (typeof args[0] === 'string' && args[0].includes('Hydration failed')) {
+          return;
+        }
+        originalError.apply(console, args);
+      };
+      
+      return () => {
+        console.error = originalError;
+      };
+    }
+  }, [])
   const [showUseCaseDetails, setShowUseCaseDetails] = React.useState(false)
   const [activeUseCaseTab, setActiveUseCaseTab] = React.useState<'gpu-solutions' | 'ai-development' | 'industry-applications' | 'enterprise-features'>('gpu-solutions')
   const [showCompetitiveComparison, setShowCompetitiveComparison] = React.useState(false)
@@ -129,9 +135,9 @@ export default function Home() {
 {/* Hero Section - Video Slideshow */}
 <section id="home" className="nav-trigger-home relative min-h-screen flex items-center justify-center w-full pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-16" role="banner" aria-labelledby="hero-heading">
   
-  {/* Opacity Cover - Starts fully black, fades to target opacity */}
+  {/* Opacity Cover - Starts fully black, fades to target opacity - Only covers videos, below text */}
   <div
-    className="absolute inset-0 z-20"
+    className="absolute inset-0 z-10"
     style={{
       background: `linear-gradient(
         to bottom,
@@ -144,7 +150,7 @@ export default function Home() {
     } as React.CSSProperties}
   />
   <div
-    className="absolute inset-0 z-20"
+    className="absolute inset-0 z-10"
     style={{
       background: `radial-gradient(
         ellipse at center,
@@ -166,26 +172,31 @@ export default function Home() {
   />
 
   {/* Main Content with Dynamic Text */}
-  <div className="relative z-40 container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl mt-12 sm:mt-16 md:mt-18 lg:mt-24">
+  <div 
+    className="relative z-50 container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl mt-12 sm:mt-16 md:mt-18 lg:mt-24" 
+    style={{ 
+      isolation: 'isolate', 
+      position: 'relative',
+      zIndex: 50,
+      transform: 'translateZ(0)',
+    }}
+  >
     <HeroSlideshowContent 
       slides={heroSlides}
       currentSlide={currentHeroSlide}
     />
     
-    {/* CTA Buttons - Enhanced with micro-interactions */}
-    <div className={`flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-6 sm:mb-8 md:mb-10 relative z-30 transition-opacity duration-1000 ease-out ${
+    {/* CTA Buttons - Enhanced with micro-interactions - One line with equal spacing */}
+    <div className={`flex flex-row gap-4 sm:gap-6 justify-center mb-6 sm:mb-8 md:mb-10 relative z-30 transition-opacity duration-1000 ease-out ${
       heroCTAFadedIn ? 'opacity-100' : 'opacity-0'
     }`}>
-      <div className="touch-feedback w-full sm:w-auto">
+      <div className="touch-feedback flex-1 sm:flex-initial sm:w-auto max-w-[280px] sm:max-w-none">
         <EnhancedBookingButton onOpenContactForm={() => setShowContactForm(true)} />
       </div>
-      <div className="touch-feedback w-full sm:w-auto">
+      <div className="touch-feedback flex-1 sm:flex-initial sm:w-auto max-w-[280px] sm:max-w-none">
         <EnhancedPricingButton />
       </div>
     </div>
-    
-    {/* Scroll Indicator */}
-    <OptimizedScrollIndicator />
   </div>
 </section>
 

@@ -55,8 +55,9 @@ export function EnhancedInput({
 
   // Derive hasValue from the value prop to ensure consistent server/client rendering
   const hasValue = (value?.length || 0) > 0
-  // Only use isFocused after mount to prevent hydration mismatch
-  const isFloating = floating && ((isMounted && isFocused) || hasValue)
+  // Ensure consistent server/client rendering - only float if has value (not based on focus state)
+  // This prevents hydration mismatch because hasValue is the same on server and client
+  const isFloating = floating && hasValue
 
   return (
     <div className={cn("relative", className)}>
@@ -84,6 +85,7 @@ export function EnhancedInput({
           aria-label={!floating && label ? label : undefined}
           aria-describedby={error ? `${inputId}-error` : undefined}
           aria-invalid={!!error}
+          suppressHydrationWarning
           className={cn(
             "w-full px-4 pt-5 pb-3 bg-[#1A1A1A] border border-[#262626] rounded-lg",
             "text-white placeholder-gray-500 transition-all duration-200",
@@ -101,12 +103,15 @@ export function EnhancedInput({
             htmlFor={inputId}
             className={cn(
               "absolute left-4 transition-all duration-200 pointer-events-none",
-              isFloating
+              // Use isFloating (based on hasValue) for consistent server/client initial render
+              // After mount, also float on focus for better UX
+              isFloating || (isMounted && isFocused)
                 ? "top-2 text-xs text-[#40d0f2]"
                 : "top-1/2 transform -translate-y-1/2 text-gray-400",
               icon && "left-10",
               error && "text-red-500"
             )}
+            suppressHydrationWarning
           >
             {label}
             {required && <span className="text-red-500 ml-1">*</span>}
@@ -114,12 +119,14 @@ export function EnhancedInput({
         )}
 
         {/* Focus indicator */}
-        <div
-          className={cn(
-            "absolute inset-0 rounded-lg border-2 border-transparent transition-all duration-200 pointer-events-none",
-            isFocused && "border-[#40d0f2] shadow-[0_0_0_1px_rgba(64,208,242,0.2)]"
-          )}
-        />
+        {isMounted && (
+          <div
+            className={cn(
+              "absolute inset-0 rounded-lg border-2 border-transparent transition-all duration-200 pointer-events-none",
+              isFocused && "border-[#40d0f2] shadow-[0_0_0_1px_rgba(64,208,242,0.2)]"
+            )}
+          />
+        )}
       </div>
 
       {/* Error message */}
@@ -185,8 +192,9 @@ export function EnhancedTextarea({
 
   // Derive hasValue from the value prop to ensure consistent server/client rendering
   const hasValue = (value?.length || 0) > 0
-  // Only use isFocused after mount to prevent hydration mismatch
-  const isFloating = floating && ((isMounted && isFocused) || hasValue)
+  // Ensure consistent server/client rendering - only float if has value (not based on focus state)
+  // This prevents hydration mismatch because hasValue is the same on server and client
+  const isFloating = floating && hasValue
 
   return (
     <div className={cn("relative", className)}>
@@ -207,6 +215,7 @@ export function EnhancedTextarea({
           aria-label={!floating && label ? label : undefined}
           aria-describedby={error ? `${textareaId}-error` : undefined}
           aria-invalid={!!error}
+          suppressHydrationWarning
           className={cn(
             "w-full px-4 pt-6 pb-3 bg-[#1A1A1A] border border-[#262626] rounded-lg",
             "text-white placeholder-gray-500 transition-all duration-200 resize-none",
@@ -222,10 +231,13 @@ export function EnhancedTextarea({
             htmlFor={textareaId}
             className={cn(
               "absolute left-4 transition-all duration-200 pointer-events-none",
-              isFloating
+              // Use isFloating (based on hasValue) for consistent server/client initial render
+              // After mount, also float on focus for better UX
+              isFloating || (isMounted && isFocused)
                 ? "top-2 text-xs text-[#40d0f2]"
                 : "top-4 text-gray-400"
             )}
+            suppressHydrationWarning
           >
             {label}
             {required && <span className="text-red-500 ml-1">*</span>}
@@ -233,12 +245,14 @@ export function EnhancedTextarea({
         )}
 
         {/* Focus indicator */}
-        <div
-          className={cn(
-            "absolute inset-0 rounded-lg border-2 border-transparent transition-all duration-200 pointer-events-none",
-            isFocused && "border-[#40d0f2] shadow-[0_0_0_1px_rgba(64,208,242,0.2)]"
-          )}
-        />
+        {isMounted && (
+          <div
+            className={cn(
+              "absolute inset-0 rounded-lg border-2 border-transparent transition-all duration-200 pointer-events-none",
+              isFocused && "border-[#40d0f2] shadow-[0_0_0_1px_rgba(64,208,242,0.2)]"
+            )}
+          />
+        )}
       </div>
 
       {/* Error message */}
