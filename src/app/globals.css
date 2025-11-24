@@ -1513,3 +1513,40 @@ section {
   background-color: rgba(255, 255, 255, 0.02);
   transition: background-color 0.2s ease;
 }
+
+/* Hero overlay - no fade-in, appears immediately - MUST be first paint */
+.hero-overlay-no-fade,
+.hero-overlay-no-fade[data-overlay],
+div[data-overlay="gradient"],
+div[data-overlay="radial"] {
+  opacity: 1 !important;
+  transition: none !important;
+  animation: none !important;
+  will-change: auto !important;
+  visibility: visible !important;
+}
+
+/* Force overlay to be visible even before React hydrates */
+div[data-overlay] {
+  opacity: 1 !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Hero content blur - always present, no snap, no transitions */
+.hero-content-blur {
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  /* Force GPU layer and keep blur always rendered */
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  /* Blur never transitions - it's always present */
+  transition: none !important;
+  /* Ensure blur is always rendered */
+  opacity: 1 !important;
+  isolation: isolate;
+  contain: layout style paint;
+  /* Prevent blur recalculation */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}

@@ -150,6 +150,19 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <EnhancedStructuredData />
+        {/* Critical CSS for hero overlay - must be visible from first paint */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            div[data-overlay="gradient"],
+            div[data-overlay="radial"],
+            .hero-overlay-no-fade {
+              opacity: 1 !important;
+              transition: none !important;
+              animation: none !important;
+              visibility: visible !important;
+            }
+          `
+        }} />
         {/* Resource hints for performance */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//www.google-analytics.com" />

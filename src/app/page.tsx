@@ -54,6 +54,7 @@ export default function Home() {
   const [activeVisionTab, setActiveVisionTab] = React.useState<'none' | 'why-modron' | 'philosophy'>('none')
   const [showContactForm, setShowContactForm] = React.useState(false)
   const [currentHeroSlide, setCurrentHeroSlide] = React.useState(0)
+  const [heroCTAFadedIn, setHeroCTAFadedIn] = React.useState(false)
   const [imageErrors, setImageErrors] = React.useState<Record<string, boolean>>({})
   const [imageLoaded, setImageLoaded] = React.useState<Record<string, boolean>>({})
   const [expandedSpecs, setExpandedSpecs] = React.useState<Record<string, boolean>>({
@@ -63,6 +64,7 @@ export default function Home() {
     rtx6000: false
   })
   const [showComparison, setShowComparison] = React.useState(false)
+  const [overlayFadedIn, setOverlayFadedIn] = React.useState(false) // Overlay fade-in state
   
   // Hero slideshow data
   const heroSlides = [
@@ -96,6 +98,21 @@ export default function Home() {
     }
   ]
   
+  // Fade overlay from fully black to target opacity
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setOverlayFadedIn(true)
+    }, 100) // Start fade after 100ms
+    return () => clearTimeout(timer)
+  }, [])
+  
+  // Fade in hero CTAs after mount
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setHeroCTAFadedIn(true)
+    }, 500) // Delay slightly after text fades in
+    return () => clearTimeout(timer)
+  }, [])
   
   return (
     <MobileViewport>
@@ -111,6 +128,34 @@ export default function Home() {
         
 {/* Hero Section - Video Slideshow */}
 <section id="home" className="nav-trigger-home relative min-h-screen flex items-center justify-center w-full pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-16" role="banner" aria-labelledby="hero-heading">
+  
+  {/* Opacity Cover - Starts fully black, fades to target opacity */}
+  <div
+    className="absolute inset-0 z-20"
+    style={{
+      background: `linear-gradient(
+        to bottom,
+        rgba(0,0,0,${overlayFadedIn ? 0.3 : 1}),
+        rgba(0,0,0,${overlayFadedIn ? 0.15 : 1}),
+        rgba(0,0,0,${overlayFadedIn ? 0.25 : 1})
+      )`,
+      pointerEvents: 'none',
+      transition: 'background 1000ms ease-out',
+    } as React.CSSProperties}
+  />
+  <div
+    className="absolute inset-0 z-20"
+    style={{
+      background: `radial-gradient(
+        ellipse at center,
+        transparent 0%,
+        rgba(0,0,0,${overlayFadedIn ? 0.3 : 1}) 70%,
+        rgba(0,0,0,${overlayFadedIn ? 0.5 : 1}) 100%
+      )`,
+      pointerEvents: 'none',
+      transition: 'background 1000ms ease-out',
+    } as React.CSSProperties}
+  />
   
   {/* Background Video Slideshow */}
   <HeroVideoSlideshow 
@@ -128,7 +173,9 @@ export default function Home() {
     />
     
     {/* CTA Buttons - Enhanced with micro-interactions */}
-    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-6 sm:mb-8 md:mb-10 relative z-30">
+    <div className={`flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-6 sm:mb-8 md:mb-10 relative z-30 transition-opacity duration-1000 ease-out ${
+      heroCTAFadedIn ? 'opacity-100' : 'opacity-0'
+    }`}>
       <div className="touch-feedback w-full sm:w-auto">
         <EnhancedBookingButton onOpenContactForm={() => setShowContactForm(true)} />
       </div>

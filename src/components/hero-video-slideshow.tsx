@@ -96,9 +96,17 @@ export function HeroVideoSlideshow({
     const currentVideo = videoRefs.current[currentSlide]
     if (!currentVideo) return
 
+    // Check if video is already playing to avoid duplicate play calls
+    const isAlreadyPlaying = !currentVideo.paused && currentVideo.currentTime > 0
+
     // Always try to play videos
     const playVideo = async () => {
       try {
+        // Skip if already playing
+        if (isAlreadyPlaying) {
+          return
+        }
+        
         // Ensure video attributes are set
         currentVideo.muted = true
         currentVideo.setAttribute("playsinline", "true")
@@ -115,17 +123,21 @@ export function HeroVideoSlideshow({
 
     // Wait for video to be ready
     const handleCanPlay = () => {
+      if (!currentVideo.paused) return // Already playing
       playVideo()
     }
 
     const handleLoadedData = () => {
+      if (!currentVideo.paused) return // Already playing
       playVideo()
     }
 
     // Try to play immediately if ready, otherwise wait for events
     if (currentVideo.readyState >= 2) {
       // Video already loaded
-      playVideo()
+      if (!isAlreadyPlaying) {
+        playVideo()
+      }
     } else {
       currentVideo.addEventListener('canplay', handleCanPlay, { once: true })
       currentVideo.addEventListener('loadeddata', handleLoadedData, { once: true })
@@ -165,68 +177,7 @@ export function HeroVideoSlideshow({
     }
   }, [currentSlide, isMounted, slides.length, autoPlayInterval])
 
-  // Initial video load - ensure first video plays on mount
-  useEffect(() => {
-    if (!isMounted) return
-    
-    // Small delay to ensure DOM is ready
-    const timer = setTimeout(() => {
-      const firstVideo = videoRefs.current[0]
-      if (!firstVideo) {
-        console.warn('First video element not found')
-        return
-      }
-
-      console.log('Loading first video:', slides[0].videoSrc, firstVideo)
-
-      const tryInitialPlay = async () => {
-        try {
-          firstVideo.muted = true
-          firstVideo.setAttribute("playsinline", "true")
-          firstVideo.setAttribute("muted", "true")
-          firstVideo.load() // Force load
-          await firstVideo.play().catch((err) => {
-            console.warn('Initial video play failed, will retry:', err)
-          })
-        } catch (error) {
-          console.warn('Initial video play error:', error)
-        }
-      }
-
-      // Try immediately if ready
-      if (firstVideo.readyState >= 2) {
-        tryInitialPlay()
-      } else {
-        // Wait for video to be ready
-        const handleCanPlay = () => {
-          console.log('First video can play')
-          tryInitialPlay()
-        }
-        const handleLoadedData = () => {
-          console.log('First video loaded data')
-          tryInitialPlay()
-        }
-        
-        firstVideo.addEventListener('canplay', handleCanPlay, { once: true })
-        firstVideo.addEventListener('loadeddata', handleLoadedData, { once: true })
-        firstVideo.addEventListener('loadedmetadata', handleCanPlay, { once: true })
-        firstVideo.addEventListener('error', (e) => {
-          console.error('First video error:', e, firstVideo.error)
-        }, { once: true })
-        
-        // Force load
-        firstVideo.load()
-        
-        return () => {
-          firstVideo.removeEventListener('canplay', handleCanPlay)
-          firstVideo.removeEventListener('loadeddata', handleLoadedData)
-          firstVideo.removeEventListener('loadedmetadata', handleCanPlay)
-        }
-      }
-    }, 100)
-
-    return () => clearTimeout(timer)
-  }, [isMounted, slides])
+  // Removed redundant initial video load effect - the main playback effect handles initial play
 
   // Notify parent of slide changes
   useEffect(() => {
@@ -242,12 +193,14 @@ export function HeroVideoSlideshow({
     }
   }, [currentSlide])
 
-  // Don't render until mounted to avoid hydration issues
-  if (!isMounted) {
-    return (
-      <div className={`absolute inset-0 w-full h-full bg-black z-0 ${className}`} suppressHydrationWarning>
+  return (
+    <div className={`absolute inset-0 w-full h-full bg-black z-0 ${className}`} suppressHydrationWarning>
+      {/* Overlay removed - now rendered in page.tsx to prevent React re-render fade-in */}
+      
+      {/* Unmounted state - show poster only */}
+      {!isMounted && (
         <div className="absolute inset-0 w-full h-full overflow-hidden z-0" aria-hidden suppressHydrationWarning>
-          {/* Placeholder for first video poster */}
+          {/* Placeholder for first video poster - show immediately */}
           {slides[0]?.poster && (
             <img 
               src={slides[0].poster} 
@@ -257,20 +210,31 @@ export function HeroVideoSlideshow({
             />
           )}
         </div>
-      </div>
-    )
-  }
-
-  return (
-    <div className={`absolute inset-0 w-full h-full bg-black z-0 ${className}`} suppressHydrationWarning>
-      {/* Video Container */}
+      )}
+      
+      {/* Poster Image - Shows immediately as fallback */}
+      {slides[0]?.poster && (
+        <img 
+          src={slides[0].poster} 
+          alt="" 
+          className="absolute inset-0 w-full h-full object-cover"
+          aria-hidden="true"
+          style={{
+            zIndex: 1,
+            pointerEvents: 'none',
+          }}
+        />
+      )}
+      
+      {/* Video Container - Always visible, no fade-in */}
       <div 
-        className="absolute inset-0 w-full h-full overflow-hidden z-0" 
+        className="absolute inset-0 w-full h-full overflow-hidden z-0"
         aria-hidden 
         suppressHydrationWarning
         style={{
           willChange: 'contents',
           transform: 'translateZ(0)',
+          zIndex: 2,
         }}
       >
         {slides.map((slide, index) => {
@@ -297,7 +261,7 @@ export function HeroVideoSlideshow({
                 backfaceVisibility: 'hidden', // Prevent flickering
                 WebkitTransform: 'translateZ(0)', // Safari support
               }}
-              autoPlay={isActive && isMounted}
+              autoPlay={false}
               playsInline
               muted
               loop
@@ -317,53 +281,11 @@ export function HeroVideoSlideshow({
               onError={(e) => {
                 console.error('Video load error:', slide.videoSrc, e)
               }}
-              onLoadedData={() => {
-                if (isActive && isMounted) {
-                  const video = videoRefs.current[index]
-                  if (video) {
-                    video.play().catch(err => console.warn('Video play error:', err))
-                  }
-                }
-              }}
-              onCanPlay={() => {
-                if (isActive && isMounted) {
-                  const video = videoRefs.current[index]
-                  if (video && video.paused) {
-                    video.play().catch(err => console.warn('Video play error:', err))
-                  }
-                }
-              }}
             >
               <source src={slide.videoSrc} type="video/mp4" />
             </video>
           )
         })}
-        
-        {/* Adaptive Overlay - Darkens background for text legibility */}
-        <div
-          className="absolute inset-0 z-20"
-          style={{
-            background: `linear-gradient(
-              to bottom,
-              rgba(0,0,0,${overlayOpacity + 0.15}),
-              rgba(0,0,0,${overlayOpacity}),
-              rgba(0,0,0,${overlayOpacity + 0.1})
-            )`
-          }}
-        />
-        
-        {/* Additional gradient overlay for better text contrast */}
-        <div
-          className="absolute inset-0 z-20"
-          style={{
-            background: `radial-gradient(
-              ellipse at center,
-              transparent 0%,
-              rgba(0,0,0,0.3) 70%,
-              rgba(0,0,0,0.5) 100%
-            )`
-          }}
-        />
       </div>
 
       {/* Slide Indicators */}
@@ -395,6 +317,26 @@ export function HeroSlideshowContent({
 }) {
   const [isVisible, setIsVisible] = useState(true)
   const [displaySlide, setDisplaySlide] = useState(currentSlide)
+  const [isMounted, setIsMounted] = useState(false)
+  const [textFadedIn, setTextFadedIn] = useState(false) // Independent text fade-in state
+  
+  // Handle initial mount and fade-in - completely independent of video
+  useEffect(() => {
+    setIsMounted(true)
+    // Fade in text immediately on mount, no delay, completely independent of video
+    // Use requestAnimationFrame to ensure it happens after render
+    const rafId = requestAnimationFrame(() => {
+      setTextFadedIn(true)
+    })
+    // Fallback to ensure it always fades in
+    const fallbackTimer = setTimeout(() => {
+      setTextFadedIn(true)
+    }, 50)
+    return () => {
+      cancelAnimationFrame(rafId)
+      clearTimeout(fallbackTimer)
+    }
+  }, [])
   
   // Handle fade out/in when slide changes
   useEffect(() => {
@@ -414,56 +356,64 @@ export function HeroSlideshowContent({
   const currentSlideData = slides[displaySlide]
   
   return (
-    <div className={`relative z-40 text-center transition-opacity duration-1000 ease-in-out ${
-      isVisible ? 'opacity-100' : 'opacity-0'
-    }`}>
+    <div className="relative z-40 text-center">
       {/* Text with multiple legibility enhancements */}
-      <h1 
-        id="hero-heading" 
-        className="text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-4 sm:mb-6 md:mb-8 leading-tight"
-        style={{
-          color: '#ffffff',
-          textShadow: `
-            0 2px 4px rgba(0,0,0,0.5),
-            0 4px 8px rgba(0,0,0,0.4),
-            0 8px 16px rgba(0,0,0,0.3),
-            0 0 20px rgba(0,0,0,0.2)
-          `,
-          filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.6))',
-        }}
-      >
-        <span className="inline-block">
-          {currentSlideData.headline}
-        </span>
-      </h1>
+      <div className={`transition-opacity duration-1000 ease-out ${
+        isMounted && textFadedIn && isVisible ? 'opacity-100' : 'opacity-0'
+      }`}>
+        <h1 
+          id="hero-heading" 
+          className="text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-4 sm:mb-6 md:mb-8 leading-tight"
+          style={{
+            color: '#ffffff',
+            textShadow: `
+              0 2px 4px rgba(0,0,0,0.5),
+              0 4px 8px rgba(0,0,0,0.4),
+              0 8px 16px rgba(0,0,0,0.3),
+              0 0 20px rgba(0,0,0,0.2)
+            `,
+            filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.6))',
+          }}
+        >
+          <span className="inline-block">
+            {currentSlideData.headline}
+          </span>
+        </h1>
+      </div>
       
       {/* Combined content block with subheading and description */}
-      <div 
-        className="max-w-4xl mx-auto px-6 py-4 mb-6 sm:mb-8 md:mb-10 rounded-lg"
-        style={{
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          backdropFilter: 'blur(10px)',
-        }}
-      >
-        <p 
-          className="text-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed font-semibold mb-3"
-          style={{ 
-            letterSpacing: '0.1em',
-            color: '#ffffff',
-            textShadow: '0 2px 4px rgba(0,0,0,0.8)',
+      {/* Blur container always visible, only text content fades */}
+      <div className="max-w-4xl mx-auto">
+        <div 
+          className="px-6 py-4 mb-6 sm:mb-8 md:mb-10 rounded-lg hero-content-blur"
+          style={{
+            backgroundColor: 'rgba(0,0,0,0.3)',
           }}
         >
-          {currentSlideData.subheading}
-        </p>
-        <p 
-          className="text-base sm:text-lg md:text-xl leading-relaxed font-normal"
-          style={{ 
-            color: '#ffffff',
-            textShadow: '0 1px 3px rgba(0,0,0,0.8)',
-          }}
-        >
-          {currentSlideData.description}
-        </p>
+          <div className={`transition-opacity duration-1000 ease-out ${
+            isMounted && textFadedIn && isVisible ? 'opacity-100' : 'opacity-0'
+          }`}>
+            <p 
+              className="text-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed font-semibold mb-3"
+              style={{ 
+                letterSpacing: '0.1em',
+                color: '#ffffff',
+                textShadow: '0 2px 4px rgba(0,0,0,0.8)',
+              }}
+            >
+              {currentSlideData.subheading}
+            </p>
+            <p 
+              className="text-base sm:text-lg md:text-xl leading-relaxed font-normal"
+              style={{ 
+                color: '#ffffff',
+                textShadow: '0 1px 3px rgba(0,0,0,0.8)',
+              }}
+            >
+              {currentSlideData.description}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   )
