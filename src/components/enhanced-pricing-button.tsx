@@ -31,8 +31,8 @@ export function EnhancedPricingButton() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="flex items-center gap-3 text-white">
-        <div className="relative">
+      <div className="flex items-center gap-2 sm:gap-3 text-white">
+        <div className="relative hidden sm:block">
           <Icons.CreditCard className="w-5 h-5 text-white transition-transform duration-300 group-hover:scale-110" />
           {isHovered && (
             <div className="absolute inset-0 animate-ping">
@@ -40,8 +40,8 @@ export function EnhancedPricingButton() {
             </div>
           )}
         </div>
-        <span className="font-semibold text-white">View Pricing</span>
-        <Icons.ArrowRight className="w-4 h-4 text-white transition-transform duration-300 group-hover:translate-x-1" />
+        <span className="font-semibold text-white text-sm sm:text-base whitespace-nowrap">View Pricing</span>
+        <Icons.ArrowRight className="w-4 h-4 text-white transition-transform duration-300 group-hover:translate-x-1 hidden sm:block" />
       </div>
       
       {/* Animated background */}
