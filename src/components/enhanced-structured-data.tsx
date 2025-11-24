@@ -5,7 +5,7 @@ export function EnhancedStructuredData() {
     "name": "MODRON",
     "url": "https://www.modron.com",
     "logo": "https://www.modron.com/MODRON_ICON.png",
-    "description": "Australia's first deployable supercomputers in a box with enterprise-grade AI infrastructure and industry-leading compute density. Locally-built, immersion-cooled GPU clusters (RTX PRO 6000, H200, L40S, Blackwell GB300) and solar-powered modular containers with 48-hour deployment.",
+    "description": "Australia's first portable, enterprise-grade AI supercomputers. Deploy on-premises or rent compute capacity. Locally-built, immersion-cooled GPU clusters (RTX PRO 6000, H200, L40S, Blackwell GB300) and solar-powered modular containers with 48-hour deployment.",
     "foundingDate": "2024",
     "address": {
       "@type": "PostalAddress",
@@ -80,6 +80,22 @@ export function EnhancedStructuredData() {
           },
           "priceRange": "$$$",
           "availability": "InStock"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "AI Compute Capacity Rental",
+            "description": "Flexible cloud compute rental for AI workloads. Rent GPU capacity on-demand with the same sovereign infrastructure, data residency, and performance as on-premises deployment.",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "MODRON"
+            },
+            "areaServed": ["Australia"],
+            "serviceType": "AI Compute Rental"
+          },
+          "priceRange": "$$$",
+          "availability": "InStock"
         }
       ]
     },
@@ -91,7 +107,7 @@ export function EnhancedStructuredData() {
     ],
     "serviceType": "Sovereign AI Compute Infrastructure",
     "slogan": "Building Australia's first deployable supercomputers in a box",
-    "keywords": "Australia sovereign AI infrastructure, Australian-built GPU clusters, High-performance GPU clusters Australia, Enterprise AI infrastructure Australia, Industry-leading compute density, Immersion-cooled GPUs Australia, Solar-powered AI compute, Modular AI infrastructure, Australian data sovereignty, Locally-assembled GPUs, Sovereign AI compute Australia, RTX PRO 6000 Australia, H200 L40S Australia, Blackwell GB300 Australia, Enterprise-grade AI compute, Rapid deployment AI infrastructure, 48-hour AI deployment Australia, on-premises AI infrastructure Australia, GPU cluster deployment Sydney, Australian data sovereignty compliance, enterprise AI hosting Melbourne, sovereign cloud alternative Australia, private AI cloud Australia, Australian AI data residency, enterprise GPU rental Australia, on-site AI deployment Australia, Australian AI infrastructure provider, local AI compute Australia, enterprise AI infrastructure deployment, Australian AI sovereignty",
+    "keywords": "Australia sovereign AI infrastructure, Australian-built GPU clusters, High-performance GPU clusters Australia, Enterprise AI infrastructure Australia, Industry-leading compute density, Immersion-cooled GPUs Australia, Solar-powered AI compute, Modular AI infrastructure, Australian data sovereignty, Locally-assembled GPUs, Sovereign AI compute Australia, RTX PRO 6000 Australia, H200 L40S Australia, Blackwell GB300 Australia, Enterprise-grade AI compute, Rapid deployment AI infrastructure, 48-hour AI deployment Australia, on-premises AI infrastructure Australia, GPU cluster deployment Sydney, Australian data sovereignty compliance, enterprise AI hosting Melbourne, sovereign cloud alternative Australia, private AI cloud Australia, Australian AI data residency, enterprise GPU rental Australia, on-site AI deployment Australia, Australian AI infrastructure provider, local AI compute Australia, enterprise AI infrastructure deployment, Australian AI sovereignty, portable AI supercomputers Australia, AI compute rental Australia, flexible AI infrastructure deployment, rent compute capacity Australia",
     "knowsAbout": [
       "Artificial Intelligence",
       "Machine Learning",
@@ -122,7 +138,7 @@ export function EnhancedStructuredData() {
     "@type": "WebSite",
     "name": "MODRON",
     "url": "https://www.modron.com",
-    "description": "Australia's first deployable supercomputers in a box. Enterprise-grade AI infrastructure with industry-leading compute density. Locally-built, immersion-cooled GPU clusters (RTX PRO 6000, H200, L40S, Blackwell GB300) with solar power and modular containers for Australian enterprises.",
+    "description": "Australia's first portable, enterprise-grade AI supercomputers. Deploy on-premises or rent compute capacity. Enterprise-grade AI infrastructure with industry-leading compute density. Locally-built, immersion-cooled GPU clusters (RTX PRO 6000, H200, L40S, Blackwell GB300) with solar power and modular containers for Australian enterprises.",
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://www.modron.com/search?q={search_term_string}",
@@ -136,7 +152,7 @@ export function EnhancedStructuredData() {
     "name": "MODRON",
     "url": "https://www.modron.com",
     "logo": "https://www.modron.com/MODRON_ICON.png",
-    "description": "Australia's leading provider of sovereign AI compute infrastructure with enterprise-grade AI infrastructure and industry-leading compute density. Locally-built, immersion-cooled GPU clusters (RTX PRO 6000, H200, L40S, Blackwell GB300) and solar-powered modular containers with 48-hour deployment",
+    "description": "Australia's leading provider of portable, sovereign AI compute infrastructure with enterprise-grade AI infrastructure and industry-leading compute density. Deploy on-premises or rent compute capacity. Locally-built, immersion-cooled GPU clusters (RTX PRO 6000, H200, L40S, Blackwell GB300) and solar-powered modular containers with 48-hour deployment",
     "foundingDate": "2024",
     "address": {
       "@type": "PostalAddress",
@@ -242,7 +258,7 @@ export function EnhancedStructuredData() {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "MODRON Immersion-Cooled GPU Clusters",
-    "description": "Enterprise-grade, immersion-cooled GPU clusters featuring RTX PRO 6000, H200, L40S, and Blackwell GB300. Australian-assembled, solar-powered, with industry-leading compute density. Deploy in 48 hours with complete data sovereignty.",
+    "description": "Portable, enterprise-grade, immersion-cooled GPU clusters featuring RTX PRO 6000, H200, L40S, and Blackwell GB300. Australian-assembled, solar-powered, with industry-leading compute density. Deploy on-premises or rent compute capacity in 48 hours with complete data sovereignty.",
     "brand": {
       "@type": "Brand",
       "name": "MODRON"
@@ -316,7 +332,7 @@ export function EnhancedStructuredData() {
     "name": "MODRON",
     "url": "https://www.modron.com",
     "logo": "https://www.modron.com/MODRON_ICON.png",
-    "description": "Australia's leading provider of on-premises AI infrastructure and sovereign GPU clusters",
+    "description": "Australia's leading provider of portable, enterprise-grade AI supercomputers. Deploy on-premises or rent compute capacity with sovereign GPU clusters",
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "AU",
