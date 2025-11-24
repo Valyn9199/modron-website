@@ -24,9 +24,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "MODRON | Australia's Sovereign AI Infrastructure | Immersion-Cooled GPU Clusters",
-  description: "Australia's first on-premises AI supercomputers. Enterprise-grade GPU clusters (RTX PRO 6000, H200, L40S, Blackwell GB300) with Australian data sovereignty. Deploy on-premises or access campus facilities in Sydney, Melbourne. 48-hour deployment, immersion cooling, solar power. Complete data residency compliance for Australian enterprises.",
-  keywords: ["Australia sovereign AI infrastructure", "Australian-built GPU clusters", "High-performance GPU clusters Australia", "Enterprise AI infrastructure Australia", "Industry-leading compute density", "Immersion-cooled GPUs Australia", "Solar-powered AI compute", "Modular AI infrastructure", "Australian data sovereignty", "Locally-assembled GPUs", "Sovereign AI compute Australia", "MODRON Australia", "Australian AI infrastructure", "Data sovereignty Australia", "Immersion cooling technology", "Solar-powered modular containers", "Modular container infrastructure", "Australian GPU assembly", "Sovereign compute platform", "Australian enterprises AI", "RTX PRO 6000 Australia", "H200 L40S Australia", "Blackwell GB300 Australia", "Enterprise-grade AI compute", "Rapid deployment AI infrastructure", "48-hour AI deployment Australia", "Immersion-cooled RTX PRO 6000", "Solar-powered GPU hosting", "Modular container AI", "on-premises AI infrastructure Australia", "GPU cluster deployment Sydney", "Australian data sovereignty compliance", "enterprise AI hosting Melbourne", "sovereign cloud alternative Australia", "private AI cloud Australia", "Australian AI data residency", "enterprise GPU rental Australia", "on-site AI deployment Australia", "Australian AI infrastructure provider", "local AI compute Australia", "Australian enterprise AI solutions", "GPU hosting Sydney Melbourne", "Australian AI sovereignty", "enterprise AI infrastructure deployment"],
+  title: "MODRON | Sovereign AI Infrastructure Australia | GPU Clusters",
+  description: "Australia's first on-premises AI supercomputers. Immersion-cooled GPU clusters (H200, GB300, RTX 6000) with 48-hour deployment. 100% Australian data sovereignty. Solar-powered infrastructure.",
+  keywords: ["Australia sovereign AI infrastructure", "Australian-built GPU clusters", "Enterprise AI infrastructure Australia", "Immersion-cooled GPUs Australia", "Solar-powered AI compute", "48-hour AI deployment Australia", "Australian data sovereignty", "GPU cluster deployment Sydney", "enterprise AI hosting Melbourne"],
   authors: [{ name: "MODRON" }],
   creator: "MODRON",
   publisher: "MODRON",
@@ -64,8 +64,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "MODRON | Australia's Sovereign AI Infrastructure | Immersion-Cooled GPU Clusters",
-    description: "Australia's first on-premises AI supercomputers. Enterprise-grade GPU clusters (RTX PRO 6000, H200, L40S, Blackwell GB300) with Australian data sovereignty. Deploy on-premises or access campus facilities in Sydney, Melbourne. 48-hour deployment, immersion cooling, solar power. Complete data residency compliance for Australian enterprises.",
+    title: "MODRON | Sovereign AI Infrastructure Australia | GPU Clusters",
+    description: "Australia's first on-premises AI supercomputers. Immersion-cooled GPU clusters (H200, GB300, RTX 6000) with 48-hour deployment. 100% Australian data sovereignty.",
     url: 'https://www.modron.com',
     siteName: 'MODRON',
     images: [
@@ -90,8 +90,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MODRON | Australia\'s Sovereign AI Infrastructure | Immersion-Cooled GPU Clusters',
-    description: 'Australia\'s first on-premises AI supercomputers. Enterprise-grade GPU clusters (RTX PRO 6000, H200, L40S, Blackwell GB300) with Australian data sovereignty. Deploy on-premises or access campus facilities in Sydney, Melbourne. 48-hour deployment, immersion cooling, solar power. Complete data residency compliance for Australian enterprises.',
+    title: 'MODRON | Sovereign AI Infrastructure Australia | GPU Clusters',
+    description: 'Australia\'s first on-premises AI supercomputers. Immersion-cooled GPU clusters (H200, GB300, RTX 6000) with 48-hour deployment. 100% Australian data sovereignty.',
     images: ['/og-image.jpg'],
     creator: '@modron_ai',
     site: '@modron_ai',

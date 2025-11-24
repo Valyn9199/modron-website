@@ -202,6 +202,38 @@ export function EnhancedStructuredData() {
           "@type": "Answer",
           "text": "MODRON offers Australian-assembled, immersion-cooled GPU clusters including RTX PRO 6000, H200, L40S, and Blackwell GB300 with industry-leading compute density, optimized for enterprise-grade AI model training and inference workloads with complete data sovereignty and 48-hour deployment."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "How fast is MODRON's deployment time?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MODRON can deploy enterprise-grade AI infrastructure anywhere in Australia within 48 hours using modular container-based systems, significantly faster than traditional cloud providers or on-premises installations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is MODRON's compute power capacity?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MODRON delivers 100+ PetaFLOPS of compute power through our diverse GPU portfolio, providing industry-leading compute density for AI training and inference workloads."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does MODRON guarantee Australian data sovereignty?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, MODRON provides 100% Australian data residency with complete data sovereignty. All infrastructure is locally assembled and operated, ensuring data never leaves Australia and complies with Australian data residency requirements."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are MODRON's pricing options?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MODRON offers competitive pricing from $0.54 to $0.90 per hour (AUD) for GPU compute, with flexible deployment options including on-premises infrastructure or campus compute rental. All pricing includes built-in sustainability features."
+        }
       }
     ]
   };
@@ -229,7 +261,9 @@ export function EnhancedStructuredData() {
     "offers": {
       "@type": "AggregateOffer",
       "priceCurrency": "AUD",
-      "priceRange": "$$$",
+      "lowPrice": "0.54",
+      "highPrice": "0.90",
+      "priceUnit": "hour",
       "availability": "https://schema.org/InStock",
       "availabilityStarts": "2024-01-01",
       "seller": {
@@ -262,6 +296,11 @@ export function EnhancedStructuredData() {
         "@type": "PropertyValue",
         "name": "Deployment Time",
         "value": "48 hours"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Compute Power",
+        "value": "100+ PetaFLOPS"
       },
       {
         "@type": "PropertyValue",
@@ -329,6 +368,19 @@ export function EnhancedStructuredData() {
     "currenciesAccepted": "AUD"
   };
 
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.modron.com"
+      }
+    ]
+  };
+
   return (
     <>
       <script
@@ -354,6 +406,10 @@ export function EnhancedStructuredData() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
       />
       {/* hreflang links for international SEO */}
       <link rel="alternate" hrefLang="en-AU" href="https://www.modron.com" />

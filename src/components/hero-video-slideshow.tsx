@@ -474,24 +474,28 @@ export function HeroSlideshowContent({
 }) {
   const [isVisible, setIsVisible] = useState(true)
   const [displaySlide, setDisplaySlide] = useState(currentSlide)
-  const [isMounted, setIsMounted] = useState(false)
-  const [textFadedIn, setTextFadedIn] = useState(false) // Independent text fade-in state
+  // Start as true to match server render and prevent hydration mismatch
+  const [isMounted, setIsMounted] = useState(true)
+  const [textFadedIn, setTextFadedIn] = useState(true) // Independent text fade-in state
   
   // Handle initial mount and fade-in - completely independent of video
   useEffect(() => {
-    setIsMounted(true)
-    // Fade in text immediately on mount, no delay, completely independent of video
-    // Use requestAnimationFrame to ensure it happens after render
-    const rafId = requestAnimationFrame(() => {
-      setTextFadedIn(true)
-    })
-    // Fallback to ensure it always fades in
-    const fallbackTimer = setTimeout(() => {
-      setTextFadedIn(true)
-    }, 50)
-    return () => {
-      cancelAnimationFrame(rafId)
-      clearTimeout(fallbackTimer)
+    // Only update if we're actually on the client (hydration check)
+    if (typeof window !== 'undefined') {
+      setIsMounted(true)
+      // Fade in text immediately on mount, no delay, completely independent of video
+      // Use requestAnimationFrame to ensure it happens after render
+      const rafId = requestAnimationFrame(() => {
+        setTextFadedIn(true)
+      })
+      // Fallback to ensure it always fades in
+      const fallbackTimer = setTimeout(() => {
+        setTextFadedIn(true)
+      }, 50)
+      return () => {
+        cancelAnimationFrame(rafId)
+        clearTimeout(fallbackTimer)
+      }
     }
   }, [])
   
@@ -526,7 +530,7 @@ export function HeroSlideshowContent({
       <div className={`transition-opacity duration-1000 ease-out ${
         isMounted && textFadedIn && isVisible ? 'opacity-100' : 'opacity-0'
       }`} style={{ opacity: isMounted && textFadedIn && isVisible ? 1 : 0 }}>
-        <h1 
+        <h2 
           id="hero-heading" 
           className="text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-4 sm:mb-6 md:mb-8 leading-tight text-white"
           style={{
@@ -542,7 +546,7 @@ export function HeroSlideshowContent({
           <span className="inline-block">
             {currentSlideData.headline}
           </span>
-        </h1>
+        </h2>
       </div>
       
       {/* Combined content block with subheading and description */}

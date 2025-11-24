@@ -135,6 +135,9 @@ export default function Home() {
 {/* Hero Section - Video Slideshow */}
 <section id="home" className="nav-trigger-home relative min-h-screen flex items-center justify-center w-full pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-16" role="banner" aria-labelledby="hero-heading">
   
+  {/* SEO H1 - Hidden visually but accessible to search engines and screen readers */}
+  <h1 className="sr-only">MODRON - Australia's Sovereign AI Infrastructure | Immersion-Cooled GPU Clusters</h1>
+  
   {/* Opacity Cover - Starts fully black, fades to target opacity - Only covers videos, below text */}
   <div
     className="absolute inset-0 z-10"
