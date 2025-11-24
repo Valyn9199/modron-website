@@ -15,7 +15,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { ViewPricingButton } from "@/components/view-pricing-button"
-import { BookingModal } from "@/components/booking-modal"
+import { LoginModal } from "@/components/login-modal"
+import { BarChart3 } from "lucide-react"
 
 const navigationItems = [
   { name: "Home", href: "#home" },
@@ -30,6 +31,17 @@ export function Header() {
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [activeSection, setActiveSection] = React.useState("home")
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false)
+
+  React.useEffect(() => {
+    const checkLogin = () => {
+      setIsLoggedIn(localStorage.getItem('modron_logged_in') === 'true')
+    }
+    checkLogin()
+    // Check on storage changes (for cross-tab sync)
+    window.addEventListener('storage', checkLogin)
+    return () => window.removeEventListener('storage', checkLogin)
+  }, [])
 
   React.useEffect(() => {
     // Cache section data for performance
@@ -183,6 +195,19 @@ export function Header() {
                 </Link>
               )
             })}
+            
+            {/* Login Button / Dashboard Link - Desktop */}
+            {isLoggedIn ? (
+              <Link
+                href="/dashboard"
+                className="flex items-center gap-2 border border-[#4A4A4A] text-gray-300 hover:text-white hover:bg-[#d5aaf9]/10 hover:border-[#d5aaf9]/30 px-4 py-2 rounded-lg transition-all text-xs lg:text-sm font-medium"
+              >
+                <BarChart3 className="h-4 w-4" />
+                Dashboard
+              </Link>
+            ) : (
+              <LoginModal />
+            )}
           </nav>
 
           {/* Mobile menu */}
@@ -272,13 +297,30 @@ export function Header() {
     })}
   </nav>
   
+  {/* Login Button - Mobile */}
+  <div className="px-4 py-2 mt-4">
+    {isLoggedIn ? (
+      <Link
+        href="/dashboard"
+        className="flex items-center justify-center gap-2 border border-[#4A4A4A] text-gray-300 hover:text-white hover:bg-[#d5aaf9]/10 hover:border-[#d5aaf9]/30 px-4 py-3 rounded-lg transition-all text-base font-medium"
+        onClick={() => setIsMobileMenuOpen(false)}
+      >
+        <BarChart3 className="h-4 w-4" />
+        Dashboard
+      </Link>
+    ) : (
+      <div onClick={() => setIsMobileMenuOpen(false)}>
+        <LoginModal />
+      </div>
+    )}
+  </div>
+  
   {/* Footer section */}
   <div className="mt-auto pt-8 border-t border-[#4A4A4A]">
     <div className="text-center">
       <p className="text-gray-500 text-sm mb-4">Ready to get started?</p>
       <div className="space-y-3">
         <ViewPricingButton />
-        <BookingModal />
       </div>
     </div>
   </div>
