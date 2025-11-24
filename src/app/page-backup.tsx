@@ -32,7 +32,6 @@ const ProgressiveReveal = dynamic(() => import("@/components/page-transition").t
 
 import { ViewPricingButton } from "@/components/view-pricing-button";
 import { WaitlistModal } from "@/components/waitlist-modal";
-import { BookingModal } from "@/components/booking-modal";
 
 export default function Home() {
   // Performance optimizations in progress - console logs removed for production
@@ -75,7 +74,7 @@ export default function Home() {
     {/* CTA Buttons - Larger on mobile */}
     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-8 sm:mb-10 md:mb-12">
       <div className="min-h-[48px] sm:min-h-[52px]">
-        <BookingModal />
+        {/* BookingModal removed */}
       </div>
       <div className="min-h-[48px] sm:min-h-[52px]">
         <ViewPricingButton />
@@ -905,7 +904,7 @@ export default function Home() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-12 sm:mb-16 md:mb-20">
               <div className="min-h-[44px]">
-                <BookingModal />
+                {/* BookingModal removed */}
               </div>
             </div>
 

@@ -15,7 +15,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { ViewPricingButton } from "@/components/view-pricing-button"
-import { BookingModal } from "@/components/booking-modal"
+// BookingModal removed
 
 const navigationItems = [
   { name: "Home", href: "#home" },
@@ -145,7 +145,6 @@ export function EnhancedHeader() {
               isScrolled ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}>
               <ViewPricingButton />
-              <BookingModal />
             </div>
 
             {/* Mobile menu */}
@@ -193,7 +192,6 @@ export function EnhancedHeader() {
                   {/* Mobile CTA Buttons - Always show in mobile menu */}
                   <div className="flex flex-col space-y-3 mt-8 pt-6 border-t">
                     <ViewPricingButton />
-                    <BookingModal />
                   </div>
                 </SheetContent>
               </Sheet>
