@@ -429,7 +429,6 @@ export function HeroVideoSlideshow({
               playsInline
               muted
               loop
-              decoding="async"
               preload={getOptimalPreload(index, isActive, isNext)}
               poster={slide.poster}
               crossOrigin="anonymous"
