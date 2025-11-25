@@ -1227,7 +1227,7 @@ export default function Home() {
                     
                     {/* NVIDIA GB300 Blackwell - Next-Gen Research */}
                     <div 
-                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-2 hover:border-[#d5aaf9]/30 relative"
+                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:bg-[#d5aaf9]/10 transition-colors duration-300 relative"
                       onMouseEnter={() => {
                         if (hoverTimeoutRef.current['gb300']) {
                           clearTimeout(hoverTimeoutRef.current['gb300'])
@@ -1366,7 +1366,7 @@ export default function Home() {
 
                     {/* NVIDIA H200 - Enterprise Training */}
                     <div 
-                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-2 hover:border-[#d5aaf9]/30 relative"
+                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:bg-[#d5aaf9]/10 transition-colors duration-300 relative"
                       onMouseEnter={() => {
                         if (hoverTimeoutRef.current['h200']) {
                           clearTimeout(hoverTimeoutRef.current['h200'])
@@ -1509,7 +1509,7 @@ export default function Home() {
 
                     {/* RTX PRO 6000 - Development */}
                     <div 
-                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-2 hover:border-[#d5aaf9]/30 relative"
+                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:bg-[#d5aaf9]/10 transition-colors duration-300 relative"
                       onMouseEnter={() => {
                         if (hoverTimeoutRef.current['rtx6000']) {
                           clearTimeout(hoverTimeoutRef.current['rtx6000'])
@@ -1648,7 +1648,7 @@ export default function Home() {
 
                     {/* NVIDIA L40S - AI Inference */}
                     <div 
-                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-2 hover:border-[#d5aaf9]/30 relative"
+                      className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:bg-[#d5aaf9]/10 transition-colors duration-300 relative"
                       onMouseEnter={() => {
                         if (hoverTimeoutRef.current['l40s']) {
                           clearTimeout(hoverTimeoutRef.current['l40s'])
