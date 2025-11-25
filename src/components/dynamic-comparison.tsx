@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
+import Image from "next/image"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 interface Competitor {
@@ -210,8 +211,7 @@ export function DynamicComparison() {
         <div className="bg-[#1A1A1A]/80 backdrop-blur-sm border border-white/10 rounded-xl p-6">
           <div className="mb-6">
             <h3 
-              className="text-xl font-bold mb-2"
-              style={{ color: selectedMetricData?.key === 'performance' ? '#40d0f2' : '#ffffff' }}
+              className="text-xl font-bold mb-2 text-white"
             >
               {selectedMetricData?.label}
             </h3>
@@ -233,14 +233,22 @@ export function DynamicComparison() {
                 >
                   {/* Competitor Info */}
                   <div className="flex items-center gap-3 min-w-[200px]">
-                    <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
-                        isModron ? 'text-black ring-2 ring-white/50' : 'text-white'
-                      }`}
-                      style={{ backgroundColor: competitor.color }}
-                    >
-                      {competitor.logo}
-                    </div>
+                    {isModron ? (
+                      <Image
+                        src="/MODRON_ICON.png"
+                        alt="MODRON"
+                        width={40}
+                        height={40}
+                        className="w-10 h-10 object-contain"
+                      />
+                    ) : (
+                      <div
+                        className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white"
+                        style={{ backgroundColor: competitor.color }}
+                      >
+                        {competitor.logo}
+                      </div>
+                    )}
                     <div>
                       <div className={`font-semibold ${isModron ? 'text-white' : 'text-gray-300'}`}>
                         {competitor.name}
