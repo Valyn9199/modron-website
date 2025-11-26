@@ -312,15 +312,18 @@ export default function Home() {
               onMouseLeave={() => setHoveredPill(null)}
               style={{
                 opacity: iconIntroStarted ? 1 : 0,
-                transition: 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
-                transitionDelay: iconIntroStarted ? '200ms' : '0ms',
+                transition: hoveredPill !== null 
+                  ? 'transform 0.3s ease-in-out' 
+                  : 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
+                transitionDelay: (iconIntroStarted && !hasHovered && hoveredPill === null) ? '200ms' : '0ms',
                 transform: hoveredPill === 'sovereignty' ? 'scale(1.05)' : 'scale(1)'
               }}
             >
               <span 
-                className="px-4 py-2 rounded-full bg-[#32ca73]/10 border border-[#32ca73]/30 text-[#32ca73] text-sm font-medium text-center w-full transition-all duration-300"
+                className="px-4 py-2 rounded-full bg-[#32ca73]/10 border border-[#32ca73]/30 text-[#32ca73] text-sm font-medium text-center w-full"
                 style={{
-                  filter: hoveredPill === 'sovereignty' ? 'brightness(1.3)' : 'brightness(1.0)'
+                  filter: hoveredPill === 'sovereignty' ? 'brightness(1.3)' : 'brightness(1.0)',
+                  transition: 'filter 0.3s ease-in-out'
                 }}
               >
                 Australian sovereignty
@@ -332,15 +335,18 @@ export default function Home() {
               onMouseLeave={() => setHoveredPill(null)}
               style={{
                 opacity: iconIntroStarted ? 1 : 0,
-                transition: 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
-                transitionDelay: iconIntroStarted ? '600ms' : '0ms',
+                transition: hoveredPill !== null 
+                  ? 'transform 0.3s ease-in-out' 
+                  : 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
+                transitionDelay: (iconIntroStarted && !hasHovered && hoveredPill === null) ? '600ms' : '0ms',
                 transform: hoveredPill === 'infrastructure' ? 'scale(1.05)' : 'scale(1)'
               }}
             >
               <span 
-                className="px-4 py-2 rounded-full bg-[#d5aaf9]/10 border border-[#d5aaf9]/30 text-[#d5aaf9] text-sm font-medium text-center w-full transition-all duration-300"
+                className="px-4 py-2 rounded-full bg-[#d5aaf9]/10 border border-[#d5aaf9]/30 text-[#d5aaf9] text-sm font-medium text-center w-full"
                 style={{
-                  filter: hoveredPill === 'infrastructure' ? 'brightness(1.3)' : 'brightness(1.0)'
+                  filter: hoveredPill === 'infrastructure' ? 'brightness(1.3)' : 'brightness(1.0)',
+                  transition: 'filter 0.3s ease-in-out'
                 }}
               >
                 Modular infrastructure
@@ -352,15 +358,18 @@ export default function Home() {
               onMouseLeave={() => setHoveredPill(null)}
               style={{
                 opacity: iconIntroStarted ? 1 : 0,
-                transition: 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
-                transitionDelay: iconIntroStarted ? '1000ms' : '0ms',
+                transition: hoveredPill !== null 
+                  ? 'transform 0.3s ease-in-out' 
+                  : 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
+                transitionDelay: (iconIntroStarted && !hasHovered && hoveredPill === null) ? '1000ms' : '0ms',
                 transform: hoveredPill === 'renewable' ? 'scale(1.05)' : 'scale(1)'
               }}
             >
               <span 
-                className="px-4 py-2 rounded-full bg-[#40d0f2]/10 border border-[#40d0f2]/30 text-[#40d0f2] text-sm font-medium text-center w-full transition-all duration-300"
+                className="px-4 py-2 rounded-full bg-[#40d0f2]/10 border border-[#40d0f2]/30 text-[#40d0f2] text-sm font-medium text-center w-full"
                 style={{
-                  filter: hoveredPill === 'renewable' ? 'brightness(1.3)' : 'brightness(1.0)'
+                  filter: hoveredPill === 'renewable' ? 'brightness(1.3)' : 'brightness(1.0)',
+                  transition: 'filter 0.3s ease-in-out'
                 }}
               >
                 Renewable first
@@ -372,15 +381,18 @@ export default function Home() {
               onMouseLeave={() => setHoveredPill(null)}
               style={{
                 opacity: iconIntroStarted ? 1 : 0,
-                transition: 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
-                transitionDelay: iconIntroStarted ? '1400ms' : '0ms',
+                transition: hoveredPill !== null 
+                  ? 'transform 0.3s ease-in-out' 
+                  : 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
+                transitionDelay: (iconIntroStarted && !hasHovered && hoveredPill === null) ? '1400ms' : '0ms',
                 transform: hoveredPill === 'container' ? 'scale(1.05)' : 'scale(1)'
               }}
             >
               <span 
-                className="px-4 py-2 rounded-full bg-[#fbff52]/10 border border-[#fbff52]/30 text-[#fbff52] text-sm font-medium text-center w-full transition-all duration-300"
+                className="px-4 py-2 rounded-full bg-[#fbff52]/10 border border-[#fbff52]/30 text-[#fbff52] text-sm font-medium text-center w-full"
                 style={{
-                  filter: hoveredPill === 'container' ? 'brightness(1.3)' : 'brightness(1.0)'
+                  filter: hoveredPill === 'container' ? 'brightness(1.3)' : 'brightness(1.0)',
+                  transition: 'filter 0.3s ease-in-out'
                 }}
               >
                 Container native
