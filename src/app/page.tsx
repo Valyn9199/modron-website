@@ -58,6 +58,15 @@ export default function Home() {
   const [activeUseCaseTab, setActiveUseCaseTab] = React.useState<'gpu-solutions' | 'ai-development' | 'industry-applications' | 'enterprise-features'>('gpu-solutions')
   const [showCompetitiveComparison, setShowCompetitiveComparison] = React.useState(false)
   const [activeVisionTab, setActiveVisionTab] = React.useState<'none' | 'why-modron' | 'philosophy'>('none')
+  const [hoveredPill, setHoveredPill] = React.useState<string | null>(null)
+  
+  // Icon rectangle constants - exact pixel control
+  const RECT_WIDTH = 146
+  const RECT_HEIGHT = 49
+  const HORIZONTAL_GAP = 5  // Gap between left and right sides
+  const VERTICAL_GAP = 5    // Gap between top and bottom
+  const CENTRAL_GAP = 20    // Central square gap size
+  
   const [showContactForm, setShowContactForm] = React.useState(false)
   const [currentHeroSlide, setCurrentHeroSlide] = React.useState(0)
   const [heroCTAFadedIn, setHeroCTAFadedIn] = React.useState(false)
@@ -270,27 +279,115 @@ export default function Home() {
         </p>
         <div className="max-w-4xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto mb-12">
-            <div className="flex flex-col items-center justify-center">
-              <span className="px-4 py-2 rounded-full bg-[#32ca73]/10 border border-[#32ca73]/30 text-[#32ca73] text-sm font-medium text-center w-full">Australian sovereignty</span>
+            <div 
+              className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-105"
+              onMouseEnter={() => setHoveredPill('sovereignty')}
+              onMouseLeave={() => setHoveredPill(null)}
+            >
+              <span className="px-4 py-2 rounded-full bg-[#32ca73]/10 border border-[#32ca73]/30 text-[#32ca73] text-sm font-medium text-center w-full transition-all duration-300">
+                Australian sovereignty
+              </span>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <span className="px-4 py-2 rounded-full bg-[#d5aaf9]/10 border border-[#d5aaf9]/30 text-[#d5aaf9] text-sm font-medium text-center w-full">Modular infrastructure</span>
+            <div 
+              className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-105"
+              onMouseEnter={() => setHoveredPill('infrastructure')}
+              onMouseLeave={() => setHoveredPill(null)}
+            >
+              <span className="px-4 py-2 rounded-full bg-[#d5aaf9]/10 border border-[#d5aaf9]/30 text-[#d5aaf9] text-sm font-medium text-center w-full transition-all duration-300">
+                Modular infrastructure
+              </span>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <span className="px-4 py-2 rounded-full bg-[#40d0f2]/10 border border-[#40d0f2]/30 text-[#40d0f2] text-sm font-medium text-center w-full">Renewable first</span>
+            <div 
+              className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-105"
+              onMouseEnter={() => setHoveredPill('renewable')}
+              onMouseLeave={() => setHoveredPill(null)}
+            >
+              <span className="px-4 py-2 rounded-full bg-[#40d0f2]/10 border border-[#40d0f2]/30 text-[#40d0f2] text-sm font-medium text-center w-full transition-all duration-300">
+                Renewable first
+              </span>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <span className="px-4 py-2 rounded-full bg-[#fbff52]/10 border border-[#fbff52]/30 text-[#fbff52] text-sm font-medium text-center w-full">Container native</span>
+            <div 
+              className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-105"
+              onMouseEnter={() => setHoveredPill('container')}
+              onMouseLeave={() => setHoveredPill(null)}
+            >
+              <span className="px-4 py-2 rounded-full bg-[#fbff52]/10 border border-[#fbff52]/30 text-[#fbff52] text-sm font-medium text-center w-full transition-all duration-300">
+                Container native
+              </span>
             </div>
           </div>
         </div>
         <div className="flex justify-center mt-8">
-          <img 
-            src="/MODRON_ICON.png" 
-            alt="MODRON" 
-            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
-            loading="eager"
-          />
+          <svg 
+            viewBox="40 0 162 162"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+            style={{ 
+              width: '100%',
+              maxWidth: `${(RECT_WIDTH * 2 + CENTRAL_GAP + HORIZONTAL_GAP * 2) * 0.5}px`,
+              height: 'auto',
+              display: 'block',
+              margin: '0 auto'
+            }}
+          >
+            <g>
+              {/* Purple (Modular infrastructure) - Single rectangle, vertical orientation */}
+              <rect
+                x="40"
+                y="0"
+                width={RECT_HEIGHT}
+                height={RECT_WIDTH - 40}
+                fill="#d5aaf9"
+                className="transition-all duration-300"
+                style={{
+                  filter: hoveredPill === 'infrastructure' ? 'brightness(1.3) drop-shadow(0 0 8px #d5aaf9)' : 'none',
+                  opacity: hoveredPill === 'infrastructure' ? 1 : hoveredPill === null ? 1 : 0.5,
+                }}
+              />
+              
+              {/* Cyan (Renewable first) - Single rectangle */}
+              <rect
+                x={RECT_WIDTH + CENTRAL_GAP + HORIZONTAL_GAP - 75}
+                y="0"
+                width={RECT_WIDTH - 40}
+                height={RECT_HEIGHT}
+                fill="#40d0f2"
+                className="transition-all duration-300"
+                style={{
+                  filter: hoveredPill === 'renewable' ? 'brightness(1.3) drop-shadow(0 0 8px #40d0f2)' : 'none',
+                  opacity: hoveredPill === 'renewable' ? 1 : hoveredPill === null ? 1 : 0.5,
+                }}
+              />
+              
+              {/* Green (Australian sovereignty) - Single rectangle */}
+              <rect
+                x="40"
+                y={RECT_WIDTH + CENTRAL_GAP + VERTICAL_GAP - 58}
+                width={RECT_WIDTH - 40}
+                height={RECT_HEIGHT}
+                fill="#32ca73"
+                className="transition-all duration-300"
+                style={{
+                  filter: hoveredPill === 'sovereignty' ? 'brightness(1.3) drop-shadow(0 0 8px #32ca73)' : 'none',
+                  opacity: hoveredPill === 'sovereignty' ? 1 : hoveredPill === null ? 1 : 0.5,
+                }}
+              />
+              
+              {/* Yellow (Container native) - Single rectangle, vertical orientation */}
+              <rect
+                x={RECT_WIDTH + CENTRAL_GAP + HORIZONTAL_GAP - 18}
+                y={RECT_WIDTH + CENTRAL_GAP + VERTICAL_GAP - 115}
+                width={RECT_HEIGHT}
+                height={RECT_WIDTH - 40}
+                fill="#fbff52"
+                className="transition-all duration-300"
+                style={{
+                  filter: hoveredPill === 'container' ? 'brightness(1.3) drop-shadow(0 0 8px #fbff52)' : 'none',
+                  opacity: hoveredPill === 'container' ? 1 : hoveredPill === null ? 1 : 0.5,
+                }}
+              />
+            </g>
+          </svg>
         </div>
       </div>
       
