@@ -59,6 +59,9 @@ export default function Home() {
   const [showCompetitiveComparison, setShowCompetitiveComparison] = React.useState(false)
   const [activeVisionTab, setActiveVisionTab] = React.useState<'none' | 'why-modron' | 'philosophy'>('none')
   const [hoveredPill, setHoveredPill] = React.useState<string | null>(null)
+  const [iconIntroStarted, setIconIntroStarted] = React.useState(false)
+  const [hasHovered, setHasHovered] = React.useState(false)
+  const iconSectionRef = React.useRef<HTMLDivElement>(null)
   
   // Icon rectangle constants - exact pixel control
   const RECT_WIDTH = 146
@@ -182,6 +185,30 @@ export default function Home() {
     }
   }, [])
   
+  // Intersection Observer for icon intro sequence
+  React.useEffect(() => {
+    if (!iconSectionRef.current) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !iconIntroStarted) {
+            setIconIntroStarted(true)
+          }
+        })
+      },
+      { threshold: 0.2 }
+    )
+
+    observer.observe(iconSectionRef.current)
+
+    return () => {
+      if (iconSectionRef.current) {
+        observer.unobserve(iconSectionRef.current)
+      }
+    }
+  }, [iconIntroStarted])
+  
   return (
     <MobileViewport>
 
@@ -280,44 +307,88 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto mb-12">
             <div 
-              className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-105"
-              onMouseEnter={() => setHoveredPill('sovereignty')}
+              className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
+              onMouseEnter={() => { setHoveredPill('sovereignty'); setHasHovered(true); }}
               onMouseLeave={() => setHoveredPill(null)}
+              style={{
+                opacity: iconIntroStarted ? 1 : 0,
+                transition: 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
+                transitionDelay: iconIntroStarted ? '200ms' : '0ms',
+                transform: hoveredPill === 'sovereignty' ? 'scale(1.05)' : 'scale(1)'
+              }}
             >
-              <span className="px-4 py-2 rounded-full bg-[#32ca73]/10 border border-[#32ca73]/30 text-[#32ca73] text-sm font-medium text-center w-full transition-all duration-300">
+              <span 
+                className="px-4 py-2 rounded-full bg-[#32ca73]/10 border border-[#32ca73]/30 text-[#32ca73] text-sm font-medium text-center w-full transition-all duration-300"
+                style={{
+                  filter: hoveredPill === 'sovereignty' ? 'brightness(1.3)' : 'brightness(1.0)'
+                }}
+              >
                 Australian sovereignty
               </span>
             </div>
             <div 
-              className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-105"
-              onMouseEnter={() => setHoveredPill('infrastructure')}
+              className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
+              onMouseEnter={() => { setHoveredPill('infrastructure'); setHasHovered(true); }}
               onMouseLeave={() => setHoveredPill(null)}
+              style={{
+                opacity: iconIntroStarted ? 1 : 0,
+                transition: 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
+                transitionDelay: iconIntroStarted ? '600ms' : '0ms',
+                transform: hoveredPill === 'infrastructure' ? 'scale(1.05)' : 'scale(1)'
+              }}
             >
-              <span className="px-4 py-2 rounded-full bg-[#d5aaf9]/10 border border-[#d5aaf9]/30 text-[#d5aaf9] text-sm font-medium text-center w-full transition-all duration-300">
+              <span 
+                className="px-4 py-2 rounded-full bg-[#d5aaf9]/10 border border-[#d5aaf9]/30 text-[#d5aaf9] text-sm font-medium text-center w-full transition-all duration-300"
+                style={{
+                  filter: hoveredPill === 'infrastructure' ? 'brightness(1.3)' : 'brightness(1.0)'
+                }}
+              >
                 Modular infrastructure
               </span>
             </div>
             <div 
-              className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-105"
-              onMouseEnter={() => setHoveredPill('renewable')}
+              className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
+              onMouseEnter={() => { setHoveredPill('renewable'); setHasHovered(true); }}
               onMouseLeave={() => setHoveredPill(null)}
+              style={{
+                opacity: iconIntroStarted ? 1 : 0,
+                transition: 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
+                transitionDelay: iconIntroStarted ? '1000ms' : '0ms',
+                transform: hoveredPill === 'renewable' ? 'scale(1.05)' : 'scale(1)'
+              }}
             >
-              <span className="px-4 py-2 rounded-full bg-[#40d0f2]/10 border border-[#40d0f2]/30 text-[#40d0f2] text-sm font-medium text-center w-full transition-all duration-300">
+              <span 
+                className="px-4 py-2 rounded-full bg-[#40d0f2]/10 border border-[#40d0f2]/30 text-[#40d0f2] text-sm font-medium text-center w-full transition-all duration-300"
+                style={{
+                  filter: hoveredPill === 'renewable' ? 'brightness(1.3)' : 'brightness(1.0)'
+                }}
+              >
                 Renewable first
               </span>
             </div>
             <div 
-              className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-105"
-              onMouseEnter={() => setHoveredPill('container')}
+              className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
+              onMouseEnter={() => { setHoveredPill('container'); setHasHovered(true); }}
               onMouseLeave={() => setHoveredPill(null)}
+              style={{
+                opacity: iconIntroStarted ? 1 : 0,
+                transition: 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
+                transitionDelay: iconIntroStarted ? '1400ms' : '0ms',
+                transform: hoveredPill === 'container' ? 'scale(1.05)' : 'scale(1)'
+              }}
             >
-              <span className="px-4 py-2 rounded-full bg-[#fbff52]/10 border border-[#fbff52]/30 text-[#fbff52] text-sm font-medium text-center w-full transition-all duration-300">
+              <span 
+                className="px-4 py-2 rounded-full bg-[#fbff52]/10 border border-[#fbff52]/30 text-[#fbff52] text-sm font-medium text-center w-full transition-all duration-300"
+                style={{
+                  filter: hoveredPill === 'container' ? 'brightness(1.3)' : 'brightness(1.0)'
+                }}
+              >
                 Container native
               </span>
             </div>
           </div>
         </div>
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-8" ref={iconSectionRef}>
           <svg 
             viewBox="40 0 162 162"
             xmlns="http://www.w3.org/2000/svg"
@@ -340,9 +411,24 @@ export default function Home() {
                 fill="#d5aaf9"
                 className="transition-all duration-300"
                 style={{
-                  filter: hoveredPill === 'infrastructure' ? 'brightness(1.3) drop-shadow(0 0 8px #d5aaf9)' : 'none',
-                  opacity: hoveredPill === 'infrastructure' ? 1 : hoveredPill === null ? 1 : 0.5,
+                  cursor: 'pointer',
+                  filter: hoveredPill === 'infrastructure' 
+                    ? 'brightness(1.4) drop-shadow(0 0 8px #d5aaf9)' 
+                    : hoveredPill === null 
+                      ? 'brightness(1.0)' 
+                      : 'brightness(0.7)',
+                  opacity: hoveredPill === 'infrastructure' 
+                    ? 1 
+                    : hoveredPill === null 
+                      ? (iconIntroStarted ? 1 : 0) 
+                      : 0.5,
+                  transition: hoveredPill !== null 
+                    ? 'opacity 0.3s ease-in-out, filter 0.3s ease-in-out' 
+                    : 'opacity 0.6s ease-in, filter 0.6s ease-in',
+                  transitionDelay: (hoveredPill === null && iconIntroStarted && !hasHovered) ? '400ms' : '0ms'
                 }}
+                onMouseEnter={() => { setHoveredPill('infrastructure'); setHasHovered(true); }}
+                onMouseLeave={() => setHoveredPill(null)}
               />
               
               {/* Cyan (Renewable first) - Single rectangle */}
@@ -354,9 +440,24 @@ export default function Home() {
                 fill="#40d0f2"
                 className="transition-all duration-300"
                 style={{
-                  filter: hoveredPill === 'renewable' ? 'brightness(1.3) drop-shadow(0 0 8px #40d0f2)' : 'none',
-                  opacity: hoveredPill === 'renewable' ? 1 : hoveredPill === null ? 1 : 0.5,
+                  cursor: 'pointer',
+                  filter: hoveredPill === 'renewable' 
+                    ? 'brightness(1.4) drop-shadow(0 0 8px #40d0f2)' 
+                    : hoveredPill === null 
+                      ? 'brightness(1.0)' 
+                      : 'brightness(0.7)',
+                  opacity: hoveredPill === 'renewable' 
+                    ? 1 
+                    : hoveredPill === null 
+                      ? (iconIntroStarted ? 1 : 0) 
+                      : 0.5,
+                  transition: hoveredPill !== null 
+                    ? 'opacity 0.3s ease-in-out, filter 0.3s ease-in-out' 
+                    : 'opacity 0.6s ease-in, filter 0.6s ease-in',
+                  transitionDelay: (hoveredPill === null && iconIntroStarted && !hasHovered) ? '800ms' : '0ms'
                 }}
+                onMouseEnter={() => { setHoveredPill('renewable'); setHasHovered(true); }}
+                onMouseLeave={() => setHoveredPill(null)}
               />
               
               {/* Green (Australian sovereignty) - Single rectangle */}
@@ -368,9 +469,24 @@ export default function Home() {
                 fill="#32ca73"
                 className="transition-all duration-300"
                 style={{
-                  filter: hoveredPill === 'sovereignty' ? 'brightness(1.3) drop-shadow(0 0 8px #32ca73)' : 'none',
-                  opacity: hoveredPill === 'sovereignty' ? 1 : hoveredPill === null ? 1 : 0.5,
+                  cursor: 'pointer',
+                  filter: hoveredPill === 'sovereignty' 
+                    ? 'brightness(1.4) drop-shadow(0 0 8px #32ca73)' 
+                    : hoveredPill === null 
+                      ? 'brightness(1.0)' 
+                      : 'brightness(0.7)',
+                  opacity: hoveredPill === 'sovereignty' 
+                    ? 1 
+                    : hoveredPill === null 
+                      ? (iconIntroStarted ? 1 : 0) 
+                      : 0.5,
+                  transition: hoveredPill !== null 
+                    ? 'opacity 0.3s ease-in-out, filter 0.3s ease-in-out' 
+                    : 'opacity 0.6s ease-in, filter 0.6s ease-in',
+                  transitionDelay: (hoveredPill === null && iconIntroStarted && !hasHovered) ? '0ms' : '0ms'
                 }}
+                onMouseEnter={() => { setHoveredPill('sovereignty'); setHasHovered(true); }}
+                onMouseLeave={() => setHoveredPill(null)}
               />
               
               {/* Yellow (Container native) - Single rectangle, vertical orientation */}
@@ -382,9 +498,24 @@ export default function Home() {
                 fill="#fbff52"
                 className="transition-all duration-300"
                 style={{
-                  filter: hoveredPill === 'container' ? 'brightness(1.3) drop-shadow(0 0 8px #fbff52)' : 'none',
-                  opacity: hoveredPill === 'container' ? 1 : hoveredPill === null ? 1 : 0.5,
+                  cursor: 'pointer',
+                  filter: hoveredPill === 'container' 
+                    ? 'brightness(1.4) drop-shadow(0 0 8px #fbff52)' 
+                    : hoveredPill === null 
+                      ? 'brightness(1.0)' 
+                      : 'brightness(0.7)',
+                  opacity: hoveredPill === 'container' 
+                    ? 1 
+                    : hoveredPill === null 
+                      ? (iconIntroStarted ? 1 : 0) 
+                      : 0.5,
+                  transition: hoveredPill !== null 
+                    ? 'opacity 0.3s ease-in-out, filter 0.3s ease-in-out' 
+                    : 'opacity 0.6s ease-in, filter 0.6s ease-in',
+                  transitionDelay: (hoveredPill === null && iconIntroStarted && !hasHovered) ? '1200ms' : '0ms'
                 }}
+                onMouseEnter={() => { setHoveredPill('container'); setHasHovered(true); }}
+                onMouseLeave={() => setHoveredPill(null)}
               />
             </g>
           </svg>
