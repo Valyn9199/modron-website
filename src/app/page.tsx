@@ -61,6 +61,7 @@ export default function Home() {
   const [hoveredPill, setHoveredPill] = React.useState<string | null>(null)
   const [iconIntroStarted, setIconIntroStarted] = React.useState(false)
   const [hasHovered, setHasHovered] = React.useState(false)
+  const [brighteningRect, setBrighteningRect] = React.useState<string | null>(null)
   const iconSectionRef = React.useRef<HTMLDivElement>(null)
   
   // Icon rectangle constants - exact pixel control
@@ -209,6 +210,32 @@ export default function Home() {
     }
   }, [iconIntroStarted])
   
+  // Brightening sequence after intro completes
+  React.useEffect(() => {
+    if (!iconIntroStarted || hasHovered) return
+
+    // Wait for intro to complete (1200ms for last pill/rectangle) + brief pause (300ms)
+    const brighteningStartDelay = 1500
+    
+    const timeout = setTimeout(() => {
+      // Sequence: green → purple → cyan → yellow
+      const sequence = ['sovereignty', 'infrastructure', 'renewable', 'container']
+      const duration = 200 // How long each rectangle stays bright
+      const gap = 150 // Gap between each brightening
+      
+      sequence.forEach((rect, index) => {
+        setTimeout(() => {
+          setBrighteningRect(rect)
+          setTimeout(() => {
+            setBrighteningRect(null)
+          }, duration)
+        }, index * (duration + gap))
+      })
+    }, brighteningStartDelay)
+
+    return () => clearTimeout(timeout)
+  }, [iconIntroStarted, hasHovered])
+  
   return (
     <MobileViewport>
 
@@ -310,12 +337,21 @@ export default function Home() {
               className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
               onMouseEnter={() => { setHoveredPill('sovereignty'); setHasHovered(true); }}
               onMouseLeave={() => setHoveredPill(null)}
+              onTouchStart={(e) => {
+                e.preventDefault();
+                setHoveredPill('sovereignty');
+                setHasHovered(true);
+              }}
+              onTouchEnd={(e) => {
+                e.preventDefault();
+                setHoveredPill(null);
+              }}
               style={{
                 opacity: iconIntroStarted ? 1 : 0,
                 transition: hoveredPill !== null 
                   ? 'transform 0.3s ease-in-out' 
                   : 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
-                transitionDelay: (iconIntroStarted && !hasHovered && hoveredPill === null) ? '200ms' : '0ms',
+                transitionDelay: (iconIntroStarted && !hasHovered && hoveredPill === null) ? '0ms' : '0ms',
                 transform: hoveredPill === 'sovereignty' ? 'scale(1.05)' : 'scale(1)'
               }}
             >
@@ -333,12 +369,21 @@ export default function Home() {
               className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
               onMouseEnter={() => { setHoveredPill('infrastructure'); setHasHovered(true); }}
               onMouseLeave={() => setHoveredPill(null)}
+              onTouchStart={(e) => {
+                e.preventDefault();
+                setHoveredPill('infrastructure');
+                setHasHovered(true);
+              }}
+              onTouchEnd={(e) => {
+                e.preventDefault();
+                setHoveredPill(null);
+              }}
               style={{
                 opacity: iconIntroStarted ? 1 : 0,
                 transition: hoveredPill !== null 
                   ? 'transform 0.3s ease-in-out' 
                   : 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
-                transitionDelay: (iconIntroStarted && !hasHovered && hoveredPill === null) ? '600ms' : '0ms',
+                transitionDelay: (iconIntroStarted && !hasHovered && hoveredPill === null) ? '400ms' : '0ms',
                 transform: hoveredPill === 'infrastructure' ? 'scale(1.05)' : 'scale(1)'
               }}
             >
@@ -356,12 +401,21 @@ export default function Home() {
               className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
               onMouseEnter={() => { setHoveredPill('renewable'); setHasHovered(true); }}
               onMouseLeave={() => setHoveredPill(null)}
+              onTouchStart={(e) => {
+                e.preventDefault();
+                setHoveredPill('renewable');
+                setHasHovered(true);
+              }}
+              onTouchEnd={(e) => {
+                e.preventDefault();
+                setHoveredPill(null);
+              }}
               style={{
                 opacity: iconIntroStarted ? 1 : 0,
                 transition: hoveredPill !== null 
                   ? 'transform 0.3s ease-in-out' 
                   : 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
-                transitionDelay: (iconIntroStarted && !hasHovered && hoveredPill === null) ? '1000ms' : '0ms',
+                transitionDelay: (iconIntroStarted && !hasHovered && hoveredPill === null) ? '800ms' : '0ms',
                 transform: hoveredPill === 'renewable' ? 'scale(1.05)' : 'scale(1)'
               }}
             >
@@ -379,12 +433,21 @@ export default function Home() {
               className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
               onMouseEnter={() => { setHoveredPill('container'); setHasHovered(true); }}
               onMouseLeave={() => setHoveredPill(null)}
+              onTouchStart={(e) => {
+                e.preventDefault();
+                setHoveredPill('container');
+                setHasHovered(true);
+              }}
+              onTouchEnd={(e) => {
+                e.preventDefault();
+                setHoveredPill(null);
+              }}
               style={{
                 opacity: iconIntroStarted ? 1 : 0,
                 transition: hoveredPill !== null 
                   ? 'transform 0.3s ease-in-out' 
                   : 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
-                transitionDelay: (iconIntroStarted && !hasHovered && hoveredPill === null) ? '1400ms' : '0ms',
+                transitionDelay: (iconIntroStarted && !hasHovered && hoveredPill === null) ? '1200ms' : '0ms',
                 transform: hoveredPill === 'container' ? 'scale(1.05)' : 'scale(1)'
               }}
             >
@@ -426,21 +489,32 @@ export default function Home() {
                   cursor: 'pointer',
                   filter: hoveredPill === 'infrastructure' 
                     ? 'brightness(1.4) drop-shadow(0 0 8px #d5aaf9)' 
-                    : hoveredPill === null 
-                      ? 'brightness(1.0)' 
-                      : 'brightness(0.7)',
+                    : brighteningRect === 'infrastructure'
+                      ? 'brightness(1.5) drop-shadow(0 0 12px #d5aaf9)'
+                      : hoveredPill === null 
+                        ? 'brightness(1.0)' 
+                        : 'brightness(0.7)',
                   opacity: hoveredPill === 'infrastructure' 
                     ? 1 
                     : hoveredPill === null 
                       ? (iconIntroStarted ? 1 : 0) 
                       : 0.5,
-                  transition: hoveredPill !== null 
+                  transition: hoveredPill !== null || brighteningRect !== null
                     ? 'opacity 0.3s ease-in-out, filter 0.3s ease-in-out' 
                     : 'opacity 0.6s ease-in, filter 0.6s ease-in',
                   transitionDelay: (hoveredPill === null && iconIntroStarted && !hasHovered) ? '400ms' : '0ms'
                 }}
                 onMouseEnter={() => { setHoveredPill('infrastructure'); setHasHovered(true); }}
                 onMouseLeave={() => setHoveredPill(null)}
+                onTouchStart={(e) => {
+                  e.preventDefault();
+                  setHoveredPill('infrastructure');
+                  setHasHovered(true);
+                }}
+                onTouchEnd={(e) => {
+                  e.preventDefault();
+                  setHoveredPill(null);
+                }}
               />
               
               {/* Cyan (Renewable first) - Single rectangle */}
@@ -455,21 +529,32 @@ export default function Home() {
                   cursor: 'pointer',
                   filter: hoveredPill === 'renewable' 
                     ? 'brightness(1.4) drop-shadow(0 0 8px #40d0f2)' 
-                    : hoveredPill === null 
-                      ? 'brightness(1.0)' 
-                      : 'brightness(0.7)',
+                    : brighteningRect === 'renewable'
+                      ? 'brightness(1.5) drop-shadow(0 0 12px #40d0f2)'
+                      : hoveredPill === null 
+                        ? 'brightness(1.0)' 
+                        : 'brightness(0.7)',
                   opacity: hoveredPill === 'renewable' 
                     ? 1 
                     : hoveredPill === null 
                       ? (iconIntroStarted ? 1 : 0) 
                       : 0.5,
-                  transition: hoveredPill !== null 
+                  transition: hoveredPill !== null || brighteningRect !== null
                     ? 'opacity 0.3s ease-in-out, filter 0.3s ease-in-out' 
                     : 'opacity 0.6s ease-in, filter 0.6s ease-in',
                   transitionDelay: (hoveredPill === null && iconIntroStarted && !hasHovered) ? '800ms' : '0ms'
                 }}
                 onMouseEnter={() => { setHoveredPill('renewable'); setHasHovered(true); }}
                 onMouseLeave={() => setHoveredPill(null)}
+                onTouchStart={(e) => {
+                  e.preventDefault();
+                  setHoveredPill('renewable');
+                  setHasHovered(true);
+                }}
+                onTouchEnd={(e) => {
+                  e.preventDefault();
+                  setHoveredPill(null);
+                }}
               />
               
               {/* Green (Australian sovereignty) - Single rectangle */}
@@ -484,21 +569,32 @@ export default function Home() {
                   cursor: 'pointer',
                   filter: hoveredPill === 'sovereignty' 
                     ? 'brightness(1.4) drop-shadow(0 0 8px #32ca73)' 
-                    : hoveredPill === null 
-                      ? 'brightness(1.0)' 
-                      : 'brightness(0.7)',
+                    : brighteningRect === 'sovereignty'
+                      ? 'brightness(1.5) drop-shadow(0 0 12px #32ca73)'
+                      : hoveredPill === null 
+                        ? 'brightness(1.0)' 
+                        : 'brightness(0.7)',
                   opacity: hoveredPill === 'sovereignty' 
                     ? 1 
                     : hoveredPill === null 
                       ? (iconIntroStarted ? 1 : 0) 
                       : 0.5,
-                  transition: hoveredPill !== null 
+                  transition: hoveredPill !== null || brighteningRect !== null
                     ? 'opacity 0.3s ease-in-out, filter 0.3s ease-in-out' 
                     : 'opacity 0.6s ease-in, filter 0.6s ease-in',
                   transitionDelay: (hoveredPill === null && iconIntroStarted && !hasHovered) ? '0ms' : '0ms'
                 }}
                 onMouseEnter={() => { setHoveredPill('sovereignty'); setHasHovered(true); }}
                 onMouseLeave={() => setHoveredPill(null)}
+                onTouchStart={(e) => {
+                  e.preventDefault();
+                  setHoveredPill('sovereignty');
+                  setHasHovered(true);
+                }}
+                onTouchEnd={(e) => {
+                  e.preventDefault();
+                  setHoveredPill(null);
+                }}
               />
               
               {/* Yellow (Container native) - Single rectangle, vertical orientation */}
@@ -513,21 +609,32 @@ export default function Home() {
                   cursor: 'pointer',
                   filter: hoveredPill === 'container' 
                     ? 'brightness(1.4) drop-shadow(0 0 8px #fbff52)' 
-                    : hoveredPill === null 
-                      ? 'brightness(1.0)' 
-                      : 'brightness(0.7)',
+                    : brighteningRect === 'container'
+                      ? 'brightness(1.5) drop-shadow(0 0 12px #fbff52)'
+                      : hoveredPill === null 
+                        ? 'brightness(1.0)' 
+                        : 'brightness(0.7)',
                   opacity: hoveredPill === 'container' 
                     ? 1 
                     : hoveredPill === null 
                       ? (iconIntroStarted ? 1 : 0) 
                       : 0.5,
-                  transition: hoveredPill !== null 
+                  transition: hoveredPill !== null || brighteningRect !== null
                     ? 'opacity 0.3s ease-in-out, filter 0.3s ease-in-out' 
                     : 'opacity 0.6s ease-in, filter 0.6s ease-in',
                   transitionDelay: (hoveredPill === null && iconIntroStarted && !hasHovered) ? '1200ms' : '0ms'
                 }}
                 onMouseEnter={() => { setHoveredPill('container'); setHasHovered(true); }}
                 onMouseLeave={() => setHoveredPill(null)}
+                onTouchStart={(e) => {
+                  e.preventDefault();
+                  setHoveredPill('container');
+                  setHasHovered(true);
+                }}
+                onTouchEnd={(e) => {
+                  e.preventDefault();
+                  setHoveredPill(null);
+                }}
               />
             </g>
           </svg>
