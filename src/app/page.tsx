@@ -349,9 +349,9 @@ export default function Home() {
               }}
               style={{
                 opacity: iconIntroStarted ? 1 : 0,
-                transition: hoveredPill !== null 
-                  ? 'transform 0.3s ease-in-out' 
-                  : 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
+                transitionProperty: hoveredPill !== null ? 'transform' : 'opacity, transform',
+                transitionDuration: hoveredPill !== null ? '0.3s' : '0.6s, 0.3s',
+                transitionTimingFunction: hoveredPill !== null ? 'ease-in-out' : 'ease-in, ease-in-out',
                 transitionDelay: (iconIntroStarted && !hasHovered && hoveredPill === null) ? '0ms' : '0ms',
                 transform: hoveredPill === 'sovereignty' ? 'scale(1.05)' : 'scale(1)'
               }}
@@ -381,9 +381,9 @@ export default function Home() {
               }}
               style={{
                 opacity: iconIntroStarted ? 1 : 0,
-                transition: hoveredPill !== null 
-                  ? 'transform 0.3s ease-in-out' 
-                  : 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
+                transitionProperty: hoveredPill !== null ? 'transform' : 'opacity, transform',
+                transitionDuration: hoveredPill !== null ? '0.3s' : '0.6s, 0.3s',
+                transitionTimingFunction: hoveredPill !== null ? 'ease-in-out' : 'ease-in, ease-in-out',
                 transitionDelay: (iconIntroStarted && !hasHovered && hoveredPill === null) ? '400ms' : '0ms',
                 transform: hoveredPill === 'infrastructure' ? 'scale(1.05)' : 'scale(1)'
               }}
@@ -413,9 +413,9 @@ export default function Home() {
               }}
               style={{
                 opacity: iconIntroStarted ? 1 : 0,
-                transition: hoveredPill !== null 
-                  ? 'transform 0.3s ease-in-out' 
-                  : 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
+                transitionProperty: hoveredPill !== null ? 'transform' : 'opacity, transform',
+                transitionDuration: hoveredPill !== null ? '0.3s' : '0.6s, 0.3s',
+                transitionTimingFunction: hoveredPill !== null ? 'ease-in-out' : 'ease-in, ease-in-out',
                 transitionDelay: (iconIntroStarted && !hasHovered && hoveredPill === null) ? '800ms' : '0ms',
                 transform: hoveredPill === 'renewable' ? 'scale(1.05)' : 'scale(1)'
               }}
@@ -445,9 +445,9 @@ export default function Home() {
               }}
               style={{
                 opacity: iconIntroStarted ? 1 : 0,
-                transition: hoveredPill !== null 
-                  ? 'transform 0.3s ease-in-out' 
-                  : 'opacity 0.6s ease-in, transform 0.3s ease-in-out',
+                transitionProperty: hoveredPill !== null ? 'transform' : 'opacity, transform',
+                transitionDuration: hoveredPill !== null ? '0.3s' : '0.6s, 0.3s',
+                transitionTimingFunction: hoveredPill !== null ? 'ease-in-out' : 'ease-in, ease-in-out',
                 transitionDelay: (iconIntroStarted && !hasHovered && hoveredPill === null) ? '1200ms' : '0ms',
                 transform: hoveredPill === 'container' ? 'scale(1.05)' : 'scale(1)'
               }}
@@ -500,9 +500,9 @@ export default function Home() {
                     : hoveredPill === null 
                       ? (iconIntroStarted ? 1 : 0) 
                       : 0.5,
-                  transition: hoveredPill !== null || brighteningRect !== null
-                    ? 'opacity 0.3s ease-in-out, filter 0.3s ease-in-out' 
-                    : 'opacity 0.6s ease-in, filter 0.6s ease-in',
+                  transitionProperty: 'opacity, filter',
+                  transitionDuration: (hoveredPill !== null || brighteningRect !== null) ? '0.3s, 0.3s' : '0.6s, 0.6s',
+                  transitionTimingFunction: (hoveredPill !== null || brighteningRect !== null) ? 'ease-in-out, ease-in-out' : 'ease-in, ease-in',
                   transitionDelay: (hoveredPill === null && iconIntroStarted && !hasHovered) ? '400ms' : '0ms'
                 }}
                 onMouseEnter={() => { setHoveredPill('infrastructure'); setHasHovered(true); }}
@@ -540,9 +540,9 @@ export default function Home() {
                     : hoveredPill === null 
                       ? (iconIntroStarted ? 1 : 0) 
                       : 0.5,
-                  transition: hoveredPill !== null || brighteningRect !== null
-                    ? 'opacity 0.3s ease-in-out, filter 0.3s ease-in-out' 
-                    : 'opacity 0.6s ease-in, filter 0.6s ease-in',
+                  transitionProperty: 'opacity, filter',
+                  transitionDuration: (hoveredPill !== null || brighteningRect !== null) ? '0.3s, 0.3s' : '0.6s, 0.6s',
+                  transitionTimingFunction: (hoveredPill !== null || brighteningRect !== null) ? 'ease-in-out, ease-in-out' : 'ease-in, ease-in',
                   transitionDelay: (hoveredPill === null && iconIntroStarted && !hasHovered) ? '800ms' : '0ms'
                 }}
                 onMouseEnter={() => { setHoveredPill('renewable'); setHasHovered(true); }}
@@ -580,9 +580,9 @@ export default function Home() {
                     : hoveredPill === null 
                       ? (iconIntroStarted ? 1 : 0) 
                       : 0.5,
-                  transition: hoveredPill !== null || brighteningRect !== null
-                    ? 'opacity 0.3s ease-in-out, filter 0.3s ease-in-out' 
-                    : 'opacity 0.6s ease-in, filter 0.6s ease-in',
+                  transitionProperty: 'opacity, filter',
+                  transitionDuration: (hoveredPill !== null || brighteningRect !== null) ? '0.3s, 0.3s' : '0.6s, 0.6s',
+                  transitionTimingFunction: (hoveredPill !== null || brighteningRect !== null) ? 'ease-in-out, ease-in-out' : 'ease-in, ease-in',
                   transitionDelay: (hoveredPill === null && iconIntroStarted && !hasHovered) ? '0ms' : '0ms'
                 }}
                 onMouseEnter={() => { setHoveredPill('sovereignty'); setHasHovered(true); }}
@@ -620,9 +620,9 @@ export default function Home() {
                     : hoveredPill === null 
                       ? (iconIntroStarted ? 1 : 0) 
                       : 0.5,
-                  transition: hoveredPill !== null || brighteningRect !== null
-                    ? 'opacity 0.3s ease-in-out, filter 0.3s ease-in-out' 
-                    : 'opacity 0.6s ease-in, filter 0.6s ease-in',
+                  transitionProperty: 'opacity, filter',
+                  transitionDuration: (hoveredPill !== null || brighteningRect !== null) ? '0.3s, 0.3s' : '0.6s, 0.6s',
+                  transitionTimingFunction: (hoveredPill !== null || brighteningRect !== null) ? 'ease-in-out, ease-in-out' : 'ease-in, ease-in',
                   transitionDelay: (hoveredPill === null && iconIntroStarted && !hasHovered) ? '1200ms' : '0ms'
                 }}
                 onMouseEnter={() => { setHoveredPill('container'); setHasHovered(true); }}
