@@ -80,9 +80,6 @@ export function ImmersionTankVideo({
       {/* Transparent rounded rectangle overlay */}
       <div className="absolute inset-0 border-6 border-black rounded-xl bg-transparent z-20 pointer-events-none"></div>
       
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#40d0f2]/40 to-[#d5aaf9]/40" />
-      
       {/* Static GPU grid overlay */}
       <div className="relative z-10 p-3 sm:p-4 md:p-6 text-center h-full flex flex-col justify-center">
         <div className="text-white font-bold text-base sm:text-lg mb-3 sm:mb-4">Immersion Cooling Tank</div>
