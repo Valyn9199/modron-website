@@ -306,10 +306,13 @@ export default function Home() {
       currentSlide={currentHeroSlide}
     />
     
-    {/* CTA Buttons - Enhanced with micro-interactions - One line with equal spacing */}
-    <div className={`flex flex-row gap-4 sm:gap-6 justify-center mb-6 sm:mb-8 md:mb-10 relative z-30 transition-opacity duration-1000 ease-out ${
-      heroCTAFadedIn ? 'opacity-100' : 'opacity-0'
-    }`}>
+    {/* CTA Buttons - Hidden on mobile; visible from sm (640px) up */}
+    <div
+      data-hero-ctas
+      className={`hidden sm:flex hero-cta-buttons-mobile-hide flex-row gap-4 sm:gap-6 justify-center mb-6 sm:mb-8 md:mb-10 relative z-30 transition-opacity duration-1000 ease-out ${
+        heroCTAFadedIn ? 'opacity-100' : 'opacity-0'
+      }`}
+    >
       <div className="touch-feedback flex-1 sm:flex-initial sm:w-auto max-w-[280px] sm:max-w-none">
         <EnhancedBookingButton onOpenContactForm={() => setShowContactForm(true)} />
       </div>
@@ -798,50 +801,44 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Infrastructure Diagram - Mobile: Always Visible */}
+            {/* Infrastructure Diagram - Mobile: single outer container, no inner box */}
             <div className="lg:hidden">
               <div className="mb-6">
                 <div className="p-4 bg-[#1A1A1A]/30 border border-[#262626] rounded-xl">
-                    <div className="relative">
-                      <div className="bg-black border border-[#4A4A4A] rounded-2xl p-4 sm:p-6 md:p-8" style={{ willChange: 'transform' }}>
-                        {/* Solar + Grid Power */}
-                        <div className="flex items-center justify-center mb-6 sm:mb-8">
-                            <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-[#32ca73]">
-                            <Icons.Sun className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
-                          </div>
-                            <div className="rounded-xl p-3 sm:p-4 bg-[#32ca73]">
-                            <Icons.Power className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
-                          </div>
-                          <div className="ml-2 sm:ml-4 text-white font-semibold text-caption">Solar + Grid Hybrid Power</div>
-                        </div>
-                        
-                        {/* Connection Line */}
-                        <div className="flex justify-center mb-6 sm:mb-8">
-                            <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-[#32ca73] to-[#fbff52]" style={{ willChange: 'transform' }}></div>
-                        </div>
-                        
-                        {/* GPU Tank */}
-                        <div className="mb-6 sm:mb-8">
-                          <ImmersionTankVideo className="h-48 sm:h-64" />
-                        </div>
-                        
-                        {/* Connection Line */}
-                        <div className="flex justify-center mb-6 sm:mb-8">
-                            <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-[#fbff52] to-[#d5aaf9]" style={{ willChange: 'transform' }}></div>
-                        </div>
-                        
-                        {/* Network Layer */}
-                        <div className="flex items-center justify-center">
-                            <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-[#d5aaf9]">
-                            <Icons.Cloud className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
-                          </div>
-                            <div className="rounded-xl p-3 sm:p-4 bg-[#d5aaf9]">
-                            <Icons.Network className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
-                          </div>
-                          <div className="ml-2 sm:ml-4 text-white font-semibold text-caption">Vast.ai + Direct Connect</div>
-                        </div>
+                  <div className="relative">
+                    {/* Solar + Grid Power */}
+                    <div className="flex items-center justify-center mb-6 sm:mb-8">
+                      <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-[#32ca73]">
+                        <Icons.Sun className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
                       </div>
+                      <div className="rounded-xl p-3 sm:p-4 bg-[#32ca73]">
+                        <Icons.Power className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                      </div>
+                      <div className="ml-2 sm:ml-4 text-white font-semibold text-caption">Solar + Grid Hybrid Power</div>
                     </div>
+                    {/* Connection Line */}
+                    <div className="flex justify-center mb-6 sm:mb-8">
+                      <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-[#32ca73] to-[#fbff52]" style={{ willChange: 'transform' }}></div>
+                    </div>
+                    {/* GPU Tank */}
+                    <div className="mb-6 sm:mb-8">
+                      <ImmersionTankVideo className="h-48 sm:h-64" />
+                    </div>
+                    {/* Connection Line */}
+                    <div className="flex justify-center mb-6 sm:mb-8">
+                      <div className="w-1 h-8 sm:h-12 bg-gradient-to-b from-[#fbff52] to-[#d5aaf9]" style={{ willChange: 'transform' }}></div>
+                    </div>
+                    {/* Network Layer */}
+                    <div className="flex items-center justify-center">
+                      <div className="rounded-xl p-3 sm:p-4 mr-2 sm:mr-4 bg-[#d5aaf9]">
+                        <Icons.Cloud className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                      </div>
+                      <div className="rounded-xl p-3 sm:p-4 bg-[#d5aaf9]">
+                        <Icons.Network className="h-6 w-6 sm:h-8 sm:w-8 text-black" />
+                      </div>
+                      <div className="ml-2 sm:ml-4 text-white font-semibold text-caption">Vast.ai + Direct Connect</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1178,8 +1175,8 @@ export default function Home() {
               </div>
               </div>
               
-              {/* Tab Content */}
-            <div className="bg-black border border-[#4A4A4A] rounded-2xl p-6 hover:border-[#4A4A4A] transition-all duration-300 group relative overflow-hidden">
+              {/* Tab Content - outer container hidden on mobile */}
+            <div className="use-cases-tab-outer bg-black border border-[#4A4A4A] rounded-2xl p-6 hover:border-[#4A4A4A] transition-all duration-300 group relative overflow-hidden">
               
               {/* AI Development Process Tab Content */}
               {activeUseCaseTab === 'ai-development' && (

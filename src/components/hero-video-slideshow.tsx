@@ -368,7 +368,7 @@ export function HeroVideoSlideshow({
             <img 
               src={slides[0].poster} 
               alt="" 
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover hero-bg-video-mobile"
               aria-hidden="true"
             />
           )}
@@ -380,7 +380,7 @@ export function HeroVideoSlideshow({
         <img 
           src={slides[0].poster} 
           alt="" 
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover hero-bg-video-mobile"
           aria-hidden="true"
           style={{
             zIndex: 1,
@@ -411,7 +411,7 @@ export function HeroVideoSlideshow({
                   videoRefs.current[index] = el
                 }
               }}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+              className={`absolute inset-0 w-full h-full object-cover hero-bg-video-mobile transition-opacity duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                 isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
               }`}
               style={{
@@ -532,7 +532,7 @@ export function HeroSlideshowContent({
       }`} style={{ opacity: isMounted && textFadedIn && isVisible ? 1 : 0 }}>
         <h2 
           id="hero-heading" 
-          className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-bold tracking-tight mb-4 sm:mb-6 md:mb-8 leading-tight text-white"
+          className="text-4xl xl:text-5xl font-bold tracking-tight mb-4 sm:mb-6 md:mb-8 leading-tight text-white"
           style={{
             color: '#ffffff',
             opacity: 1,
@@ -549,9 +549,8 @@ export function HeroSlideshowContent({
         </h2>
       </div>
       
-      {/* Combined content block with subheading and description */}
-      {/* Blur container always visible, only text content fades */}
-      <div className="max-w-4xl mx-auto">
+      {/* Combined content block with subheading and description - hidden on mobile, only main heading shows */}
+      <div className="hero-blur-block-mobile-hide max-w-4xl mx-auto hidden sm:block">
         <div 
           className="px-6 py-4 mb-6 sm:mb-8 md:mb-10 rounded-lg hero-content-blur"
           style={{
@@ -562,7 +561,7 @@ export function HeroSlideshowContent({
             isMounted && textFadedIn && isVisible ? 'opacity-100' : 'opacity-0'
           }`} style={{ opacity: isMounted && textFadedIn && isVisible ? 1 : 0 }}>
             <p 
-              className="font-semibold mb-3 text-white whitespace-nowrap overflow-hidden"
+              className="hidden sm:block font-semibold mb-3 text-white whitespace-nowrap overflow-hidden"
               style={{ 
                 letterSpacing: '0.1em',
                 color: '#ffffff',
@@ -578,7 +577,7 @@ export function HeroSlideshowContent({
               {currentSlideData.subheading}
             </p>
             <p 
-              className="font-normal text-white whitespace-nowrap overflow-hidden"
+              className="hidden sm:block font-normal text-white"
               style={{ 
                 color: '#ffffff',
                 opacity: 1,
