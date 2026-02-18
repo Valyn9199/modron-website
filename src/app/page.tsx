@@ -121,6 +121,13 @@ export default function Home() {
       headline: "Compute for Sovereign Defence Operations",
       subheading: "FIELD-DEPLOYABLE. SECURE. MISSION-READY.",
       description: "High-performance AI compute supporting intelligence and field operations at the edge."
+    },
+    {
+      videoSrc: "/hero/MODRON_Applications_Energy.mp4",
+      poster: "/hero/posters/MODRON_Poster_Energy_Scene.jpg",
+      headline: "Compute at the Heart of Australia's Energy Grid",
+      subheading: "GRID-EDGE. HIGH PERFORMANCE. SOVEREIGN.",
+      description: "AI compute for real-time energy systems, grid resilience, and national operations."
     }
   ]
   
