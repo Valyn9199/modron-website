@@ -95,34 +95,35 @@ export default function Home() {
   // Hero slideshow data
   const heroSlides = [
     {
-      videoSrc: "/hero/MODRON_Hero_1.mp4",
-      poster: "/hero-poster-1.jpg",
-      headline: "Building Australia's AI infrastructure",
-      subheading: "MODULAR. IMMERSION-COOLED. SOLAR-POWERED.",
-      description: "Locally-built GPU clusters. Ready in 48 hours."
+      videoSrc: "/hero/MODRON_Applications_Commercial.mp4",
+      poster: "/hero/posters/MODRON_Poster_Commercial_Scene.jpg",
+      headline: "Australia’s AI Infrastructure, Deployed Locally",
+      subheading: "MODULAR. IMMERSION-COOLED. SOVEREIGN.",
+      description: "High-performance GPU infrastructure, built and deployed on Australian soil."
     },
     {
-      videoSrc: "/hero/MODRON_Hero_2.mp4",
-      poster: "/hero-poster-2.jpg",
-      headline: "Rapid Deployment, Anywhere",
-      subheading: "48-HOUR DELIVERY. CONTAINER-BASED. SCALABLE.",
-      description: "Enterprise AI infrastructure. Modular containers anywhere."
+      videoSrc: "/hero/MODRON_Applications_Disaster_Recovery.mp4",
+      poster: "/hero/posters/MODRON_Poster_Disaster_Recovery_Scene.jpg",
+      headline: "AI Infrastructure, Where It’s Needed Most",
+      subheading: "RAPID DEPLOYMENT. FIELD-READY. CONTAINERISED.",
+      description: "Mission-critical compute deployed to disaster zones in hours, not months."
     },
     {
-      videoSrc: "/hero/MODRON_Hero_3.mp4",
-      poster: "/hero-poster-3.jpg",
-      headline: "Sovereign AI for Australian Enterprise",
-      subheading: "ON-PREMISES. SECURE. SOVEREIGN.",
-      description: "Break free from overseas cloud. Local control and sovereignty."
+      videoSrc: "/hero/MODRON_Applications_Mining.mp4",
+      poster: "/hero/posters/MODRON_Poster_Mining_Scene.jpg",
+      headline: "Sovereign AI for Australia’s Critical Industries",
+      subheading: "ON-SITE. SECURE. AUSTRALIAN-CONTROLLED.",
+      description: "Keep sensitive data on-premises with dedicated high-performance compute."
     },
     {
-      videoSrc: "/hero/MODRON_Hero_4.mp4",
-      poster: "/hero-poster-4.jpg",
-      headline: "Renewable-Powered Computing",
-      subheading: "RENEWABLE ENERGY. HIGH PERFORMANCE. SUSTAINABLE.",
-      description: "Maximum performance with clean energy. Lower impact."
+      videoSrc: "/hero/MODRON_Applications_Defense.mp4",
+      poster: "/hero/posters/MODRON_Poster_Defence_Scene.jpg",
+      headline: "Compute for Sovereign Defence Operations",
+      subheading: "FIELD-DEPLOYABLE. SECURE. MISSION-READY.",
+      description: "High-performance AI compute supporting intelligence and field operations at the edge."
     }
   ]
+  
   
   // Fade overlay from fully black to target opacity
   React.useEffect(() => {
@@ -260,9 +261,9 @@ export default function Home() {
     style={{
       background: `linear-gradient(
         to bottom,
-        rgba(0,0,0,${overlayFadedIn ? 0.3 : 1}),
-        rgba(0,0,0,${overlayFadedIn ? 0.15 : 1}),
-        rgba(0,0,0,${overlayFadedIn ? 0.25 : 1})
+        rgba(0,0,0,${overlayFadedIn ? 0.18 : 1}),
+        rgba(0,0,0,${overlayFadedIn ? 0.08 : 1}),
+        rgba(0,0,0,${overlayFadedIn ? 0.15 : 1})
       )`,
       pointerEvents: 'none',
       transition: 'background 1000ms ease-out',
@@ -274,8 +275,8 @@ export default function Home() {
       background: `radial-gradient(
         ellipse at center,
         transparent 0%,
-        rgba(0,0,0,${overlayFadedIn ? 0.3 : 1}) 70%,
-        rgba(0,0,0,${overlayFadedIn ? 0.5 : 1}) 100%
+        rgba(0,0,0,${overlayFadedIn ? 0.18 : 1}) 70%,
+        rgba(0,0,0,${overlayFadedIn ? 0.35 : 1}) 100%
       )`,
       pointerEvents: 'none',
       transition: 'background 1000ms ease-out',
@@ -1040,14 +1041,14 @@ export default function Home() {
                     playsInline
                     preload="metadata"
                     className="w-full h-full object-cover object-center"
-                    poster="/MODRON_Gold_Delivery_poster.jpg"
+                    poster="/hero/posters/MODRON_Transport.jpg"
                     style={{
                       transform: 'translateZ(0)',
                       backfaceVisibility: 'hidden',
                       willChange: 'auto',
                     }}
                   >
-                    <source src="/MODRON_Gold_Delivery_02.mp4" type="video/mp4" />
+                    <source src="/hero/MODRON_Truck_Transport.mp4" type="video/mp4" />
                   </video>
                 </div>
                 {/* Transparent rounded rectangle overlay */}

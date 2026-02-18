@@ -419,17 +419,17 @@ export function HeroVideoSlideshow({
                 minHeight: '100%',
                 width: 'auto',
                 height: 'auto',
-                willChange: isActive ? 'opacity' : 'auto', // Only set when actively transitioning
-                transform: 'translateZ(0)', // Force GPU layer
-                backfaceVisibility: 'hidden', // Prevent flickering
-                WebkitTransform: 'translateZ(0)', // Safari support
-                contain: 'layout style paint', // CSS containment for performance
+                willChange: 'auto', // Avoid compositor layer downscaling for crisper playback
+                transform: 'translateZ(0)',
+                backfaceVisibility: isActive ? 'visible' : 'hidden', // Crisper on active, prevent flicker on inactive
+                WebkitTransform: 'translateZ(0)',
+                contain: 'layout style paint',
               }}
               autoPlay={false}
               playsInline
               muted
               loop
-              preload={getOptimalPreload(index, isActive, isNext)}
+              preload={isActive ? 'auto' : getOptimalPreload(index, isActive, isNext)}
               poster={slide.poster}
               crossOrigin="anonymous"
               aria-label={`Background video ${index + 1} of ${slides.length}`}
@@ -532,7 +532,7 @@ export function HeroSlideshowContent({
       }`} style={{ opacity: isMounted && textFadedIn && isVisible ? 1 : 0 }}>
         <h2 
           id="hero-heading" 
-          className="text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-4 sm:mb-6 md:mb-8 leading-tight text-white"
+          className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-bold tracking-tight mb-4 sm:mb-6 md:mb-8 leading-tight text-white"
           style={{
             color: '#ffffff',
             opacity: 1,
@@ -571,7 +571,7 @@ export function HeroSlideshowContent({
                 WebkitTextFillColor: '#ffffff',
                 mixBlendMode: 'normal',
                 isolation: 'isolate',
-                fontSize: 'clamp(0.625rem, 2.5vw, 1.5rem)',
+                fontSize: 'clamp(0.5rem, 1.75vw, 1.125rem)',
                 lineHeight: '1.2',
               }}
             >

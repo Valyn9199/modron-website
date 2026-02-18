@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MODRON Gmail Signature Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 40px 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+        .instructions {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+        .instructions h2 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #856404;
+        }
+        .instructions ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin: 8px 0;
+            color: #856404;
+        }
+        .signature-preview {
+            background: #ffffff;
+            border: 2px dashed #ddd;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        .signature-preview h2 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        /* This is the actual signature styling */
+        .signature-table {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            color: #333333;
+            line-height: 1.5;
+            border-collapse: collapse;
+        }
+        .signature-table td {
+            padding: 0;
+            vertical-align: middle;
+        }
+        .signature-icon {
+            padding-right: 20px;
+        }
+        .signature-icon img {
+            display: block;
+            border: 0;
+            width: 48px;
+            height: 48px;
+        }
+        .signature-content {
+            vertical-align: middle;
+        }
+        .signature-name {
+            color: #000000;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            line-height: 1.4;
+        }
+        .signature-title {
+            color: #666666;
+            font-size: 14px;
+            margin: 2px 0;
+            padding: 0;
+            line-height: 1.4;
+        }
+        .signature-contact {
+            color: #666666;
+            font-size: 13px;
+            margin: 0;
+            padding: 0;
+            line-height: 1.4;
+        }
+        .signature-contact a {
+            color: #32ca73;
+            text-decoration: none;
+        }
+        .signature-contact a:hover {
+            text-decoration: underline;
+        }
+        .copy-button {
+            background: #32ca73;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .copy-button:hover {
+            background: #2ab865;
+        }
+        .copied-message {
+            color: #32ca73;
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MODRON Gmail Signature Preview</h1>
+        
+        <div class="instructions">
+            <h2>📋 How to Copy to Gmail:</h2>
+            <ol>
+                <li><strong>Select the signature below</strong> - Click and drag to select all the text and image</li>
+                <li><strong>Copy it</strong> - Press Ctrl+C (or Cmd+C on Mac)</li>
+                <li><strong>Go to Gmail Settings</strong> - Click the gear icon ⚙️ → "See all settings"</li>
+                <li><strong>Paste into Signature</strong> - Scroll to "Signature" section, create new or edit existing, and paste (Ctrl+V or Cmd+V)</li>
+                <li><strong>Save</strong> - Click "Save Changes" at the bottom</li>
+            </ol>
+        </div>
+
+        <div class="signature-preview">
+            <h2>Your Signature (Select and Copy Everything Below):</h2>
+            <div id="signature-content">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #333333; line-height: 1.5; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                    <tr>
+                        <td width="48" style="padding-right: 16px; padding-top: 0; padding-bottom: 0; vertical-align: middle; width: 48px;" valign="middle">
+                            <img src="https://www.modron.com/MODRON_ICON.png" alt="MODRON" width="48" height="48" style="display: block; border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: 48px; height: 48px; max-width: 48px; margin: 0; padding: 0;" />
+                        </td>
+                        <td style="padding-left: 0; padding-top: 0; padding-bottom: 0; vertical-align: middle;" valign="middle">
+                            <div style="color: #000000; font-weight: bold; font-size: 16px; margin: 0; padding: 0; line-height: 1.4; mso-line-height-rule: exactly;">Nathan Polito</div>
+                            <div style="color: #666666; font-size: 14px; margin: 0; padding: 0; line-height: 1.4; mso-line-height-rule: exactly;">CEO & Founder | MODRON</div>
+                            <div style="color: #666666; font-size: 13px; margin: 0; padding: 0; line-height: 1.4; mso-line-height-rule: exactly;">
+                                <a href="mailto:nathan@modron.com" style="color: #32ca73; text-decoration: none;">nathan@modron.com</a><span style="color: #666666;"> | </span><a href="https://www.modron.com" style="color: #32ca73; text-decoration: none;">www.modron.com</a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <button class="copy-button" onclick="copySignature()">📋 Copy Signature to Clipboard</button>
+            <div class="copied-message" id="copied-message">✓ Copied! Now paste it into Gmail settings.</div>
+        </div>
+    </div>
+
+    <script>
+        function copySignature() {
+            const signatureDiv = document.getElementById('signature-content');
+            const range = document.createRange();
+            range.selectNode(signatureDiv);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            
+            try {
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                
+                // Show success message
+                const message = document.getElementById('copied-message');
+                message.style.display = 'block';
+                setTimeout(() => {
+                    message.style.display = 'none';
+                }, 3000);
+            } catch (err) {
+                alert('Please manually select and copy the signature above');
+            }
+        }
+    </script>
+</body>
+</html>
+

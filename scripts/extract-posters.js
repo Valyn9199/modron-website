@@ -3,10 +3,10 @@ const path = require('path');
 const fs = require('fs');
 
 const videos = [
-  { input: 'public/hero/MODRON_Hero_1.mp4', output: 'public/hero-poster-1.jpg' },
-  { input: 'public/hero/MODRON_Hero_2.mp4', output: 'public/hero-poster-2.jpg' },
-  { input: 'public/hero/MODRON_Hero_3.mp4', output: 'public/hero-poster-3.jpg' },
-  { input: 'public/hero/MODRON_Hero_4.mp4', output: 'public/hero-poster-4.jpg' },
+  { input: 'public/hero/MODRON_Applications_Commercial.mp4', output: 'public/hero-poster-1.jpg' },
+  { input: 'public/hero/MODRON_Applications_Disaster_Recovery.mp4', output: 'public/hero-poster-2.jpg' },
+  { input: 'public/hero/MODRON_Applications_Mining.mp4', output: 'public/hero-poster-3.jpg' },
+  { input: 'public/hero/MODRON_Applications_Defense.mp4', output: 'public/hero-poster-4.jpg' },
 ];
 
 async function extractPoster(video) {
