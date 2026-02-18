@@ -1533,18 +1533,33 @@ div[data-overlay] {
   animation: none !important;
 }
 
-/* Hero: hide CTAs and blur block below 768px; balance heading line breaks on mobile */
+/* Hero heading: balanced line wrap at all screen sizes */
+#hero-heading {
+  text-wrap: balance;
+}
+
+/* Use Cases: remove outer tab container on all screen sizes */
+.use-cases-tab-outer {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Hero: hide CTAs and blur block below 768px */
 @media (max-width: 767px) {
-  #hero-heading {
-    text-wrap: balance;
+  /* Vision Modron icon (4 rectangles): 25% smaller on mobile */
+  .vision-modron-icon {
+    transform: scale(0.75);
+    transform-origin: center center;
   }
-  /* Use Cases: remove outer tab container on mobile */
-  .use-cases-tab-outer {
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    padding: 0 !important;
-    box-shadow: none !important;
+  /* Vision pills: uniform height on mobile */
+  .vision-pill > span {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   [data-hero-ctas],
   section#home .hero-cta-buttons-mobile-hide,

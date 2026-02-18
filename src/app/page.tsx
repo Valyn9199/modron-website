@@ -338,7 +338,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto mb-12">
             <div 
-              className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
+              className="vision-pill flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
               onMouseEnter={() => { setHoveredPill('sovereignty'); setHasHovered(true); }}
               onMouseLeave={() => setHoveredPill(null)}
               onTouchStart={(e) => {
@@ -370,7 +370,7 @@ export default function Home() {
               </span>
             </div>
             <div 
-              className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
+              className="vision-pill flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
               onMouseEnter={() => { setHoveredPill('infrastructure'); setHasHovered(true); }}
               onMouseLeave={() => setHoveredPill(null)}
               onTouchStart={(e) => {
@@ -402,7 +402,7 @@ export default function Home() {
               </span>
             </div>
             <div 
-              className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
+              className="vision-pill flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
               onMouseEnter={() => { setHoveredPill('renewable'); setHasHovered(true); }}
               onMouseLeave={() => setHoveredPill(null)}
               onTouchStart={(e) => {
@@ -434,7 +434,7 @@ export default function Home() {
               </span>
             </div>
             <div 
-              className="flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
+              className="vision-pill flex flex-col items-center justify-center cursor-pointer transition-transform duration-300"
               onMouseEnter={() => { setHoveredPill('container'); setHasHovered(true); }}
               onMouseLeave={() => setHoveredPill(null)}
               onTouchStart={(e) => {
@@ -467,7 +467,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="flex justify-center mt-8" ref={iconSectionRef}>
+        <div className="vision-modron-icon flex justify-center mt-8" ref={iconSectionRef}>
           <svg 
             viewBox="40 0 162 162"
             xmlns="http://www.w3.org/2000/svg"
