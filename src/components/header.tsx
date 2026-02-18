@@ -159,8 +159,8 @@ export function Header() {
                   href={item.href}
                   className={`text-xs lg:text-sm font-medium transition-all duration-300 relative ${
                     isActive 
-                      ? "text-[#40d0f2]" 
-                      : "text-muted-foreground hover:text-[#40d0f2]"
+                      ? "text-white" 
+                      : "text-muted-foreground hover:text-white"
                   }`}
                   onClick={(e) => {
                     e.preventDefault()
@@ -190,7 +190,7 @@ export function Header() {
                 >
                   {item.name}
                   {isActive && (
-                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full"></div>
+                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white rounded-full"></div>
                   )}
                 </Link>
               )
@@ -236,8 +236,8 @@ export function Header() {
           href={item.href}
           className={`group relative px-4 py-4 rounded-xl transition-all duration-300 ${
             isActive 
-              ? "bg-[#d5aaf9]/10 border border-[#d5aaf9]/20 text-[#d5aaf9]" 
-              : "text-gray-300 hover:bg-[#d5aaf9]/5 hover:text-[#40d0f2] border border-transparent"
+              ? "bg-white/10 border border-white/20 text-white" 
+              : "text-gray-300 hover:bg-white/5 hover:text-white border border-transparent"
           }`}
           onClick={(e) => {
             e.preventDefault()
@@ -286,11 +286,11 @@ export function Header() {
           <div className="flex items-center justify-between">
             <span className="text-lg font-medium">{item.name}</span>
             {isActive && (
-              <div className="w-2 h-2 bg-[#40d0f2] rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
             )}
           </div>
           {isActive && (
-            <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-transparent rounded-xl"></div>
+            <div className="absolute inset-0 bg-white/5 rounded-xl"></div>
           )}
         </Link>
       )

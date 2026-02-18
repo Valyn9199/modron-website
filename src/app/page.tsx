@@ -1297,30 +1297,11 @@ export default function Home() {
               {/* Industry Applications Tab Content */}
               {activeUseCaseTab === 'industry-applications' && (
                 <div className="relative z-10">
-                  <h3 className="text-xl font-bold text-white mb-6 text-center">Industry Applications</h3>
+                  <h3 className="text-xl font-bold text-white mb-2 text-center">Industry Applications</h3>
+                  <p className="text-gray-400 text-sm text-center mb-6">From commercial deployment to disaster recovery, mining, defence, and energy—sovereign AI infrastructure across Australia&apos;s critical sectors.</p>
                 
-                {/* Industry Solutions */}
+                {/* Industry Solutions - order mirrors hero: Commercial, Disaster Recovery, Mining, Defence, Energy, then Research, Healthcare, FinTech */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
-                    <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
-                        <Icons.Shield className="h-5 w-5 text-gray-400 flex-shrink-0" />
-                </div>
-                      <h4 className="text-white font-semibold">Government</h4>
-                </div>
-                    <p className="text-gray-400 text-sm">Process classified datasets 10x faster with air-gapped security. Defense-grade AI with ISO27001-ready infrastructure supporting Australian data residency requirements.</p>
-                  </div>
-                  
-                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
-                    <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
-                        <Icons.Brain className="h-5 w-5 text-gray-400 flex-shrink-0" />
-                </div>
-                      <h4 className="text-white font-semibold">Research</h4>
-                </div>
-                    <p className="text-gray-400 text-sm">Enable breakthrough discoveries with 95% lower carbon footprint. High-performance computing for universities and CSIRO achieving net-zero AI operations.</p>
-                  </div>
-                  
                   <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
                     <div className="flex items-center mb-3">
                       <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
@@ -1329,6 +1310,56 @@ export default function Home() {
                       <h4 className="text-white font-semibold">Enterprise</h4>
                     </div>
                     <p className="text-gray-400 text-sm">Scale from 1 to 1000 GPUs in minutes with spot pricing at 40% below cloud. All data stays within Australian borders with 99.9% uptime SLA.</p>
+                  </div>
+                  
+                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.RefreshCw className="h-5 w-5 text-gray-400 flex-shrink-0" />
+                      </div>
+                      <h4 className="text-white font-semibold">Disaster Recovery</h4>
+                    </div>
+                    <p className="text-gray-400 text-sm">Mission-critical compute deployed to disaster zones in hours. Field-ready, containerised infrastructure for recovery and emergency response.</p>
+                  </div>
+                  
+                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.Hammer className="h-5 w-5 text-gray-400 flex-shrink-0" />
+                      </div>
+                      <h4 className="text-white font-semibold">Mining</h4>
+                    </div>
+                    <p className="text-gray-400 text-sm">Reduce equipment downtime by 30% with predictive maintenance. On-site, Australian-controlled sovereign AI for critical industries.</p>
+                  </div>
+                  
+                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.Shield className="h-5 w-5 text-gray-400 flex-shrink-0" />
+                      </div>
+                      <h4 className="text-white font-semibold">Defence &amp; Government</h4>
+                    </div>
+                    <p className="text-gray-400 text-sm">Process classified datasets 10x faster with air-gapped security. Field-deployable, mission-ready AI with ISO27001-ready infrastructure and Australian data residency.</p>
+                  </div>
+                  
+                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.Zap className="h-5 w-5 text-gray-400 flex-shrink-0" />
+                      </div>
+                      <h4 className="text-white font-semibold">Energy</h4>
+                    </div>
+                    <p className="text-gray-400 text-sm">AI compute for real-time energy systems, grid resilience, and national operations. Grid-edge, sovereign infrastructure for Australia&apos;s energy grid.</p>
+                  </div>
+                  
+                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
+                        <Icons.Brain className="h-5 w-5 text-gray-400 flex-shrink-0" />
+                      </div>
+                      <h4 className="text-white font-semibold">Research</h4>
+                    </div>
+                    <p className="text-gray-400 text-sm">Enable breakthrough discoveries with 95% lower carbon footprint. High-performance computing for universities and CSIRO achieving net-zero AI operations.</p>
                   </div>
                   
                   <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
@@ -1349,16 +1380,6 @@ export default function Home() {
                       <h4 className="text-white font-semibold">FinTech</h4>
                     </div>
                     <p className="text-gray-400 text-sm">Process millions of transactions with &lt;50ms latency. Real-time fraud detection with strict regulatory compliance and Australian data residency.</p>
-                  </div>
-                  
-                  <div className="bg-black/50 rounded-lg p-4 border border-[#4A4A4A] group hover:border-[#4A4A4A] transition-all duration-300">
-                    <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center mr-3 flex-shrink-0">
-                        <Icons.Hammer className="h-5 w-5 text-gray-400 flex-shrink-0" />
-                      </div>
-                      <h4 className="text-white font-semibold">Mining</h4>
-                    </div>
-                    <p className="text-gray-400 text-sm">Reduce equipment downtime by 30% with predictive maintenance. Autonomous operations with computer vision for safety monitoring and operational efficiency.</p>
                   </div>
                 </div>
                 
@@ -1404,6 +1425,24 @@ export default function Home() {
                           <div>
                             <h5 className="text-white font-medium text-sm">Australian Enterprise</h5>
                             <p className="text-gray-500 text-xs">Mining, agriculture, and finance with local support</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center flex-shrink-0">
+                            <Icons.RefreshCw className="h-4 w-4 text-gray-400" />
+                          </div>
+                          <div>
+                            <h5 className="text-white font-medium text-sm">Disaster Recovery &amp; Emergency Response</h5>
+                            <p className="text-gray-500 text-xs">Field-ready, rapid deployment to disaster zones</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 rounded-lg bg-[#1A1A1A] border border-[#4A4A4A] flex items-center justify-center flex-shrink-0">
+                            <Icons.Zap className="h-4 w-4 text-gray-400" />
+                          </div>
+                          <div>
+                            <h5 className="text-white font-medium text-sm">Energy &amp; Grid Infrastructure</h5>
+                            <p className="text-gray-500 text-xs">Real-time systems and grid resilience nationwide</p>
                           </div>
                         </div>
                         <div className="flex items-start space-x-3">
