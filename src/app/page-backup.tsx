@@ -956,7 +956,7 @@ export default function Home() {
             <div className="border-t border-[#262626] pt-6 sm:pt-8">
               <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4 lg:space-x-6 xl:space-x-8 text-xs sm:text-sm text-[#666666] px-4">
                 <span>NSW, Australia</span>
-                <span>&copy; 2025. All rights reserved.</span>
+                <span>&copy; 2026. All rights reserved.</span>
                 <a href="/privacy" className="hover:text-[#999999] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">Privacy Policy</a>
                 <a href="/terms" className="hover:text-[#999999] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">Terms of Service</a>
                 <a href="/cookies" className="hover:text-[#999999] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">Cookie Policy</a>

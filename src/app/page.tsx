@@ -2595,7 +2595,7 @@ export default function Home() {
                     loading="lazy"
                   />
                 </div>
-                <span>&copy; 2025. All rights reserved.</span>
+                <span>&copy; 2026. All rights reserved.</span>
                 <a href="/privacy" className="hover:text-[#999999] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">Privacy Policy</a>
                 <a href="/terms" className="hover:text-[#999999] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">Terms of Service</a>
                 <a href="/cookies" className="hover:text-[#999999] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">Cookie Policy</a>
