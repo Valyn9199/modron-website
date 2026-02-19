@@ -104,29 +104,29 @@ export default function Home() {
     {
       videoSrc: "/hero/MODRON_Applications_Disaster_Recovery.mp4",
       poster: "/hero/posters/MODRON_Poster_Disaster_Recovery_Scene.jpg",
-      headline: "AI Infrastructure, Where It’s Needed Most",
+      headline: "Where It's Needed Most. There in Hours",
       subheading: "RAPID DEPLOYMENT. FIELD-READY. CONTAINERISED.",
       description: "Mission-critical compute deployed to disaster zones in hours, not months."
     },
     {
       videoSrc: "/hero/MODRON_Applications_Mining.mp4",
       poster: "/hero/posters/MODRON_Poster_Mining_Scene.jpg",
-      headline: "Sovereign AI for Australia’s Critical Industries",
+      headline: "Critical Industries. Data Never Leaves the Site",
       subheading: "ON-SITE. SECURE. AUSTRALIAN-CONTROLLED.",
       description: "Keep sensitive data on-premises with dedicated high-performance compute."
     },
     {
       videoSrc: "/hero/MODRON_Applications_Defense.mp4",
       poster: "/hero/posters/MODRON_Poster_Defence_Scene.jpg",
-      headline: "Compute for Sovereign Defence Operations",
-      subheading: "FIELD-DEPLOYABLE. SECURE. MISSION-READY.",
+      headline: "Defence-Grade Compute at the Edge",
+      subheading: "EDGE-DEPLOYABLE. SECURE. MISSION-READY.",
       description: "High-performance AI compute supporting intelligence and field operations at the edge."
     },
     {
       videoSrc: "/hero/MODRON_Applications_Energy.mp4",
       poster: "/hero/posters/MODRON_Poster_Energy_Scene.jpg",
-      headline: "Compute at the Heart of Australia's Energy Grid",
-      subheading: "GRID-EDGE. HIGH PERFORMANCE. SOVEREIGN.",
+      headline: "Powering the Grid. In Real Time",
+      subheading: "GRID-EDGE. REAL-TIME. RESILIENT.",
       description: "AI compute for real-time energy systems, grid resilience, and national operations."
     }
   ]
