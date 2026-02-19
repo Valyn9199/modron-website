@@ -22,12 +22,12 @@ export function EnhancedPricingButton() {
 
   return (
     <EnhancedButton
-      variant="secondary"
+      variant="ghost"
       size="lg"
       onClick={handleClick}
       glow
       ripple
-      className="mobile-button w-full sm:w-auto group relative overflow-hidden bg-black/80 hover:bg-black text-white hover:text-white transition-all duration-300"
+      className="hero-cta-glass mobile-button w-full sm:w-auto group relative overflow-hidden !bg-black/70 !text-white border border-white/10 transition-all duration-300"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -45,7 +45,7 @@ export function EnhancedPricingButton() {
       </div>
       
       {/* Animated background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary-green to-primary-purple opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
     </EnhancedButton>
   )
 }

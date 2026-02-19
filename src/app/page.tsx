@@ -118,14 +118,14 @@ export default function Home() {
     {
       videoSrc: "/hero/MODRON_Applications_Defense.mp4",
       poster: "/hero/posters/MODRON_Poster_Defence_Scene.jpg",
-      headline: "Defence-Grade Compute at the Edge",
+      headline: "Defence-Grade Compute|at the Edge",
       subheading: "EDGE-DEPLOYABLE. SECURE. MISSION-READY.",
       description: "High-performance AI compute supporting intelligence and field operations at the edge."
     },
     {
       videoSrc: "/hero/MODRON_Applications_Energy.mp4",
       poster: "/hero/posters/MODRON_Poster_Energy_Scene.jpg",
-      headline: "Powering the Grid. In Real Time",
+      headline: "Powering the Grid.|In Real Time",
       subheading: "GRID-EDGE. REAL-TIME. RESILIENT.",
       description: "AI compute for real-time energy systems, grid resilience, and national operations."
     }

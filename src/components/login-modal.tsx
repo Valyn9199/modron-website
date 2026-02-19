@@ -144,7 +144,7 @@ export function LoginModal() {
             <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2.5">
               Email
             </label>
-            <div className="relative">
+            <div className="relative" suppressHydrationWarning>
               <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500" />
               <input
                 id="email"
@@ -163,7 +163,7 @@ export function LoginModal() {
             <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2.5">
               Password
             </label>
-            <div className="relative">
+            <div className="relative" suppressHydrationWarning>
               <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500" />
               <input
                 id="password"

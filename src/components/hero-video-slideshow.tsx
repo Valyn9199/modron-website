@@ -544,7 +544,17 @@ export function HeroSlideshowContent({
           }}
         >
           <span className="inline-block">
-            {currentSlideData.headline}
+            {currentSlideData.headline.includes('|') ? (() => {
+              const parts = currentSlideData.headline.split('|')
+              return (
+                <>
+                  {parts[0]}
+                  <span className="sm:hidden"> </span>
+                  <br className="hidden sm:block" />
+                  {parts[1]}
+                </>
+              )
+            })() : currentSlideData.headline}
           </span>
         </h2>
       </div>

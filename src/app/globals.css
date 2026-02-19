@@ -1586,6 +1586,16 @@ div[data-overlay] {
   }
 }
 
+/* Hero CTA glass hover - ensures effect is visible (no dependency on variant overrides) */
+.hero-cta-glass:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
 /* Hero section: full viewport height so video has maximum space and can fill width */
 section#home.nav-trigger-home {
   min-height: 100vh;

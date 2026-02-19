@@ -136,7 +136,7 @@ export function Header() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <div className="relative">
+              <div className="relative" suppressHydrationWarning>
                 <Image
                   src="/Modron_logo.png"
                   alt="MODRON - Sustainable AI Infrastructure"
