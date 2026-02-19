@@ -96,6 +96,58 @@ export function EnhancedStructuredData() {
           },
           "priceRange": "$$$",
           "availability": "InStock"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Disaster Recovery & Emergency Response Compute",
+            "description": "Mission-critical compute deployed to disaster zones in hours. Field-ready, containerised infrastructure for recovery and emergency response across Australia.",
+            "provider": { "@type": "LocalBusiness", "name": "MODRON" },
+            "areaServed": ["Australia"],
+            "serviceType": "Disaster Recovery AI Infrastructure"
+          },
+          "priceRange": "$$$",
+          "availability": "InStock"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Energy & Grid Infrastructure AI",
+            "description": "AI compute for real-time energy systems, grid resilience, and national operations. Grid-edge, sovereign infrastructure for Australia's energy grid.",
+            "provider": { "@type": "LocalBusiness", "name": "MODRON" },
+            "areaServed": ["Australia"],
+            "serviceType": "Energy Grid AI Compute"
+          },
+          "priceRange": "$$$",
+          "availability": "InStock"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Defence-Grade Edge Compute",
+            "description": "Defence-grade AI compute at the edge. Edge-deployable, secure, mission-ready infrastructure for intelligence and field operations.",
+            "provider": { "@type": "LocalBusiness", "name": "MODRON" },
+            "areaServed": ["Australia"],
+            "serviceType": "Defence AI Infrastructure"
+          },
+          "priceRange": "$$$",
+          "availability": "InStock"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Mining & Critical Industries",
+            "description": "On-site, Australian-controlled sovereign AI for critical industries. Keep sensitive data on-premises with dedicated high-performance compute.",
+            "provider": { "@type": "LocalBusiness", "name": "MODRON" },
+            "areaServed": ["Australia"],
+            "serviceType": "Mining & Critical Industries AI"
+          },
+          "priceRange": "$$$",
+          "availability": "InStock"
         }
       ]
     },
@@ -117,7 +169,10 @@ export function EnhancedStructuredData() {
       "Modular Infrastructure",
       "Data Sovereignty",
       "Australian Manufacturing",
-      "Sovereign AI Infrastructure"
+      "Sovereign AI Infrastructure",
+      "Disaster Recovery Infrastructure",
+      "Grid-Edge Compute",
+      "Defence AI"
     ],
     "makesOffer": [
       {
@@ -138,12 +193,7 @@ export function EnhancedStructuredData() {
     "@type": "WebSite",
     "name": "MODRON",
     "url": "https://www.modron.com",
-    "description": "Australia's first portable, enterprise-grade AI supercomputers. Deploy on-premises or rent compute capacity. Enterprise-grade AI infrastructure with industry-leading compute density. Locally-built, immersion-cooled GPU clusters (RTX PRO 6000, H200, L40S, Blackwell GB300) with solar power and modular containers for Australian enterprises.",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.modron.com/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+    "description": "Australia's first portable, enterprise-grade AI supercomputers. Deploy on-premises or rent compute capacity. Enterprise-grade AI infrastructure with industry-leading compute density. Locally-built, immersion-cooled GPU clusters (RTX PRO 6000, H200, L40S, Blackwell GB300) with solar power and modular containers for Australian enterprises."
   };
 
   const organizationStructuredData = {
@@ -172,14 +222,17 @@ export function EnhancedStructuredData() {
     ],
     "knowsAbout": [
       "Artificial Intelligence",
-      "Machine Learning", 
+      "Machine Learning",
       "GPU Computing",
       "Immersion Cooling",
       "Solar Power Technology",
       "Modular Infrastructure",
       "Data Sovereignty",
       "Australian Manufacturing",
-      "Sovereign AI Infrastructure"
+      "Sovereign AI Infrastructure",
+      "Disaster Recovery Infrastructure",
+      "Grid-Edge Compute",
+      "Defence AI"
     ]
   };
 

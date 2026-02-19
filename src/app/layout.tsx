@@ -25,8 +25,8 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "MODRON | Portable Enterprise AI Supercomputers Australia | Deploy or Rent Compute",
-  description: "Australia's first portable, enterprise-grade AI supercomputers. Deploy on-premises or rent compute capacity. Immersion-cooled GPU clusters (H200, GB300, RTX 6000) with 48-hour deployment. 100% Australian data sovereignty. Solar-powered infrastructure.",
-  keywords: ["Australia sovereign AI infrastructure", "Australian-built GPU clusters", "Enterprise AI infrastructure Australia", "Immersion-cooled GPUs Australia", "Solar-powered AI compute", "48-hour AI deployment Australia", "Australian data sovereignty", "GPU cluster deployment Sydney", "enterprise AI hosting Melbourne", "portable AI supercomputers Australia", "AI compute rental Australia", "on-premises AI compute Australia", "flexible AI infrastructure deployment"],
+  description: "Australia's first portable, enterprise-grade AI supercomputers. Deploy or rent immersion-cooled GPU clusters in 48 hours—from disaster recovery to defence and energy. 100% Australian data sovereignty, solar-powered.",
+  keywords: ["Australia sovereign AI infrastructure", "Australian-built GPU clusters", "Enterprise AI infrastructure Australia", "Immersion-cooled GPUs Australia", "Solar-powered AI compute", "48-hour AI deployment Australia", "Australian data sovereignty", "GPU cluster deployment Sydney", "enterprise AI hosting Melbourne", "portable AI supercomputers Australia", "AI compute rental Australia", "on-premises AI compute Australia", "flexible AI infrastructure deployment", "disaster recovery AI Australia", "energy grid AI Australia", "defence AI compute Australia", "mining AI on-premises Australia"],
   authors: [{ name: "MODRON" }],
   creator: "MODRON",
   publisher: "MODRON",
@@ -48,11 +48,8 @@ export const metadata: Metadata = {
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'default',
     'mobile-web-app-capable': 'yes',
-    'msapplication-TileColor': '#fbff52',
-    'theme-color': '#fbff52',
-  },
-  verification: {
-    google: 'your-google-verification-code',
+    'msapplication-TileColor': '#0a0a0a',
+    'theme-color': '#0a0a0a',
   },
   formatDetection: {
     email: false,
@@ -65,7 +62,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "MODRON | Portable Enterprise AI Supercomputers Australia | Deploy or Rent Compute",
-    description: "Australia's first portable, enterprise-grade AI supercomputers. Deploy on-premises or rent compute capacity. Immersion-cooled GPU clusters (H200, GB300, RTX 6000) with 48-hour deployment. 100% Australian data sovereignty.",
+    description: "Australia's first portable, enterprise-grade AI supercomputers. Deploy or rent immersion-cooled GPU clusters in 48 hours—from disaster recovery to defence and energy. 100% Australian data sovereignty, solar-powered.",
     url: 'https://www.modron.com',
     siteName: 'MODRON',
     images: [
@@ -91,7 +88,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'MODRON | Portable Enterprise AI Supercomputers Australia | Deploy or Rent Compute',
-    description: 'Australia\'s first portable, enterprise-grade AI supercomputers. Deploy on-premises or rent compute capacity. Immersion-cooled GPU clusters (H200, GB300, RTX 6000) with 48-hour deployment. 100% Australian data sovereignty.',
+    description: 'Australia\'s first portable, enterprise-grade AI supercomputers. Deploy or rent immersion-cooled GPU clusters in 48 hours—from disaster recovery to defence and energy. 100% Australian data sovereignty, solar-powered.',
     images: ['/og-image.jpg'],
     creator: '@modron_ai',
     site: '@modron_ai',
